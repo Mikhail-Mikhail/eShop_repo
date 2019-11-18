@@ -10,7 +10,15 @@
        
         <span th:fragment="pageName"> <span th:text="${headerAttr}"> </span> </span>
        
-        <div class="left_float clear container  container_home" th:fragment="content">         
+        <div class="left_float clear container  container_home" th:fragment="content">  
+        
+          <!-- Field for search: -->
+          <div class="search-field">
+            <input type="search" class="search-input" name="q">             
+            <input type="submit" class="search-button" value="search">  
+          </div>  
+           
+           <br>              
             
            <!-- ======= Block "Select language": ======= --> 
             
