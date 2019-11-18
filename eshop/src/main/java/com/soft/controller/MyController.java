@@ -39,7 +39,7 @@ public class MyController {
      log.debug("Request for \"home.html\" received. ");  
 
       //Set model's attributes which is used for creation "home.html".                    
-      model.addAttribute("headerAttr", "Test example!");
+      model.addAttribute("headerAttr", "New example!");
       model.addAttribute("homePage", true);                    
               
     //Return page's name. 
