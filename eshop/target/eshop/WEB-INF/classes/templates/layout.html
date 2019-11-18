@@ -1,0 +1,44 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    
+  <head th:fragment="head(title, myScript, myCss)">
+    <title>eShop - <th:block th:include="${title}"></th:block></title>
+    
+     <meta charset="utf-8">
+         
+     <!-- Links to the stylesheets. -->
+     <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css" type="text/css"  />  
+     
+      <link rel="stylesheet" th:href="${myCss}"  type="text/css"  />  
+     
+       <script type="text/javascript" th:src="${myScript}" src = "../static/js/stub.js">            
+       </script>
+      
+        <!-- Include "JQuery" library. -->
+        <script src="/eshop/js/jquery-3.2.1.js"> 
+        </script>           
+   
+  </head>
+
+  <body th:fragment="body(imgsource, css_class)">     
+      
+       <div class="left_float  clear  header">   
+        <hr> 
+          <a href="http://localhost:8080/eshop/home.html/">
+            <img  class="logo left_float" th:src="${imgsource}" src="../static/img/logo.png" alt="Dog" title="Home page"/>
+          </a>        
+         <h2 class="left_float  name_margins"> <span th:replace="${pageName}">Fake name</span> </h2>
+         <br>
+        <hr class="left_float clear max_width">            
+       </div>         
+
+          <div th:replace="${content}">
+             Fake content
+          </div>  
+       
+            <div class="left_float clear max_width  footer"  th:classappend="${css_class}">
+              &copy 2019, <span th:if="${langSelected}" th:text="#{label.copyright}"> </span>  <span th:if="${homePage}">All rights reserved</span>
+            </div>                    
+  </body>
+</html>

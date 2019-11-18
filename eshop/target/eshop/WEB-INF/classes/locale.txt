@@ -1,0 +1,16 @@
+1	en	label.header	You are on the first English page!
+2	en	label.welcome	Hello! This page in English!
+3	en	label.changelang	Change language
+4	en	label.backbutton	Back
+5	en	label.forthbutton	Forth
+6	en	label.copyright	All rights reserved
+7	en	label.textheader	You are on the next English page!
+8	en	label.text	This text in English.
+9	ru	label.header	Вы на русской странице!
+10	ru	label.welcome	Здравствуйте! Эта страница на русском!
+11	ru	label.changelang	Изменить язык
+12	ru	label.backbutton	Назад
+13	ru	label.forthbutton	Вперед
+14	ru	label.copyright	Все права защищены
+15	ru	label.textheader	Вы на следующей русской странице!
+16	ru	label.text	Этот текст на русском.

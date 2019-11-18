@@ -1,0 +1,57 @@
+ 
+  /* Stylesheet for all pages. */
+
+
+    body{
+         background-color: hsla(0, 0%, 78%, 0.5);
+         width: 1260px; 
+         height: 910px;
+         margin-left: auto;
+         margin-right: auto;
+    }
+
+    .header{  
+            height: 135px;    
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+    }       
+
+    .container{
+               width: 1220px;
+               height: 245px;
+               margin-left: 20px;
+               margin-right: 20px;               
+    }        
+    
+    .footer {              
+          margin-left: 10px;                           
+          background-color: white;                  
+    }    
+
+        .left_float{
+            float: left;
+        }
+
+        .clear{
+            clear: left; 
+        }
+
+        .max_width{
+           width: 1240px;
+        }
+
+        .name_margins{
+            margin-left: 20px;
+            margin-top: 35px;
+        }   
+       
+        .button_width{
+            width: 125px;
+        }
+        
+        .indent{
+           margin-left: 10px;  
+        }
+
+
