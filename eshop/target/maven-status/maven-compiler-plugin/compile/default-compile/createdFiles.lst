@@ -1,0 +1,8 @@
+com/soft/dao/localeDAOImpl.class
+com/soft/config/DataAccessConfig.class
+com/soft/config/AppConfig$DBMessageSource.class
+com/soft/config/AppConfig.class
+com/soft/dao/localeDAO.class
+com/soft/controller/MyController.class
+com/soft/config/AppInitializer.class
+com/soft/entity/MessageEntity.class

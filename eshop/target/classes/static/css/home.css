@@ -1,0 +1,51 @@
+ 
+  /* Stylesheet for page "home.html". */
+  
+    .logo{
+      width: 100px;
+      height: 100px;
+    }
+      
+    .container_home{
+       margin-top: 7px;
+    }
+     
+    .footer_home_page {                                 
+        margin-top: 485px;                                
+    }                
+    
+    #selectors{
+       width: 270px;    
+    }              
+    
+    .box_position{      
+      margin-top: 1px;
+      margin-left: 15px;
+      border: 1px solid rgb(22,22,22);
+    }
+    
+    .BoxName{                      
+       font-size: 18px;
+       text-decoration: underline;
+       color: blue;
+    }
+    
+    .SelectLanguageBoxLeftMargin{
+      margin-left: 15px;
+      margin-right: 15px;     
+    }    
+               
+    .margins{
+      margin-left: 10px;     
+      margin-right: 10px;     
+    }                                   
+    
+    .redColor{
+      color: red;  
+    }        
+    
+    .greenColor{
+      color: green;  
+    }        
+    
+        

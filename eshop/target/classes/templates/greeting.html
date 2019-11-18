@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    <head th:include="layout :: head(title=~{::title}, myScript=@{'/js/stub.js'}, myCss=@{'/css/home.css'})">
+      <title>Greeting Page</title> 
+      <meta charset="utf-8">
+    </head>
+    
+    <body id="BodyElem" th:include="layout :: body(imgsource=@{'/img/duke.waving.gif'}, css_class='footer_home_page')"  th:with="content=~{::content}, pageName=~{::pageName}">    
+       
+        <span th:fragment="pageName"> <span th:text="#{label.header}"> </span> </span>
+       
+        <div class="left_float clear container  container_home" th:fragment="content">
+
+           <p>
+             <span th:text="#{label.welcome}"> </span>
+           </p>
+           
+            <form th:action="@{/text.html}" method="get">           
+              <input class="button_width margins" type="submit" th:value="#{label.forthbutton}">                                                                                                              
+            </form>
+           
+             <form th:action="@{/home.html}" method="get">           
+               <input class="button_width margins" type="submit" th:value="#{label.backbutton}">                                                                                                              
+             </form>                                                                                   
+        </div>
+    </body>
+</html>

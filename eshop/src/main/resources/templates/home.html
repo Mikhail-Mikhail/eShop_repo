@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    <head th:include="layout :: head(title=~{::title}, myScript=@{'/js/stub.js'}, myCss=@{'/css/home.css'})">
+      <title>Home Page</title> 
+      <meta charset="utf-8">
+    </head>
+    
+    <body id="BodyElem" th:include="layout :: body(imgsource=@{'/img/logo.png'}, css_class='footer_home_page')"  th:with="content=~{::content}, pageName=~{::pageName}">    
+       
+        <span th:fragment="pageName"> <span th:text="${headerAttr}"> </span> </span>
+       
+        <div class="left_float clear container  container_home" th:fragment="content">         
+            
+           <!-- ======= Block "Select language": ======= --> 
+            
+           <div class="box_position left_float  clear">
+               
+             <span class="BoxName  SelectLanguageBoxLeftMargin">Please, select your language:</span>   
+               <form th:action="@{/greeting.html}" method="get">           
+                  <p class="margins">                                                                                       
+                     <select id="selectLanguageList" name="lang">                       
+                       <option value="en"> English </option>                            
+                       <option value="ru"> Русский </option>                            
+                     </select>                        
+                     
+                    <input class="button_width margins" type="submit" value="Select">
+                  </p>                                                                                             
+                </form>                                     
+
+           </div>                                      
+        
+        </div>
+    </body>
+</html>
