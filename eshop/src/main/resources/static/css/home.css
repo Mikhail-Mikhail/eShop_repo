@@ -12,18 +12,7 @@
       border: 1px solid #9e9c9c; 
       min-height: 20px;
       border-radius: 5px;
-      color: #eeeeec;
-    /* 
-      width: 80%;
-      height: 42px;
-      padding-left: 10px;
-      border: 2px solid #7BA7AB;
-      border-radius: 5px;
-      outline: none;
-      background: #F9F0DA;
-      color: #9E9C9C;
-      
-    */  
+      color: #eeeeec;     
     }
     
     /* Styles for "search"-field. */
@@ -48,29 +37,26 @@
         margin-left: 2px;
         margin-top: 2px;
         margin-right: 2px;
-        margin-bottom: 2px;
-	    cursor: pointer;
-  /*
-  	
-      width: 20px; 
-      height: 20px; 
-      border: none; 
-      background: url(images/video.png) no-repeat 50% 50%; 
-
+        margin-bottom: 10px;
+	    cursor: pointer;	     
         font-size: 120%;
         border: 1px solid #bdbdbd;
         border-radius: 5px;
         padding: 5px 10px 5px 10px;
         background-repeat: no-repeat;
-        background-position: 8px 9px;
-        display: block;
-        margin-bottom: 10px;
+        background-position: 8px 9px;                
         color: #444444;
         text-shadow: 0px 1px 1px #ffffff;
         border-bottom: 2px solid #b2b2b2;
-        background-color: #b9e4e3;
-        */
+        background-color: #b9e4e3;       	    	      
     }
+    
+     .search-button:hover {
+       color: #333333;
+       border: 1px solid #a4a4a4;
+       border-top: 2px solid #b2b2b2;
+       background-color: #a0dbc4;
+     }	    
       
     .container_home{
        margin-top: 7px;
