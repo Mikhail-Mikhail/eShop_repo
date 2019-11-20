@@ -1,22 +1,27 @@
- 
-  /* Stylesheet for page "home.html". */
+  /* --------------------------------------------------------------------*/
+   
+  /* Styles for page "home.html". */
   
     .logo{
       width: 100px;
       height: 100px;
     }
     
-    .search-field{
-    
-      width: 80%; 
-      border: 1px solid #9e9c9c; 
-      min-height: 20px;
-      border-radius: 5px;
-      color: #eeeeec;     
-    }
     /* --------------------------------------------------------------------*/
     
     /* Styles for "search"-field: */
+    
+    .search-field{
+    
+      width: 80%; 
+      min-width: 800px; /* Fix width of search field if width of browser's window became narrow. */
+      min-height: 30px;    
+      border: 1px solid #9e9c9c;       
+      border-radius: 5px; 
+      background-color: blue; 
+      margin-top: 20px;
+      margin-left: 20px;        
+    }           
     
     .search-input  {
       border: none; /* Disable border. */
@@ -63,16 +68,19 @@
      
       /* Styles for vertical catalog list: */
       
-       .widget {
+       .catalog {
 		  padding: 20px 30px;
 		  background: white;
 		  font-family: 'Roboto', sans-serif;
 		  width: 20%;
+		  min-width: 200px; /* Fix width of catalog if width of browser's window became narrow. */
 		  border-radius: 5px;		  
-          border: solid 1px #bdbdbd;         
+          border: solid 1px #bdbdbd; 
+          margin-top: 20px;
+          margin-left: 20px;        
 		}
 		
-		.widget-title {
+		.catalog-title {
 		  text-transform: uppercase;
 		  letter-spacing: 2px;
 		  color: #222;
@@ -82,18 +90,18 @@
 		  border-left: 2px solid #b99d61;
 		}
 		
-		.widget-list {
+		.catalog-list {
 		  padding: 0;
 		  list-style: none;
 		}
 		
 		/* Insert dash "-" before each item of catalog. */
-		.widget-list a:before {
+		.catalog-list a:before {
 		  content: "\2014"; /* Unicode for long dash "-" */
 		  margin-right: 14px;
 		}
 		
-		.widget-list a {
+		.catalog-list a {
 		  text-decoration: none;
 		  outline: none;
 		  display: block;
@@ -104,10 +112,31 @@
 		  transition: .3s linear;
 		}
 		
-		.widget-list a:hover {color: #b99d61;} 
+		.catalog-list a:hover {color: #b99d61;} 
      
      /* --------------------------------------------------------------------*/
-       
+     
+      /* Styles for groups of items: */
+      
+      .groups-block{
+        width: 20%;
+        height: 20%;
+        background: white;
+      }
+     
+     .group-photo {
+	    position: relative;
+	    padding-bottom: 100%;
+	    overflow: hidden;
+     }
+     
+     figure{
+       display: inline-block;
+       text-align: center;
+     }
+
+    /* --------------------------------------------------------------------*/
+           
     .container_home{
        margin-top: 7px;
     }

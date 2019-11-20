@@ -1,36 +1,60 @@
  
-  /* Stylesheet for all pages. */
-
+  /* Styles for all pages: */
 
     body{
-         background-color: hsla(0, 0%, 78%, 0.5);
-         width: 1260px; 
-         height: 910px;
-         margin-left: auto;
-         margin-right: auto;
+      background-color: hsla(0, 0%, 78%, 0.5);
+      width: 80%; 
+      height: 910px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .header{  
-            height: 135px;    
-            margin-left: 10px;
-            margin-right: 10px;
-            margin-bottom: 10px;
+       height: 135px;
+       width: 100%;   
+       min-width: 1150px; /* Fix width of header if width of browser's window became narrow. */       
+       margin-bottom: 10px;
+       border-top: 2px solid #b2b2b2;
+       border-bottom: 2px solid #b2b2b2;
+       float: left;
+       clear: left; 
+       
+       background-color: beige; /* For DEBUG to see size of this block. */
     }       
 
-    .container{
-               width: 1220px;
-               height: 245px;
-               margin-left: 20px;
-               margin-right: 20px;               
+    .content-container{       
+       width: 100%;
+       min-width: 1150px; /* Fix width of content if width of browser's window became narrow. */   
+       min-height: 100%;       
+       float: left;  
+       clear: left; 
+       
+       background-color: burlywood; /* For DEBUG to see size of this block. */              
     }        
     
-    .footer {              
-          margin-left: 10px;                           
-          background-color: white;                  
+    .footer {
+        width: 100%; 
+        min-width: 1150px; /* Fix width of footer if width of browser's window became narrow. */             
+        margin-left: 10px;                           
+        background-color: white;
+        border-top: 2px solid #b2b2b2;
+        border-bottom: 2px solid #b2b2b2;
+        float: left;           
+        margin:auto;
+	    clear:both;                       
     }    
-
+    
+     .left-float{
+        float: left;  
+     }
+     
+     .header-name{
+        margin-left: 20px;
+        margin-top: 35px;
+     }
+/*
         .left_float{
-            float: left;
+          float: left;  
         }
 
         .clear{
@@ -40,7 +64,8 @@
         .max_width{
            width: 1240px;
         }
-
+*/
+/*
         .name_margins{
             margin-left: 20px;
             margin-top: 35px;
@@ -54,4 +79,4 @@
            margin-left: 10px;  
         }
 
-
+*/
