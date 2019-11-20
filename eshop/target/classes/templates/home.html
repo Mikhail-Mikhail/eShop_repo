@@ -10,20 +10,19 @@
        
         <span th:fragment="pageName"> <span th:text="${headerAttr}"> </span> </span>
        
-        <div class="left_float clear container  container_home" th:fragment="content">  
+        <div class="content-container" th:fragment="content">  
         
           <!-- Field for search: -->
           <div class="search-field">
             <input type="search" class="search-input" name="q">             
             <input type="submit" class="search-button" value="Search">  
           </div>  
-           
-           <br>  
+                                
            
            <!-- List of items. -->
-           <div class="widget">
-			  <h3 class="widget-title">Catalog</h3>
-			   <ul class="widget-list">
+           <div class="catalog">
+			  <h3 class="catalog-title">Catalog</h3>
+			   <ul class="catalog-list">
 			     <li><a href="">Resistors</a></li>
 			     <li><a href="">Transistors</a></li>
 			     <li><a href="">Integrated circuits</a></li>
@@ -36,27 +35,46 @@
 			     <li><a href="">Power supplies</a></li>
 			   </ul>
 			</div>
-      <!--     
-            <div class="row">
-			  <div class="col-md-4">
-			    <div class="list-group">
-			      <a href="#" class="list-group-item">Resistors</a>
-			      <a href="#" class="list-group-item">Transistors</a>
-			      <a href="#" class="list-group-item">Integrated circuits</a>
-			      <a href="#" class="list-group-item">Diodes</a>
-			      <a href="#" class="list-group-item">Capacitors</a>
-			      <a href="#" class="list-group-item">LEDs</a>
-			      <a href="#" class="list-group-item">Relays</a>
-			      <a href="#" class="list-group-item">Connectors</a>
-			      <a href="#" class="list-group-item">Tumblers</a>
-			      <a href="#" class="list-group-item">Power supplies</a>			      
-			    </div>
-			  </div>			
-			</div>
-	-->		            
+
+<!-- 			
+              <ul>
+                <li>			
+				  <div class="group-photo">
+	  			   <a href="#"> <img src="/eshop/img/resistor.jpg" alt=""> </a>	 
+	  	  		    <p class="group-title">
+	                  <a href="#">Resistors</a>
+	                </p>         
+	              </div>
+	            
+	            <li>		
+				  <div class="group-photo">
+	  			   <a href="#"> <img src="/eshop/img/transistor.jpg" alt=""> </a>	 
+	  	  		    <p class="group-title">
+	                  <a href="#">Transistors</a>
+	                </p>         
+	              </div>
+	            <li>  	 
+	          </ul>
+ -->
+ <div class="groups-block">
+ </div>
+ 
+<!--  
+<div> 
+ <figure>
+   <img src="/eshop/img/resistor.jpg" alt="">
+   <figcaption>Resistors</figcaption>
+ </figure>	          
+			            
+<figure>
+   <img src="/eshop/img/transistor.jpg" alt="">
+   <figcaption>Resistors</figcaption>
+ </figure>
+</div> 	          
+-->			            
 			            
            <!-- ======= Block "Select language": ======= --> 
-            
+ <!--            
            <div class="box_position left_float  clear">
                
              <span class="BoxName  SelectLanguageBoxLeftMargin">Please, select your language:</span>   
@@ -72,7 +90,7 @@
                 </form>                                     
 
            </div>                                      
-        
+         -->
         </div>
     </body>
 </html>

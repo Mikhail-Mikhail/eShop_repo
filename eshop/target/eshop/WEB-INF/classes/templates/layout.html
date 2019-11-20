@@ -23,22 +23,24 @@
 
   <body th:fragment="body(imgsource, css_class)">     
       
-       <div class="left_float  clear  header">   
-        <hr> 
+     <!-- Header: --> 
+     <div class="header">   
+        <!-- Display logo. -->
           <a href="http://localhost:8080/eshop/home.html/">
-            <img  class="logo left_float" th:src="${imgsource}" src="../static/img/logo.png" alt="Dog" title="Home page"/>
-          </a>        
-         <h2 class="left_float  name_margins"> <span th:replace="${pageName}">Fake name</span> </h2>
-         <br>
-        <hr class="left_float clear max_width">            
-       </div>         
+            <img  class="logo left-float" th:src="${imgsource}" src="../static/img/logo.png" alt="Dog" title="Home page"/>
+          </a>   
+         <!-- Display header's name. -->      
+         <h2 class="left-float  header-name"> <span th:replace="${pageName}">Fake name</span> </h2>                            
+     </div>         
 
-          <div th:replace="${content}">
-             Fake content
-          </div>  
+       <!-- Block for content: -->
+       <div th:replace="${content}">
+          Fake content
+       </div>  
        
-            <div class="left_float clear max_width  footer"  th:classappend="${css_class}">
-              &copy 2019, <span th:if="${langSelected}" th:text="#{label.copyright}"> </span>  <span th:if="${homePage}">All rights reserved</span>
-            </div>                    
+         <!-- Footer: -->       
+         <div class="footer"  th:classappend="${css_class}">
+            &copy 2019, <span th:if="${langSelected}" th:text="#{label.copyright}"> </span>  <span th:if="${homePage}">All rights reserved</span>
+         </div>                    
   </body>
 </html>
