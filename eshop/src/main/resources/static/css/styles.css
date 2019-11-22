@@ -33,13 +33,14 @@
     }        
     
     .footer {
+        height: 50px;
         width: 100%; 
         min-width: 1150px; /* Fix width of footer if width of browser's window became narrow. */             
         margin-left: 10px;                           
         background-color: white;
         border-top: 2px solid #b2b2b2;
         border-bottom: 2px solid #b2b2b2;
-        float: left;           
+/*        float: left;   */           
         margin:auto;
 	    clear:both;                       
     }    
