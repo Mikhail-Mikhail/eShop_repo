@@ -41,7 +41,7 @@ public class DataAccessConfig {
     public DataSource getDataSource(){
        final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
           dsLookup.setResourceRef(true);
-          DataSource dataSource = dsLookup.getDataSource("jdbc/localeDB");      	         
+          DataSource dataSource = dsLookup.getDataSource("jdbc/eshop_db");      	         
      return dataSource;
     }
    
