@@ -63,7 +63,7 @@
      
       /* Styles for vertical catalog list: */
       
-       .catalog {
+       .div-catalog {
 		  padding: 20px 30px;
 		  background: white;
 		  font-family: 'Roboto', sans-serif;
@@ -72,7 +72,9 @@
 		  border-radius: 5px;		  
           border: solid 1px #bdbdbd; 
           margin-top: 20px;
-          margin-left: 20px;        
+          margin-left: 20px; 
+          
+          float: left;       
 		}
 		
 		.catalog-title {
@@ -113,12 +115,19 @@
      
       /* Styles for groups of items: */
       
-      .groups-block{
-        width: 20%;
-        height: 20%;
-        background: white;
+      .div-groups-block{
+        height: 750px;        
+        width: 60%;
+		min-width: 700px; /* Fix width of catalog if width of browser's window became narrow. */
+		border-radius: 5px;		  
+        border: solid 1px #bdbdbd; 
+        margin-top: 20px;
+        margin-left: 30px;        
+        background: white;  
+        float: left;      
       }
-     
+
+/*     
      .group-photo {
 	    position: relative;
 	    padding-bottom: 100%;
@@ -129,7 +138,7 @@
        display: inline-block;
        text-align: center;
      }
-
+*/
     /* --------------------------------------------------------------------*/
            
     .container_home{
