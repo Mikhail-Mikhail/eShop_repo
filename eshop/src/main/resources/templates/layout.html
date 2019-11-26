@@ -21,13 +21,19 @@
    
   </head>
 
-  <body th:fragment="body(imgsource, css_class)">     
+  <body th:fragment="body(css_class)">     
+      
+    <div class="header-line">
+          header-line
+      <img  class="" src="/eshop/img/cart1.png" alt="Cart" title="Cart"/>   
+    </div>     
       
      <!-- Header: --> 
-     <div class="header">   
-        <!-- Display logo. -->
+     <div class="header">                
+        
+          <!-- Display logo. -->
           <a href="http://localhost:8080/eshop/home.html/">
-            <img  class="logo left-float" th:src="${imgsource}" src="../static/img/logo.png" alt="Dog" title="Home page"/>
+            <img  class="logo left-float" src="/eshop/img/logo.png" alt="Dog" title="Home page"/>
           </a>   
          <!-- Display header's name. -->      
          <h2 class="left-float  header-name"> <span th:replace="${pageName}">Fake name</span> </h2>                            
