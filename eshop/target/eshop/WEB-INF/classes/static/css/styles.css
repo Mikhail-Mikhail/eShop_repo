@@ -19,7 +19,23 @@
        float: left;
        clear: left; 
        
+       z-index: 0;
        background-color: beige; /* For DEBUG to see size of this block. */
+    }  
+    
+    .header-line{  
+       height: 35px;
+       width: 100%;  
+       top: 0;
+       left: 0;        
+       border-top: 1px solid #b2b2b2;
+       border-bottom: 1px solid #b2b2b2;
+       float: left;
+       clear: left; 
+       position: fixed;
+       z-index: 9999;
+       
+       background-color: grey; /* For DEBUG to see size of this block. */
     }       
 
     .content-container{       
