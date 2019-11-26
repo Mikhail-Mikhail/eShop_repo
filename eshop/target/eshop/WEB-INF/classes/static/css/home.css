@@ -72,8 +72,7 @@
 		  border-radius: 5px;		  
           border: solid 1px #bdbdbd; 
           margin-top: 20px;
-          margin-left: 20px; 
-          
+          margin-left: 20px;           
           float: left;       
 		}
 		
@@ -93,12 +92,12 @@
 		}
 		
 		/* Insert dash "-" before each item of catalog. */
-		.catalog-list a:before {
+		.catalog-list li:before {
 		  content: "\2014"; /* Unicode for long dash "-" */
 		  margin-right: 14px;
 		}
 		
-		.catalog-list a {
+		.catalog-list li {
 		  text-decoration: none;
 		  outline: none;
 		  display: block;
@@ -109,7 +108,10 @@
 		  transition: .3s linear;
 		}
 		
-		.catalog-list a:hover {color: #b99d61;} 
+		.catalog-list li:hover {
+		   color: #b99d61;
+		   cursor: pointer;
+		} 
      
      /* --------------------------------------------------------------------*/
      
@@ -138,6 +140,16 @@
         text-align: center;                 
         float: left;
      }
+     
+     .div-item-group:hover{
+       box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+       border: solid 1px red;        
+     }
+     
+     .div-item-group:hover .group-title{
+       color: red;
+     }
+     
      
      .div-item-group img{
        max-width:100%;
