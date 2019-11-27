@@ -21,25 +21,29 @@
     }
 /* --------------------------------------------------------------------*/
 
-    /* Styles of shopping cart: */    
-    
-    .cart-icon{
-      width: 30px;
-      height: 30px;
-    }
+    /* Styles of shopping cart: */           
     
     .div-shopping-cart{
-      float: left; 
+      height: 100%; 
+      line-height: 30px;  
+      float: left;     
       text-align: center; 
       letter-spacing: 2px;
 	  color: #222;
-      font-size: 16px; 
+      font-size: 16px;  
     }
     
     .div-shopping-cart:hover{
-      cursor: pointer;       
-      color: red; 
+      cursor: pointer;
+      color: red;            
     }
+          
+    .cart-icon{
+      width: 30px;
+      height: 30px;
+      float: left;
+    }
+        
 /* --------------------------------------------------------------------*/   
 
     /* Styles of header: */  
@@ -56,7 +60,7 @@
        position: fixed;
        z-index: 9999;
        
-       background-color: grey; /* For DEBUG to see size of this block. */
+       background-color: white; /* For DEBUG to see size of this block. */
     }
                 
     .header{  
