@@ -23,24 +23,35 @@
 
   <body th:fragment="body(css_class)">     
       
-    <div class="header-line"> 
+    <div class="header-line">
+    
+      <!-- Language selector: --> 
+      <div class="header-line-element  div-language">       
+        <img  class="element-icon" src="/eshop/img/icons/english.png" alt="Language" title="Switch language"/>
+          <span>English</span>          
+      </div>  
+       
       
       <!-- Shopping cart: --> 
       <div class="header-line-element  div-shopping-cart">       
-        <img  class="element-icon" src="/eshop/img/cart_icon.png" alt="Cart" title="Cart"/>
-          Cart
-      </div>    
+        <img  class="element-icon" src="/eshop/img/icons/cart_icon.png" alt="Cart" title="Cart"/>
+          Cart           
+      </div>  
+      
+      <div class="shopping-cart-status">
+       empty
+      </div>  
       
        <!-- Login reference: --> 
        <div class="header-line-element  div-login">       
-         <img  class="element-icon" src="/eshop/img/login_icon.svg" alt="Login" title="Login"/>
+         <img  class="element-icon" src="/eshop/img/icons/login_icon.svg" alt="Login" title="Login"/>
            Login
        </div>   
        
        <!-- Registration reference: --> 
        <div class="header-line-element  div-register">       
-         <img  class="element-icon" src="/eshop/img/register_icon.png" alt="Registration" title="Registration"/>
-           Register
+         <img  class="element-icon" src="/eshop/img/icons/register_icon.png" alt="Registration" title="Registration"/>
+           Registration
        </div>    
     </div>     
       
@@ -49,7 +60,7 @@
         
           <!-- Display logo. -->
           <a href="http://localhost:8080/eshop/home.html/">
-            <img  class="logo left-float" src="/eshop/img/logo.png" alt="Dog" title="Home page"/>
+            <img  class="logo left-float" src="/eshop/img/icons/logo.png" alt="Dog" title="Home page"/>
           </a>   
          <!-- Display header's name. -->      
          <h2 class="left-float  header-name"> <span th:replace="${pageName}">Fake name</span> </h2>                            
