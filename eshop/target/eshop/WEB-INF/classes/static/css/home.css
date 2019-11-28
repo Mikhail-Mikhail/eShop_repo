@@ -104,7 +104,7 @@
 		}
 		
 		.catalog-list li:hover {
-		   color: #b99d61;
+		   color: red;
 		   cursor: pointer;
 		} 
      
