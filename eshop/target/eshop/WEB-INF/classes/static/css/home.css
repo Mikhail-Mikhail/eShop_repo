@@ -4,57 +4,6 @@
         
 /* --------------------------------------------------------------------*/
     
-    /* Styles for "search"-field: */
-    
-    .div-search-field{
-    
-      width: 80%; 
-      min-width: 800px; /* Fix width of search field if width of browser's window became narrow. */
-      min-height: 42px;    
-      border: 1px solid #9e9c9c;       
-      border-radius: 5px;       
-      margin-top: 20px;
-      margin-left: 20px;        
-    }    
-  
-    .search-input  {
-      float: left;
-      width: 80%; 
-      height: 42px;
-      border: none; /* Disable border. */
-      outline: none; /* Убираем свечение в Chrome и Safari. */
-      -webkit-appearance: none; /* Убираем рамку в Chrome и Safari. */      
-      background: #EEEEEC;
-      border-radius: 5px;
-      vertical-align: middle;      
-      padding-left: 10px;  
-      font-size: 20px;                        
-    }
-    
-    .search-button {
-        float: left;
-		height: 42px;
-        width: 20%;
-	    cursor: pointer;	     
-        font-size: 120%;
-        border: 1px solid #bdbdbd;
-        border-radius: 5px;
-        padding: 5px 10px 5px 10px;
-        background-repeat: no-repeat;
-        background-position: 8px 9px;                
-        color: #444444;
-        text-shadow: 0px 1px 1px #ffffff;
-        border-bottom: 2px solid #b2b2b2;
-        background-color: #b9e4e3;                                       	    	      
-    }
-    
-     .search-button:hover {
-       color: #333333;
-       border: 1px solid #a4a4a4;
-       border-top: 2px solid #b2b2b2;
-       background-color: #a0dbc4;
-     }	    
-/* --------------------------------------------------------------------*/     
      
       /* Styles for vertical catalog list: */
       

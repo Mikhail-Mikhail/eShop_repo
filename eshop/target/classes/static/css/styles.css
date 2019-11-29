@@ -36,44 +36,96 @@
        width: 100%;   
        min-width: 1150px; /* Fix width of header if width of browser's window became narrow. */ 
        margin-top: 30px;      
-       margin-bottom: 10px;
-/*       
-       border-top: 2px solid #b2b2b2;
-       border-bottom: 2px solid #b2b2b2;  */
-       
+       margin-bottom: 5px;       
+       border: 1px solid #b2b2b2; 
+       border-radius: 5px;             
        float: left;
        clear: left; 
        
        z-index: 0;
-       background-color: hsla(0, 0%, 78%, 0.5); /* For DEBUG to see size of this block. */
+       background-color: #d0d0d0;; /* For DEBUG to see size of this block. */
     }  
         
      /* Styles of logo: */
          
-    .div-logo{
-       width: 100px;
-       height: 115px;
-       margin-left: 20px;
-       margin-top: 10px;
-       float: left;
+     .div-logo{
+        width: 100px;
+        height: 115px;
+        margin-left: 20px;
+        margin-top: 10px;
+        float: left;
+     }
+    
+      /* Logo image: */
+     .div-logo img{
+       height: 85%;
+       width: 100%;        
+      }
+    
+      /* Logo name: */
+      .div-logo h2{
+       margin-left: 0px;
+       margin-top: -13px;
+       color: #bb770c;    
+      }
+      
+/* --------------------------------------------------------------------*/
+
+    /* Styles for "search"-field: */
+    
+    .div-search-field{
+    
+      width: 80%; 
+      min-width: 800px; /* Fix width of search field if width of browser's window became narrow. */
+      min-height: 42px;    
+      border: 1px solid #9e9c9c;       
+      border-radius: 5px;       
+      margin-top: 50px;
+      margin-left: 20px; 
+      float: left;       
+    }    
+  
+    .search-input  {
+      float: left;
+      width: 80%; 
+      height: 42px;
+      border: none; /* Disable border. */
+      outline: none; /* Убираем свечение в Chrome и Safari. */
+      -webkit-appearance: none; /* Убираем рамку в Chrome и Safari. */      
+      background: #EEEEEC;
+      border-radius: 5px;
+      vertical-align: middle;      
+      padding-left: 10px;  
+      font-size: 20px;                        
     }
     
-    /* Logo image: */
-    .div-logo img{
-      height: 85%;
-      width: 100%;        
+    .search-button {
+        float: left;
+		height: 42px;
+        width: 20%;
+	    cursor: pointer;	     
+        font-size: 120%;
+        border: 1px solid #bdbdbd;
+        border-radius: 5px;
+        padding: 5px 10px 5px 10px;
+        background-repeat: no-repeat;
+        background-position: 8px 9px;                
+        color: #444444;
+        text-shadow: 0px 1px 1px #ffffff;
+        border-bottom: 2px solid #b2b2b2;
+        background-color: #b9e4e3;                                       	    	      
     }
     
-    /* Logo name: */
-    .div-logo h2{
-      margin-left: 0px;
-      margin-top: -13px;
-      color: #bb770c;    
-    }        
+     .search-button:hover {
+       color: #333333;
+       border: 1px solid #a4a4a4;
+       border-top: 2px solid #b2b2b2;
+       background-color: #a0dbc4;
+     }	                       
     
 /* --------------------------------------------------------------------*/                    
 
-    /* Styles of elements nested in header line: Shopping Cart, Login, Register. */           
+    /* Styles of elements nested in top header line: Shopping Cart, Login, Register. */           
     
     .header-line-element{
       height: 100%; 
@@ -136,11 +188,13 @@
     .content-container{       
        width: 100%;
        min-width: 1150px; /* Fix width of content if width of browser's window became narrow. */   
-       min-height: 100%;       
+       min-height: 100%; 
+       border: 1px solid #b2b2b2; 
+       border-radius: 5px;      
        float: left;  
        clear: left; 
        
-       background-color: burlywood; /* For DEBUG to see size of this block. */              
+       background-color: #d0d0d0; /* For DEBUG to see size of this block. */              
     }        
 
 /* --------------------------------------------------------------------*/   
@@ -148,14 +202,13 @@
     /* Styles of footer: */   
     
     .footer {
-        height: 50px;
+        height: 25px;
         width: 100%; 
         min-width: 1150px; /* Fix width of footer if width of browser's window became narrow. */             
         margin-left: 10px;                           
-        background-color: white;
-        border-top: 2px solid #b2b2b2;
-        border-bottom: 2px solid #b2b2b2;
-/*        float: left;   */           
+        background-color: #d0d0d0;
+        border: 1px solid #b2b2b2; 
+        border-radius: 5px;             
         margin:auto;
 	    clear:both;                       
     }    
