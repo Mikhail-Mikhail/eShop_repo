@@ -21,12 +21,12 @@
    
   </head>
 
-  <body th:fragment="body(css_class)">     
+  <body th:fragment="body()">     
       
     <div class="header-line">
     
       <!-- Language selector: --> 
-      <div class="header-line-element  div-language">       
+      <div id="langChange" class="header-line-element  div-language">       
         <img  class="element-icon" src="/eshop/img/icons/english.png" alt="Language" title="Switch language"/>
           <span>English</span>          
       </div>  
@@ -74,6 +74,14 @@
                <!-- Search button. -->              
                <input type="submit" class="search-button" value="Search">      
           </div>  
+
+        
+<!-- DEBUG BOX to DISPLAY INFO: -->
+<!-- DELETE IT IN RELEASE! -->
+
+ <div id="debugBox" class="debug-box">
+ </div>        
+<!-- ////////////////// -->
                                                                    
      </div>         
 
@@ -83,7 +91,7 @@
        </div>  
        
          <!-- Footer: -->       
-         <div class="footer"  th:classappend="${css_class}">
+         <div class="footer">
             &copy 2001-2019, <span th:if="${langSelected}" th:text="#{label.copyright}"> </span>  <span th:if="${homePage}">All rights reserved</span>
          </div>                    
   </body>

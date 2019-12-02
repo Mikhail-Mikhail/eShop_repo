@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     
-    <head th:include="layout :: head(title=~{::title}, myScript=@{'/js/stub.js'}, myCss=@{'/css/home.css'})">
+    <head th:include="layout :: head(title=~{::title}, myScript=@{'/js/AjaxRq.js'}, myCss=@{'/css/home.css'})">
       <title>Home Page</title> 
       <meta charset="utf-8">
     </head>
     
-    <body id="BodyElem" th:include="layout :: body(css_class='footer_home_page')"  th:with="content=~{::content}, pageName=~{::pageName}">    
+    <body id="BodyElem" th:include="layout :: body()"  th:with="content=~{::content}, pageName=~{::pageName}">        
        
         <span th:fragment="pageName"> <span th:text="${headerAttr}"> </span> </span>
        
@@ -102,61 +102,7 @@
 	              </div>
 	              	              	          
             </div>
-
-<!-- 			
-              <ul>
-                <li>			
-				  <div class="group-photo">
-	  			   <a href="#"> <img src="/eshop/img/resistor.jpg" alt=""> </a>	 
-	  	  		    <p class="group-title">
-	                  <a href="#">Resistors</a>
-	                </p>         
-	              </div>
-	            
-	            <li>		
-				  <div class="group-photo">
-	  			   <a href="#"> <img src="/eshop/img/transistor.jpg" alt=""> </a>	 
-	  	  		    <p class="group-title">
-	                  <a href="#">Transistors</a>
-	                </p>         
-	              </div>
-	            <li>  	 
-	          </ul>
- -->
  
- 
-<!--  
-<div> 
- <figure>
-   <img src="/eshop/img/resistor.jpg" alt="">
-   <figcaption>Resistors</figcaption>
- </figure>	          
-			            
-<figure>
-   <img src="/eshop/img/transistor.jpg" alt="">
-   <figcaption>Resistors</figcaption>
- </figure>
-</div> 	          
--->			            
-			            
-           <!-- ======= Block "Select language": ======= --> 
- <!--            
-           <div class="box_position left_float  clear">
-               
-             <span class="BoxName  SelectLanguageBoxLeftMargin">Please, select your language:</span>   
-               <form th:action="@{/greeting.html}" method="get">           
-                  <p class="margins">                                                                                       
-                     <select id="selectLanguageList" name="lang">                       
-                       <option value="en"> English </option>                            
-                       <option value="ru"> Русский </option>                            
-                     </select>                        
-                     
-                    <input class="button_width margins" type="submit" value="Select">
-                  </p>                                                                                             
-                </form>                                     
-
-           </div>                                      
-         -->
         </div>
     </body>
 </html>

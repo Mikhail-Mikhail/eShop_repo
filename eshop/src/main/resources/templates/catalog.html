@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+    <head th:include="layout :: head(title=~{::title}, myScript=@{'/js/stub.js'}, myCss=@{'/css/home.css'})">
+      <title>!!Group's name here</title> 
+      <meta charset="utf-8">
+    </head>
+    
+    <body id="BodyElem" th:include="layout :: body(css_class='footer_home_page')"  th:with="content=~{::content}, pageName=~{::pageName}">    
+       
+        <span th:fragment="pageName"> <span th:text="${headerAttr}"> </span> </span>
+       
+        <div class="content-container" th:fragment="content">  
+                                                   
+           <!-- List of items. -->
+           <div class="div-catalog">
+			  <h3 class="catalog-title">Catalog</h3>
+			   <ul class="catalog-list">
+			     <li id="resistorsItem" >Resistors</li>
+			     <li id="transistorsItem" >Transistors</li>
+			     <li id="icsItem" >Integrated circuits</li>
+			     <li id="diodesItem" >Diodes</li>
+			     <li id="capacitorsItem" >Capacitors</li>
+			     <li id="ledsItem" >LEDs</li>
+			     <li id="relaysItem" >Relays</li>
+			     <li id="connectorsItem" >Connectors</li>
+			     <li id="tumblersItem" >Tumblers</li>
+			     <li id="powerSuppliesItem" >Power supplies</li>
+			   </ul>
+			</div>
+			
+			<div class="div-groups-block">		      
+			  			
+				  <div id="resistorsGroup"  class="div-item-group">
+  	  			    <img src="/eshop/img/items/resistor.jpg" alt="">   	 
+     	  	  		 <p class="group-title">
+	                   Resistors  
+	                 </p>         
+	              </div>	            	            
+	          		
+				  <div id="transistorsGroup" class="div-item-group">
+ 	  			    <img src="/eshop/img/items/transistor.jpg" alt="">     	 
+	  	  		     <p class="group-title">
+	                   Transistors
+	                 </p>         
+	              </div>
+	              
+	              <div id="icsGroup" class="div-item-group">
+	                <img src="/eshop/img/items/ics.jpg" alt="">  	 
+     	  	  		 <p class="group-title">
+	                   Integrated circuits  
+	                 </p>
+	              </div>
+	              
+	              <div id="diodesGroup" class="div-item-group">
+	                <img src="/eshop/img/items/diode.jpg" alt="">  	 
+     	  	  		 <p class="group-title">
+	                   Diodes  
+	                 </p>
+	              </div>
+	              
+	              <div id="capacitorsGroup" class="div-item-group">
+	                <img src="/eshop/img/items/capacitor.jpg" alt="">   	 
+     	  	  		 <p class="group-title">
+	                   Capacitors  
+	                 </p>
+	              </div>
+	              
+	              <div id="ledsGroup" class="div-item-group">
+	                <img src="/eshop/img/items/led.jpg" alt="">   	 
+     	  	  		 <p class="group-title">
+	                   LEDs  
+	                 </p>
+	              </div>
+	              
+	              <div id="relaysGroup" class="div-item-group">
+	                <img src="/eshop/img/items/relay.jpg" alt="">  	 
+     	  	  		 <p class="group-title">
+	                   Relays  
+	                 </p>
+	              </div>
+	              
+	              <div id="connectorsGroup" class="div-item-group">
+	                <img src="/eshop/img/items/connector.jpg" alt="">  	 
+     	  	  		 <p class="group-title">
+	                   Connectors  
+	                 </p>
+	              </div>
+	              
+	              <div id="tumblersGroup" class="div-item-group">
+	                <img src="/eshop/img/items/tumbler.jpg" alt="">   	 
+     	  	  		 <p class="group-title">
+	                   Tumblers  
+	                 </p>
+	              </div>
+	              
+	              <div id="powerSuppliesGroup" class="div-item-group">
+	                <img src="/eshop/img/items/powersupply.jpg" alt="">   	 
+     	  	  		 <p class="group-title">
+	                   Power supplies  
+	                 </p>
+	              </div>
+	              	              	          
+            </div>
+
+
+        </div>
+    </body>
+</html>
