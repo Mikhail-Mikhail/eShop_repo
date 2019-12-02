@@ -47,47 +47,18 @@ public class MyController {
    }    
    
    
-	   //Request for "greeting.html":
+	   //Request to change language:
 	
-	   @RequestMapping(method=GET, path="/greeting.html")        
-	   public String renderGreetingPage(ModelMap model, HttpServletRequest request) {      
+	   @RequestMapping(method=GET, path="/changelang")        
+	   public String changeLanguage(ModelMap model, HttpServletRequest request) {      
 	      
 		  //Set model's attributes which is used for creation "greeting.html".                    
 		  model.addAttribute("langSelected", true);
 		  
-	      log.debug("Request for \"greeting.html\" received. ");
-	      
-	      log.trace("Log Level = TRACE");
-	      log.debug("Log Level = DEBUG");
-	      log.info("Log Level = INFO");
-	      log.warn("Log Level = WARN");
-	      log.error("Log Level = ERROR");
-	      log.fatal("Log Level = FATAL");
-	      
-	      logHeader.trace("logHeader Level = TRACE");
-	      logHeader.debug("logHeader Level = DEBUG");
-	      logHeader.info("logHeader Level = INFO");
-	      logHeader.warn("logHeader Level = WARN");
-	      logHeader.error("logHeader Level = ERROR");
-	      logHeader.fatal("logHeader Level = FATAL");	      
+	      log.debug("Request for \"/changelang\" received. ");	      	      
 	      	             
-	    //Return page's name. 
-	    return "greeting.html";      
-	   }
-	   
-    
-		   //Request for "text.html":
-			
-		   @RequestMapping(method=GET, path="/text.html")        
-		   public String renderTextPage(ModelMap model, HttpServletRequest request) {      
-		      
-			  //Set model's attributes which is used for creation "text.html".                    
-			  model.addAttribute("langSelected", true);
-			  
-		      logHeader.debug("Request for \"text.html\" received. ");       
-		              
-		    //Return page's name. 
-		    return "text.html";      
-		   }
+	    //Return response. 
+	    return "Lang OK!";      
+	   }	       		  
 }
 //------------------------------------------------------------------------------
