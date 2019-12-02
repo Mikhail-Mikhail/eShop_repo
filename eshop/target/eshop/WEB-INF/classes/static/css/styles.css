@@ -6,8 +6,7 @@
 
     body{
       background-color: hsla(0, 0%, 78%, 0.5);
-      width: 80%; 
-      height: 910px;
+      width: 60%;     
       margin-left: auto;
       margin-right: auto;
     }
@@ -36,7 +35,7 @@
        width: 100%;   
        min-width: 1150px; /* Fix width of header if width of browser's window became narrow. */ 
        margin-top: 30px;      
-       margin-bottom: 5px;       
+       margin-bottom: 1px;       
        border: 1px solid #b2b2b2; 
        border-radius: 5px;             
        float: left;
@@ -153,11 +152,11 @@
     }
     
     .div-language{
-      margin-left: 10%;      
+      margin-left: 20%;      
     }
     
     .div-shopping-cart{
-      margin-left: 32%;      
+      margin-left: 24%;      
     }
     
     .shopping-cart-status{
@@ -174,7 +173,7 @@
     }
      
     .div-login{
-      margin-left: 23%;      
+      margin-left: 13%;      
     }
     
     .div-register{
@@ -187,10 +186,12 @@
 
     .content-container{       
        width: 100%;
+       height: 800px;
        min-width: 1150px; /* Fix width of content if width of browser's window became narrow. */   
        min-height: 100%; 
        border: 1px solid #b2b2b2; 
-       border-radius: 5px;      
+       border-radius: 5px;   
+       margin-bottom: 1px;   
        float: left;  
        clear: left; 
        
@@ -202,14 +203,15 @@
     /* Styles of footer: */   
     
     .footer {
-        height: 50px;
+        height: auto;
         width: 100%; 
-        min-width: 1150px; /* Fix width of footer if width of browser's window became narrow. */             
+        min-width: 1140px; /* Fix width of footer if width of browser's window became narrow. */             
         margin-left: 10px;                           
         background-color: #d0d0d0;
         border: 1px solid #b2b2b2; 
         border-radius: 5px;             
         margin:auto;
+        padding-left: 10px;
 	    clear:both;                       
     }    
 /* --------------------------------------------------------------------*/    

@@ -16,7 +16,7 @@
 		  border-radius: 5px;		  
           border: solid 1px #bdbdbd; 
           margin-top: 20px;
-          margin-left: 20px;           
+          margin-left: 30px;           
           float: left;       
 		}
 		
@@ -63,12 +63,12 @@
       
       .div-groups-block{
         height: 750px;        
-        width: 60%;
+        width: 67%;
 		min-width: 700px; /* Fix width of catalog if width of browser's window became narrow. */
 		border-radius: 5px;		  
         border: solid 1px #bdbdbd; 
         margin-top: 20px;
-        margin-left: 30px;        
+        margin-left: 25px;        
         background: white;  
         float: left;      
       }     
@@ -80,7 +80,7 @@
 		border-radius: 5px;		  
         border: solid 1px black; 
         margin-top: 20px;
-        margin-left: 20px;
+        margin-left: 25px;
         text-align: center;                 
         float: left;
      }
