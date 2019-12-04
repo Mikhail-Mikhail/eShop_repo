@@ -73,15 +73,7 @@
              <input type="search" class="search-input" name="q">  
                <!-- Search button. -->              
                <input type="submit" class="search-button" value="Search">      
-          </div>  
-
-        
-<!-- DEBUG BOX to DISPLAY INFO: -->
-<!-- DELETE IT IN RELEASE! -->
-
- <div id="debugBox" class="debug-box">
- </div>        
-<!-- ////////////////// -->
+          </div>          
                                                                    
      </div>         
 
@@ -93,6 +85,20 @@
          <!-- Footer: -->       
          <div class="footer">
             &copy 2001-2019, <span th:if="${langSelected}" th:text="#{label.copyright}"> </span>  <span th:if="${homePage}">All rights reserved</span>
-         </div>                    
+            
+<!-- DEBUG BOX to DISPLAY INFO: -->
+<!-- DELETE IT IN RELEASE! -->
+ 
+ <span class="debug-box">
+  DEBUG INFO:
+   <span id="debugBox">   
+     <span th:fragment="StatusFragment" th:text="${Status}"> </span>     
+   </span>
+ </span>          
+ 
+<!-- ////////////////// -->     
+            
+         </div>   
+                    
   </body>
 </html>

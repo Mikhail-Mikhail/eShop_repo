@@ -50,15 +50,14 @@ public class MyController {
 	   //Request to change language:
 	
 	   @RequestMapping(method=GET, path="/changelang")        
-	   public String changeLanguage(ModelMap model, HttpServletRequest request) {      
-	      
-		  //Set model's attributes which is used for creation "greeting.html".                    
-		  model.addAttribute("langSelected", true);
+	   public String changeLanguage(ModelMap model, HttpServletRequest request) {      	      
 		  
-	      log.debug("Request for \"/changelang\" received. ");	      	      
+	      log.debug("Request for \"/changelang\" received. ");	
+	      
+	      model.addAttribute("Status", "Lang OK!"); 
 	      	             
 	    //Return response. 
-	    return "Lang OK!";      
+	    return "layout :: StatusFragment";      
 	   }	       		  
 }
 //------------------------------------------------------------------------------

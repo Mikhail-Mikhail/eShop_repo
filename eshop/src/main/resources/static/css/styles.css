@@ -5,10 +5,11 @@
 /* --------------------------------------------------------------------*/  
 
 /* !!!DEBUG BOX to DISPLAY INFO: 
-   DELETE IT IN RELEASE! */
+   DELETE IT IN RELEASE VERSION! */
 
  .debug-box{
-  float:left;	
+   color: blue;
+   margin-left: 30px;
  }    
 /* --------------------------------------------------------------------*/
 
