@@ -1,0 +1,5 @@
+1	resistor	resistor_parameters
+2	transistor	transistor_parameters
+3	ics	ics_parameters
+4	diode	diode_parameters
+5	capacitor	capacitor_parameters

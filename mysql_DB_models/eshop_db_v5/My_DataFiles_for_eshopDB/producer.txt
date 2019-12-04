@@ -1,0 +1,52 @@
+1	Jietong Switch
+2	Rexant
+3	Fairchild
+4	Diotec
+5	Infineon
+6	ON Semiconductor
+7	Sanyo
+8	Toshiba
+9	ST Microelectronics
+10	Rohm
+11	International rectifier
+12	Vishay
+13	Yageo
+14	CCO
+15	Bourns
+16	Fenghua
+17	Murata
+18	Finder
+19	Hongfa
+20	Omron
+21	TE Connectivity
+22	ECE
+23	Aimtec
+24	Chinfa
+25	PEAK
+26	Recom
+27	Power-One
+28	MEAN WELL
+29	Traco
+30	Betlux
+31	Kingbright
+32	G-nor
+33	Daier
+34	Broadcom
+35	Connfly
+36	Texas Instruments
+37	FTDI
+38	Maxim
+39	Microchip
+40	Intel
+41	Analog Devices
+42	AMD
+43	Altera
+44	Burr Brown
+45	Xilinx
+46	Glenair
+47	AUK Contractors
+48	KLS
+49	Sumsung
+50	TDK
+51	Jamicon
+52	Epcos

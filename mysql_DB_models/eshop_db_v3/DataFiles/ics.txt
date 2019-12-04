@@ -1,0 +1,10 @@
+1	3	EPF10K240	Programble Logic	Altera	5	6	85	-40	5	30
+2	3	MAX232	Interface	Maxim	5	6	85	-40	1	230
+3	3	MAX489	Interface	Maxim	5	6	85	-40	1	300
+4	3	TMS320LF2407	Processor	Texas Instruments	3.3	6	80	-40	5	50
+5	3	EPM123	Programble Logic	Altera	5	6	85	-40	5	30
+6	3	TPS7133QD	Power supply	Texas Instruments	5	6	85	0	5	400
+7	3	H0019	Interface	Maxim	5	6	85	0	5	30
+8	3	73LH	Logic	Philips	3.3	6	40	-40	2	240
+9	3	73LH23	Logic	Philips	5	6	80	-40	3	315
+10	3	OP14	OpAmp	Analog Devices	5	6	80	-40	1	1300

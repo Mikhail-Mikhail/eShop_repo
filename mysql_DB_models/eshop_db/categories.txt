@@ -1,0 +1,7 @@
+7	TV sets
+6	Mobile phones
+4	Tablets
+3	Irons
+27	Monitors
+2	Refrigerators
+1	Vacuum cleaner

@@ -1,0 +1,5 @@
+1	resistor
+2	transistor
+3	ics
+4	diode
+5	capacitor
