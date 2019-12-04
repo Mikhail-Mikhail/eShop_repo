@@ -1,0 +1,10 @@
+1	5	K10-17	Filter	Murrata	100	17	20	16	6	6	550
+2	5	K10-17	Filter	Murrata	30	17	15	32	6	6	50
+3	5	K53-56	Filter	Murrata	2.2	17	20	50	6	6	5
+4	5	K10-79	Filter	Murrata	3300	18	10	50	6	6	30
+5	5	K10-79N	Filter	Murrata	10	17	20	16	6	6	400
+6	5	K10-17B	Power	Philips	16	17	20	100	6	6	105
+7	5	K10-17A	Power	Murrata	2.2	17	40	16	6	6	800
+8	5	K53-56A	Filter	Murrata	6.7	17	40	25	6	6	40
+9	5	K-17	Filter	Murrata	3.3	17	25	16	6	6	24
+10	5	K10-17B	Power	Murrata	32	17	5	25	6	6	7

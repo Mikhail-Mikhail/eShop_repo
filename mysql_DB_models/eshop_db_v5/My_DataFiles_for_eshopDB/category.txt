@@ -1,0 +1,10 @@
+1	resistor
+2	transistor
+3	ics
+4	diode
+5	capacitor
+6	LED
+7	relay
+8	connector
+9	tumbler
+10	power_supply

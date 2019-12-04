@@ -1,0 +1,5 @@
+1	140405	USA	New York	5th Avenue	56	219
+2	140405	USA	Boston	14th Street	12	18
+3	140405	USA	Seattle	9th Street	4	200
+4	140405	Canada	Vancouver	24th Street	6	4
+5	140405	Canada	Toronto	4th Street	23	5005

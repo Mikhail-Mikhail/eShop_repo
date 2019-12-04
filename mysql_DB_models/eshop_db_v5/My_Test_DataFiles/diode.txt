@@ -1,0 +1,10 @@
+1	4	1N14	General purpose	Philips	400	13	100	6	5	1320
+2	4	2N14	Rectifier	Philips	100	13	50	6	5	20
+3	4	1N15	General purpose	Toshiba	500	13	120	6	5	220
+4	4	2N14	Rectifier	Philips	430	13	200	6	5	280
+5	4	1N16	General purpose	Philips	100	13	100	6	5	1000
+6	4	2N14	General purpose	Analog devices	400	13	150	6	5	2580
+7	4	1N17	General purpose	Philips	800	13	600	6	5	10
+8	4	2N14	General purpose	Philips	200	13	300	6	5	180
+9	4	1N18	General purpose	Philips	250	13	100	6	5	985
+10	4	1N19	Rectifier	Philips	400	13	150	6	5	2

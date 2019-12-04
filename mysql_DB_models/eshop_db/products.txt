@@ -1,0 +1,2 @@
+23	Panasonic_TVR_21_K4	Flat_TV_set_24inch_screen	Panasonic_Ltd.	NA	280USD	2356
+34	Sony_SV_01_4D	Flat_TV_set_16inch_screen	Sony_inc.	NA	235USD	870

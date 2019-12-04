@@ -1,0 +1,10 @@
+1	1	S2-33	Genreal purpose	Murrata	1.0	2	5	0.125	10	6	1090
+2	1	S2-33	Genreal purpose	Murrata	1.2	2	5	0.25	10	6	2000
+3	1	S2-33	Genreal purpose	Murrata	2.0	2	5	0.5	10	6	580
+4	1	S2-33	Precise	Vishay	2.2	2	0.01	0.125	10	6	900
+5	1	S2-33	Precise	Vishay	3.6	2	1	0.25	10	6	5640
+6	1	S2-33	Genreal purpose	Murrata	4.3	2	5	1.0	10	6	4000
+7	1	S2-33	Genreal purpose	Murrata	4.7	2	5	2.0	10	6	120
+8	1	S2-33	Genreal purpose	Murrata	5.1	2	0.5	0.125	10	6	360
+9	1	S2-33	Genreal purpose	Murrata	6.2	2	5	0.25	10	6	800
+10	1	S2-33	Genreal purpose	Murrata	8.2	2	1	0.125	10	6	900

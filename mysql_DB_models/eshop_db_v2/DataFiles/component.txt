@@ -1,0 +1,4 @@
+1	1	S2-33N	General purpose	Murrata	2	0x55	23.50	1250
+2	1	S2-33N	General purpose	Vishay	2	0x44	40.99	3000
+3	1	S2-33N	General purpose	Vishay	8	0x33	21	400
+4	1	S2-33N	General purpose	Murrata	5	0x22	63.20	850
