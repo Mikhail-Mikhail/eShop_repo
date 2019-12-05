@@ -21,7 +21,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.soft.dao.localeDAOImpl;
+import com.soft.dao.EshopDAOImpl;
 
 //------------------------------------------------------------------------------
 
@@ -35,7 +35,7 @@ public class DataAccessConfig {
     
     // First way to create bean for connection with a database.
     // (This way of bean's creation is preferable instead of next below.)
-    // It uses connection pool and datasource created manually on the Glassfish server
+    // It uses connection pool and datasource created manually on the server
     // to communicate with MySql database.
     @Bean(name="DataSourceBean") 
     public DataSource getDataSource(){
@@ -47,7 +47,7 @@ public class DataAccessConfig {
    
     // Second way to create bean for connection with a database.
     // (This way of bean's creation is not preferable instead of previous above.)
-    // It uses connection pool and datasource created manually on the Glassfish server
+    // It uses connection pool and datasource created manually on the server
     // to communicate with MySql database.
 //    @Bean(name="DataSourceBean") 
 //    public DataSource getDataSource() throws IllegalArgumentException, NamingException {                         
@@ -57,8 +57,8 @@ public class DataAccessConfig {
 //         objectFactory.setLookupOnStartup(true);
 //     
 //           //Set the name of server's datasource that provide connection with database.
-//           //Datasource "jdbc/localeDB" must be created on the server.
-//           objectFactory.setJndiName("jdbc/localeDB");
+//           //Datasource "jdbc/eshop_db" must be created on the server.
+//           objectFactory.setJndiName("jdbc/eshop_db");
 //        
 //            objectFactory.setResourceRef(true);
 //            objectFactory.setProxyInterface(DataSource.class);
@@ -78,7 +78,7 @@ public class DataAccessConfig {
          localSessionFactoryBean.setDataSource(dataSource);
          
           //Define list of "@Entity" annotated classes.
-          localSessionFactoryBean.setAnnotatedClasses(com.soft.entity.MessageEntity.class);
+          localSessionFactoryBean.setAnnotatedClasses(com.soft.entity.LocaleMessageEntity.class);
          
            //Create Hibernate's properties.          
            Properties prop = new Properties();
@@ -105,17 +105,17 @@ public class DataAccessConfig {
           //Bean of database's methods.
           @Bean
           @DependsOn("SessionFactory")          
-          public localeDAOImpl getLocaleDAO(SessionFactory sessionFactory, DataSource dataSource) {                                    
+          public EshopDAOImpl getLocaleDAO(SessionFactory sessionFactory, DataSource dataSource) {                                    
             
-             localeDAOImpl instanceLocaleDAOImpl = new localeDAOImpl();
+             EshopDAOImpl instanceDAOImpl = new EshopDAOImpl();
                
               //Inject datasource for JDBC.
-//              instanceLocaleDAOImpl.setDataSource(dataSource); 
+//              instanceDAOImpl.setDataSource(dataSource); 
              
               //Initialize reference to a SessionFactoryBean for database's methods.              
-              instanceLocaleDAOImpl.setSessionFactory(sessionFactory);
+              instanceDAOImpl.setSessionFactory(sessionFactory);
            
-           return instanceLocaleDAOImpl;  
+           return instanceDAOImpl;  
           }
                              
           

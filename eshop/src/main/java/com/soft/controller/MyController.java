@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.soft.dao.localeDAOImpl;
-import com.soft.entity.MessageEntity;
+import com.soft.dao.EshopDAOImpl;
+import com.soft.entity.LocaleMessageEntity;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 //------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class MyController {
 	
   @Autowired
-  private localeDAOImpl daoImpl;	
+  private EshopDAOImpl eshopDaoImpl;	
      
   // Create logger which will log messages to GlassFish server's log and files. 
   // Files are located in the folder:  ../glassfish5/glassfish/domains/domain1/config/mylog2/
@@ -40,7 +40,12 @@ public class MyController {
 
       //Set model's attributes which is used for creation "home.html".                    
       model.addAttribute("headerAttr", "eShop!");
-      model.addAttribute("homePage", true);                    
+      model.addAttribute("homePage", true);   
+      
+      log.debug("Try to get locale message... ");
+      LocaleMessageEntity localeMsgEntity = eshopDaoImpl.readLocaleMessageByKey("label.test", "en");
+      log.debug("Locale message = "+localeMsgEntity.getMessage());
+      
               
     //Return page's name. 
     return "home.html";      
@@ -57,7 +62,7 @@ public class MyController {
 	      model.addAttribute("Status", "Lang OK!"); 
 	      	             
 	    //Return response. 
-	    return "layout :: StatusFragment";      
+	    return "home.html"; //"layout :: StatusFragment";      
 	   }	       		  
 }
 //------------------------------------------------------------------------------

@@ -32,8 +32,8 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import com.soft.controller.MyController;
-import com.soft.dao.localeDAOImpl;
-import com.soft.entity.MessageEntity;
+import com.soft.dao.EshopDAOImpl;
+import com.soft.entity.LocaleMessageEntity;
 
 //------------------------------------------------------------------------------
 
@@ -117,24 +117,24 @@ public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationCon
          public class DBMessageSource extends AbstractMessageSource {
 
             @Autowired
-            private localeDAOImpl  daoImpl;
+            private EshopDAOImpl eshopDaoImpl;
 
              private static final String DEFAULT_LOCALE_CODE = "en";
 
              @Override
              protected MessageFormat resolveCode(String key, Locale locale) {
               
-               MessageEntity  messageEntity = null; 
+               LocaleMessageEntity  localeMessageEntity = null; 
             	             	             	 
             	try {
-            		 messageEntity = daoImpl.readMessageByKey(key, locale.toString());
+            		localeMessageEntity = eshopDaoImpl.readLocaleMessageByKey(key, locale.toString());
             	}
             	catch(Exception exc) {            	
             	   MyController.log.debug("[AppConfig.DBMessageSource.resolveCode()] --> EXCEPTION: "+exc.getMessage());
                    MyController.log.debug("[AppConfig.DBMessageSource.resolveCode()] --> EXCEPTION TO STRING: "+exc.toString());         	
             	}            	
             	 
-              return new MessageFormat(messageEntity.getMessage(), locale);	 
+              return new MessageFormat(localeMessageEntity.getMessage(), locale);	 
              }
          }         
                   
