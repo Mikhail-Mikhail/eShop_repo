@@ -59,12 +59,14 @@
                    headers: {
                      "Content-Type": undefined
                    },        
-                   data: "lang="+"ru", //dataSourceNameInp.value,
+                   data: "lang="+"ru", 
                    processData: false,                                       
                    contentType: false, 
-                   success: function(result) {         
-                     debugBox.innerHTML = result.toString();  
-                  }
+                   success: function(result) {
+                	 //Redirect to home.html  
+                	 window.location.href="home.html";  
+                     /* debugBox.innerHTML = result.toString(); */    
+                  }  
       });            
   }
 //------------------------------------------------------------------------------       
