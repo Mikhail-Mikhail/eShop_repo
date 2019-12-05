@@ -17,19 +17,24 @@ SELECT * FROM relay;
 SELECT * FROM connector;
 SELECT * FROM tumbler;
 SELECT * FROM power_supply;
-SELECT * FROM localetable;
+SELECT * FROM locale;
 /*----------------------------------------------*/
 /*
 SHOW TABLES;
-CREATE TABLE localetable(ID int PRIMARY KEY, locale VARCHAR(10), msgkey VARCHAR(100), message VARCHAR(250));
+CREATE TABLE locale(ID int PRIMARY KEY, locale VARCHAR(10), msgkey VARCHAR(100), message VARCHAR(250));
 */
 /*----------------------------------------------*/
 /*
-LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_models/eshop_db_v4/My_DataFiles_for_eshopDB/producer.txt' INTO TABLE producer;
-LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_models/eshop_db_v4/My_DataFiles_for_eshopDB/category.txt' INTO TABLE category;
-LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_models/eshop_db_v4/My_DataFiles_for_eshopDB/units.txt' INTO TABLE units;
-LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_models/eshop_db_v4/My_DataFiles_for_eshopDB/package.txt' INTO TABLE package;
+DROP TABLE locale;
 */
+/*----------------------------------------------*/
+/*
+LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_models/eshop_db_v5/My_DataFiles_for_eshopDB/producer.txt' INTO TABLE producer;
+LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_models/eshop_db_v5/My_DataFiles_for_eshopDB/category.txt' INTO TABLE category;
+LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_models/eshop_db_v5/My_DataFiles_for_eshopDB/units.txt' INTO TABLE units;
+LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_models/eshop_db_v5/My_DataFiles_for_eshopDB/package.txt' INTO TABLE package; */
+LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_models/eshop_db_v5/My_DataFiles_for_eshopDB/locale.txt' INTO TABLE locale;
+
 /*----------------------------------------------*/
 
 /*

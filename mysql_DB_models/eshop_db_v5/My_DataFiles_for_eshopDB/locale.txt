@@ -1,0 +1,2 @@
+1	ru	label.test	Тест работает!
+2	en	label.test	Test works!
