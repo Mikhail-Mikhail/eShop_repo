@@ -50,7 +50,7 @@
     var files;
           
      //Display message. 
-     debugBox.innerHTML = "Sending request...";
+     debugBox.innerHTML = "Sending request...";          
    
       //Send AJAX-request of type GET to server.       
       jQuery.ajax({
@@ -59,7 +59,7 @@
                    headers: {
                      "Content-Type": undefined
                    },        
-                   data: "lang="+"ru", 
+                   data: "lang="+langSelector.getAttribute('value'), 
                    processData: false,                                       
                    contentType: false, 
                    success: function(result) {
