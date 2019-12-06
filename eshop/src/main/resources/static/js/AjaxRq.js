@@ -46,7 +46,7 @@
   function langSelectorOnClickHandler(){   	 
  	  
     // URL of request.
-    var url = '/eshop/changelang';    
+    var url = '/eshop/home.html';    
     var files;
           
      //Display message. 
@@ -64,7 +64,7 @@
                    contentType: false, 
                    success: function(result) {
                 	 //Redirect to home.html  
-                	 window.location.href="home.html";  
+               // 	 window.location.href="home.html";  
                      /* debugBox.innerHTML = result.toString(); */    
                   }  
       });            

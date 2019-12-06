@@ -32,10 +32,13 @@ public class MyController {
   public static final Logger log = LogManager.getLogger(MyController.class.getName()); 
   public static final Logger logHeader = LogManager.getLogger("MyHeadersLogger");     
   
-   final private String ENGLISH = "en";
-   final private String RUSSIAN = "ru";
-   private String languageName = "Русский";
-   private String languageValue = "ru";	
+//   public static final String ENGLISH = "en";
+//   public static final String RUSSIAN = "ru";
+//   public static final String ICONS_PATH = "/eshop/img/icons/";
+//   
+//   private String langName = "Русский";
+//   private String langValue = "ru";   
+//   private String langIcon = ICONS_PATH + "russian.png";
    
  
    //Request for "home.html":
@@ -44,22 +47,30 @@ public class MyController {
    public String renderHomePage(ModelMap model, HttpServletRequest request) {
 	   
 	 log.debug(""); 
-     log.debug("Request for \"home.html\" received. ");  
-
-      //Set model's attributes which is used for creation "home.html".                    
-//      model.addAttribute("headerAttr", "eShop!");
-//      model.addAttribute("homePage", true);
+     log.debug("Request for \"home.html\" received. ");
      
-       //Add attribute for language's name to display on page's header.
-       model.addAttribute("langNameAttr", languageName);
-     
-       //Add attribute for language's value.
-       model.addAttribute("langValueAttr", languageValue);
-               
-      log.debug("Try to get locale message... ");
-      LocaleMessageEntity localeMsgEntity = eshopDaoImpl.readLocaleMessageByKey("label.test", "en");
-      log.debug("Locale message = "+localeMsgEntity.getMessage());
-      
+//      try {
+////        setHomePageAttributes(model, ENGLISH);
+//      }
+//      catch(Exception exc) {            	
+//   	    MyController.log.debug("[MyController.renderHomePage()] --> EXCEPTION: "+exc.getMessage());
+//        MyController.log.debug("[MyController.renderHomePage()] --> EXCEPTION TO STRING: "+exc.toString());         	
+//   	  }         
+//       //Add attribute for language's label to display on page's header.
+//       model.addAttribute("langLabelAttr", langName);
+//     
+//       //Add attribute for language's value.
+//       model.addAttribute("langValueAttr", langValue);
+//       
+//       //Add attribute for language's icon.
+//       model.addAttribute("langIconAttr", langIcon);
+//       
+//       //Add attribute for cart label.
+//       model.addAttribute("cartLabelAttr", );
+//       //Add attribute for login label.
+//       model.addAttribute("loginLabelAttr", );
+//       //Add attribute for registration label.
+//       model.addAttribute("registrLabelAttr", );                           
               
     //Return page's name. 
     return "home.html";      
@@ -71,37 +82,68 @@ public class MyController {
 	   @RequestMapping(method=GET, path="/changelang")        
 	   public ResponseEntity changeLanguage(ModelMap model, HttpServletRequest request) {      	      
 		  
-	      log.debug("Request for \"/changelang\" received. ");	
+	      log.debug("Request for \"/changelang\" received. ");		      	      	      	      			      
 	      
-//	      model.addAttribute("Status", "Lang OK!");	      	      	      			       
-	      
-  	          //Set language's name to display on the page's header.
-		      switch(request.getParameter("lang")) {	      
-		       case ENGLISH:
-		    	 languageName = "Русский";
-		    	 languageValue = "ru";
-		        break;   
-		        
-		       case RUSSIAN:
-			     languageName = "English";
-			     languageValue = "en";
-			    break; 
-			   default:
-				 languageName = "Русский";
-			     languageValue = "ru";  
-		      }
-	      
-	        //Set attribute for language's name to display on page's header.
-	        model.addAttribute("langNameAttr", languageName);
-	        
-	        //Set attribute for language's value.
-	        model.addAttribute("langValueAttr", languageValue);
-	        
+//  	          //Set language's name to display on the page's header.
+//		      switch(request.getParameter("lang")) {	      
+//		       case ENGLISH:
+//		    	 langName = "Русский";
+//		    	 langValue = "ru";
+//		    	 langIcon = ICONS_PATH + "russian.png";
+//		        break;   
+//		        
+//		       case RUSSIAN:
+//			     langName = "English";
+//			     langValue = "en";
+//			     langIcon = ICONS_PATH + "english.png";
+//			    break; 
+//			   default:
+//				 langName = "Русский";
+//			     langValue = "ru";  
+//			     langIcon = ICONS_PATH + "russian.png";
+//		      }
+	      	        
 	      //Build and return response with status "ok".  
 	      ResponseEntity responseEntity = ResponseEntity.status(HttpStatus.OK).build(); 
 		      
 	    //Return response. 
 	    return responseEntity;    
 	   }	       		  
-}
+
 //------------------------------------------------------------------------------
+ 
+//	    //Method to set attributes for home.html
+//	   
+//		boolean setHomePageAttributes(ModelMap model,String lang){
+//			
+//		  boolean res = false;
+//		  
+//		   try {
+//		       //Add attribute for language's label to display on page's header.
+//		       model.addAttribute("langLabelAttr", langName);
+//			 
+//			   //Add attribute for language's value.
+//			   model.addAttribute("langValueAttr", langValue);
+//			   
+//			   //Add attribute for language's icon.
+//			   model.addAttribute("langIconAttr", langIcon);
+//			   
+////			   //Add attribute for cart label.
+////			   model.addAttribute("cartLabelAttr", );
+////			   //Add attribute for login label.
+////			   model.addAttribute("loginLabelAttr", );
+////			   //Add attribute for registration label.
+////			   model.addAttribute("registrLabelAttr", );
+//			   
+//			 res = true;   
+//		   }
+//		   catch(Exception exc) {            	
+//			  MyController.log.debug("[MyController.setHomePageAttributes()] --> EXCEPTION: "+exc.getMessage());
+//		      MyController.log.debug("[MyController.setHomePageAttributes()] --> EXCEPTION TO STRING: "+exc.toString());    
+//		   }   
+//		   finally {
+//		     return res;
+//		   }  
+//		}
+//------------------------------------------------------------------------------
+}

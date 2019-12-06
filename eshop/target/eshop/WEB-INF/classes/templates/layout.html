@@ -26,9 +26,9 @@
     <div class="header-line">
     
       <!-- Language selector: --> 
-      <div id="langChange" class="header-line-element  div-language"  th:value="${langValueAttr}">       
-        <img  class="element-icon" src="/eshop/img/icons/english.png" alt="Language" title="Switch language"/>            
-          <span th:text="${langNameAttr}"></span>                      
+      <div id="langChange" class="header-line-element  div-language"  th:value="#{label.langValue}">       
+        <img  class="element-icon" th:src="#{label.langIcon}" alt="Language" title="Switch language"/>            
+          <span th:text="#{label.langName}"></span>                      
       </div>  
        
       
