@@ -48,5 +48,6 @@ DELETE FROM package;
 DELETE FROM capacitor;
 DELETE FROM LED;
 DELETE FROM relay;
+DELETE FROM locale;
 */
 /*----------------------------------------------*/

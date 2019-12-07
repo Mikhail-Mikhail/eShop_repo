@@ -35,23 +35,23 @@
       <!-- Shopping cart: --> 
       <div class="header-line-element  div-shopping-cart">       
         <img  class="element-icon" src="/eshop/img/icons/cart_icon.png" alt="Cart" title="Cart"/>
-          Cart           
+          <span th:text="#{label.cartName}"></span>           
       </div>  
       
       <div class="shopping-cart-status">
-       empty
+        <span th:text="#{label.emptyName}"></span>
       </div>  
       
        <!-- Login reference: --> 
        <div class="header-line-element  div-login">       
          <img  class="element-icon" src="/eshop/img/icons/login_icon.svg" alt="Login" title="Login"/>
-           Login
+           <span th:text="#{label.loginName}"></span>
        </div>   
        
        <!-- Registration reference: --> 
        <div class="header-line-element  div-register">       
          <img  class="element-icon" src="/eshop/img/icons/register_icon.png" alt="Registration" title="Registration"/>
-           Registration
+           <span th:text="#{label.registerName}"></span>
        </div>    
     </div>     
       
@@ -72,7 +72,7 @@
              <!-- Search input. --> 
              <input type="search" class="search-input" name="q">  
                <!-- Search button. -->              
-               <input type="submit" class="search-button" value="Search">      
+               <input type="submit" class="search-button" th:value="#{label.searchName}">   
           </div>          
                                                                    
      </div>         
@@ -84,7 +84,7 @@
        
          <!-- Footer: -->       
          <div class="footer">
-            &copy 2001-2019, <span th:if="${langSelected}" th:text="#{label.copyright}"> </span>  <span th:if="${homePage}">All rights reserved</span>
+            &copy 2001-2019, <span th:text="#{label.copyright}"> </span> 
             
 <!-- DEBUG BOX to DISPLAY INFO: -->
 <!-- DELETE IT IN RELEASE! -->
