@@ -46,12 +46,18 @@
   function langSelectorOnClickHandler(){   	 
  	  
     // URL of request.
-    var url = '/eshop/home.html';    
-    var files;
+    var url = '/eshop/home.html'; 
+    //Request parameter.
+    var par = "?lang="+langSelector.getAttribute('value');    
           
-     //Display message. 
-     debugBox.innerHTML = "Sending request...";          
-   
+//Display debug message. 
+debugBox.innerHTML = "Sending request...";
+
+      //Request for home.html with parameter "lang=ru" or "lang=en" to switch language.
+      window.location.href = url+par;
+     
+
+/*     
       //Send AJAX-request of type GET to server.       
       jQuery.ajax({
                    url: url,
@@ -62,11 +68,12 @@
                    data: "lang="+langSelector.getAttribute('value'), 
                    processData: false,                                       
                    contentType: false, 
-                   success: function(result) {
+                   success: function(result) {                	   
                 	 //Redirect to home.html  
-               // 	 window.location.href="home.html";  
-                     /* debugBox.innerHTML = result.toString(); */    
-                  }  
-      });            
+                 // 	 window.location.href="home.html";  
+                 //     debugBox.innerHTML = result.toString();     
+                  }    
+      });
+   */   
   }
 //------------------------------------------------------------------------------       
