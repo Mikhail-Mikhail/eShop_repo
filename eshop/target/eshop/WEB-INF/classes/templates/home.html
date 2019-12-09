@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     
-     <head th:include="layout :: head(title=~{::title}, myScript=@{'/js/AjaxRq.js'}, myCss=@{'/css/home.css'})">         
-        <title> <span th:text="#{label.catalogName}"> </span></title>  
-      <meta charset="utf-8">
-    </head>
+   <head th:include="layout :: head(title=~{::title}, myScript=@{'/js/AjaxRq.js'}, myCss=@{'/css/home.css'})">         
+       <title>Home page</title> 
+       <meta charset="utf-8">
+   </head>
     
     <body id="BodyElem" th:include="layout :: body()"  th:with="content=~{::content}, pageName=~{::pageName}">        
        

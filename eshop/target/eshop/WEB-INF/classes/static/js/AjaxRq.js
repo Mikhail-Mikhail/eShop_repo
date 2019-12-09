@@ -9,9 +9,11 @@
  
 //------------------------------------------------------------------------------
 
- //Global variables:
+ //Variables:
    
  var langSelector;
+ var resistorsGroup;
+ var resistorsItem;
  
  var debugBox; //FOR DEBUG!
     
@@ -23,10 +25,16 @@
        
 	//Find element to change language.  
 	langSelector = document.getElementById("langChange");
-	 	  
-	//FOR DEBUG!  
-	debugBox = document.getElementById("debugBox");
 	
+	 //Find elements to request for Resistor's catalog.  
+	 resistorsGroup = document.getElementById("resistorsGroup");
+	 resistorsItem = document.getElementById("resistorsItem");
+
+//----------------	
+//FOR DEBUG!  
+debugBox = document.getElementById("debugBox");
+//----------------
+
       //Register event's listeners.  
       SetEventListeners();            
   }
@@ -36,8 +44,12 @@
     
   function SetEventListeners() {                       
                 
-    //Set listener of event "onclick" for language selector.         
+    //Set "onclick" event's listener for language selector.         
     langSelector.onclick = langSelectorOnClickHandler;	
+    
+     //Set "onclick" event's listener for elements to request Resistor's catalog.  
+	 resistorsGroup.onclick = resistorsOnClickHandler;
+	 resistorsItem.onclick = resistorsOnClickHandler;
    } 
 //------------------------------------------------------------------------------
 
@@ -76,4 +88,12 @@ debugBox.innerHTML = "Sending request...";
       });
    */   
   }
-//------------------------------------------------------------------------------       
+//------------------------------------------------------------------------------ 
+  
+  //Listener of event "onclick" for elements to request Resistor's catalog.   
+
+  function resistorsOnClickHandler(){
+	 alert("Resistors requested!");
+  }	  
+//------------------------------------------------------------------------------	  
+  
