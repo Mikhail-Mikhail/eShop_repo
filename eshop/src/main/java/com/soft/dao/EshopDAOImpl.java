@@ -6,7 +6,7 @@ package com.soft.dao;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import com.soft.controller.MyController;
+import com.soft.controller.EshopController;
 import com.soft.entity.LocaleMessageEntity;
 
 //------------------------------------------------------------------------------
@@ -69,8 +69,8 @@ public class EshopDAOImpl implements EshopDAO{
                 session.close();                                               
            } 
            catch(Exception exc) {
-        	 MyController.log.debug("[EshopDAOImpl.readLocaleMessageByKey()] --> EXCEPTION: "+exc.getMessage());
-             MyController.log.debug("[EshopDAOImpl.readLocaleMessageByKey()] --> EXCEPTION TO STRING: "+exc.toString());           
+        	 EshopController.log.debug("[EshopDAOImpl.readLocaleMessageByKey()] --> EXCEPTION: "+exc.getMessage());
+        	 EshopController.log.debug("[EshopDAOImpl.readLocaleMessageByKey()] --> EXCEPTION TO STRING: "+exc.toString());           
            }           
 
       return localeMessage;     

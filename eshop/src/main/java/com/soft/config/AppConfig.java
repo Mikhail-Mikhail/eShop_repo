@@ -30,8 +30,7 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
-
-import com.soft.controller.MyController;
+import com.soft.controller.EshopController;
 import com.soft.dao.EshopDAOImpl;
 import com.soft.entity.LocaleMessageEntity;
 
@@ -130,8 +129,8 @@ public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationCon
             		localeMessageEntity = eshopDaoImpl.readLocaleMessageByKey(key, locale.toString());
             	}
             	catch(Exception exc) {            	
-            	   MyController.log.debug("[AppConfig.DBMessageSource.resolveCode()] --> EXCEPTION: "+exc.getMessage());
-                   MyController.log.debug("[AppConfig.DBMessageSource.resolveCode()] --> EXCEPTION TO STRING: "+exc.toString());         	
+            	   EshopController.log.debug("[AppConfig.DBMessageSource.resolveCode()] --> EXCEPTION: "+exc.getMessage());
+            	   EshopController.log.debug("[AppConfig.DBMessageSource.resolveCode()] --> EXCEPTION TO STRING: "+exc.toString());         	
             	}            	
             	 
               return new MessageFormat(localeMessageEntity.getMessage(), locale);	 

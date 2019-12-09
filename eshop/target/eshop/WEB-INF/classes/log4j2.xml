@@ -13,7 +13,7 @@
    </Console>    
   
    <!-- This appender is bound with a file "errors.log" and accepts "ERROR" messages only. -->
-   <File name="ErrorsLogFile" fileName="mylog2/errors.log" append="true">
+   <File name="ErrorsLogFile" fileName="mylogs/errors.log" append="true">
      <PatternLayout>
       <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
      </PatternLayout>  
@@ -27,7 +27,7 @@
     <!-- This appender is bound with a file "app.log" and accepts all messages. 
          Use attribute "append="false" to create new file "app.log" each time after
          application deployment.  -->
-    <File name="AppLogFile" fileName="mylog2/app.log" append="false">
+    <File name="AppLogFile" fileName="mylogs/app.log" append="false">
       <PatternLayout>
         <Pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</Pattern>
       </PatternLayout>
@@ -36,20 +36,20 @@
      <!-- This appender is bound with a file "app.log" and is used to write headers. 
           Use attribute "append="false" to create new file "app.log" each time after
           application deployment.  -->
-    <File name="ExtraAppLogFile" fileName="mylog2/app.log" append="false">
+    <File name="ExtraAppLogFile" fileName="mylogs/app.log" append="false">
       <PatternLayout>
         <Pattern>%msg%n</Pattern>
       </PatternLayout>
     </File>
     
     <!-- This appender is bound with a file "complete.log" and accepts all messages. -->
-    <File name="CompleteLogFile" fileName="mylog2/complete.log" append="true">
+    <File name="CompleteLogFile" fileName="mylogs/complete.log" append="true">
       <PatternLayout>
         <Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Pattern>
       </PatternLayout>
     </File>    
 
-    <File name="DebugLogFile" fileName="mylog2/debug.log" append="false">
+    <File name="DebugLogFile" fileName="mylogs/debug.log" append="false">
       <PatternLayout>
         <Pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</Pattern>
       </PatternLayout>      
@@ -65,7 +65,7 @@
     <!-- This logger is defined in class "com.soft.controller.MyController". 
          It logs messages generated in this class. -->
              
-    <Logger name="com.soft.controller.MyController" level="TRACE">     -->  
+    <Logger name="com.soft.controller.EshopController" level="TRACE">     -->  
       <!-- Write messages to files and GlassFish server's log. -->  
        <AppenderRef ref="ServerLog"/>   
        <AppenderRef ref="ErrorsLogFile"/>
@@ -77,7 +77,7 @@
       <AppenderRef ref="ExtraAppLogFile"/>
     </Logger>
      
-	 <Logger name="com.soft.controller.MyController" level="DEBUG">
+	 <Logger name="com.soft.controller.EshopController" level="DEBUG">
 	    <AppenderRef ref="DebugLogFile" />
 	 </Logger>
 	 
