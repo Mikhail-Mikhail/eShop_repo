@@ -37,11 +37,37 @@ public class EshopController {
    public String renderHomePage(ModelMap model, HttpServletRequest request) {
 	   
 	 log.debug(""); 
-     log.debug("Request for \"home.html\" received. ");
+     log.debug("[EshopController.renderCatalogPage()] --> Request for \"home.html\" received. ");
                    
     //Return page's name. 
     return "home.html";      
    }         
 
+   
+   //Request for "catalog.html":
+
+   @RequestMapping(method=GET, path="/catalog.html")        
+   public String renderCatalogPage(ModelMap model, HttpServletRequest request) {
+	  
+	 //Request's parameter.  
+	 String reqPar = ""; 
+	   
+	 log.debug(""); 
+     log.debug("[EshopController.renderCatalogPage()] --> Request for \"catalog.html\" received.");
+     
+       try {
+    	  reqPar = request.getParameter("group");
+           log.debug("[EshopController.renderCatalogPage()] --> Request's parameter ="+reqPar);
+       }
+       catch(Exception exc) {            	
+   	     log.debug("[EshopController.renderCatalogPage()] --> EXCEPTION: "+exc.getMessage());
+   	     log.debug("[EshopController.renderCatalogPage()] --> EXCEPTION TO STRING: "+exc.toString());         	
+   	   } 
+       
+      model.addAttribute("group", "Resistors");
+                               
+    //Return page's name. 
+    return "catalog.html";      
+   }         
 //------------------------------------------------------------------------------ 
 }

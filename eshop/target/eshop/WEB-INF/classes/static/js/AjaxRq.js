@@ -9,11 +9,14 @@
  
 //------------------------------------------------------------------------------
 
- //Variables:
+ //Global variables:
    
  var langSelector;
  var resistorsGroup;
  var resistorsItem;
+ 
+ var homeURL = "/eshop/home.html";
+ var catalogURL = "/eshop/catalog.html";
  
  var debugBox; //FOR DEBUG!
     
@@ -56,17 +59,17 @@ debugBox = document.getElementById("debugBox");
   //Listener of event "onclick" for language selector.  
 
   function langSelectorOnClickHandler(){   	 
- 	  
-    // URL of request.
-    var url = '/eshop/home.html'; 
+ 	     
     //Request parameter.
     var par = "?lang="+langSelector.getAttribute('value');    
-          
+
+//-----------------------          
 //Display debug message. 
 debugBox.innerHTML = "Sending request...";
+//-----------------------
 
       //Request for home.html with parameter "lang=ru" or "lang=en" to switch language.
-      window.location.href = url+par;
+      window.location.href = homeURL+par;
      
 
 /*     
@@ -93,7 +96,11 @@ debugBox.innerHTML = "Sending request...";
   //Listener of event "onclick" for elements to request Resistor's catalog.   
 
   function resistorsOnClickHandler(){
-	 alert("Resistors requested!");
+	 //Parameter of request.
+	 var par = "?group=resistors"; 
+
+	  //Request for catalog.html with parameter "group=resistors".
+	  window.location.href = catalogURL+par;
   }	  
 //------------------------------------------------------------------------------	  
   
