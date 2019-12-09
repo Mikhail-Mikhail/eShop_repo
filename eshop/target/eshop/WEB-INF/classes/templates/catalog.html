@@ -1,33 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     
-    <head th:include="layout :: head(title=~{::title}, myScript=@{'/js/stub.js'}, myCss=@{'/css/home.css'})">
-      <title>!!Group's name here</title> 
+    <head th:include="layout :: head(title=~{::title}, myScript=@{'/js/AjaxRq.js'}, myCss=@{'/css/catalog.css'})">
+      <title th:text="${group}"></title> 
       <meta charset="utf-8">
     </head>
     
-    <body id="BodyElem" th:include="layout :: body(css_class='footer_home_page')"  th:with="content=~{::content}, pageName=~{::pageName}">    
+    <body id="BodyElem" th:include="layout :: body(css_class='footer_home_page')"  th:with="content=~{::content}">    
        
-        <span th:fragment="pageName"> <span th:text="${headerAttr}"> </span> </span>
        
-        <div class="content-container" th:fragment="content">  
-                                                   
-           <!-- List of items. -->
-           <div class="div-catalog">
-			  <h3 class="catalog-title">Catalog</h3>
-			   <ul class="catalog-list">
-			     <li id="resistorsItem" >Resistors</li>
-			     <li id="transistorsItem" >Transistors</li>
-			     <li id="icsItem" >Integrated circuits</li>
-			     <li id="diodesItem" >Diodes</li>
-			     <li id="capacitorsItem" >Capacitors</li>
-			     <li id="ledsItem" >LEDs</li>
-			     <li id="relaysItem" >Relays</li>
-			     <li id="connectorsItem" >Connectors</li>
-			     <li id="tumblersItem" >Tumblers</li>
-			     <li id="powerSuppliesItem" >Power supplies</li>
-			   </ul>
-			</div>						
+        <div class="content-container" th:fragment="content">                                                          
+			
+			<div>
+			 <span th:text="${group}"></span>
+			</div>								
 
         </div>
     </body>

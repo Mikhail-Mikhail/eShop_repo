@@ -6,9 +6,8 @@
        <meta charset="utf-8">
    </head>
     
-    <body id="BodyElem" th:include="layout :: body()"  th:with="content=~{::content}, pageName=~{::pageName}">        
-       
-        <span th:fragment="pageName"> <span th:text="${headerAttr}"> </span> </span>
+    
+    <body id="BodyElem" th:include="layout :: body()"  th:with="content=~{::content}">                                        
        
         <div class="content-container" th:fragment="content">  
                                                    
