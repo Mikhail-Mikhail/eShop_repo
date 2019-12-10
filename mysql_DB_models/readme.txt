@@ -1,2 +1,2 @@
 
-Latest version of DB model is "eshop_db_v5".
+Latest version of DB model is "eshop_db_v6".

@@ -1,0 +1,6 @@
+1	dip14
+2	dip16
+3	dip24
+4	KT-42
+5	PQFP240
+6	chip

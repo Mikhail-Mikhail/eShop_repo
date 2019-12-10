@@ -1,6 +1,6 @@
-//---------------------------------------------------- --------------------------
+//-------------------------------------------------------------------------------
 package com.soft.entity;
-//---------------------------------------------------- --------------------------
+//-------------------------------------------------------------------------------
 import java.io.Serializable;
 
 import javax.persistence.Cacheable;
@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
-//---------------------------------------------------- --------------------------
+//-------------------------------------------------------------------------------
 
 @Entity
 @Table(name = "locale")
@@ -111,4 +111,4 @@ public class LocaleMessageEntity implements Serializable {
             return "com.soft.entity.LocaleMessageEntity[ id=" + id + " ]";
           }   
 }
-//---------------------------------------------------- --------------------------
+//-------------------------------------------------------------------------------

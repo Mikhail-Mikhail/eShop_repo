@@ -10,11 +10,15 @@
     <body id="BodyElem" th:include="layout :: body()"  th:with="content=~{::content}">                                        
        
         <div class="content-container" th:fragment="content">  
-                                                   
+
+<!--                                                     
            <!-- List of items. -->
-           <div class="div-catalog">                 
-			  <h3 class="catalog-title"> <span th:text="#{label.catalogName}"> </span></h3>
+           <div class="div-catalog">                             
+			  <h3 class="catalog-title"> <span th:text="#{label.catalogName}"> </span></h3>			  
 			   <ul class="catalog-list">
+			   
+			     <li th:each="category: ${categoriesList}"> <span th:text="${category.name}"> </span></li>
+<!--			   
 			     <li id="resistorsItem" > <span th:text="#{label.resistorName}"> </span></li>
 			     <li id="transistorsItem" > <span th:text="#{label.transistorName}"> </span></li>
 			     <li id="icsItem" > <span th:text="#{label.icsName}"> </span></li>
@@ -25,11 +29,12 @@
 			     <li id="connectorsItem" > <span th:text="#{label.connectorName}"> </span> </li>
 			     <li id="tumblersItem" > <span th:text="#{label.tumblerName}"> </span> </li>
 			     <li id="powerSuppliesItem" > <span th:text="#{label.powerSupplyName}"></span> </li>
+-->			     
 			   </ul>
 			</div>
 			
 			<div class="div-groups-block">		      
-			  			
+<!--  			  			
 				  <div id="resistorsGroup"  class="div-item-group">
   	  			    <img src="/eshop/img/items/resistor.jpg" alt="">   	 
      	  	  		 <p class="group-title">
@@ -99,7 +104,7 @@
 	                    <span th:text="#{label.powerSupplyName}"></span>  
 	                 </p>
 	              </div>
-	              	              	          
+-->	              	              	          
             </div>
  
         </div>
