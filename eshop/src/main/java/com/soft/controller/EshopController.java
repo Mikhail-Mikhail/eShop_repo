@@ -17,6 +17,7 @@ import com.soft.entity.LocaleMessageEntity;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 //------------------------------------------------------------------------------
 
@@ -43,15 +44,43 @@ public class EshopController {
      log.debug("[EshopController.renderCatalogPage()] --> Request for \"home.html\" received. ");
      
 //------------------
-     CategoryEntity categoryEntity1 = new CategoryEntity(1L, "Resistors");
-     CategoryEntity categoryEntity2 = new CategoryEntity(2L, "Transistors");
-     CategoryEntity categoryEntity3 = new CategoryEntity(2L, "Connectors");
+          
+     String lang = "en";
+     
+     try{
+      lang = request.getParameter("lang");
+     }
+     catch(Exception exc) {  
+      log.debug("[EshopController.renderHomePage()] --> EXCEPTION: "+exc.getMessage());
+      log.debug("[EshopController.renderHomePage()] --> EXCEPTION TO STRING: "+exc.toString());      	      
+     }
+     
+   
+//     String catname = eshopDaoImpl.readLocaleMessageByKey("label.resistorName", lang).getMessage();
+
+     CategoryEntity categoryEntity1 = new CategoryEntity(1L, eshopDaoImpl.readLocaleMessageByKey("locale_"+"resistor"+"CategoryName", lang).getMessage());
+     CategoryEntity categoryEntity2 = new CategoryEntity(2L, eshopDaoImpl.readLocaleMessageByKey("locale_"+"transistor"+"CategoryName", lang).getMessage());
+     CategoryEntity categoryEntity3 = new CategoryEntity(3L, eshopDaoImpl.readLocaleMessageByKey("locale_"+"ics"+"CategoryName", lang).getMessage());
+     CategoryEntity categoryEntity4 = new CategoryEntity(4L, eshopDaoImpl.readLocaleMessageByKey("locale_"+"diode"+"CategoryName", lang).getMessage());
+     CategoryEntity categoryEntity5 = new CategoryEntity(5L, eshopDaoImpl.readLocaleMessageByKey("locale_"+"capacitor"+"CategoryName", lang).getMessage());
+     CategoryEntity categoryEntity6 = new CategoryEntity(6L, eshopDaoImpl.readLocaleMessageByKey("locale_"+"led"+"CategoryName", lang).getMessage());
+     CategoryEntity categoryEntity7 = new CategoryEntity(7L, eshopDaoImpl.readLocaleMessageByKey("locale_"+"relay"+"CategoryName", lang).getMessage());
+     CategoryEntity categoryEntity8 = new CategoryEntity(8L, eshopDaoImpl.readLocaleMessageByKey("locale_"+"connector"+"CategoryName", lang).getMessage());
+     CategoryEntity categoryEntity9 = new CategoryEntity(9L, eshopDaoImpl.readLocaleMessageByKey("locale_"+"tumbler"+"CategoryName", lang).getMessage());
+     CategoryEntity categoryEntity10 = new CategoryEntity(10L, eshopDaoImpl.readLocaleMessageByKey("locale_"+"powerSupply"+"CategoryName", lang).getMessage());
      
       ArrayList<CategoryEntity> categoriesList = new ArrayList<CategoryEntity>();
       
        categoriesList.add(categoryEntity1);
        categoriesList.add(categoryEntity2);
        categoriesList.add(categoryEntity3);
+       categoriesList.add(categoryEntity4);
+       categoriesList.add(categoryEntity5);
+       categoriesList.add(categoryEntity6);
+       categoriesList.add(categoryEntity7);
+       categoriesList.add(categoryEntity8);
+       categoriesList.add(categoryEntity9);
+       categoriesList.add(categoryEntity10);
        
      model.addAttribute("categoriesList", categoriesList);
      

@@ -26,32 +26,32 @@
     <div class="header-line">
     
       <!-- Language selector: --> 
-      <div id="langChange" class="header-line-element  div-language"  th:value="#{label.langValue}">       
-        <img  class="element-icon" th:src="#{label.langIcon}" alt="Language" title="Switch language"/>            
-          <span th:text="#{label.langName}"></span>                      
+      <div id="langChange" class="header-line-element  div-language"  th:value="#{locale_langValue}">       
+        <img  class="element-icon" th:src="#{locale_langIcon}" alt="Language" title="Switch language"/>            
+          <span th:text="#{locale_langName}"></span>                      
       </div>  
        
       
       <!-- Shopping cart: --> 
       <div class="header-line-element  div-shopping-cart">       
         <img  class="element-icon" src="/eshop/img/icons/cart_icon.png" alt="Cart" title="Cart"/>
-          <span th:text="#{label.cartName}"></span>           
+          <span th:text="#{locale_cartName}"></span>           
       </div>  
       
       <div class="shopping-cart-status">
-        <span th:text="#{label.emptyName}"></span>
+        <span th:text="#{locale_emptyCartName}"></span>
       </div>  
       
        <!-- Login reference: --> 
        <div class="header-line-element  div-login">       
          <img  class="element-icon" src="/eshop/img/icons/login_icon.svg" alt="Login" title="Login"/>
-           <span th:text="#{label.loginName}"></span>
+           <span th:text="#{locale_loginName}"></span>
        </div>   
        
        <!-- Registration reference: --> 
        <div class="header-line-element  div-register">       
          <img  class="element-icon" src="/eshop/img/icons/register_icon.png" alt="Registration" title="Registration"/>
-           <span th:text="#{label.registerName}"></span>
+           <span th:text="#{locale_registerName}"></span>
        </div>    
     </div>     
       
@@ -72,7 +72,7 @@
              <!-- Search input. --> 
              <input type="search" class="search-input" name="q">  
                <!-- Search button. -->              
-               <input type="submit" class="search-button" th:value="#{label.searchName}">   
+               <input type="submit" class="search-button" th:value="#{locale_searchButtonName}">   
           </div>          
                                                                    
      </div>         
@@ -84,7 +84,7 @@
        
          <!-- Footer: -->       
          <div class="footer">
-            &copy 2001-2019, <span th:text="#{label.copyright}"> </span> 
+            &copy 2001-2019, <span th:text="#{locale_copyright}"> </span> 
             
 <!-- DEBUG BOX to DISPLAY INFO: -->
 <!-- DELETE IT IN RELEASE! -->
