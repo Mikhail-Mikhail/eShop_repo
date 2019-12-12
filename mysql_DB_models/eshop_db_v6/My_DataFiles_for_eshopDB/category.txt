@@ -1,10 +1,10 @@
-1	resistors
-2	transistors
-3	integrated circuits
-4	diodes
-5	capacitors
-6	leds
-7	relays
-8	connectors
-9	tumblers
-10	power supplies
+1	locale.resistorCategoryName
+2	locale.transistorCategoryName
+3	locale.icsCategoryName
+4	locale.diodeCategoryName
+5	locale.capacitorCategoryName
+6	locale.ledCategoryName
+7	locale.relayCategoryName
+8	locale.connectorCategoryName
+9	locale.tumblerCategoryName
+10	locale.powerSupplyCategoryName

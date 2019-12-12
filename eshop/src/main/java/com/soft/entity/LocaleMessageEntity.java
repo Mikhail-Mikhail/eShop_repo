@@ -22,7 +22,7 @@ public class LocaleMessageEntity implements Serializable {
 
   private static final long serialVersionUID = 1L;
 	
-   //Empty constructor, used by Hibernate.	   
+   //Empty constructor, it's used by Hibernate.	   
    public LocaleMessageEntity() { 
    }
    

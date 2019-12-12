@@ -4,6 +4,7 @@ package com.soft.dao;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.SessionFactory;
 
@@ -25,6 +26,6 @@ public interface EshopDAO {
      public LocaleMessageEntity readLocaleMessageByKey(String msgKey, String locale);
      
       //Method to read all data from table "category" by means of Hibernate API.      
-      public ArrayList<CategoryEntity> readCategoryList();
+      public List<CategoryEntity> readCategoryList();
 }         
 //------------------------------------------------------------------------------

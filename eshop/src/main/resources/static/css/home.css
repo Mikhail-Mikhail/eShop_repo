@@ -60,9 +60,9 @@
 /* --------------------------------------------------------------------*/
      
       /* Styles for groups of items: */
-      
+                
       .div-groups-block{
-        height: 750px;        
+        height: auto;        
         width: 67%;
 		min-width: 700px; /* Fix width of catalog if width of browser's window became narrow. */
 		border-radius: 5px;		  
@@ -73,14 +73,19 @@
         float: left;      
       }     
      
+     .td-item-group{
+       padding-left: 25px;
+       padding-top: 20px;	
+     }  
+     
      .div-item-group {     
 	    height: 220px;        
-        width: 21%;
+        width: 155px;
         min-width: 145px;		
 		border-radius: 5px;		  
         border: solid 1px black; 
-        margin-top: 20px;
-        margin-left: 25px;
+/*        margin-top: 20px;
+        margin-left: 25px; */
         text-align: center;                 
         float: left;
      }

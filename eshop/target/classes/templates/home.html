@@ -10,102 +10,160 @@
     <body id="BodyElem" th:include="layout :: body()"  th:with="content=~{::content}">                                        
        
         <div class="content-container" th:fragment="content">  
-
-<!--                                                     
+                                                     
            <!-- List of items. -->
            <div class="div-catalog">                             
 			  <h3 class="catalog-title"> <span th:text="#{locale.catalogName}"> </span></h3>			  
 			   <ul class="catalog-list">
 			   
-			     
- 			     <li th:each="category: ${categoriesList}"> <span th:text="#{${category.name}}"> </span></li>      
-<!--			   
-			     <li id="resistorsItem" > <span th:text="#{label.resistorName}"> </span></li>
-			     <li id="transistorsItem" > <span th:text="#{label.transistorName}"> </span></li>
-			     <li id="icsItem" > <span th:text="#{label.icsName}"> </span></li>
-			     <li id="diodesItem" > <span th:text="#{label.diodeName}"> </span></li>
-			     <li id="capacitorsItem" > <span th:text="#{label.capacitorName}"></span> </li>
-			     <li id="ledsItem" > <span th:text="#{label.ledName}"> </span> </li>
-			     <li id="relaysItem" > <span th:text="#{label.relayName}"></span> </li>
-			     <li id="connectorsItem" > <span th:text="#{label.connectorName}"> </span> </li>
-			     <li id="tumblersItem" > <span th:text="#{label.tumblerName}"> </span> </li>
-			     <li id="powerSuppliesItem" > <span th:text="#{label.powerSupplyName}"></span> </li>
--->			     
+			      <!-- Iterate attribute "categoryList" to create list elements. -->
+ 			      <li th:each="category: ${categoryList}"> <span th:text="#{${category.name}}"> </span></li>      
 			   </ul>
 			</div>
 			
 			<div class="div-groups-block">		      
-<!--  			  			
-				  <div id="resistorsGroup"  class="div-item-group">
-  	  			    <img src="/eshop/img/items/resistor.jpg" alt="">   	 
-     	  	  		 <p class="group-title">
-	                    <span th:text="#{label.resistorName}"></span>  
-	                 </p>         
-	              </div>	            	            
-	          		
-				  <div id="transistorsGroup" class="div-item-group">
- 	  			    <img src="/eshop/img/items/transistor.jpg" alt="">     	 
-	  	  		     <p class="group-title">
-	                    <span th:text="#{label.transistorName}"></span>
-	                 </p>         
-	              </div>
-	              
-	              <div id="icsGroup" class="div-item-group">
-	                <img src="/eshop/img/items/ics.jpg" alt="">  	 
-     	  	  		 <p class="group-title">
-	                    <span th:text="#{label.icsName}"></span>  
-	                 </p>
-	              </div>
-	              
-	              <div id="diodesGroup" class="div-item-group">
-	                <img src="/eshop/img/items/diode.jpg" alt="">  	 
-     	  	  		 <p class="group-title">
-	                    <span th:text="#{label.diodeName}"></span>  
-	                 </p>
-	              </div>
-	              
-	              <div id="capacitorsGroup" class="div-item-group">
-	                <img src="/eshop/img/items/capacitor.jpg" alt="">   	 
-     	  	  		 <p class="group-title">
-	                    <span th:text="#{label.capacitorName}"></span>  
-	                 </p>
-	              </div>
-	              
-	              <div id="ledsGroup" class="div-item-group">
-	                <img src="/eshop/img/items/led.jpg" alt="">   	 
-     	  	  		 <p class="group-title">
-	                    <span th:text="#{label.ledName}"></span>  
-	                 </p>
-	              </div>
-	              
-	              <div id="relaysGroup" class="div-item-group">
-	                <img src="/eshop/img/items/relay.jpg" alt="">  	 
-     	  	  		 <p class="group-title">
-	                    <span th:text="#{label.relayName}"></span>  
-	                 </p>
-	              </div>
-	              
-	              <div id="connectorsGroup" class="div-item-group">
-	                <img src="/eshop/img/items/connector.jpg" alt="">  	 
-     	  	  		 <p class="group-title">
-	                    <span th:text="#{label.connectorName}"></span>  
-	                 </p>
-	              </div>
-	              
-	              <div id="tumblersGroup" class="div-item-group">
-	                <img src="/eshop/img/items/tumbler.jpg" alt="">   	 
-     	  	  		 <p class="group-title">
-	                    <span th:text="#{label.tumblerName}"></span>  
-	                 </p>
-	              </div>
-	              
-	              <div id="powerSuppliesGroup" class="div-item-group">
-	                <img src="/eshop/img/items/powersupply.jpg" alt="">   	 
-     	  	  		 <p class="group-title">
-	                    <span th:text="#{label.powerSupplyName}"></span>  
-	                 </p>
-	              </div>
--->	              	              	          
+  			  	
+  			  <table>
+  			    <tr>
+  			       <td class="td-item-group">			
+					  <div id="resistorsGroup"  class="div-item-group">
+	  	  			    <img src="/eshop/img/items/resistor.jpg" alt="">   	 
+	     	  	  		 <p class="group-title">
+		                    <span th:text="#{locale.resistorCategoryName}"></span>  
+		                 </p>         
+		              </div>
+		            </td>  	            	            
+		          	
+		          	<td class="td-item-group">	
+					  <div id="transistorsGroup" class="div-item-group">
+	 	  			    <img src="/eshop/img/items/transistor.jpg" alt="">     	 
+		  	  		     <p class="group-title">
+		                    <span th:text="#{locale.transistorCategoryName}"></span>
+		                 </p>         
+		              </div>
+		             </td> 
+		             
+		             <td class="td-item-group"> 
+		               <div id="icsGroup" class="div-item-group">
+		                 <img src="/eshop/img/items/ics.jpg" alt="">  	 
+	     	  	  	   	  <p class="group-title">
+		                    <span th:text="#{locale.icsCategoryName}"></span>  
+		                  </p>
+		                </div>
+		              </td>  		        		        
+		          
+		            <td class="td-item-group">    
+		              <div id="diodesGroup" class="div-item-group">
+		                <img src="/eshop/img/items/diode.jpg" alt="">  	 
+	     	  	  		 <p class="group-title">
+		                    <span th:text="#{locale.diodeCategoryName}"></span>  
+		                 </p>
+		              </div>
+		            </td>
+		            
+		          </tr>  
+		             
+		          <tr>    
+		            <td class="td-item-group"> 
+		              <div id="capacitorsGroup" class="div-item-group">
+		                <img src="/eshop/img/items/capacitor.jpg" alt="">   	 
+	     	  	  		 <p class="group-title">
+		                    <span th:text="#{locale.capacitorCategoryName}"></span>  
+		                 </p>
+		              </div>
+		            </td>  
+		              
+		            <td class="td-item-group">  
+		              <div id="ledsGroup" class="div-item-group">
+		                <img src="/eshop/img/items/led.jpg" alt="">   	 
+	     	  	  		 <p class="group-title">
+		                    <span th:text="#{locale.ledCategoryName}"></span>  
+		                 </p>
+		              </div>
+		            </td>  
+		        		        
+		            <td class="td-item-group"> 
+		              <div id="relaysGroup" class="div-item-group">
+		                <img src="/eshop/img/items/relay.jpg" alt="">  	 
+	     	  	  		 <p class="group-title">
+		                    <span th:text="#{locale.relayCategoryName}"></span>  
+		                 </p>
+		              </div>
+		            </td>
+		            
+		            <td class="td-item-group">  
+		              <div id="connectorsGroup" class="div-item-group">
+		                <img src="/eshop/img/items/connector.jpg" alt="">  	 
+	     	  	  		 <p class="group-title">
+		                    <span th:text="#{locale.connectorCategoryName}"></span>  
+		                 </p>
+		              </div>
+		            </td>
+		        </tr>
+		        
+		        <tr>    
+		            <td class="td-item-group">  
+		              <div id="tumblersGroup" class="div-item-group">
+		                <img src="/eshop/img/items/tumbler.jpg" alt="">   	 
+	     	  	  		 <p class="group-title">
+		                    <span th:text="#{locale.tumblerCategoryName}"></span>  
+		                 </p>
+		              </div>
+		            </td>  
+		        		        		                
+		           <td class="td-item-group">   
+		              <div id="powerSuppliesGroup" class="div-item-group">
+		                <img src="/eshop/img/items/powersupply.jpg" alt="">   	 
+	     	  	  		 <p class="group-title">
+		                    <span th:text="#{locale.powerSupplyCategoryName}"></span>  
+		                 </p>
+		              </div>
+		            </td>  
+	            </tr>
+	            
+	            
+<!-- ////////////////////////////////// -->
+ <tr>    
+		            <td class="td-item-group"> 
+		              <div id="capacitorsGroup" class="div-item-group">
+		                <img src="/eshop/img/items/capacitor.jpg" alt="">   	 
+	     	  	  		 <p class="group-title">
+		                    <span th:text="#{locale.capacitorCategoryName}"></span>  
+		                 </p>
+		              </div>
+		            </td>  
+		              
+		            <td class="td-item-group">  
+		              <div id="ledsGroup" class="div-item-group">
+		                <img src="/eshop/img/items/led.jpg" alt="">   	 
+	     	  	  		 <p class="group-title">
+		                    <span th:text="#{locale.ledCategoryName}"></span>  
+		                 </p>
+		              </div>
+		            </td>  
+		        		        
+		            <td class="td-item-group"> 
+		              <div id="relaysGroup" class="div-item-group">
+		                <img src="/eshop/img/items/relay.jpg" alt="">  	 
+	     	  	  		 <p class="group-title">
+		                    <span th:text="#{locale.relayCategoryName}"></span>  
+		                 </p>
+		              </div>
+		            </td>
+		            
+		            <td class="td-item-group">  
+		              <div id="connectorsGroup" class="div-item-group">
+		                <img src="/eshop/img/items/connector.jpg" alt="">  	 
+	     	  	  		 <p class="group-title">
+		                    <span th:text="#{locale.connectorCategoryName}"></span>  
+		                 </p>
+		              </div>
+		            </td>
+		        </tr>	            
+	            
+<!-- ////////////////////////////////// -->	            
+	          </table>
+	              	              	          
             </div>
  
         </div>

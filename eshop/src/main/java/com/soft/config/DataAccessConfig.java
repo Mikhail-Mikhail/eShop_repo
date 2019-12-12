@@ -78,7 +78,7 @@ public class DataAccessConfig {
          localSessionFactoryBean.setDataSource(dataSource);
          
           //Define list of "@Entity" annotated classes.
-          localSessionFactoryBean.setAnnotatedClasses(com.soft.entity.LocaleMessageEntity.class);
+          localSessionFactoryBean.setAnnotatedClasses(com.soft.entity.LocaleMessageEntity.class, com.soft.entity.CategoryEntity.class);
          
            //Create Hibernate's properties.          
            Properties prop = new Properties();
