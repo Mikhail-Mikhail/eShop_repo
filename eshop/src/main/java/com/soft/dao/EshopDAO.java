@@ -3,9 +3,12 @@ package com.soft.dao;
 //------------------------------------------------------------------------------
 
 
+import java.util.ArrayList;
+
 import org.hibernate.SessionFactory;
 
 import com.soft.entity.LocaleMessageEntity;
+import com.soft.entity.CategoryEntity;
 
 //------------------------------------------------------------------------------
 
@@ -19,6 +22,9 @@ public interface EshopDAO {
    public void setSessionFactory(SessionFactory sessionFactory);      
         
      //Method to read from table "locale" of database by means of Hibernate API.      
-     public LocaleMessageEntity readLocaleMessageByKey(String msgKey, String locale);                    
+     public LocaleMessageEntity readLocaleMessageByKey(String msgKey, String locale);
+     
+      //Method to read all data from table "category" by means of Hibernate API.      
+      public ArrayList<CategoryEntity> readCategoryList();
 }         
 //------------------------------------------------------------------------------

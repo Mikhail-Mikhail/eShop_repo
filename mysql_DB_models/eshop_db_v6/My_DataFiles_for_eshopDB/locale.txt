@@ -1,42 +1,42 @@
-1	ru	label.langName	English
-2	en	label.langName	Русский
-3	ru	label.langIcon	/eshop/img/icons/english.png
-4	en	label.langIcon	/eshop/img/icons/russian.png
-5	ru	label.langValue	en
-6	en	label.langValue	ru
-7	ru	label.cartName	Корзина
-8	en	label.cartName	Cart
-9	ru	label.loginName	Вход
-10	en	label.loginName	Login
-11	ru	label.registerName	Регистрация
-12	en	label.registerName	Registration
-13	ru	label.catalogName	Каталог
-14	en	label.catalogName	Catalog
-15	ru	label.resistorName	Резисторы
-16	en	label.resistorName	Resistors
-17	ru	label.transistorName	Транзисторы
-18	en	label.transistorName	Transistors
-19	ru	label.icsName	Микросхемы
-20	en	label.icsName	Integrated Circuits
-21	ru	label.diodeName	Диоды
-22	en	label.diodeName	Diodes
-23	ru	label.capacitorName	Конденсаторы
-24	en	label.capacitorName	Capacitors
-25	ru	label.ledName	Светодиоды
-26	en	label.ledName	Leds
-27	ru	label.relayName	Реле
-28	en	label.relayName	Relays
-29	ru	label.connectorName	Разъемы
-30	en	label.connectorName	Connectors
-31	ru	label.tumblerName	Тумблеры
-32	en	label.tumblerName	Tumblers
-33	ru	label.powerSupplyName	Источники питания
-34	en	label.powerSupplyName	Power supplies
-35	ru	label.copyright	Все права защищены
-36	en	label.copyright	All rights reserved
-37	ru	label.emptyName	пусто
-38	en	label.emptyName	empty
-39	ru	label.searchName	Поиск
-40	en	label.searchName	Search
-41	ru	label.homePageName	Home Page
-42	en	label.homePageName	Домашняя
+1	ru	locale.langName	English
+2	en	locale.langName	Русский
+3	ru	locale.langIcon	/eshop/img/icons/english.png
+4	en	locale.langIcon	/eshop/img/icons/russian.png
+5	ru	locale.langValue	en
+6	en	locale.langValue	ru
+7	ru	locale.cartName	Корзина
+8	en	locale.cartName	Cart
+9	ru	locale.loginName	Вход
+10	en	locale.loginName	Login
+11	ru	locale.registerName	Регистрация
+12	en	locale.registerName	Registration
+13	ru	locale.catalogName	Каталог
+14	en	locale.catalogName	Catalog
+15	ru	locale.resistorCategoryName	Резисторы
+16	en	locale.resistorCategoryName	Resistors
+17	ru	locale.transistorCategoryName	Транзисторы
+18	en	locale.transistorCategoryName	Transistors
+19	ru	locale.icsCategoryName	Микросхемы
+20	en	locale.icsCategoryName	Integrated Circuits
+21	ru	locale.diodeCategoryName	Диоды
+22	en	locale.diodeCategoryName	Diodes
+23	ru	locale.capacitorCategoryName	Конденсаторы
+24	en	locale.capacitorCategoryName	Capacitors
+25	ru	locale.ledCategoryName	Светодиоды
+26	en	locale.ledCategoryName	Leds
+27	ru	locale.relayCategoryName	Реле
+28	en	locale.relayCategoryName	Relays
+29	ru	locale.connectorCategoryName	Разъемы
+30	en	locale.connectorCategoryName	Connectors
+31	ru	locale.tumblerCategoryName	Тумблеры
+32	en	locale.tumblerCategoryName	Tumblers
+33	ru	locale.powerSupplyCategoryName	Источники питания
+34	en	locale.powerSupplyCategoryName	Power supplies
+35	ru	locale.copyright	Все права защищены
+36	en	locale.copyright	All rights reserved
+37	ru	locale.emptyCartName	пусто
+38	en	locale.emptyCartName	empty
+39	ru	locale.searchButtonName	Поиск
+40	en	locale.searchButtonName	Search
+41	ru	locale.homePageName	Home Page
+42	en	locale.homePageName	Домашняя

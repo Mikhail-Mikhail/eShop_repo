@@ -32,11 +32,11 @@ DROP TABLE locale;
 */
 /*----------------------------------------------*/
 /*
-LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_models/eshop_db_v6/My_DataFiles_for_eshopDB/producer.txt' INTO TABLE producer;
-LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_models/eshop_db_v6/My_DataFiles_for_eshopDB/category.txt' INTO TABLE category;
-LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_models/eshop_db_v6/My_DataFiles_for_eshopDB/units.txt' INTO TABLE units;
-LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_models/eshop_db_v6/My_DataFiles_for_eshopDB/package.txt' INTO TABLE package; */
-LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_models/eshop_db_v6/My_DataFiles_for_eshopDB/locale.txt' INTO TABLE locale;
+LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/producer.txt' INTO TABLE producer;
+LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/category.txt' INTO TABLE category;
+LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/units.txt' INTO TABLE units;
+LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/package.txt' INTO TABLE package; */
+LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/locale.txt' INTO TABLE locale;
 
 /*----------------------------------------------*/
 
