@@ -76,14 +76,41 @@ public class EshopDAOImpl implements EshopDAO{
            }           
 
       return localeMessage;     
-    }                               
- }
+    }                                
 
  
 
   //Method to read all data from table "category" by means of Hibernate API.  
   @Override 
-  public ArrayList<CategoryEntity> readCategoryList(){
-	
+  public List<CategoryEntity> readCategoryList(){
+	  
+      //Session with database.
+      Session session; 
+      
+      //List of retrieved data.
+      List<CategoryEntity> resultList = null;
+
+         try { 
+             //Open session to read from database.
+             session = sessionFactory.openSession();
+                //Begin transaction.
+                session.beginTransaction();                                        
+
+                  //Retrieve data from database.
+                  //Result of this query will be cached.
+                  resultList = session.createQuery("FROM CategoryEntity").setCacheable(true).setCacheRegion("MY_CACHE").list();                    
+                                                                           
+                //Commit transaction.
+                session.getTransaction().commit();
+              //Close session with a database. 
+              session.close();                                               
+         } 
+         catch(Exception exc) {
+      	   EshopController.log.debug("[EshopDAOImpl.readCategoryList()] --> EXCEPTION: "+exc.getMessage());
+      	   EshopController.log.debug("[EshopDAOImpl.readCategoryList()] --> EXCEPTION TO STRING: "+exc.toString());           
+         }           
+
+    return resultList;     
   }
+}
 //------------------------------------------------------------------------------ 
