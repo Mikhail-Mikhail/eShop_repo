@@ -3,10 +3,12 @@
 package com.soft.dao;
 //------------------------------------------------------------------------------
 
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import com.soft.controller.EshopController;
+import com.soft.entity.CategoryEntity;
 import com.soft.entity.LocaleMessageEntity;
 
 //------------------------------------------------------------------------------
@@ -77,3 +79,11 @@ public class EshopDAOImpl implements EshopDAO{
     }                               
  }
 
+ 
+
+  //Method to read all data from table "category" by means of Hibernate API.  
+  @Override 
+  public ArrayList<CategoryEntity> readCategoryList(){
+	
+  }
+//------------------------------------------------------------------------------ 

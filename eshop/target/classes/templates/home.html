@@ -14,11 +14,11 @@
 <!--                                                     
            <!-- List of items. -->
            <div class="div-catalog">                             
-			  <h3 class="catalog-title"> <span th:text="#{locale_catalogName}"> </span></h3>			  
+			  <h3 class="catalog-title"> <span th:text="#{locale.catalogName}"> </span></h3>			  
 			   <ul class="catalog-list">
 			   
 			     
- 			     <li th:each="category: ${categoriesList}"> <span th:text="${category.name}"> </span></li>   
+ 			     <li th:each="category: ${categoriesList}"> <span th:text="#{${category.name}}"> </span></li>      
 <!--			   
 			     <li id="resistorsItem" > <span th:text="#{label.resistorName}"> </span></li>
 			     <li id="transistorsItem" > <span th:text="#{label.transistorName}"> </span></li>
