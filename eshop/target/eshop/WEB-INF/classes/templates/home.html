@@ -24,6 +24,21 @@
 			<div class="div-groups-block">		      
   			  	
   			  <table>
+  			  
+  			  
+  			   <tr th:each="i : ${#numbers.sequence(0, ${rowsQuantity})}">
+  			       <td class="td-item-group">			
+					  <div id="resistorsGroup"  class="div-item-group">
+	  	  			    <img src="/eshop/img/items/resistor.jpg" alt="">   	 
+	     	  	  		 <p class="group-title">
+		                    <span th:text="#{locale.resistorCategoryName}"></span>  
+		                 </p>         
+		              </div>
+		            </td>  	      
+  			   </tr>
+  			  
+  			  
+<!--   			  
   			    <tr>
   			       <td class="td-item-group">			
 					  <div id="resistorsGroup"  class="div-item-group">
@@ -120,9 +135,10 @@
 		              </div>
 		            </td>  
 	            </tr>
-	            
+ -->	            
 	            
 <!-- ////////////////////////////////// -->
+<!-- 
  <tr>    
 		            <td class="td-item-group"> 
 		              <div id="capacitorsGroup" class="div-item-group">
@@ -160,7 +176,7 @@
 		              </div>
 		            </td>
 		        </tr>	            
-	            
+ -->	            
 <!-- ////////////////////////////////// -->	            
 	          </table>
 	              	              	          

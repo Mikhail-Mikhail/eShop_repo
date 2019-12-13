@@ -51,8 +51,11 @@ public class EshopController {
       
         log.debug("[EshopController.renderCatalogPage()] --> Categories list size = "+categoryList.size());
        
-       //Add attribute to build page "home.html". 
+       //Add attribute to display all elements of "categoryList" on a page "home.html". 
        model.addAttribute("categoryList", categoryList);
+       
+       model.addAttribute("rowsQuantity", (int) 3);
+       
       }
       catch(Exception exc) {            	
          log.debug("[EshopController.renderHomePage()] --> EXCEPTION: "+exc.getMessage());

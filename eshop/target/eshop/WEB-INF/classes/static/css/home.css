@@ -68,7 +68,8 @@
 		border-radius: 5px;		  
         border: solid 1px #bdbdbd; 
         margin-top: 20px;
-        margin-left: 25px;        
+        margin-left: 25px; 
+        padding-bottom: 20px;       
         background: white;  
         float: left;      
       }     
