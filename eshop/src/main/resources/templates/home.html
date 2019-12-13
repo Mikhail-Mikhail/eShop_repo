@@ -24,10 +24,26 @@
 			<div class="div-groups-block">		      
   			  	
   			  <table>
+
+
+  			   <tr th:each="row: ${rowsList}">
+  			       <td th:each="item: ${row}" class="td-item-group">			
+					  <div  class="div-item-group">
+					      <img th:src=${item.photo} alt="">
+<!--   	  	  			    <img src="/eshop/img/items/resistor.jpg" alt="">   -->    	 
+	     	  	  		 <p class="group-title">
+ 		                    <span th:text="#{${item.name}}"></span>    
+		                 </p>         
+		              </div>
+		            </td>  	      
+  			   </tr>
+
+
+
   			  
-  			  
-  			   <tr th:each="i : ${#numbers.sequence(0, ${rowsQuantity})}">
-  			       <td class="td-item-group">			
+<!--   			  
+  			   <tr th:each="i : ${#numbers.sequence(0, rowsQuantity)}">
+  			       <td th:each="category: ${categoryList} class="td-item-group">			
 					  <div id="resistorsGroup"  class="div-item-group">
 	  	  			    <img src="/eshop/img/items/resistor.jpg" alt="">   	 
 	     	  	  		 <p class="group-title">
@@ -36,7 +52,7 @@
 		              </div>
 		            </td>  	      
   			   </tr>
-  			  
+ -->  			  
   			  
 <!--   			  
   			    <tr>

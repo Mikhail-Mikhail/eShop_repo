@@ -17,6 +17,7 @@ import com.soft.entity.LocaleMessageEntity;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -47,15 +48,61 @@ public class EshopController {
      
       try {
        //Get product's categories list form DB.	  
-       List<CategoryEntity> categoryList = eshopDaoImpl.readCategoryList();
+       List<CategoryEntity > categoryList = eshopDaoImpl.readCategoryList();
       
         log.debug("[EshopController.renderCatalogPage()] --> Categories list size = "+categoryList.size());
        
        //Add attribute to display all elements of "categoryList" on a page "home.html". 
        model.addAttribute("categoryList", categoryList);
        
-       model.addAttribute("rowsQuantity", (int) 3);
+//       model.addAttribute("rowsQuantity", (int) 3);
+//-----------------------
        
+       List<List<CategoryEntity>> rowsList = new ArrayList<List<CategoryEntity>>();
+       List<CategoryEntity> row = new ArrayList<CategoryEntity>();
+       final int ROW_LENGTH = 4;
+/*       
+        for(CategoryEntity category : categoryList) {
+          
+          
+           row.add(category);
+            if(row.size()==ROW_LENGTH) {
+              rowsList.add(row);
+              row.clear();
+            }
+            else if(categoryList.) {
+            	
+            }
+        }
+*/
+       
+//Convert byte[of entities to files:
+//for(CategoryEntity category:categoryList) {
+// File file = new File(FILEPATH);		
+//}
+       
+              
+       
+       Iterator<CategoryEntity> iterator =  categoryList.iterator();
+       while(iterator.hasNext()) {
+    	  
+    	 row.add(iterator.next());
+         
+    	   if((row.size()==ROW_LENGTH)||(!iterator.hasNext())) {
+           log.debug("[EshopController.renderCatalogPage()] --> Current row list size = "+row.size());
+           log.debug("[EshopController.renderCatalogPage()] --> Current row = "+row.toString());
+             rowsList.add(row);
+             row = new ArrayList<CategoryEntity>();
+           }  
+       }
+       
+              
+       log.debug("[EshopController.renderCatalogPage()] --> rowsList list size = "+rowsList.size());
+       log.debug("[EshopController.renderCatalogPage()] --> rowsList list = "+rowsList.toString());
+       
+       
+       model.addAttribute("rowsList", rowsList);
+//-----------------------       
       }
       catch(Exception exc) {            	
          log.debug("[EshopController.renderHomePage()] --> EXCEPTION: "+exc.getMessage());
