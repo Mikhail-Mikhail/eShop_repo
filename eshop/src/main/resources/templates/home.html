@@ -29,7 +29,10 @@
   			   <tr th:each="row: ${rowsList}">
   			       <td th:each="item: ${row}" class="td-item-group">			
 					  <div  class="div-item-group">
-					      <img th:src=${item.photo} alt="">
+<!--  					      <img th:src="'/eshop/image/category?id='+${item.id}" alt="">   -->
+					      <img th:src="'/eshop/image/'+${item.getClass().getCanonicalName()}+'?id='+${item.id}" alt="">
+					      
+<!-- 					      <img th:src="@{'category/image/' + @{item.photo}}" alt="">    -->					      
 <!--   	  	  			    <img src="/eshop/img/items/resistor.jpg" alt="">   -->    	 
 	     	  	  		 <p class="group-title">
  		                    <span th:text="#{${item.name}}"></span>    

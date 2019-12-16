@@ -2,20 +2,27 @@
 package com.soft.controller;
 //------------------------------------------------------------------------------
 
+import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.soft.dao.EshopDAOImpl;
 import com.soft.entity.CategoryEntity;
 import com.soft.entity.LocaleMessageEntity;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -31,6 +38,10 @@ public class EshopController {
   @Autowired
   //Data access layer.
   private EshopDAOImpl eshopDaoImpl;	
+  
+//-------------
+  CategoryEntity ce;
+//-------------
      
   // Create logger which will log messages to GlassFish server's log and files. 
   // Files are located in the folder:  ../glassfish5/glassfish/domains/domain1/config/mylog2/
@@ -48,8 +59,12 @@ public class EshopController {
      
       try {
        //Get product's categories list form DB.	  
-       List<CategoryEntity > categoryList = eshopDaoImpl.readCategoryList();
-      
+       List<CategoryEntity> categoryList = eshopDaoImpl.readCategoryList();
+
+//-------------
+   ce = categoryList.get(0);
+//-------------
+       
         log.debug("[EshopController.renderCatalogPage()] --> Categories list size = "+categoryList.size());
        
        //Add attribute to display all elements of "categoryList" on a page "home.html". 
@@ -89,16 +104,16 @@ public class EshopController {
     	 row.add(iterator.next());
          
     	   if((row.size()==ROW_LENGTH)||(!iterator.hasNext())) {
-           log.debug("[EshopController.renderCatalogPage()] --> Current row list size = "+row.size());
-           log.debug("[EshopController.renderCatalogPage()] --> Current row = "+row.toString());
+//           log.debug("[EshopController.renderCatalogPage()] --> Current row list size = "+row.size());
+//           log.debug("[EshopController.renderCatalogPage()] --> Current row = "+row.toString());
              rowsList.add(row);
              row = new ArrayList<CategoryEntity>();
            }  
        }
        
               
-       log.debug("[EshopController.renderCatalogPage()] --> rowsList list size = "+rowsList.size());
-       log.debug("[EshopController.renderCatalogPage()] --> rowsList list = "+rowsList.toString());
+//       log.debug("[EshopController.renderCatalogPage()] --> rowsList list size = "+rowsList.size());
+//       log.debug("[EshopController.renderCatalogPage()] --> rowsList list = "+rowsList.toString());
        
        
        model.addAttribute("rowsList", rowsList);
@@ -113,6 +128,22 @@ public class EshopController {
     return "home.html";      
    }         
 
+   //Request for category's image:
+//   @RequestMapping(method=GET, path="/category/image/{id}")
+   @RequestMapping(method=GET, path="/image/category")
+   public void showCategoryImage(HttpServletResponse response) throws IOException {
+//   public void showCategoryImage(@PathVariable String id, HttpServletResponse response) throws IOException {
+	   
+	 log.debug(""); 
+	 log.debug("[EshopController.showCategoryImage()] --> Request for \"/category/image/\" received. ");  
+   
+	   response.setContentType("image/jpeg"); 
+//ce.getClass().getCanonicalName()
+//   Product product = productRepository.findById(id);
+
+   InputStream is = new ByteArrayInputStream(ce.getPhoto());
+   IOUtils.copy(is, response.getOutputStream());
+   }   
    
    //Request for "catalog.html":
 
