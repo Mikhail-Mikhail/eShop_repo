@@ -9,6 +9,7 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 
 import com.soft.entity.LocaleMessageEntity;
+import com.soft.entity.BaseEntity;
 import com.soft.entity.CategoryEntity;
 
 //------------------------------------------------------------------------------
@@ -19,13 +20,16 @@ public interface EshopDAO {
   
    //====================== Hibernate-based methods: ========================//
     
-   //Initialization of database access by means of Hibernate API.  
+   //Initialization of database access.  
    public void setSessionFactory(SessionFactory sessionFactory);      
         
-     //Method to read from table "locale" of database by means of Hibernate API.      
+     //Method to read from table "locale" of database.      
      public LocaleMessageEntity readLocaleMessageByKey(String msgKey, String locale);
      
-      //Method to read all data from table "category" by means of Hibernate API.      
+      //Method to read all data from table "category".      
       public List<CategoryEntity> readCategoryList();
+      
+       //Method to read entity from any table by "id".      
+       public BaseEntity readEntityById(String entityName,Long id);
 }         
 //------------------------------------------------------------------------------

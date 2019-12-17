@@ -16,6 +16,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.soft.dao.EshopDAOImpl;
+import com.soft.entity.BaseEntity;
 import com.soft.entity.CategoryEntity;
 import com.soft.entity.LocaleMessageEntity;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -107,24 +108,22 @@ public class EshopController {
    }    
    
 
-   //Request for category's image:
+   //Requests for images:
 
-//   @RequestMapping(method=GET, path="/image/category")
-//   @RequestMapping(method=GET, path="/image/category/{id}")
    @RequestMapping(method=GET, path="/image")
-   public void showCategoryImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//   public void showCategoryImage(HttpServletResponse response) throws IOException {
+   public void showImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	   
 	 log.debug(""); 
-	 log.debug("[EshopController.showCategoryImage()] --> Request for \"/category/image/\" received. ");
+	 log.debug("[EshopController.showImage()] --> Request for \"/image\" received. ");
 	 
-	 log.debug("[EshopController.showCategoryImage()] --> "+"Table =  "+request.getParameter("table")+"  Id = "+request.getParameter("id").toString());
+	 log.debug("[EshopController.showImage()] --> "+"Table =  "+request.getParameter("entity")+"  Id = "+request.getParameter("id").toString());
+	 
+	  //Read entity from DB by "id".
+	  BaseEntity be = eshopDaoImpl.readEntityById(request.getParameter("entity"), Long.parseLong(request.getParameter("id")));
 	 
 	   response.setContentType("image/jpeg"); 
-//ce.getClass().getCanonicalName()
-//   Product product = productRepository.findById(id);
 
-   InputStream is = new ByteArrayInputStream(ce.getPhoto());
+   InputStream is = new ByteArrayInputStream(be.getPhoto());
    IOUtils.copy(is, response.getOutputStream());
    }   
    
