@@ -14,7 +14,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "category")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class CategoryEntity {
+public class CategoryEntity extends BaseEntity{
   //Empty constructor, it's used by Hibernate.
   public CategoryEntity() {		
   }
