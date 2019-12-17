@@ -152,7 +152,7 @@ public class EshopDAOImpl implements EshopDAO{
 //                      List resultList = session.createQuery("SELECT DISTINCT entity FROM "+entityName+" entity WHERE category_id="+"'"+id+"'").list();
 	                List resultList = session.createQuery("SELECT DISTINCT entity FROM "+entityName+" entity WHERE "+idStr+"'"+id+"'").list();
 	                
-
+                       //
                        for (CategoryEntity entity : (List<CategoryEntity>) resultList) {                        
                     	 resultEntity = entity;   
                        } 	                
