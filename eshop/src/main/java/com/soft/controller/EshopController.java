@@ -63,6 +63,7 @@ public class EshopController {
 
 //-------------
    ce = categoryList.get(0);
+   
 //-------------
        
         log.debug("[EshopController.renderCatalogPage()] --> Categories list size = "+categoryList.size());
@@ -70,32 +71,10 @@ public class EshopController {
        //Add attribute to display all elements of "categoryList" on a page "home.html". 
        model.addAttribute("categoryList", categoryList);
        
-//       model.addAttribute("rowsQuantity", (int) 3);
-//-----------------------
        
        List<List<CategoryEntity>> rowsList = new ArrayList<List<CategoryEntity>>();
        List<CategoryEntity> row = new ArrayList<CategoryEntity>();
        final int ROW_LENGTH = 4;
-/*       
-        for(CategoryEntity category : categoryList) {
-          
-          
-           row.add(category);
-            if(row.size()==ROW_LENGTH) {
-              rowsList.add(row);
-              row.clear();
-            }
-            else if(categoryList.) {
-            	
-            }
-        }
-*/
-       
-//Convert byte[of entities to files:
-//for(CategoryEntity category:categoryList) {
-// File file = new File(FILEPATH);		
-//}
-       
               
        
        Iterator<CategoryEntity> iterator =  categoryList.iterator();
@@ -116,8 +95,7 @@ public class EshopController {
 //       log.debug("[EshopController.renderCatalogPage()] --> rowsList list = "+rowsList.toString());
        
        
-       model.addAttribute("rowsList", rowsList);
-//-----------------------       
+       model.addAttribute("rowsList", rowsList);       
       }
       catch(Exception exc) {            	
          log.debug("[EshopController.renderHomePage()] --> EXCEPTION: "+exc.getMessage());
@@ -126,17 +104,22 @@ public class EshopController {
                    
     //Return page's name. 
     return "home.html";      
-   }         
+   }    
+   
 
    //Request for category's image:
-//   @RequestMapping(method=GET, path="/category/image/{id}")
-   @RequestMapping(method=GET, path="/image/category")
-   public void showCategoryImage(HttpServletResponse response) throws IOException {
-//   public void showCategoryImage(@PathVariable String id, HttpServletResponse response) throws IOException {
+
+//   @RequestMapping(method=GET, path="/image/category")
+//   @RequestMapping(method=GET, path="/image/category/{id}")
+   @RequestMapping(method=GET, path="/image")
+   public void showCategoryImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//   public void showCategoryImage(HttpServletResponse response) throws IOException {
 	   
 	 log.debug(""); 
-	 log.debug("[EshopController.showCategoryImage()] --> Request for \"/category/image/\" received. ");  
-   
+	 log.debug("[EshopController.showCategoryImage()] --> Request for \"/category/image/\" received. ");
+	 
+	 log.debug("[EshopController.showCategoryImage()] --> "+"Table =  "+request.getParameter("table")+"  Id = "+request.getParameter("id").toString());
+	 
 	   response.setContentType("image/jpeg"); 
 //ce.getClass().getCanonicalName()
 //   Product product = productRepository.findById(id);
