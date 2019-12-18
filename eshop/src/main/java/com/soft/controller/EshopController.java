@@ -39,63 +39,56 @@ public class EshopController {
   @Autowired
   //Data access layer.
   private EshopDAOImpl eshopDaoImpl;	
-  
-//-------------
-  CategoryEntity ce;
-//-------------
-     
+       
   // Create logger which will log messages to GlassFish server's log and files. 
   // Files are located in the folder:  ../glassfish5/glassfish/domains/domain1/config/mylog2/
   // Logger's configuration is set in file "log4j2.xml". 
   // For Linux folder "mylogs" is located at /home/mihail/mylogs 
-  public static final Logger log = LogManager.getLogger(EshopController.class.getName());     
+  public static final Logger log = LogManager.getLogger(EshopController.class.getName());
+  
         
    //Request for "home.html":
 
    @RequestMapping(method=GET, path="/home.html")        
    public String renderHomePage(ModelMap model, HttpServletRequest request) {
 	   
+	 //Number of product's categories displayed in a row.  
+	 final int ROW_LENGTH = 4;
+	 
 	 log.debug(""); 
-     log.debug("[EshopController.renderCatalogPage()] --> Request for \"home.html\" received. ");
+     log.debug("[EshopController.renderHomePage()] --> Request for \"home.html\" received. ");
      
       try {
        //Get product's categories list form DB.	  
        List<CategoryEntity> categoryList = eshopDaoImpl.readCategoryList();
-
-//-------------
-   ce = categoryList.get(0);
-   
-//-------------
        
-        log.debug("[EshopController.renderCatalogPage()] --> Categories list size = "+categoryList.size());
+        log.debug("[EshopController.renderHomePage()] --> Categories list size = "+categoryList.size());
        
-       //Add attribute to display all elements of "categoryList" on a page "home.html". 
-       model.addAttribute("categoryList", categoryList);
+         //Add attribute to display all elements of "categoryList" on a page "home.html". 
+         model.addAttribute("categoryList", categoryList);
        
-       
-       List<List<CategoryEntity>> rowsList = new ArrayList<List<CategoryEntity>>();
-       List<CategoryEntity> row = new ArrayList<CategoryEntity>();
-       final int ROW_LENGTH = 4;
-              
-       
-       Iterator<CategoryEntity> iterator =  categoryList.iterator();
-       while(iterator.hasNext()) {
+          //List of categories row lists. Each row contains ROW_LENGTH categories.
+          List<List<CategoryEntity>> rowsList = new ArrayList<List<CategoryEntity>>();
+          //List of categories to display in a single row.
+          List<CategoryEntity> row = new ArrayList<CategoryEntity>();
+                              
+            Iterator<CategoryEntity> iterator =  categoryList.iterator();
+             while(iterator.hasNext()) {
     	  
-    	 row.add(iterator.next());
+    	       row.add(iterator.next());
          
-    	   if((row.size()==ROW_LENGTH)||(!iterator.hasNext())) {
-//           log.debug("[EshopController.renderCatalogPage()] --> Current row list size = "+row.size());
-//           log.debug("[EshopController.renderCatalogPage()] --> Current row = "+row.toString());
-             rowsList.add(row);
-             row = new ArrayList<CategoryEntity>();
-           }  
-       }
+    	        if((row.size()==ROW_LENGTH)||(!iterator.hasNext())) {
+//               log.debug("[EshopController.renderHomePage()] --> Current row list size = "+row.size());
+//               log.debug("[EshopController.renderHomePage()] --> Current row = "+row.toString());
+                  rowsList.add(row);
+                   row = new ArrayList<CategoryEntity>();
+                }  
+             }
+                     
+//       log.debug("[EshopController.renderHomePage()] --> rowsList list size = "+rowsList.size());
+//       log.debug("[EshopController.renderHomePage()] --> rowsList list = "+rowsList.toString());
        
-              
-//       log.debug("[EshopController.renderCatalogPage()] --> rowsList list size = "+rowsList.size());
-//       log.debug("[EshopController.renderCatalogPage()] --> rowsList list = "+rowsList.toString());
-       
-       
+       //Add attribute to display all elements of "categoryList" in a rows by ROW_LENGTH elements on a page "home.html". 
        model.addAttribute("rowsList", rowsList);       
       }
       catch(Exception exc) {            	
@@ -116,15 +109,23 @@ public class EshopController {
 	 log.debug(""); 
 	 log.debug("[EshopController.showImage()] --> Request for \"/image\" received. ");
 	 
-	 log.debug("[EshopController.showImage()] --> "+"Table =  "+request.getParameter("entity")+"  Id = "+request.getParameter("id").toString());
+	 log.debug("[EshopController.showImage()] --> "+"Entity =  "+request.getParameter("entity")+"  Id = "+request.getParameter("id").toString());
 	 
-	  //Read entity from DB by "id".
-	  BaseEntity be = eshopDaoImpl.readEntityById(request.getParameter("entity"), Long.parseLong(request.getParameter("id")));
+	  try {
 	 
-	   response.setContentType("image/jpeg"); 
+  	    //Read entity from DB by "id".
+	    BaseEntity be = eshopDaoImpl.readEntityById(request.getParameter("entity"), Long.parseLong(request.getParameter("id")));
+	 
+	     response.setContentType("image/jpeg"); 
 
-   InputStream is = new ByteArrayInputStream(be.getPhoto());
-   IOUtils.copy(is, response.getOutputStream());
+	      //Read entity's photo as a byte array and transmit it to response.
+          InputStream inpStream = new ByteArrayInputStream(be.getPhoto());
+          IOUtils.copy(inpStream, response.getOutputStream());
+	  }  
+	  catch(Exception exc) {            	
+	     log.debug("[EshopController.showImage()] --> EXCEPTION: "+exc.getMessage());
+	   	 log.debug("[EshopController.showImage()] --> EXCEPTION TO STRING: "+exc.toString());         	
+	  } 
    }   
    
    //Request for "catalog.html":

@@ -131,34 +131,33 @@ public class EshopDAOImpl implements EshopDAO{
 	         try { 
 	             //Open session to read from database.
 	             session = sessionFactory.openSession();
-	                //Begin transaction.
-	                session.beginTransaction();                                        
+	               //Begin transaction.
+	               session.beginTransaction();                                        
 
-	                  //Retrieve data from database.
-	                  //Result of this query will be cached.	                
-//	                List resultList = session.createQuery("SELECT DISTINCT entity FROM "+entityName+" entity WHERE category_id="+"'"+id+"'").list();
-	                
-//-------------
-	                
+ 	                //Construct entity's "id" from entity's name.
+	                //Entity's name has a format: NameEntity, where field Name - name of entity.
+	                //Entity's "id" has a format: Name_id, where field Name - name of entity.
+	                //To get entity's "id" from entity's name we should to take field "Name" from entity's name and add field "_id" to it.
 	                Pattern pattern = Pattern.compile("Entity");
 	                Matcher matcher = pattern.matcher(entityName);
 	                String idStr = "";
-	                while (matcher.find()) {
-	                	EshopController.log.debug("[EshopDAOImpl.readEntityById()] --> RegExp: "+entityName.substring(0, matcher.start()));
-	                	idStr = entityName.substring(0, matcher.start()).toLowerCase()+"_id=";
-	                }	                
-	                
-//-------------	                
-//                      List resultList = session.createQuery("SELECT DISTINCT entity FROM "+entityName+" entity WHERE category_id="+"'"+id+"'").list();
-	                List resultList = session.createQuery("SELECT DISTINCT entity FROM "+entityName+" entity WHERE "+idStr+"'"+id+"'").list();
+	                 while (matcher.find()) {
+	                	//EshopController.log.debug("[EshopDAOImpl.readEntityById()] --> RegExp: "+entityName.substring(0, matcher.start()));
+	                	//Construct name of entity's "id" from entity's name.
+	                	idStr = entityName.substring(0, matcher.start()).toLowerCase()+"_id";
+	                 }	                	                
+
+	                 //Retrieve data from database.
+	                 //Result of this query will be cached.
+	                 List resultList = session.createQuery("SELECT DISTINCT entity FROM "+entityName+" entity WHERE "+idStr+"="+"'"+id+"'").list();
 	                
                        //
                        for (CategoryEntity entity : (List<CategoryEntity>) resultList) {                        
                     	 resultEntity = entity;   
                        } 	                
 	                                                                           
-	                //Commit transaction.
-	                session.getTransaction().commit();
+	               //Commit transaction.
+	               session.getTransaction().commit();
 	              //Close session with a database. 
 	              session.close();                                               
 	         } 
