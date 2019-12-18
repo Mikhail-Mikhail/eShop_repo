@@ -11,11 +11,11 @@
        
         <div class="content-container" th:fragment="content">  
                                                      
-           <!-- List of items. -->
+           <!-- Catalog list. -->
            <div class="div-catalog">                             
-			  <h3 class="catalog-title"> <span th:text="#{locale.catalogName}"> </span></h3>			  
-			   <ul class="catalog-list">
-			   
+			  <h3 class="catalog-title"> <span th:text="#{locale.catalogName}"> </span></h3>
+			  			  
+			   <ul id="catalogList" class="catalog-list">			   
 			      <!-- Iterate attribute "categoryList" to create list elements. -->
  			      <li th:each="category: ${categoryList}"> <span th:text="#{${category.name}}"> </span></li>      
 			   </ul>
@@ -23,20 +23,17 @@
 			
 			<div class="div-groups-block">		      
   			  	
-  			  <table>
-
-
+  			  	
+  			  <!-- Catalog table. -->	
+  			  <table id="catalogTable">
+                
   			   <tr th:each="row: ${rowsList}">
   			       <td th:each="item: ${row}" class="td-item-group">			
 					  <div  class="div-item-group">
-  					      <img th:src="'/eshop/image?entity='+${item.getClass().getSimpleName()}+'&id='+${item.id}" alt="">   
-<!-- 					      <img th:src="'/eshop/image/'+${item.getClass().getCanonicalName()}+'?id='+${item.id}" alt="">   -->
-					      
-<!-- 					      <img th:src="@{'category/image/' + @{item.photo}}" alt="">    -->					      
-<!--   	  	  			    <img src="/eshop/img/items/resistor.jpg" alt="">   -->    	 
-	     	  	  		 <p class="group-title">
- 		                    <span th:text="#{${item.name}}"></span>    
-		                 </p>         
+  					     <img th:src="'/eshop/image?entity='+${item.getClass().getSimpleName()}+'&id='+${item.id}" alt="">       	 
+	     	  	  		   <p class="group-title">
+ 		                     <span th:text="#{${item.name}}"></span>    
+		                   </p>         
 		              </div>
 		            </td>  	      
   			   </tr>

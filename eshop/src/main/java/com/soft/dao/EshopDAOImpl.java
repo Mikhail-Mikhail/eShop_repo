@@ -62,7 +62,7 @@ public class EshopDAOImpl implements EshopDAO{
                   session.beginTransaction();                                        
 
                     //Retrieve data from database.
-                    //Result of this query will be cached.
+                    //Result of this query will be cached. Caching is suitable for static data only!!!
                     List result = session.createQuery("SELECT DISTINCT msg FROM LocaleMessageEntity msg WHERE msgkey="+"'"+messageKey+"'"+" AND locale="+"'"+msgLocale+"'").setCacheable(true).setCacheRegion("MY_CACHE").list(); 
 
                       for(LocaleMessageEntity msg : (List<LocaleMessageEntity>) result) {                        
@@ -100,9 +100,12 @@ public class EshopDAOImpl implements EshopDAO{
                 //Begin transaction.
                 session.beginTransaction();                                        
 
-                  //Retrieve data from database.
-                  //Result of this query will be cached.
-                  resultList = session.createQuery("FROM CategoryEntity").setCacheable(true).setCacheRegion("MY_CACHE").list();                    
+                  //Create query to retrieve data from database.
+                  resultList = session.createQuery("FROM CategoryEntity").list();
+                  
+                  //Same query but result will be cached.
+                  //Caching is suitable for static data only!!!
+                  //resultList = session.createQuery("FROM CategoryEntity").setCacheable(true).setCacheRegion("MY_CACHE").list();                
                                                                            
                 //Commit transaction.
                 session.getTransaction().commit();
@@ -118,9 +121,9 @@ public class EshopDAOImpl implements EshopDAO{
   }
   
   
-   //Method to read entity from any table by "id".
+   //Method to read entity by its "name" and "id" from any DB table.
    @Override 
-   public BaseEntity readEntityById(String entityName,Long id) {
+   public BaseEntity readEntityByNameAndId(String entityName,Long id) {
 		  
 	  //Session with database.
 	  Session session; 
@@ -148,7 +151,7 @@ public class EshopDAOImpl implements EshopDAO{
 	                 }	                	                
 
 	                 //Retrieve data from database.
-	                 //Result of this query will be cached.
+	                 //This query does not cache result. Caching is suitable for static data only!!!
 	                 List resultList = session.createQuery("SELECT DISTINCT entity FROM "+entityName+" entity WHERE "+idStr+"="+"'"+id+"'").list();
 	                
                        //

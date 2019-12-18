@@ -1,6 +1,6 @@
 //---------------------------------------------------- --------------------------
 package com.soft.controller;
-//------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 
 import org.apache.commons.io.IOUtils;
 import org.apache.logging.log4j.LogManager;
@@ -29,7 +29,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-//------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
 
 // Class of MVC-controller.
 
@@ -40,20 +40,21 @@ public class EshopController {
   //Data access layer.
   private EshopDAOImpl eshopDaoImpl;	
        
-  // Create logger which will log messages to GlassFish server's log and files. 
+  // Create logger which will log messages to server's log and files. 
   // Files are located in the folder:  ../glassfish5/glassfish/domains/domain1/config/mylog2/
   // Logger's configuration is set in file "log4j2.xml". 
   // For Linux folder "mylogs" is located at /home/mihail/mylogs 
   public static final Logger log = LogManager.getLogger(EshopController.class.getName());
   
-        
-   //Request for "home.html":
+   //_______________________________________________________________//
+  
+   // Request for "home.html":
 
    @RequestMapping(method=GET, path="/home.html")        
    public String renderHomePage(ModelMap model, HttpServletRequest request) {
 	   
 	 //Number of product's categories displayed in a row.  
-	 final int ROW_LENGTH = 4;
+	 final int MAX_ROW_LENGTH = 4;
 	 
 	 log.debug(""); 
      log.debug("[EshopController.renderHomePage()] --> Request for \"home.html\" received. ");
@@ -77,16 +78,16 @@ public class EshopController {
     	  
     	       row.add(iterator.next());
          
-    	        if((row.size()==ROW_LENGTH)||(!iterator.hasNext())) {
-//               log.debug("[EshopController.renderHomePage()] --> Current row list size = "+row.size());
-//               log.debug("[EshopController.renderHomePage()] --> Current row = "+row.toString());
+    	        if((row.size()==MAX_ROW_LENGTH)||(!iterator.hasNext())) {
+               log.debug("[EshopController.renderHomePage()] --> Current row list size = "+row.size());
+               log.debug("[EshopController.renderHomePage()] --> Current row = "+row.toString());
                   rowsList.add(row);
                    row = new ArrayList<CategoryEntity>();
                 }  
              }
                      
-//       log.debug("[EshopController.renderHomePage()] --> rowsList list size = "+rowsList.size());
-//       log.debug("[EshopController.renderHomePage()] --> rowsList list = "+rowsList.toString());
+       log.debug("[EshopController.renderHomePage()] --> rowsList list size = "+rowsList.size());
+       log.debug("[EshopController.renderHomePage()] --> rowsList list = "+rowsList.toString());
        
        //Add attribute to display all elements of "categoryList" in a rows by ROW_LENGTH elements on a page "home.html". 
        model.addAttribute("rowsList", rowsList);       
@@ -99,9 +100,11 @@ public class EshopController {
     //Return page's name. 
     return "home.html";      
    }    
-   
 
-   //Requests for images:
+   
+   //_______________________________________________________________//
+
+   // Requests for images:
 
    @RequestMapping(method=GET, path="/image")
    public void showImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -113,8 +116,8 @@ public class EshopController {
 	 
 	  try {
 	 
-  	    //Read entity from DB by "id".
-	    BaseEntity be = eshopDaoImpl.readEntityById(request.getParameter("entity"), Long.parseLong(request.getParameter("id")));
+  	    //Read entity from DB by "name" and "id".
+	    BaseEntity be = eshopDaoImpl.readEntityByNameAndId(request.getParameter("entity"), Long.parseLong(request.getParameter("id")));
 	 
 	     response.setContentType("image/jpeg"); 
 
@@ -126,9 +129,12 @@ public class EshopController {
 	     log.debug("[EshopController.showImage()] --> EXCEPTION: "+exc.getMessage());
 	   	 log.debug("[EshopController.showImage()] --> EXCEPTION TO STRING: "+exc.toString());         	
 	  } 
-   }   
+   }      
    
-   //Request for "catalog.html":
+   
+   //_______________________________________________________________//   
+   
+   // Request for "catalog.html":
 
    @RequestMapping(method=GET, path="/catalog.html")        
    public String renderCatalogPage(ModelMap model, HttpServletRequest request) {
@@ -153,5 +159,5 @@ public class EshopController {
     //Return page's name. 
     return "catalog.html";      
    }         
-//------------------------------------------------------------------------------ 
+ //------------------------------------------------------------------------------- 
 }
