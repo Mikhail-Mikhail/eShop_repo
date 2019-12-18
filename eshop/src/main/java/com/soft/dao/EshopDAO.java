@@ -29,7 +29,7 @@ public interface EshopDAO {
       //Method to read all data from table "category".      
       public List<CategoryEntity> readCategoryList();
       
-       //Method to read entity from any table by "id".      
-       public BaseEntity readEntityById(String entityName,Long id);
+       //Method to read entity by its "name" and "id" from any DB table.     
+       public BaseEntity readEntityByNameAndId(String entityName,Long id);
 }         
 //------------------------------------------------------------------------------

@@ -12,8 +12,8 @@
  //Global variables:
    
  var langSelector;
- var resistorsGroup;
- var resistorsItem;
+ var catalogList;
+ var catalogTable; 
  
  var homeURL = "/eshop/home.html";
  var catalogURL = "/eshop/catalog.html";
@@ -29,9 +29,14 @@
 	//Find element to change language.  
 	langSelector = document.getElementById("langChange");
 	
-	 //Find elements to request for Resistor's catalog.  
-	 resistorsGroup = document.getElementById("resistorsGroup");
-	 resistorsItem = document.getElementById("resistorsItem");
+    $('#catalogList').children().css("border", "1px solid red");
+//	$('#catalogList').css("border", "1px solid red");
+	
+//	 //Find catalog table.  
+//	 catalogTable = document.getElementById("catalogTable");	 
+//
+// 	 //Find catalog list.  
+//	 catalogList = document.getElementById("catalogList");	 
 
 //----------------	
 //FOR DEBUG!  
@@ -48,11 +53,7 @@ debugBox = document.getElementById("debugBox");
   function SetEventListeners() {                       
                 
     //Set "onclick" event's listener for language selector.         
-    langSelector.onclick = langSelectorOnClickHandler;	
-    
-     //Set "onclick" event's listener for elements to request Resistor's catalog.  
-	 resistorsGroup.onclick = resistorsOnClickHandler;
-	 resistorsItem.onclick = resistorsOnClickHandler;
+    langSelector.onclick = langSelectorOnClickHandler;	    
    } 
 //------------------------------------------------------------------------------
 
@@ -71,7 +72,6 @@ debugBox.innerHTML = "Sending request...";
       //Request for home.html with parameter "lang=ru" or "lang=en" to switch language.
       window.location.href = homeURL+par;
      
-
 /*     
       //Send AJAX-request of type GET to server.       
       jQuery.ajax({
@@ -93,14 +93,14 @@ debugBox.innerHTML = "Sending request...";
   }
 //------------------------------------------------------------------------------ 
   
-  //Listener of event "onclick" for elements to request Resistor's catalog.   
-
-  function resistorsOnClickHandler(){
-	 //Parameter of request.
-	 var par = "?group=resistors"; 
-
-	  //Request for catalog.html with parameter "group=resistors".
-	  window.location.href = catalogURL+par;
-  }	  
+//  //Listener of event "onclick" for elements to request Resistor's catalog.   
+//
+//  function resistorsOnClickHandler(){
+//	 //Parameter of request.
+//	 var par = "?group=resistors"; 
+//
+//	  //Request for catalog.html with parameter "group=resistors".
+//	  window.location.href = catalogURL+par;
+//  }	  
 //------------------------------------------------------------------------------	  
   
