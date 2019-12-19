@@ -137,7 +137,7 @@ public class EshopController {
    // Request for catalog:
 
    @RequestMapping(method=GET, path="/catalog")        
-   public String renderCatalogContent(ModelMap model, HttpServletRequest request) {
+   public String renderCatalogContent(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 	  
 	 //Request's parameter.  
 	 String reqPar = ""; 
@@ -154,7 +154,7 @@ public class EshopController {
    	     log.debug("[EshopController.renderCatalogContent()] --> EXCEPTION TO STRING: "+exc.toString());         	
    	   } 
        
-      model.addAttribute("group", "Resistors");
+      model.addAttribute("test", "ID="+reqPar);
                                      
     
     //Return fragment "ContentFragment" of a page "home.html". 
@@ -163,7 +163,9 @@ public class EshopController {
     //format of returning string:  viewresolver.setViewNames(new String[] {"*.html", "*.xhtml", "*::*"});        
 //    return "home :: ContentFragment";
       
-    return "id="+reqPar;  
+//    return "id="+reqPar;
+//   response.getOutputStream().print("id="+reqPar);
+    return "catalog.html";  
    }         
  //------------------------------------------------------------------------------- 
 }

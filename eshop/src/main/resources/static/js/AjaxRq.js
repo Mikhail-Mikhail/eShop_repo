@@ -26,15 +26,14 @@
 	//Find element to change language.  
 	langSelector = document.getElementById("langChange");
 	
-
-	  //Find all elements of catalog list and set its "onclick" handlers.
-	  $('#catalogList').children().each(function(i, entry) {
+	  //Find all elements of catalog list and catalog table to set their "onclick" handlers.
+	  $.merge($('#catalogList').children(), $('#catalogTable').find("td")).each(function(i, entry) {
 		   entry.onclick = function(){
 			   var url = "/eshop/catalog";
-			   var data = "id="+entry.value
+			   var data = "id="+entry.getAttribute('value');
 			     
-			     //Send AJAX-request.
-			     sendAjaxRequest("GET", url, data, showCatalog);			
+			     //Send AJAX-request to show content of selected category.
+			     sendAjaxRequest("GET", url, data, showCategoryContent);			
 		   }
       });
 	 
@@ -113,9 +112,12 @@ debugBox.innerHTML = "Sending request...";
 	      }); 
   }	      
 //------------------------------------------------------------------------------	
+
+  //Function to display content of the selected category.
   
-  function showCatalog(result){	 
-	alert("Response recieved!!!");
-//	$("content-container").
+  function showCategoryContent(result){	 
+
+	//Insert result of AJAX-request into "content-container".
+	$(".content-container").html(result);
   }
 //------------------------------------------------------------------------------  

@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    
-    <head th:include="layout :: head(title=~{::title}, myScript=@{'/js/AjaxRq.js'}, myCss=@{'/css/catalog.css'})">
-      <title>Catalog</title> 
-      <meta charset="utf-8">
-    </head>
-    
-    <body id="BodyElem" th:include="layout :: body(css_class='footer_home_page')"  th:with="content=~{::content}">    
-       
-       
-        <div class="content-container" th:fragment="content">                                                          
-			
-			<div>
-			 <span th:text="${group}"></span>
-			</div>								
-
-        </div>
-    </body>
-</html>
+              
+  <div th:fragment="content">                                                          									
+    <span th:text="${test}"></span>
+  </div>
