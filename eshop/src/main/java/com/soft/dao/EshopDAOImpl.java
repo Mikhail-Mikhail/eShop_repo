@@ -140,7 +140,7 @@ public class EshopDAOImpl implements EshopDAO{
  	                //Construct entity's "id" from entity's name.
 	                //Entity's name has a format: NameEntity, where field Name - name of entity.
 	                //Entity's "id" has a format: Name_id, where field Name - name of entity.
-	                //To get entity's "id" from entity's name we should to take field "Name" from entity's name and add field "_id" to it.
+	                //To get entity's "id" from entity's name we should to take field "Name" from entity's name and append field "_id" to it.
 	                Pattern pattern = Pattern.compile("Entity");
 	                Matcher matcher = pattern.matcher(entityName);
 	                String idStr = "";

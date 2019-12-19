@@ -134,30 +134,36 @@ public class EshopController {
    
    //_______________________________________________________________//   
    
-   // Request for "catalog.html":
+   // Request for catalog:
 
-   @RequestMapping(method=GET, path="/catalog.html")        
-   public String renderCatalogPage(ModelMap model, HttpServletRequest request) {
+   @RequestMapping(method=GET, path="/catalog")        
+   public String renderCatalogContent(ModelMap model, HttpServletRequest request) {
 	  
 	 //Request's parameter.  
 	 String reqPar = ""; 
 	   
 	 log.debug(""); 
-     log.debug("[EshopController.renderCatalogPage()] --> Request for \"catalog.html\" received.");
+     log.debug("[EshopController.renderCatalogContent()] --> Request for \"catalog content\" received.");
      
        try {
-    	  reqPar = request.getParameter("group");
-           log.debug("[EshopController.renderCatalogPage()] --> Request's parameter ="+reqPar);
+    	  reqPar = request.getParameter("id");
+           log.debug("[EshopController.renderCatalogContent()] --> Request's parameter ="+reqPar);
        }
        catch(Exception exc) {            	
-   	     log.debug("[EshopController.renderCatalogPage()] --> EXCEPTION: "+exc.getMessage());
-   	     log.debug("[EshopController.renderCatalogPage()] --> EXCEPTION TO STRING: "+exc.toString());         	
+   	     log.debug("[EshopController.renderCatalogContent()] --> EXCEPTION: "+exc.getMessage());
+   	     log.debug("[EshopController.renderCatalogContent()] --> EXCEPTION TO STRING: "+exc.toString());         	
    	   } 
        
       model.addAttribute("group", "Resistors");
-                               
-    //Return page's name. 
-    return "catalog.html";      
+                                     
+    
+    //Return fragment "ContentFragment" of a page "home.html". 
+    //JS-script of client side will insert this fragment into the page "home.html".
+    //View resolver in file "AppConfig.java" must be configured for this
+    //format of returning string:  viewresolver.setViewNames(new String[] {"*.html", "*.xhtml", "*::*"});        
+//    return "home :: ContentFragment";
+      
+    return "id="+reqPar;  
    }         
  //------------------------------------------------------------------------------- 
 }

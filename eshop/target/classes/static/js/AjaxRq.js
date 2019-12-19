@@ -11,12 +11,9 @@
 
  //Global variables:
    
- var langSelector;
- var catalogList;
- var catalogTable; 
+ var langSelector; 
  
  var homeURL = "/eshop/home.html";
- var catalogURL = "/eshop/catalog.html";
  
  var debugBox; //FOR DEBUG!
     
@@ -29,15 +26,18 @@
 	//Find element to change language.  
 	langSelector = document.getElementById("langChange");
 	
-    $('#catalogList').children().css("border", "1px solid red");
-//	$('#catalogList').css("border", "1px solid red");
-	
-//	 //Find catalog table.  
-//	 catalogTable = document.getElementById("catalogTable");	 
-//
-// 	 //Find catalog list.  
-//	 catalogList = document.getElementById("catalogList");	 
 
+	  //Find all elements of catalog list and set its "onclick" handlers.
+	  $('#catalogList').children().each(function(i, entry) {
+		   entry.onclick = function(){
+			   var url = "/eshop/catalog";
+			   var data = "id="+entry.value
+			     
+			     //Send AJAX-request.
+			     sendAjaxRequest("GET", url, data, showCatalog);			
+		   }
+      });
+	 
 //----------------	
 //FOR DEBUG!  
 debugBox = document.getElementById("debugBox");
@@ -92,15 +92,30 @@ debugBox.innerHTML = "Sending request...";
    */   
   }
 //------------------------------------------------------------------------------ 
+
+  //Function to send AJAX-request.
   
-//  //Listener of event "onclick" for elements to request Resistor's catalog.   
-//
-//  function resistorsOnClickHandler(){
-//	 //Parameter of request.
-//	 var par = "?group=resistors"; 
-//
-//	  //Request for catalog.html with parameter "group=resistors".
-//	  window.location.href = catalogURL+par;
-//  }	  
-//------------------------------------------------------------------------------	  
+  function sendAjaxRequest(requestType, url, data, callbackFunc){
   
+	      //Send AJAX-request.       
+	      jQuery.ajax({
+	                   url: url,
+	                   type: requestType, 
+	                   headers: {
+	                     "Content-Type": undefined
+	                   },        
+	                   data: data, 
+	                   processData: false,                                       
+	                   contentType: false, 
+	                   success: function(result) {                	   
+	                	  callbackFunc(result);       
+	                  }    
+	      }); 
+  }	      
+//------------------------------------------------------------------------------	
+  
+  function showCatalog(result){	 
+	alert("Response recieved!!!");
+//	$("content-container").
+  }
+//------------------------------------------------------------------------------  
