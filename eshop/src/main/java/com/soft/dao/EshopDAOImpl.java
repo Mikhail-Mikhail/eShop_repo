@@ -1,4 +1,3 @@
- 
 //------------------------------------------------------------------------------
 package com.soft.dao;
 //------------------------------------------------------------------------------
@@ -7,9 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+
 import com.soft.controller.EshopController;
 import com.soft.entity.BaseEntity;
 import com.soft.entity.CategoryEntity;
@@ -41,11 +41,11 @@ public class EshopDAOImpl implements EshopDAO{
     public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
+             
+    //_______________________________________________________________//
     
-    //====================== Hibernate-based methods: ========================//  
-       
-
-	//Method to read from table "locale" of database by means of Hibernate API.          
+	//Method to read from table "locale" of database by means of Hibernate API. 
+    
     @Override           
     public LocaleMessageEntity readLocaleMessageByKey(String messageKey, String msgLocale) {                    
        
@@ -82,9 +82,10 @@ public class EshopDAOImpl implements EshopDAO{
       return localeMessage;     
     }                                
 
- 
+  //_______________________________________________________________//
 
   //Method to read all data from table "category" by means of Hibernate API.  
+    
   @Override 
   public List<CategoryEntity> readCategoryList(){
 	  
@@ -103,7 +104,7 @@ public class EshopDAOImpl implements EshopDAO{
                   //Create query to retrieve data from database.
                   resultList = session.createQuery("FROM CategoryEntity").list();
                   
-                  //Same query but result will be cached.
+                  //The same query but the result will be cached.
                   //Caching is suitable for static data only!!!
                   //resultList = session.createQuery("FROM CategoryEntity").setCacheable(true).setCacheRegion("MY_CACHE").list();                
                                                                            
@@ -121,7 +122,10 @@ public class EshopDAOImpl implements EshopDAO{
   }
   
   
+   //_______________________________________________________________//
+  
    //Method to read entity by its "name" and "id" from any DB table.
+  
    @Override 
    public BaseEntity readEntityByNameAndId(String entityName,Long id) {
 		  
@@ -170,6 +174,45 @@ public class EshopDAOImpl implements EshopDAO{
 	         }           
 
 	 return resultEntity;     
+   }
+   
+   
+   //_______________________________________________________________//
+     
+   //Method to read entity list by "name" from any DB table.
+   
+   @Override      
+   public List<BaseEntity> readEntityListByName(String entityName, Integer startRecord, Integer numOfRecords){
+	  
+	     //Session with database.
+	     Session session; 
+	      
+	      //List of retrieved data.
+	      List<BaseEntity> resultList = null;
+
+	         try { 
+	             //Open session to read from database.
+	             session = sessionFactory.openSession();
+	                //Begin transaction.
+	                session.beginTransaction();                                        
+
+	                  //Create query to retrieve data from database.
+	                   Query query= session.createQuery("FROM ResistorEntity");
+	                    query.setFirstResult(startRecord);
+	                    query.setMaxResults(numOfRecords);
+	                    resultList = query.list();	                                  
+	                                                                           
+	                //Commit transaction.
+	                session.getTransaction().commit();
+	              //Close session with a database. 
+	              session.close();                                               
+	         } 
+	         catch(Exception exc) {
+	      	   EshopController.log.debug("[EshopDAOImpl.readEntityListByName()] --> EXCEPTION: "+exc.getMessage());
+	      	   EshopController.log.debug("[EshopDAOImpl.readEntityListByName()] --> EXCEPTION TO STRING: "+exc.toString());           
+	         }           
+	  
+	 return resultList;      
    }
 }
 //------------------------------------------------------------------------------ 

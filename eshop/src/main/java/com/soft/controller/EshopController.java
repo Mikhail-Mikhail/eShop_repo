@@ -19,6 +19,8 @@ import com.soft.dao.EshopDAOImpl;
 import com.soft.entity.BaseEntity;
 import com.soft.entity.CategoryEntity;
 import com.soft.entity.LocaleMessageEntity;
+import com.soft.entity.ResistorEntity;
+
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.io.ByteArrayInputStream;
@@ -79,15 +81,15 @@ public class EshopController {
     	       row.add(iterator.next());
          
     	        if((row.size()==MAX_ROW_LENGTH)||(!iterator.hasNext())) {
-               log.debug("[EshopController.renderHomePage()] --> Current row list size = "+row.size());
-               log.debug("[EshopController.renderHomePage()] --> Current row = "+row.toString());
+               //log.debug("[EshopController.renderHomePage()] --> Current row list size = "+row.size());
+               //log.debug("[EshopController.renderHomePage()] --> Current row = "+row.toString());
                   rowsList.add(row);
                    row = new ArrayList<CategoryEntity>();
                 }  
              }
                      
-       log.debug("[EshopController.renderHomePage()] --> rowsList list size = "+rowsList.size());
-       log.debug("[EshopController.renderHomePage()] --> rowsList list = "+rowsList.toString());
+       //log.debug("[EshopController.renderHomePage()] --> rowsList list size = "+rowsList.size());
+       //log.debug("[EshopController.renderHomePage()] --> rowsList list = "+rowsList.toString());
        
        //Add attribute to display all elements of "categoryList" in a rows by ROW_LENGTH elements on a page "home.html". 
        model.addAttribute("rowsList", rowsList);       
@@ -109,10 +111,10 @@ public class EshopController {
    @RequestMapping(method=GET, path="/image")
    public void showImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
 	   
-	 log.debug(""); 
-	 log.debug("[EshopController.showImage()] --> Request for \"/image\" received. ");
-	 
-	 log.debug("[EshopController.showImage()] --> "+"Entity =  "+request.getParameter("entity")+"  Id = "+request.getParameter("id").toString());
+//	 log.debug(""); 
+//	 log.debug("[EshopController.showImage()] --> Request for \"/image\" received. ");
+//	 
+//	 log.debug("[EshopController.showImage()] --> "+"Entity =  "+request.getParameter("entity")+"  Id = "+request.getParameter("id").toString());
 	 
 	  try {
 	 
@@ -139,32 +141,36 @@ public class EshopController {
    @RequestMapping(method=GET, path="/catalog")        
    public String renderCatalogContent(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 	  
-	 //Request's parameter.  
-	 String reqPar = ""; 
+	 CategoryEntity categoryEntity = null;  
+	 
+	  //Request's parameter.  
+	  String categoryID = ""; 
 	   
-	 log.debug(""); 
-     log.debug("[EshopController.renderCatalogContent()] --> Request for \"catalog content\" received.");
+	  log.debug(""); 
+      log.debug("[EshopController.renderCatalogContent()] --> Request for \"catalog content\" received.");
      
        try {
-    	  reqPar = request.getParameter("id");
-           log.debug("[EshopController.renderCatalogContent()] --> Request's parameter ="+reqPar);
+    	  categoryID = request.getParameter("id");
+           //log.debug("[EshopController.renderCatalogContent()] --> Request's parameter category_ID ="+categoryID);
+           
+    	   //Read entity of selected category from DB. 
+           categoryEntity = (CategoryEntity) eshopDaoImpl.readEntityByNameAndId(CategoryEntity.class.getSimpleName(), Long.parseLong(categoryID));
+           
+           List<BaseEntity> itemsList = eshopDaoImpl.readEntityListByName(ResistorEntity.class.getSimpleName(), 1, 10);
+           
+         //Add attribute to display navigation line.  
+         model.addAttribute("selectedCategory", categoryEntity);  
+              
+         //Add attribute to display list of items.  
+         model.addAttribute("itemsList", itemsList);  
+
        }
        catch(Exception exc) {            	
    	     log.debug("[EshopController.renderCatalogContent()] --> EXCEPTION: "+exc.getMessage());
    	     log.debug("[EshopController.renderCatalogContent()] --> EXCEPTION TO STRING: "+exc.toString());         	
-   	   } 
-       
-      model.addAttribute("test", "ID="+reqPar);
-                                     
-    
-    //Return fragment "ContentFragment" of a page "home.html". 
-    //JS-script of client side will insert this fragment into the page "home.html".
-    //View resolver in file "AppConfig.java" must be configured for this
-    //format of returning string:  viewresolver.setViewNames(new String[] {"*.html", "*.xhtml", "*::*"});        
-//    return "home :: ContentFragment";
-      
-//    return "id="+reqPar;
-//   response.getOutputStream().print("id="+reqPar);
+   	   }              
+            
+    //Return page's name.  
     return "catalog.html";  
    }         
  //------------------------------------------------------------------------------- 
