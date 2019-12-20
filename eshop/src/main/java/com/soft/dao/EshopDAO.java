@@ -31,5 +31,8 @@ public interface EshopDAO {
       
        //Method to read entity by its "name" and "id" from any DB table.     
        public BaseEntity readEntityByNameAndId(String entityName,Long id);
+       
+        //Method to read entity list by "name" from any DB table.     
+        public List<BaseEntity> readEntityListByName(String entityName, Integer startRecord, Integer numOfRecords);
 }         
 //------------------------------------------------------------------------------

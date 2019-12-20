@@ -1,4 +1,40 @@
-              
-  <div th:fragment="content">                                                          									
-    <span th:text="${test}"></span>
+  
+  <!-- Content of selected category. -->
+                
+  <div th:fragment="content">
+  
+    <link rel="stylesheet" th:href="@{/css/catalog.css}"  type="text/css"  />                                                          									
+  
+      <!-- Navigation box. -->
+      <div class="div-navigation">    
+        <span>
+          <a class="home-href" href="http://localhost:8080/eshop/home.html/" th:text="#{locale.homePageName}"></a>
+        </span> 
+         <span> > </span>    
+          <span th:text="#{${selectedCategory.name}}"> </span>
+      </div>    
+    
+      <!-- Filter's box. -->
+      <div class="div-filters">
+      </div>
+     
+      <!-- Items's box. -->
+      <div class="div-items">
+      
+              <!-- Table to display item's list. -->	
+  			  <table id="itemsListTable">
+                
+  			    <tr th:each="item: ${itemsList}">
+  			       <td  th:value="${item.id}">			
+					  <div class="div-items-list">
+<!--   					     <img th:src="'/eshop/image?entity='+${item.getClass().getSimpleName()}+'&id='+${item.id}" alt="">     -->       	 
+	     	  	  		   <p class="item-title">
+ 		                     <span th:text="${item.name}"></span>    
+		                   </p>         
+		              </div>
+		            </td>  	      
+  			    </tr>
+  			  	            
+	          </table>
+      </div>  
   </div>
