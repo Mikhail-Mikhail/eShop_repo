@@ -38,5 +38,5 @@
 38	en	locale.emptyCartName	empty
 39	ru	locale.searchButtonName	Поиск
 40	en	locale.searchButtonName	Search
-41	ru	locale.homePageName	Home Page
-42	en	locale.homePageName	Домашняя
+41	ru	locale.homePageName	Домашняя
+42	en	locale.homePageName	Home Page

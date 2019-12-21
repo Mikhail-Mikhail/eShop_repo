@@ -42,7 +42,7 @@ import com.soft.entity.LocaleMessageEntity;
 @SuppressWarnings("deprecation")
 @Configuration
 //Scan package "com.soft.controller" for searching of the MVC-controller.
-@ComponentScan(basePackages = "com.soft.controller") 
+@ComponentScan(basePackages = "com.soft.controller")
 @EnableWebMvc
 public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware{
 
