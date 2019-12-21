@@ -147,8 +147,8 @@ public class EshopController {
 	  String categoryID = ""; 
 	   
 	  log.debug(""); 
-      log.debug("[EshopController.renderCatalogContent()] --> Request for \"catalog content\" received.");
-     
+      log.debug("[EshopController.renderCatalogContent()] --> Request for \"catalog\" received.");
+           
        try {
     	  categoryID = request.getParameter("id");
            //log.debug("[EshopController.renderCatalogContent()] --> Request's parameter category_ID ="+categoryID);
@@ -156,7 +156,9 @@ public class EshopController {
     	   //Read entity of selected category from DB. 
            categoryEntity = (CategoryEntity) eshopDaoImpl.readEntityByNameAndId(CategoryEntity.class.getSimpleName(), Long.parseLong(categoryID));
            
-           List<BaseEntity> itemsList = eshopDaoImpl.readEntityListByName(ResistorEntity.class.getSimpleName(), 1, 10);
+           List<BaseEntity> itemsList = eshopDaoImpl.readEntityListByName(ResistorEntity.class.getSimpleName(), 0, 100);
+           
+log.debug("[EshopController.renderCatalogContent()] --> itemsList.length = "+itemsList.size());           
            
          //Add attribute to display navigation line.  
          model.addAttribute("selectedCategory", categoryEntity);  

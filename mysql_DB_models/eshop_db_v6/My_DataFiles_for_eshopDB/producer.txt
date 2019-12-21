@@ -1,52 +1,75 @@
-1	Jietong Switch
-2	Rexant
-3	Fairchild
-4	Diotec
-5	Infineon
-6	ON Semiconductor
-7	Sanyo
-8	Toshiba
-9	ST Microelectronics
-10	Rohm
-11	International rectifier
-12	Vishay
-13	Yageo
-14	CCO
-15	Bourns
-16	Fenghua
-17	Murata
-18	Finder
-19	Hongfa
-20	Omron
-21	TE Connectivity
-22	ECE
-23	Aimtec
-24	Chinfa
-25	PEAK
-26	Recom
-27	Power-One
-28	MEAN WELL
-29	Traco
-30	Betlux
-31	Kingbright
-32	G-nor
-33	Daier
-34	Broadcom
-35	Connfly
-36	Texas Instruments
-37	FTDI
-38	Maxim
-39	Microchip
-40	Intel
-41	Analog Devices
-42	AMD
-43	Altera
-44	Burr Brown
-45	Xilinx
-46	Glenair
-47	AUK Contractors
-48	KLS
-49	Sumsung
-50	TDK
-51	Jamicon
-52	Epcos
+1	9	Jietong Switch
+2	8	Rexant
+3	9	Rexant
+4	2	Fairchild
+5	4	Fairchild
+6	2	Diotec
+7	4	Diotec
+8	3	Infineon
+9	2	ON Semiconductor
+10	3	ON Semiconductor
+11	4	ON Semiconductor
+12	3	Sanyo
+13	3	Toshiba
+14	5	Toshiba
+15	3	ST Microelectronics
+16	2	Rohm
+17	4	Rohm
+18	2	International rectifier
+19	3	International rectifier
+20	4	International rectifier
+21	1	Vishay
+22	6	Vishay
+23	6	Yageo
+24	7	Yageo
+25	6	CCO
+26	8	CCO
+27	2	Bourns
+28	4	Bourns
+29	5	Bourns
+30	7	Fenghua
+31	6	Fenghua
+32	9	Fenghua
+33	1	Murata
+34	5	Murata
+35	8	Finder
+36	9	Finder
+37	7	Hongfa
+38	7	Omron
+39	7	TE Connectivity
+40	7	ECE
+41	10	Aimtec
+42	10	Chinfa
+43	10	PEAK
+44	7 Recom
+45	10	Power-One
+46	10	MEAN WELL
+47	10	Traco
+48	6	Betlux
+49	6	Kingbright
+50	8	G-nor
+51	6	Daier
+52	9	Broadcom
+53	8	Connfly
+54	3	Texas Instruments
+55	3	FTDI
+56	3	Maxim
+57	3	Microchip
+58	3	Intel
+59	3	Analog Devices
+60	3	AMD
+61	3	Altera
+62	2	Burr Brown
+63	3	Burr Brown
+64	3	Xilinx
+65	8	Glenair
+66	8	AUK Contractors
+67	6	KLS
+68	2	Sumsung
+69	3	Sumsung
+70	5	Sumsung
+71	3	TDK
+72	5	TDK
+73	1	Jamicon
+74	5	Jamicon
+75	5	Epcos

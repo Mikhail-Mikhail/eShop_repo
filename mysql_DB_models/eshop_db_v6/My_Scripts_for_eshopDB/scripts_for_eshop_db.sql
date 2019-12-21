@@ -32,16 +32,16 @@ DROP TABLE locale;
 */
 /*----------------------------------------------*/
 /*
-LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/producer.txt' INTO TABLE producer;
-LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/category.txt' INTO TABLE category;
-LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/units.txt' INTO TABLE units;
-LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/package.txt' INTO TABLE package; 
-LOAD DATA LOCAL INFILE '/home/mihail/programs/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/locale.txt' INTO TABLE locale;
+LOAD DATA LOCAL INFILE '/home/mihail/programs/project_mvn/eShop/eShop_repo/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/producer.txt' INTO TABLE producer;
+LOAD DATA LOCAL INFILE '/home/mihail/programs/project_mvn/eShop/eShop_repo/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/category.txt' INTO TABLE category;
+LOAD DATA LOCAL INFILE '/home/mihail/programs/project_mvn/eShop/eShop_repo/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/units.txt' INTO TABLE units;
+LOAD DATA LOCAL INFILE '/home/mihail/programs/project_mvn/eShop/eShop_repo/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/package.txt' INTO TABLE package; 
+LOAD DATA LOCAL INFILE '/home/mihail/programs/project_mvn/eShop/eShop_repo/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/locale.txt' INTO TABLE locale;
 */
 /*----------------------------------------------*/
 /*
 DELETE FROM category WHERE category_id=14;
-/*
+
 DELETE FROM producer WHERE (producer_id>30 AND producer_id<54);
 DELETE FROM producer WHERE producer_id=59;
 
