@@ -150,13 +150,16 @@ public class EshopController {
       log.debug("[EshopController.renderCatalogContent()] --> Request for \"catalog\" received.");
            
        try {
+    	  //Get "id" of selected category from request. 
     	  categoryID = request.getParameter("id");
-           //log.debug("[EshopController.renderCatalogContent()] --> Request's parameter category_ID ="+categoryID);
+log.debug("[EshopController.renderCatalogContent()] --> Request's parameter category_ID ="+categoryID);
            
     	   //Read entity of selected category from DB. 
-           categoryEntity = (CategoryEntity) eshopDaoImpl.readEntityByNameAndId(CategoryEntity.class.getSimpleName(), Long.parseLong(categoryID));
-           
-           List<BaseEntity> itemsList = eshopDaoImpl.readEntityListByName(ResistorEntity.class.getSimpleName(), 0, 100);
+           categoryEntity = (CategoryEntity) eshopDaoImpl.readEntityByNameAndId(CategoryEntity.class.getSimpleName(), Long.parseLong(categoryID));                   
+
+log.debug("[EshopController.renderCatalogContent()] --> Entity name = "+categoryEntity.getEntityName());           
+           //List<BaseEntity> itemsList = eshopDaoImpl.readEntityListByName(ResistorEntity.class.getSimpleName(), 0, 100);
+           List<BaseEntity> itemsList = eshopDaoImpl.readEntityListByName(categoryEntity.getEntityName(), 0, 100);
            
 log.debug("[EshopController.renderCatalogContent()] --> itemsList.length = "+itemsList.size());           
            
