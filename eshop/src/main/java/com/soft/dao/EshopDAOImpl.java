@@ -197,7 +197,7 @@ public class EshopDAOImpl implements EshopDAO{
 	                session.beginTransaction();                                        
 
 	                  //Create query to retrieve data from database.
-	                   Query query= session.createQuery("FROM ResistorEntity");
+	                   Query query= session.createQuery("FROM "+entityName);
 	                    query.setFirstResult(startRecord);
 	                    query.setMaxResults(numOfRecords);
 	                    resultList = query.list();	                                  

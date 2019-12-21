@@ -18,12 +18,14 @@ public class CategoryEntity extends BaseEntity{
   //Empty constructor, it's used by Hibernate.
   public CategoryEntity() {		
   }
-	
-  public CategoryEntity(Long id, String name, byte[] photo) {	
+	  
+   public CategoryEntity(Long id, String name, String entityName, byte[] photo) {
+	super();
 	this.id = id;
 	this.name = name;
+	this.entityName = entityName;
 	this.photo = photo;
-  }
+   }
 
 	@Id    
     @Column(name = "category_id")    
@@ -33,6 +35,9 @@ public class CategoryEntity extends BaseEntity{
 
     @Column(name = "name")
     private String name;
+    
+    @Column(name = "entity_name")
+    private String entityName;
     
     @Column(name = "photo")
     private byte[] photo;
@@ -50,7 +55,15 @@ public class CategoryEntity extends BaseEntity{
 		}
 	
 		public void setName(String name) {
-			this.name = name;
+			this.name = name;					
+		}				
+
+		public String getEntityName() {
+			return entityName;
+		}
+
+		public void setEntityName(String entityName) {
+			this.entityName = entityName;
 		}
 
 		public byte[] getPhoto() {
