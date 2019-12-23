@@ -69,8 +69,23 @@
         width: 98.5%;
         padding: 5px;
         border-radius: 5px;
-        border: solid 1px #bdbdbd;      
+        border: solid 1px #bdbdbd;                      
       }       
+      
+      .item-small-image{
+        height: 30px;
+        width: 30px;  
+      } 
+      
+      .item-name{
+        color: blue;
+        text-decoration: underline;
+      }   
+      
+      .item-name:hover{
+        cursor: pointer;
+        color: red;            
+      }     
 /* --------------------------------------------------------------------*/
   
   

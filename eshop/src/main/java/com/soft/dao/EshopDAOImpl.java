@@ -158,19 +158,19 @@ public class EshopDAOImpl implements EshopDAO{
 	                 //This query does not cache result. Caching is suitable for static data only!!!
 	                 List resultList = session.createQuery("SELECT DISTINCT entity FROM "+entityName+" entity WHERE "+idStr+"="+"'"+id+"'").list();
 	                
-                       //
-                       for (CategoryEntity entity : (List<CategoryEntity>) resultList) {                        
-                    	 resultEntity = entity;   
-                       } 	                
-	                                                                           
+	                  //Get single entity from list.
+                      for(BaseEntity entity : (List<BaseEntity>) resultList) {                        
+                        resultEntity = entity;   
+                      } 	                	                 
+	                 
 	               //Commit transaction.
 	               session.getTransaction().commit();
 	              //Close session with a database. 
 	              session.close();                                               
 	         } 
 	         catch(Exception exc) {
-	      	   EshopController.log.debug("[EshopDAOImpl.readEntityById()] --> EXCEPTION: "+exc.getMessage());
-	      	   EshopController.log.debug("[EshopDAOImpl.readEntityById()] --> EXCEPTION TO STRING: "+exc.toString());           
+	      	   EshopController.log.debug("[EshopDAOImpl.readEntityByNameAndId()] --> EXCEPTION: "+exc.getMessage());
+	      	   EshopController.log.debug("[EshopDAOImpl.readEntityByNameAndId()] --> EXCEPTION TO STRING: "+exc.toString());           
 	         }           
 
 	 return resultEntity;     

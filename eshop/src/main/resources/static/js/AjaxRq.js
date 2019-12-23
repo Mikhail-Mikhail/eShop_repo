@@ -119,5 +119,30 @@ debugBox.innerHTML = "Sending request...";
 
 	//Insert result of AJAX-request into "content-container".
 	$(".content-container").html(result);
+	
+alert("Before....");
+	  //Find all elements of  set their "onclick" handlers.
+	  $(".item-name").each(function(i, entry) {
+		   entry.onclick = function(){
+alert("In onclick....");			   
+			   var url = "/eshop/image";
+			   var data = entry.getAttribute('value');
+			     
+			     //Send AJAX-request to show content of selected category.
+			     sendAjaxRequest("GET", url, data, showItemContent);			
+		   }
+    });
+	  
+alert("After....");
+	  
+  }
+//------------------------------------------------------------------------------  
+  
+ //Function to display content of the selected item.
+  
+  function showCategoryContent(result){	 
+
+	//Insert result of AJAX-request into "content-container".
+	$(".content-container").html(result);	
   }
 //------------------------------------------------------------------------------  
