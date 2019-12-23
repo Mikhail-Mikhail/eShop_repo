@@ -22,10 +22,10 @@
       <div class="div-items">
       
               <!-- Table to display item's list. -->	
-  			  <table id="itemsListTable">
+  			  <table class="table-of-items" id="itemsListTable">
                 
   			    <tr th:each="item: ${itemsList}">
-  			       <td  th:value="${item.id}">			
+  			       <td th:value="${item.id}">			
 					  <div class="div-items-list">
 <!--   					     <img th:src="'/eshop/image?entity='+${item.getClass().getSimpleName()}+'&id='+${item.id}" alt="">     -->       	 
 	     	  	  		   <p class="item-title">
