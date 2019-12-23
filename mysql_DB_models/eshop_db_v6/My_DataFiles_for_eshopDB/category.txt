@@ -1,10 +1,10 @@
-1	locale.resistorCategoryName
-2	locale.transistorCategoryName
-3	locale.icsCategoryName
-4	locale.diodeCategoryName
-5	locale.capacitorCategoryName
-6	locale.ledCategoryName
-7	locale.relayCategoryName
-8	locale.connectorCategoryName
-9	locale.tumblerCategoryName
-10	locale.powerSupplyCategoryName
+1	locale.resistorCategoryName	ResistorEntity
+2	locale.transistorCategoryName	TransistorEntity
+3	locale.icsCategoryName	IcsEntity
+4	locale.diodeCategoryName	DiodeEntity
+5	locale.capacitorCategoryName	CapacitorEntity
+6	locale.ledCategoryName	LedEntity
+7	locale.relayCategoryName	RelayEntity
+8	locale.connectorCategoryName	ConnectorEntity
+9	locale.tumblerCategoryName	TumblerEntity
+10	locale.powerSupplyCategoryName	PowerSupplyEntity

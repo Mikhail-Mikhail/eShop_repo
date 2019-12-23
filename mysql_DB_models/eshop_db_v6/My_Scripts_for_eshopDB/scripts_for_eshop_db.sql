@@ -49,6 +49,7 @@ DELETE FROM producer;
 DELETE FROM category;
 DELETE FROM units;
 DELETE FROM package;
+DELETE FROM resistor;
 DELETE FROM capacitor;
 DELETE FROM LED;
 DELETE FROM relay;
