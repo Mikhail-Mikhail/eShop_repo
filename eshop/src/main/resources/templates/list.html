@@ -1,0 +1,45 @@
+  
+  <!-- List of items for selected category. -->
+                
+<!--                  
+ <link rel="stylesheet" th:href="@{/css/list.css}"  type="text/css"  />
+-->
+                
+  <div th:fragment="content">                                                                 									
+    
+      <!-- Navigation box. -->
+      <div class="div-navigation">    
+        <span>
+          <a class="home-href" href="http://localhost:8080/eshop/home.html/" th:text="#{locale.homePageName}"></a>
+        </span> 
+         <span> > </span>    
+          <span th:text="#{${selectedCategory.name}}"> </span>
+      </div>    
+    
+      <!-- Filter's box. -->
+      <div class="div-filters">
+      </div>
+     
+      <!-- Items's box. -->
+      <div class="div-items">
+      
+              <!-- Table to display item's list. -->	
+  			  <table class="table-of-items" id="itemsListTable">
+                
+  			    <tr th:each="item: ${itemsList}">
+  			       <td>			
+					  <div class="div-items-list">
+                          <span class="item-name" th:text="${item.name}"  th:value="'entity='+${item.getClass().getSimpleName()}+'&id='+${item.id}"></span>
+                          <span class="item-description" th:text="${item.description}"></span>
+                          <span> <img class="item-small-image" th:src="'/eshop/image?entity='+${item.getClass().getSimpleName()}+'&id='+${item.id}" alt=""> </span>					         					                 		     	  	  		    		                    		                    		                 
+  		                  <span class="item-quantity" th:text="${item.quantity}"></span>
+   		                  <span class="item-price" th:text="${item.price}"></span>
+   		                    <!-- To cart button. -->              
+                            <input type="submit" class="to-cart-button" th:value="#{locale.toCartButtonName}">         		                            
+		              </div>
+		            </td>  	      
+  			    </tr>
+  			  	            
+	          </table>
+      </div>  
+  </div>

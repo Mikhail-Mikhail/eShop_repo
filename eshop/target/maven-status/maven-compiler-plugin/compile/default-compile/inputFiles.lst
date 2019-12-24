@@ -1,4 +1,5 @@
 /home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/main/java/com/soft/config/AppInitializer.java
+/home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/main/java/com/soft/entity/TransistorEntity.java
 /home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/main/java/com/soft/entity/ResistorEntity.java
 /home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/main/java/com/soft/config/DataAccessConfig.java
 /home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/main/java/com/soft/dao/EshopDAO.java

@@ -211,7 +211,7 @@ public class ResistorEntity extends BaseEntity{
 	
 	          @Override
 	          public String toString() {
-	            return "com.soft.entity.ResistorEntity[ id=" + id +"  name=" + name + "]";
+	        	 return this.getClass().getCanonicalName()+" : [ id=" + id +"  name=" + name + "]";
 	          }   
 }
 //-------------------------------------------------------------------------------

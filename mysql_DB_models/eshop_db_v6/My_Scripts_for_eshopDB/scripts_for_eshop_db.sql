@@ -31,7 +31,7 @@ CREATE TABLE locale(ID int PRIMARY KEY, locale VARCHAR(10), msgkey VARCHAR(100),
 DROP TABLE locale;
 */
 /*----------------------------------------------*/
-/*
+
 LOAD DATA LOCAL INFILE '/home/mihail/programs/project_mvn/eShop/eShop_repo/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/producer.txt' INTO TABLE producer;
 LOAD DATA LOCAL INFILE '/home/mihail/programs/project_mvn/eShop/eShop_repo/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/category.txt' INTO TABLE category;
 LOAD DATA LOCAL INFILE '/home/mihail/programs/project_mvn/eShop/eShop_repo/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/units.txt' INTO TABLE units;
@@ -53,6 +53,7 @@ DELETE FROM resistor;
 DELETE FROM capacitor;
 DELETE FROM LED;
 DELETE FROM relay;
+DELETE FROM transistor;
 DELETE FROM locale;
 */
 /*----------------------------------------------*/
