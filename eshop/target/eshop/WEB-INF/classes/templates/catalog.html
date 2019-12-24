@@ -27,8 +27,7 @@
   			    <tr th:each="item: ${itemsList}">
   			       <td>			
 					  <div class="div-items-list">
-<!--                           <span class="item-name" th:value="'?entity='+${item.getClass().getSimpleName()}='&id='+${item.id}" th:text="${item.name}"></span>     -->
-                          <span class="item-name" th:text="${item.name}"  th:value="'?entity='+${item.getClass().getSimpleName()}+'&id='+${item.id}"></span>					         					                 		     	  	  		    		                  
+                          <span class="item-name" th:text="${item.name}"  th:value="'entity='+${item.getClass().getSimpleName()}+'&id='+${item.id}"></span>					         					                 		     	  	  		    		                  
   		                  <span th:text="${item.price}"></span>
    		                  <span> <img class="item-small-image" th:src="'/eshop/image?entity='+${item.getClass().getSimpleName()}+'&id='+${item.id}" alt=""> </span>        		                            
 		              </div>

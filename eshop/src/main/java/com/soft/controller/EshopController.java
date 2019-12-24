@@ -136,9 +136,9 @@ public class EshopController {
    
    //_______________________________________________________________//   
    
-   // Request for catalog:
+   // Request for list of items for selected category:
 
-   @RequestMapping(method=GET, path="/catalog")        
+   @RequestMapping(method=GET, path="/list")        
    public String renderCatalogContent(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 	  
 	 CategoryEntity categoryEntity = null;  
@@ -158,7 +158,7 @@ log.debug("[EshopController.renderCatalogContent()] --> Request's parameter cate
            categoryEntity = (CategoryEntity) eshopDaoImpl.readEntityByNameAndId(CategoryEntity.class.getSimpleName(), Long.parseLong(categoryID));                   
 
 log.debug("[EshopController.renderCatalogContent()] --> Entity name = "+categoryEntity.getEntityName());           
-           //List<BaseEntity> itemsList = eshopDaoImpl.readEntityListByName(ResistorEntity.class.getSimpleName(), 0, 100);
+           //Read list of entities from DB.
            List<BaseEntity> itemsList = eshopDaoImpl.readEntityListByName(categoryEntity.getEntityName(), 0, 100);
            
 log.debug("[EshopController.renderCatalogContent()] --> itemsList.length = "+itemsList.size());           
@@ -176,7 +176,7 @@ log.debug("[EshopController.renderCatalogContent()] --> itemsList.length = "+ite
    	   }              
             
     //Return page's name.  
-    return "catalog.html";  
+    return "list.html";  
    }         
  //------------------------------------------------------------------------------- 
 }
