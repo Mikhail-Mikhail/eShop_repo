@@ -40,3 +40,5 @@
 40	en	locale.searchButtonName	Search
 41	ru	locale.homePageName	Домашняя
 42	en	locale.homePageName	Home Page
+43	ru	locale.toCartButtonName	В корзину
+44	en	locale.toCartButtonName	Add to cart

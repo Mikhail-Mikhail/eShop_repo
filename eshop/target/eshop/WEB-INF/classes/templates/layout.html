@@ -2,18 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
     
-  <head th:fragment="head(title, myScript, myCss)">
+  <head th:fragment="head(title, myScript)">
     <title>eShop - <th:block th:include="${title}"></th:block></title>
     
      <meta charset="utf-8">
          
-     <!-- Links to the stylesheets. -->
+     <!-- Links to stylesheets. -->
      <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css" type="text/css"  />
-    
-<link rel="stylesheet" th:href="@{/css/list.css}"  type="text/css"  />
-            
-      <link rel="stylesheet" th:href="${myCss}"  type="text/css"  />  
+     <link rel="stylesheet" th:href="@{/css/home.css}" href="../static/css/home.css" type="text/css"  />    
+     <link rel="stylesheet" th:href="@{/css/list.css}" href="../static/css/list.css" type="text/css"  />              
      
+       <!-- JS-scripts. -->
        <script type="text/javascript" th:src="${myScript}" src = "../static/js/stub.js">            
        </script>
       

@@ -31,7 +31,7 @@
 		   entry.onclick = function(){
 			   var url = "/eshop/list";
 			   var data = "id="+entry.getAttribute('value');
-			     
+			   
 			     //Send AJAX-request to show content of selected category.
 			     sendAjaxRequest("GET", url, data, showCategoryContent);			
 		   }
@@ -141,3 +141,22 @@ debugBox.innerHTML = "Sending request...";
 	$(".content-container").html(result);	
   }
 //------------------------------------------------------------------------------  
+  
+//  //Function to load CSS-file.
+//  
+//  function loadCSS(url){	 
+//
+//	   
+////	//Insert result of AJAX-request into "content-container".
+////	$(".content-container").html(result);	
+//  }
+//  
+//  //Function to remove CSS.
+//  
+//  function removeCSS(id){	 
+//
+////	//Insert result of AJAX-request into "content-container".
+////	$(".content-container").html(result);	
+//  }
+////------------------------------------------------------------------------------  
+  

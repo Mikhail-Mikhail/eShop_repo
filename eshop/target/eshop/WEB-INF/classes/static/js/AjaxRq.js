@@ -31,7 +31,7 @@
 		   entry.onclick = function(){
 			   var url = "/eshop/list";
 			   var data = "id="+entry.getAttribute('value');
-			     
+			   
 			     //Send AJAX-request to show content of selected category.
 			     sendAjaxRequest("GET", url, data, showCategoryContent);			
 		   }
@@ -116,27 +116,6 @@ debugBox.innerHTML = "Sending request...";
   //Function to display content of the selected category.
   
   function showCategoryContent(result){
-
-//----------------
-//	 var str =  $(result).find(".item-name").each(function(i, entry) {
-//		   entry.onclick = function(){		   
-//			   var url = "/eshop/item";
-//			   var data = entry.getAttribute('value');
-//			     
-//			     //Send AJAX-request to show content of selected item.
-//			     sendAjaxRequest("GET", url, data, showItemContent);			
-//		   }
-//    });
-//	 
-//	//Insert result of AJAX-request into "content-container".
-//    $(".content-container").html(str);	 
-//	  
-//	  
-	  
-	  //$.each(result, function(i, val) {   	  
-  
-//----------------		  
-//	 $(".content-container").html("");	  
 	  
 	//Insert result of AJAX-request into "content-container".
 	$(".content-container").html(result);
@@ -162,3 +141,22 @@ debugBox.innerHTML = "Sending request...";
 	$(".content-container").html(result);	
   }
 //------------------------------------------------------------------------------  
+  
+//  //Function to load CSS-file.
+//  
+//  function loadCSS(url){	 
+//
+//	   
+////	//Insert result of AJAX-request into "content-container".
+////	$(".content-container").html(result);	
+//  }
+//  
+//  //Function to remove CSS.
+//  
+//  function removeCSS(id){	 
+//
+////	//Insert result of AJAX-request into "content-container".
+////	$(".content-container").html(result);	
+//  }
+////------------------------------------------------------------------------------  
+  
