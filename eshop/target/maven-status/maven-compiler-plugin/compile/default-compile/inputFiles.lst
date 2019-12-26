@@ -6,6 +6,7 @@
 /home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/main/java/com/soft/entity/CategoryEntity.java
 /home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/main/java/com/soft/controller/EshopController.java
 /home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/main/java/com/soft/dao/EshopDAOImpl.java
+/home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/main/java/com/soft/entity/ProducerEntity.java
 /home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/main/java/com/soft/entity/LocaleMessageEntity.java
 /home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/main/java/com/soft/entity/BaseEntity.java
 /home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/main/java/com/soft/config/AppConfig.java

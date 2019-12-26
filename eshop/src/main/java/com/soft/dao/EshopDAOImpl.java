@@ -198,8 +198,11 @@ public class EshopDAOImpl implements EshopDAO{
 
 	                  //Create query to retrieve data from database.
 	                   Query query= session.createQuery("FROM "+entityName);
-	                    query.setFirstResult(startRecord);
-	                    query.setMaxResults(numOfRecords);
+	                    //Read all data if parameters are NULL.
+	                    if((startRecord!=null)&&(numOfRecords!=null)) {
+	                      query.setFirstResult(startRecord);
+	                      query.setMaxResults(numOfRecords);
+	                    } 
 	                    resultList = query.list();	                                  
 	                                                                           
 	                //Commit transaction.

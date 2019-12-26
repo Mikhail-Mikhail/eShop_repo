@@ -62,29 +62,30 @@
       .table-of-items{
         height: auto;
         width: 100%;                
-      }
+      }          
       
       .div-items-list{
         height: auto;
         width: 98.5%;
         padding: 5px;
         border-radius: 5px;
-        border: solid 1px #bdbdbd;                      
+        border: solid 1px #bdbdbd; 
+        float: left;                     
       }       
       
       .div-item-info{
         height: auto;
-        width: auto;
-        margin-left: 10px;
-        background: yellow;
+        width: 200px;  
+        margin-left: 10px;                   
+        float: left;
       }
       
       .item-name{
          color: blue;
          text-decoration: underline;
          vertical-align: top;
-         margin-left: 10px;
-         font-size: 18px;
+         word-wrap: break-word; /* Prevent text to get out of <div> borders. */        
+         font-size: 18px;         
       }   
       
       .item-name:hover{
@@ -92,26 +93,30 @@
         color: red;            
       }     
       
-      .item-description{                                     
+      .item-description{
+        margin-top: 10px;      
+        word-wrap: break-word; /* Prevent text to get out of <div> borders. */                               
       }
       
       .div-item-image{
         height: auto;
         width: auto;
         margin-left: 10px;
-        background: grey;
+        float: left;
       }
             
       .item-small-image{
-        height: 30px;
-        width: 30px;  
+        height: 50px;
+        width: 50px;  
       } 
       
       .div-item-quantity{
         height: auto;
-        width: auto;
-        margin-left: 10px;
-        background: green;
+        width: 100px;
+        margin-left: 10px;        
+        margin-top: 20px; 
+        word-wrap: break-word; /* Prevent text to get out of <div> borders. */              
+        float: left;
       }  
       
       .item-quantity{
@@ -119,9 +124,11 @@
       
       .div-item-price{
         height: auto;
-        width: auto;
+        width: 100px;
         margin-left: 10px;
-        background: blue;
+        margin-top: 20px;        
+        word-wrap: break-word; /* Prevent text to get out of <div> borders. */
+        float: left;
       }
       
       .item-price{
@@ -129,9 +136,10 @@
       
       .div-quantity-selector{
         height: auto;
-        width: auto;
+        width: auto;        
         margin-left: 10px;
-        background: green;
+        margin-top: 10px;        
+        float: left;
       }
       
       .quantity-selector{ 
@@ -142,16 +150,24 @@
       }           
       
       
-      .div-cart-button{
+      .div-to-cart-button{
         height: auto;
         width: auto;
-        margin-left: 10px;
-        background: yellow;
+        margin-left: 20px;
+        margin-top: 10px;
+        float: left;
       }
       
       .to-cart-button{
         height: 30px;
         width: auto;
-      }                
+      }     
+      
+      .to-cart-button:hover {
+        color: #333333;
+        border: 1px solid #a4a4a4;
+        border-top: 2px solid #b2b2b2;
+        background-color: #a0dbc4;
+      }	                
 /* --------------------------------------------------------------------*/
   

@@ -27,12 +27,12 @@ public interface EshopDAO {
      public LocaleMessageEntity readLocaleMessageByKey(String msgKey, String locale);
      
       //Method to read all data from table "category".      
-      public List<CategoryEntity> readCategoryList();
+      public List<CategoryEntity> readCategoryList();      
       
-       //Method to read entity by its "name" and "id" from any DB table.     
-       public BaseEntity readEntityByNameAndId(String entityName,Long id);
+        //Method to read entity by its "name" and "id" from any DB table.     
+        public BaseEntity readEntityByNameAndId(String entityName,Long id);
        
-        //Method to read entity list by "name" from any DB table.     
-        public List<BaseEntity> readEntityListByName(String entityName, Integer startRecord, Integer numOfRecords);
+         //Method to read entity list by "name" from any DB table.     
+         public List<BaseEntity> readEntityListByName(String entityName, Integer startRecord, Integer numOfRecords);
 }         
 //------------------------------------------------------------------------------
