@@ -19,6 +19,7 @@ import com.soft.dao.EshopDAOImpl;
 import com.soft.entity.BaseEntity;
 import com.soft.entity.CategoryEntity;
 import com.soft.entity.LocaleMessageEntity;
+import com.soft.entity.ProducerEntity;
 import com.soft.entity.ResistorEntity;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -168,6 +169,11 @@ log.debug("[EshopController.renderCatalogContent()] --> itemsList.length = "+ite
               
          //Add attribute to display list of items.  
          model.addAttribute("itemsList", itemsList);  
+//------------------
+         List<BaseEntity> producerList = eshopDaoImpl.readEntityListByName(ProducerEntity.class.getSimpleName(), null, null);
+         //Add attribute to display producers.  
+         model.addAttribute("producerList", producerList);  
+//------------------         
 
        }
        catch(Exception exc) {            	
