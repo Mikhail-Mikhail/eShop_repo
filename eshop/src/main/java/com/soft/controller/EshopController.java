@@ -162,19 +162,19 @@ log.debug("[EshopController.renderCatalogContent()] --> Entity name = "+category
            //Read list of entities from DB.
            List<BaseEntity> itemsList = eshopDaoImpl.readEntityListByName(categoryEntity.getEntityName(), 0, 100);
            
-log.debug("[EshopController.renderCatalogContent()] --> itemsList.length = "+itemsList.size());           
+log.debug("[EshopController.renderCatalogContent()] --> itemsList.length = "+itemsList.size());
+
+            //Read list of producers from DB.
+            List<BaseEntity> producerList = eshopDaoImpl.readEntityListByName(ProducerEntity.class.getSimpleName(), null, null);
            
          //Add attribute to display navigation line.  
          model.addAttribute("selectedCategory", categoryEntity);  
               
-         //Add attribute to display list of items.  
-         model.addAttribute("itemsList", itemsList);  
-//------------------
-         List<BaseEntity> producerList = eshopDaoImpl.readEntityListByName(ProducerEntity.class.getSimpleName(), null, null);
-         //Add attribute to display producers.  
-         model.addAttribute("producerList", producerList);  
-//------------------         
-
+          //Add attribute to display list of items.  
+          model.addAttribute("itemsList", itemsList);
+         
+           //Add attribute to display producers.  
+           model.addAttribute("producerList", producerList);
        }
        catch(Exception exc) {            	
    	     log.debug("[EshopController.renderCatalogContent()] --> EXCEPTION: "+exc.getMessage());
