@@ -29,7 +29,11 @@
 					      <div class="div-item-info">					       					       					      
                             <div class="item-name" th:text="${item.name}"  th:value="'entity='+${item.getClass().getSimpleName()}+'&id='+${item.id}"></div>
                             <div class="item-description" th:text="${item.description}"></div>
-                            <div class="item-description" th:text="'Producer: '+${item.producer}"></div>   
+                               
+                             <!-- Select and display producer's namer from producer's list. -->
+                             <div class="item-description" th:each="producer: ${producerList}">
+                               <span th:if="${producer.id == item.producer}" th:text="'Producer: '+${producer.producerName}"></span>                  
+                             </div>                                     
                           </div>      
                           
                            <div class="div-item-image"> 

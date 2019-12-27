@@ -180,6 +180,9 @@ public class EshopDAOImpl implements EshopDAO{
    //_______________________________________________________________//
      
    //Method to read entity list by "name" from any DB table.
+   //
+   //Parameters "startRecord" and "numOfRecords" set start index and number of records to read from DB.
+   //If these parameters are "NULL", method will read all records.
    
    @Override      
    public List<BaseEntity> readEntityListByName(String entityName, Integer startRecord, Integer numOfRecords){
@@ -189,7 +192,7 @@ public class EshopDAOImpl implements EshopDAO{
 	      
 	      //List of retrieved data.
 	      List<BaseEntity> resultList = null;
-
+	      
 	         try { 
 	             //Open session to read from database.
 	             session = sessionFactory.openSession();

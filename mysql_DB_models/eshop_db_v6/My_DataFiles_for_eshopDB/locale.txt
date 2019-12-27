@@ -42,3 +42,7 @@
 42	en	locale.homePageName	Home Page
 43	ru	locale.toCartButtonName	В корзину
 44	en	locale.toCartButtonName	Add to cart
+45	ru	locale.rouble	руб.
+46	en	locale.rouble	RUB
+47	ru	locale.piece	шт.
+48	en	locale.piece	PCS.
