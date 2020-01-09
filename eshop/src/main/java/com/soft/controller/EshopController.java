@@ -49,15 +49,21 @@ public class EshopController {
   // For Linux folder "mylogs" is located at /home/mihail/mylogs 
   public static final Logger log = LogManager.getLogger(EshopController.class.getName());
   
+    //Constants:
+  
+    //Number of product's categories displayed in a row.  
+    final Integer MAX_ROW_LENGTH = 4;
+    //Number of items to display on a page.  
+	final Integer MAX_ITEMS_ON_PAGE = 20;
+    //Number of page's reference to display on a page.  
+	final Integer MAX_REFERENCES_ON_PAGE = 5;
+  
    //_______________________________________________________________//
   
    // Request for "home.html":
 
    @RequestMapping(method=GET, path="/home.html")        
-   public String renderHomePage(ModelMap model, HttpServletRequest request) {
-	   
-	 //Number of product's categories displayed in a row.  
-	 final int MAX_ROW_LENGTH = 4;
+   public String renderHomePage(ModelMap model, HttpServletRequest request) {	   
 	 
 	 log.debug(""); 
      log.debug("[EshopController.renderHomePage()] --> Request for \"home.html\" received. ");
@@ -160,7 +166,51 @@ log.debug("[EshopController.renderCatalogContent()] --> Request's parameter cate
 
 log.debug("[EshopController.renderCatalogContent()] --> Entity name = "+categoryEntity.getEntityName());           
            //Read list of entities from DB.
-           List<BaseEntity> itemsList = eshopDaoImpl.readEntityListByName(categoryEntity.getEntityName(), 0, 100);
+           List<BaseEntity> itemsList = eshopDaoImpl.readEntityListByName(categoryEntity.getEntityName(), 0, MAX_ITEMS_ON_PAGE);
+           
+
+//---------------------
+           //Get number of records in DB table.
+           Long num = eshopDaoImpl.getTableSizeByTableName(categoryEntity.getEntityName());
+log.debug("[EshopController.renderCatalogContent()] --> numberOfRecords = "+num);
+           
+           //Read full list of entities from DB.
+           List<BaseEntity> itemsFullList = eshopDaoImpl.readEntityListByName(categoryEntity.getEntityName(), null, null);
+           //Get number of items in the list.
+           Integer numberOfItems = itemsFullList.size();
+           
+           Integer numberOfPages = 1;
+           Integer numberOfRefGroups = 0;
+           
+            //Calculate number of pages.
+            if(numberOfItems > MAX_ITEMS_ON_PAGE){
+              if((numberOfItems % MAX_ITEMS_ON_PAGE)==0){
+               numberOfPages = numberOfItems/MAX_ITEMS_ON_PAGE;	  
+              }
+              else {
+               numberOfPages = numberOfItems/MAX_ITEMS_ON_PAGE + 1;  
+              }
+              
+               
+              numberOfRefGroups = 1;
+               //Calculate number of reference's groups.
+               if(numberOfPages > MAX_REFERENCES_ON_PAGE){
+            	 if((numberOfPages % MAX_REFERENCES_ON_PAGE)==0){
+            		 numberOfRefGroups = numberOfPages/MAX_REFERENCES_ON_PAGE;	  
+                 }
+                  else {
+                	  numberOfRefGroups = numberOfPages/MAX_REFERENCES_ON_PAGE + 1;  
+                  }  
+               }
+               
+              //Add attribute to display page's references.  
+              model.addAttribute("itemsList", itemsList);  
+            }	
+                         
+            
+log.debug("[EshopController.renderCatalogContent()] --> numberOfPages = "+numberOfPages);
+log.debug("[EshopController.renderCatalogContent()] --> numberOfRefGroups = "+ numberOfRefGroups);
+//---------------------           
            
 log.debug("[EshopController.renderCatalogContent()] --> itemsList.length = "+itemsList.size());
 
