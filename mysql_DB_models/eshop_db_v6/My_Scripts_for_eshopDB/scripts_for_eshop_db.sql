@@ -18,6 +18,9 @@ SELECT * FROM connector;
 SELECT * FROM tumbler;
 SELECT * FROM power_supply;
 SELECT * FROM locale;
+
+SELECT COUNT(*) FROM resistor;
+SELECT COUNT(*) FROM transistor;
 /*----------------------------------------------*/
 /*
 SHOW TABLES;
@@ -39,7 +42,10 @@ LOAD DATA LOCAL INFILE '/home/mihail/programs/project_mvn/eShop/eShop_repo/mysql
 LOAD DATA LOCAL INFILE '/home/mihail/programs/project_mvn/eShop/eShop_repo/mysql_DB_models/eshop_db_v6/My_DataFiles_for_eshopDB/locale.txt' INTO TABLE locale;
 */
 /*----------------------------------------------*/
+
 /*
+DELETE FROM resistor WHERE resistor_id>480;
+
 DELETE FROM category WHERE category_id=14;
 
 DELETE FROM producer WHERE (producer_id>30 AND producer_id<54);
