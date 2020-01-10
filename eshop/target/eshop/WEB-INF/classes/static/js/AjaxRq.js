@@ -30,7 +30,7 @@
 	  $.merge($('#catalogList').children(), $('#catalogTable').find("td")).each(function(i, entry) {
 		   entry.onclick = function(){
 			   var url = "/eshop/list";
-			   var data = "id="+entry.getAttribute('value');
+			   var data = "id="+entry.getAttribute('value')+"&"+"page=1";
 			   
 			     //Send AJAX-request to show content of selected category.
 			     sendAjaxRequest("GET", url, data, showCategoryContent);			
@@ -129,7 +129,20 @@ debugBox.innerHTML = "Sending request...";
 			     //Send AJAX-request to show content of selected item.
 			     sendAjaxRequest("GET", url, data, showItemContent);			
 		   }
+    });
+	  
+	  
+	  //Find all references to another page and set their "onclick" handlers.
+	  $(".div-page-reference").each(function(i, entry) {
+		   entry.onclick = function(){		
+			   var url = "/eshop/list";
+			   var data = "id="+entry.getAttribute('value')+"&"+"page="+entry.innerHTML;
+			     
+			     //Send AJAX-request to show content of another page.
+			     sendAjaxRequest("GET", url, data, showCategoryContent);			
+		   }
     });	  	 
+  
   }
 //------------------------------------------------------------------------------  
   

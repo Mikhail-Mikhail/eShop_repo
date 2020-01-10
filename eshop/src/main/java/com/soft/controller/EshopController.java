@@ -148,7 +148,9 @@ public class EshopController {
    @RequestMapping(method=GET, path="/list")        
    public String renderCatalogContent(ModelMap model, HttpServletRequest request, HttpServletResponse response) throws IOException {
 	  
-	 CategoryEntity categoryEntity = null;  
+	 List<BaseEntity> itemsList = null;
+	 CategoryEntity categoryEntity = null;
+	 Integer pageNumber = 1;
 	 
 	  //Request's parameter.  
 	  String categoryID = ""; 
@@ -160,24 +162,25 @@ public class EshopController {
     	  //Get "id" of selected category from request. 
     	  categoryID = request.getParameter("id");
 log.debug("[EshopController.renderCatalogContent()] --> Request's parameter category_ID ="+categoryID);
+
+          //Get parameter "page" from request. 
+          pageNumber = Integer.parseInt(request.getParameter("page"));
+log.debug("[EshopController.renderCatalogContent()] --> Request's parameter page ="+pageNumber);
            
     	   //Read entity of selected category from DB. 
            categoryEntity = (CategoryEntity) eshopDaoImpl.readEntityByNameAndId(CategoryEntity.class.getSimpleName(), Long.parseLong(categoryID));                   
-
 log.debug("[EshopController.renderCatalogContent()] --> Entity name = "+categoryEntity.getEntityName());           
-           //Read list of entities from DB.
-           List<BaseEntity> itemsList = eshopDaoImpl.readEntityListByName(categoryEntity.getEntityName(), 0, MAX_ITEMS_ON_PAGE);
-           
+
 
 //---------------------
-           //Get number of records in DB table.
-           Long num = eshopDaoImpl.getTableSizeByTableName(categoryEntity.getEntityName());
-log.debug("[EshopController.renderCatalogContent()] --> numberOfRecords = "+num);
+           //Get total number of records in DB table.
+           Integer numberOfItems = eshopDaoImpl.getTableSizeByTableName(categoryEntity.getEntityName());
+log.debug("[EshopController.renderCatalogContent()] --> numberOfRecords = "+numberOfItems);
            
            //Read full list of entities from DB.
-           List<BaseEntity> itemsFullList = eshopDaoImpl.readEntityListByName(categoryEntity.getEntityName(), null, null);
+//           List<BaseEntity> itemsFullList = eshopDaoImpl.readEntityListByName(categoryEntity.getEntityName(), null, null);
            //Get number of items in the list.
-           Integer numberOfItems = itemsFullList.size();
+///           Integer numberOfItems = itemsFullList.size();
            
            Integer numberOfPages = 1;
            Integer numberOfRefGroups = 0;
@@ -201,16 +204,43 @@ log.debug("[EshopController.renderCatalogContent()] --> numberOfRecords = "+num)
                   else {
                 	  numberOfRefGroups = numberOfPages/MAX_REFERENCES_ON_PAGE + 1;  
                   }  
-               }
-               
-              //Add attribute to display page's references.  
-              model.addAttribute("itemsList", itemsList);  
+               }                               
             }	
                          
             
 log.debug("[EshopController.renderCatalogContent()] --> numberOfPages = "+numberOfPages);
 log.debug("[EshopController.renderCatalogContent()] --> numberOfRefGroups = "+ numberOfRefGroups);
-//---------------------           
+//---------------------    
+
+
+//              if(pageNumber==1){
+                //Read page of entities from DB table.
+                itemsList = eshopDaoImpl.readEntityListByName(categoryEntity.getEntityName(), (pageNumber-1)*MAX_ITEMS_ON_PAGE, MAX_ITEMS_ON_PAGE); 
+                
+                
+//                Integer[] pagesInfo = null;
+//                pagesInfo = new Integer[2];
+//                pagesInfo[0] = 1;
+//                 if(numberOfPages > MAX_REFERENCES_ON_PAGE) pagesInfo[1] = MAX_REFERENCES_ON_PAGE;
+//                  else pagesInfo[1] = numberOfPages;
+
+                 Integer numRefsOnPage = 0;
+                 List<String> refList = null;
+                 if(numberOfPages > MAX_REFERENCES_ON_PAGE) numRefsOnPage = MAX_REFERENCES_ON_PAGE;
+                  else numRefsOnPage = numberOfPages;
+                                  
+                 refList = new ArrayList<String>();
+                 refList.clear();
+                  for(int i = 1; i<=numRefsOnPage; i++) {
+                    refList.add(String.valueOf(i));
+                  }
+                  
+                //Add attribute to display page's references.  
+//                model.addAttribute("pagination", pagesInfo);
+//                model.addAttribute("pagination", 4);
+                 model.addAttribute("pagination", refList);
+                 model.addAttribute("categoryID", categoryID);
+///              }
            
 log.debug("[EshopController.renderCatalogContent()] --> itemsList.length = "+itemsList.size());
 

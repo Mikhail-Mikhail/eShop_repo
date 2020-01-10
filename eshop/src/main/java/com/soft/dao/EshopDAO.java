@@ -36,6 +36,6 @@ public interface EshopDAO {
          public List<BaseEntity> readEntityListByName(String entityName, Integer startRecord, Integer numOfRecords);
          
           //Method to get total number of records in DB table.     
-          public Long getTableSizeByTableName(String tableName);
+          public Integer getTableSizeByTableName(String tableName);
 }         
 //------------------------------------------------------------------------------

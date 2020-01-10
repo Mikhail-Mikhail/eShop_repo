@@ -222,13 +222,12 @@ public class EshopDAOImpl implements EshopDAO{
    }
    
    //_______________________________________________________________//
-   
-   
+      
    //Method to get total number of records in DB table.     
    
-   public Long getTableSizeByTableName(String tableName) {
+   public Integer getTableSizeByTableName(String tableName) {
 	   
-	  Long tableSize = null;
+	   Long tableSize = null;
 	  
   	     //Session with database.
 	     Session session; 
@@ -241,8 +240,7 @@ public class EshopDAOImpl implements EshopDAO{
 	                session.beginTransaction();                                        
 
 	                  //Create query to retrieve data from database.
-//	 Query query= session.createQuery("FROM "+entityName);
-	                   Query query= session.createQuery("select count(*) from "+ tableName);
+	                  Query query= session.createQuery("select count(*) from "+ tableName);
 	                   
 	                    tableSize = (Long) query.uniqueResult();                                  
 	                                                                           
@@ -256,7 +254,7 @@ public class EshopDAOImpl implements EshopDAO{
 	      	   EshopController.log.debug("[EshopDAOImpl.getTableSizeByTableName()] --> EXCEPTION TO STRING: "+exc.toString());           
 	         }     
 	         
-	return tableSize;   
+	return tableSize.intValue();   
    }
    
 }
