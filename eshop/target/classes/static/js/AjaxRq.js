@@ -132,11 +132,22 @@ debugBox.innerHTML = "Sending request...";
     });
 	  
 	  
-	  //Find all references to another page and set their "onclick" handlers.
+  	  //Find all references to another page.
+	  var refArray = $(".div-page-reference");
+	  
+	  //Set "onclick" handlers for references to another page.
 	  $(".div-page-reference").each(function(i, entry) {
 		   entry.onclick = function(){		
 			   var url = "/eshop/list";
-			   var data = "id="+entry.getAttribute('value')+"&"+"page="+entry.innerHTML;
+			   var data;
+			   			    			  
+			    if(entry.innerHTML=="&lt;&lt;"){
+			     data = "id="+entry.getAttribute('value')+"&"+"page="+(Number(refArray[i+1].innerHTML)-1);
+				}
+			    else if(entry.innerHTML=="&gt;&gt;"){			    	  
+					  data = "id="+entry.getAttribute('value')+"&"+"page="+(Number(refArray[i-1].innerHTML)+1);
+					 }
+			         else data = "id="+entry.getAttribute('value')+"&"+"page="+entry.innerHTML;			    				     
 			     
 			     //Send AJAX-request to show content of another page.
 			     sendAjaxRequest("GET", url, data, showCategoryContent);			

@@ -223,6 +223,9 @@ log.debug("[EshopController.renderCatalogContent()] --> numberOfRefGroups = "+ n
 //                pagesInfo[0] = 1;
 //                 if(numberOfPages > MAX_REFERENCES_ON_PAGE) pagesInfo[1] = MAX_REFERENCES_ON_PAGE;
 //                  else pagesInfo[1] = numberOfPages;
+                
+                 Integer RefGroupNumber = (pageNumber-1)/MAX_REFERENCES_ON_PAGE;
+log.debug("[EshopController.renderCatalogContent()] --> RefGroupNumber = "+ RefGroupNumber);                 
 
                  Integer numRefsOnPage = 0;
                  List<String> refList = null;
@@ -230,10 +233,15 @@ log.debug("[EshopController.renderCatalogContent()] --> numberOfRefGroups = "+ n
                   else numRefsOnPage = numberOfPages;
                                   
                  refList = new ArrayList<String>();
-                 refList.clear();
-                  for(int i = 1; i<=numRefsOnPage; i++) {
-                    refList.add(String.valueOf(i));
-                  }
+                 refList.clear();                                 
+                 
+                 Integer startRefNumber = (MAX_REFERENCES_ON_PAGE*RefGroupNumber)+1;
+                  if(RefGroupNumber!=0) refList.add("<<");
+                   for(int i = startRefNumber; i<=startRefNumber+numRefsOnPage-1; i++) {                	   
+                    refList.add(String.valueOf(i));                     
+                   }                                     
+                   
+                  if((RefGroupNumber!=(numberOfRefGroups-1))&&(numberOfRefGroups>1)) refList.add(">>");                  
                   
                 //Add attribute to display page's references.  
 //                model.addAttribute("pagination", pagesInfo);
