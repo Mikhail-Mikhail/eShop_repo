@@ -227,21 +227,62 @@ log.debug("[EshopController.renderCatalogContent()] --> numberOfRefGroups = "+ n
                  Integer RefGroupNumber = (pageNumber-1)/MAX_REFERENCES_ON_PAGE;
 log.debug("[EshopController.renderCatalogContent()] --> RefGroupNumber = "+ RefGroupNumber);                 
 
-                 Integer numRefsOnPage = 0;
-                 List<String> refList = null;
+                 Integer numRefsOnPage = 0;                 
                  if(numberOfPages > MAX_REFERENCES_ON_PAGE) numRefsOnPage = MAX_REFERENCES_ON_PAGE;
-                  else numRefsOnPage = numberOfPages;
-                                  
-                 refList = new ArrayList<String>();
-                 refList.clear();                                 
-                 
-                 Integer startRefNumber = (MAX_REFERENCES_ON_PAGE*RefGroupNumber)+1;
-                  if(RefGroupNumber!=0) refList.add("<<");
-                   for(int i = startRefNumber; i<=startRefNumber+numRefsOnPage-1; i++) {                	   
-                    refList.add(String.valueOf(i));                     
-                   }                                     
+
+                  //For last reference's group.
+                  if(numberOfRefGroups==RefGroupNumber+1) {
+                   numRefsOnPage = numberOfPages - (MAX_REFERENCES_ON_PAGE*(numberOfRefGroups-1));	
+                  }
+                  log.debug("[EshopController.renderCatalogContent()] --> numRefsOnPage = "+ numRefsOnPage);
                    
-                  if((RefGroupNumber!=(numberOfRefGroups-1))&&(numberOfRefGroups>1)) refList.add(">>");                  
+                 List<String[]> refList = null; 
+                 refList = new ArrayList<String[]>();
+                 refList.clear();                                 
+//---------------
+//                 
+                 Integer startRefNumber = (MAX_REFERENCES_ON_PAGE*RefGroupNumber)+1;
+                 if(RefGroupNumber!=0) {
+                	 String[] str = new String[2];
+                	 str[0]="<<"; 
+                	 str[1]="false"; 
+                	 refList.add(str); 
+                  } 
+                  for(int i = startRefNumber; i<=startRefNumber+numRefsOnPage-1; i++) {
+                	String[] str = new String[2];  
+                	str[0]=String.valueOf(i); 
+                	str[1]="false"; 
+                	log.debug("[EshopController.renderCatalogContent()] --> str[0] = "+ str[0]);
+               	    log.debug("[EshopController.renderCatalogContent()] --> str[1] = "+ str[1]);    
+                	refList.add(str);	  
+                   //refList.add(String.valueOf(i));                     
+                  }
+                  
+                  if((RefGroupNumber!=(numberOfRefGroups-1))&&(numberOfRefGroups>1)) {
+                	  String[] str = new String[2];
+                	  str[0]=">>"; 
+                	  str[1]="false"; 
+                	  log.debug("[EshopController.renderCatalogContent()] --> str[0] = "+ str[0]);
+                 	  log.debug("[EshopController.renderCatalogContent()] --> str[1] = "+ str[1]);    
+                	  refList.add(str);                  	  
+                  }
+
+                  Iterator<String[]> itr = refList.iterator();
+                   while(itr.hasNext()) {
+                	  String[] tmpStr = itr.next();  
+                	  log.debug("[EshopController.renderCatalogContent()] --> RefList[][0] = "+ tmpStr[0]);
+                	  log.debug("[EshopController.renderCatalogContent()] --> RefList[][1] = "+ tmpStr[1]);                	  
+                   }                               
+                 
+//                 Integer startRefNumber = (MAX_REFERENCES_ON_PAGE*RefGroupNumber)+1;
+//                  if(RefGroupNumber!=0) refList.add("<<"); 
+//                   for(int i = startRefNumber; i<=startRefNumber+numRefsOnPage-1; i++) {                	   
+//                    refList.add(String.valueOf(i));                     
+//                   }
+
+//                  if((RefGroupNumber!=(numberOfRefGroups-1))&&(numberOfRefGroups>1)) refList.add(">>");
+//---------------
+                                                     
                   
                 //Add attribute to display page's references.  
 //                model.addAttribute("pagination", pagesInfo);
