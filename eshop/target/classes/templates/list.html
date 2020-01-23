@@ -67,9 +67,7 @@
 	             <table th:if="${pagination}">
 	               <tr>
 	                 <td th:each="page: ${pagination}">
-	                    <div class="div-page-reference" th:text ="${page[0]}"  th:value="${categoryID}"></div>
-<!--   	                    <div class="div-page-reference" th:text ="${page}"  th:value="${categoryID}"></div>  -->   
-<!--	                    <div th:class="${isActive} ? div-page-reference : active-page-reference " th:text ="${page}"  th:value="${categoryID}"></div> -->	                    
+	                    <div class="div-page-reference" th:classappend="${page[1]} ? active-reference-color : passive-reference-color" th:text ="${page[0]}"  th:value="${categoryID}"></div>
    	                 </td> 
 	               </tr>
 	             </table>
