@@ -251,7 +251,9 @@ log.debug("[EshopController.renderCatalogContent()] --> RefGroupNumber = "+ RefG
                   for(int i = startRefNumber; i<=startRefNumber+numRefsOnPage-1; i++) {
                 	String[] str = new String[2];  
                 	str[0]=String.valueOf(i); 
-                	str[1]="false"; 
+                	 //Mark reference of currently selected page as a "true" to highlight it on a page with other color.  
+                	 if(i==pageNumber) str[1]="true";
+                	  else str[1]="false"; 
                 	log.debug("[EshopController.renderCatalogContent()] --> str[0] = "+ str[0]);
                	    log.debug("[EshopController.renderCatalogContent()] --> str[1] = "+ str[1]);    
                 	refList.add(str);	  
