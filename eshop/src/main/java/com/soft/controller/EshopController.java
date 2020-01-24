@@ -151,6 +151,11 @@ public class EshopController {
 	 List<BaseEntity> itemsList = null;
 	 CategoryEntity categoryEntity = null;
 	 Integer pageNumber = 1;
+	 Integer numberOfPages = 1;
+     Integer numberOfRefGroups = 0;
+     Integer RefGroupNumber;
+     Integer numRefsOnPage = 0;
+     Integer startRefNumber; 
 	 
 	  //Request's parameter.  
 	  String categoryID = ""; 
@@ -161,29 +166,20 @@ public class EshopController {
        try {
     	  //Get "id" of selected category from request. 
     	  categoryID = request.getParameter("id");
-log.debug("[EshopController.renderCatalogContent()] --> Request's parameter category_ID ="+categoryID);
+          log.debug("[EshopController.renderCatalogContent()] --> Request's parameter category_ID ="+categoryID);
 
           //Get parameter "page" from request. 
           pageNumber = Integer.parseInt(request.getParameter("page"));
-log.debug("[EshopController.renderCatalogContent()] --> Request's parameter page ="+pageNumber);
+          log.debug("[EshopController.renderCatalogContent()] --> Request's parameter page ="+pageNumber);
            
     	   //Read entity of selected category from DB. 
            categoryEntity = (CategoryEntity) eshopDaoImpl.readEntityByNameAndId(CategoryEntity.class.getSimpleName(), Long.parseLong(categoryID));                   
-log.debug("[EshopController.renderCatalogContent()] --> Entity name = "+categoryEntity.getEntityName());           
+           log.debug("[EshopController.renderCatalogContent()] --> Entity name = "+categoryEntity.getEntityName());           
 
-
-//---------------------
            //Get total number of records in DB table.
            Integer numberOfItems = eshopDaoImpl.getTableSizeByTableName(categoryEntity.getEntityName());
-log.debug("[EshopController.renderCatalogContent()] --> numberOfRecords = "+numberOfItems);
-           
-           //Read full list of entities from DB.
-//           List<BaseEntity> itemsFullList = eshopDaoImpl.readEntityListByName(categoryEntity.getEntityName(), null, null);
-           //Get number of items in the list.
-///           Integer numberOfItems = itemsFullList.size();
-           
-           Integer numberOfPages = 1;
-           Integer numberOfRefGroups = 0;
+           log.debug("[EshopController.renderCatalogContent()] --> numberOfRecords = "+numberOfItems);           
+                      
            
             //Calculate number of pages.
             if(numberOfItems > MAX_ITEMS_ON_PAGE){
@@ -193,8 +189,7 @@ log.debug("[EshopController.renderCatalogContent()] --> numberOfRecords = "+numb
               else {
                numberOfPages = numberOfItems/MAX_ITEMS_ON_PAGE + 1;  
               }
-              
-               
+                             
               numberOfRefGroups = 1;
                //Calculate number of reference's groups.
                if(numberOfPages > MAX_REFERENCES_ON_PAGE){
@@ -206,28 +201,17 @@ log.debug("[EshopController.renderCatalogContent()] --> numberOfRecords = "+numb
                   }  
                }                               
             }	
-                         
-            
-log.debug("[EshopController.renderCatalogContent()] --> numberOfPages = "+numberOfPages);
-log.debug("[EshopController.renderCatalogContent()] --> numberOfRefGroups = "+ numberOfRefGroups);
-//---------------------    
+                                     
+            log.debug("[EshopController.renderCatalogContent()] --> numberOfPages = "+numberOfPages);
+            log.debug("[EshopController.renderCatalogContent()] --> numberOfRefGroups = "+ numberOfRefGroups);
 
-
-//              if(pageNumber==1){
-                //Read page of entities from DB table.
-                itemsList = eshopDaoImpl.readEntityListByName(categoryEntity.getEntityName(), (pageNumber-1)*MAX_ITEMS_ON_PAGE, MAX_ITEMS_ON_PAGE); 
-                
-                
-//                Integer[] pagesInfo = null;
-//                pagesInfo = new Integer[2];
-//                pagesInfo[0] = 1;
-//                 if(numberOfPages > MAX_REFERENCES_ON_PAGE) pagesInfo[1] = MAX_REFERENCES_ON_PAGE;
-//                  else pagesInfo[1] = numberOfPages;
-                
-                 Integer RefGroupNumber = (pageNumber-1)/MAX_REFERENCES_ON_PAGE;
-log.debug("[EshopController.renderCatalogContent()] --> RefGroupNumber = "+ RefGroupNumber);                 
-
-                 Integer numRefsOnPage = 0;                 
+               //Read page of entities from DB table.
+               itemsList = eshopDaoImpl.readEntityListByName(categoryEntity.getEntityName(), (pageNumber-1)*MAX_ITEMS_ON_PAGE, MAX_ITEMS_ON_PAGE); 
+                                
+                RefGroupNumber = (pageNumber-1)/MAX_REFERENCES_ON_PAGE;
+                log.debug("[EshopController.renderCatalogContent()] --> RefGroupNumber = "+ RefGroupNumber);                 
+                  
+                 //Calculate number of references on a page.
                  if(numberOfPages > MAX_REFERENCES_ON_PAGE) numRefsOnPage = MAX_REFERENCES_ON_PAGE;
 
                   //For last reference's group.
@@ -235,31 +219,36 @@ log.debug("[EshopController.renderCatalogContent()] --> RefGroupNumber = "+ RefG
                    numRefsOnPage = numberOfPages - (MAX_REFERENCES_ON_PAGE*(numberOfRefGroups-1));	
                   }
                   log.debug("[EshopController.renderCatalogContent()] --> numRefsOnPage = "+ numRefsOnPage);
-                   
-                 List<String[]> refList = null; 
-                 refList = new ArrayList<String[]>();
-                 refList.clear();                                 
-//---------------
-//                 
-                 Integer startRefNumber = (MAX_REFERENCES_ON_PAGE*RefGroupNumber)+1;
+                  
+              //List of references. 
+              List<String[]> refList = null; 
+              refList = new ArrayList<String[]>();
+              refList.clear();                                 
+                 
+                 startRefNumber = (MAX_REFERENCES_ON_PAGE*RefGroupNumber)+1;
+                 
+                 //Set left shift sign "<<" for pagination.
                  if(RefGroupNumber!=0) {
                 	 String[] str = new String[2];
                 	 str[0]="<<"; 
                 	 str[1]="false"; 
                 	 refList.add(str); 
-                  } 
+                  }
+                 
+                  //Set references to display on current page.
                   for(int i = startRefNumber; i<=startRefNumber+numRefsOnPage-1; i++) {
                 	String[] str = new String[2];  
                 	str[0]=String.valueOf(i); 
                 	 //Mark reference of currently selected page as a "true" to highlight it on a page with other color.  
                 	 if(i==pageNumber) str[1]="true";
                 	  else str[1]="false"; 
-                	log.debug("[EshopController.renderCatalogContent()] --> str[0] = "+ str[0]);
-               	    log.debug("[EshopController.renderCatalogContent()] --> str[1] = "+ str[1]);    
-                	refList.add(str);	  
-                   //refList.add(String.valueOf(i));                     
+                	   log.debug("[EshopController.renderCatalogContent()] --> str[0] = "+ str[0]);
+               	       log.debug("[EshopController.renderCatalogContent()] --> str[1] = "+ str[1]);
+               	       
+                	refList.add(str);	                       
                   }
                   
+                  //Set right shift sign ">>" for pagination.
                   if((RefGroupNumber!=(numberOfRefGroups-1))&&(numberOfRefGroups>1)) {
                 	  String[] str = new String[2];
                 	  str[0]=">>"; 
@@ -269,43 +258,30 @@ log.debug("[EshopController.renderCatalogContent()] --> RefGroupNumber = "+ RefG
                 	  refList.add(str);                  	  
                   }
 
-                  Iterator<String[]> itr = refList.iterator();
-                   while(itr.hasNext()) {
-                	  String[] tmpStr = itr.next();  
-                	  log.debug("[EshopController.renderCatalogContent()] --> RefList[][0] = "+ tmpStr[0]);
-                	  log.debug("[EshopController.renderCatalogContent()] --> RefList[][1] = "+ tmpStr[1]);                	  
-                   }                               
-                 
-//                 Integer startRefNumber = (MAX_REFERENCES_ON_PAGE*RefGroupNumber)+1;
-//                  if(RefGroupNumber!=0) refList.add("<<"); 
-//                   for(int i = startRefNumber; i<=startRefNumber+numRefsOnPage-1; i++) {                	   
-//                    refList.add(String.valueOf(i));                     
-//                   }
-
-//                  if((RefGroupNumber!=(numberOfRefGroups-1))&&(numberOfRefGroups>1)) refList.add(">>");
-//---------------
-                                                     
-                  
-                //Add attribute to display page's references.  
-//                model.addAttribute("pagination", pagesInfo);
-//                model.addAttribute("pagination", 4);
-                 model.addAttribute("pagination", refList);
-                 model.addAttribute("categoryID", categoryID);
-///              }
-           
-log.debug("[EshopController.renderCatalogContent()] --> itemsList.length = "+itemsList.size());
+//                  Iterator<String[]> itr = refList.iterator();
+//                   while(itr.hasNext()) {
+//                	  String[] tmpStr = itr.next();  
+//                	  log.debug("[EshopController.renderCatalogContent()] --> RefList[][0] = "+ tmpStr[0]);
+//                	  log.debug("[EshopController.renderCatalogContent()] --> RefList[][1] = "+ tmpStr[1]);                	  
+//                   }                               
+                           
+               log.debug("[EshopController.renderCatalogContent()] --> itemsList.length = "+itemsList.size());
 
             //Read list of producers from DB.
             List<BaseEntity> producerList = eshopDaoImpl.readEntityListByName(ProducerEntity.class.getSimpleName(), null, null);
-           
-         //Add attribute to display navigation line.  
-         model.addAttribute("selectedCategory", categoryEntity);  
+            
+          //Add attributes of pagination to model. 
+          model.addAttribute("pagination", refList);
+          model.addAttribute("categoryID", categoryID);
+                  
+          //Add attribute to display navigation line.  
+          model.addAttribute("selectedCategory", categoryEntity);  
               
           //Add attribute to display list of items.  
           model.addAttribute("itemsList", itemsList);
          
-           //Add attribute to display producers.  
-           model.addAttribute("producerList", producerList);
+          //Add attribute to display producers.  
+          model.addAttribute("producerList", producerList);
        }
        catch(Exception exc) {            	
    	     log.debug("[EshopController.renderCatalogContent()] --> EXCEPTION: "+exc.getMessage());
