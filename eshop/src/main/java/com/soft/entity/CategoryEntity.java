@@ -9,11 +9,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.stereotype.Service;
 //-------------------------------------------------------------------------------
 
 @Entity
 @Table(name = "category")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE) 
 public class CategoryEntity extends BaseEntity{
   //Empty constructor, it's used by Hibernate.
   public CategoryEntity() {		

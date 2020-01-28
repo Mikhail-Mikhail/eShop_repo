@@ -3,11 +3,16 @@ package com.soft.entity;
 //------------------------------------------------------------------------------
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
+import com.soft.helper.TestHelper;
+
+import java.lang.annotation.Annotation;
+import java.util.Arrays;
+import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
+import org.hibernate.annotations.Cache;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -17,7 +22,7 @@ import org.junit.jupiter.api.BeforeAll;
 
 public class CategoryEntityTest {
 	
-   //Reference to instance oftesting class..
+   //Reference to instance of testing class.
    CategoryEntity ce;
    
    static byte[] bArr;
@@ -41,7 +46,10 @@ public class CategoryEntityTest {
 	   assertTrue(ce.equals(ce));
        assertEquals(12,12);
        
-//       AssertAnnotations.assertType(CategoryEntity.class, Entity.class, Table.class);
+//    	assertFalse(true, "Annots = "+CategoryEntity.class.getAnnotations().length);       
+       
+  // assertAnnotations(CategoryEntity.class, "id", Id.class, GeneratedValue.class, Column.class);  
+       TestHelper.assertAnnotations(Arrays.asList(Entity.class, Table.class, Cache.class), Arrays.asList(CategoryEntity.class.getAnnotations()));             
      }    
      
      @Test
@@ -50,6 +58,6 @@ public class CategoryEntityTest {
 	   ce = new CategoryEntity(1L, "Resistors", "ResistorsEntity", bArr);
        assertTrue(ce.equals(ce));     
        assertEquals(12,12);  
-     }    
+     }          
 }
 
