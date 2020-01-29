@@ -50,7 +50,7 @@ public class CategoryEntity extends BaseEntity{
 		public void setId(Long id) {
 			this.id = id;
 		}
-	
+			
 		public String getName() {
 			return name;
 		}
@@ -58,7 +58,7 @@ public class CategoryEntity extends BaseEntity{
 		public void setName(String name) {
 			this.name = name;					
 		}				
-
+	
 		public String getEntityName() {
 			return entityName;
 		}
@@ -66,7 +66,7 @@ public class CategoryEntity extends BaseEntity{
 		public void setEntityName(String entityName) {
 			this.entityName = entityName;
 		}
-
+		
 		public byte[] getPhoto() {
 			return photo;
 		}
