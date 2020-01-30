@@ -91,7 +91,7 @@ public class ResistorEntity extends BaseEntity{
 			public void setId(Long id) {
 				this.id = id;
 			}
-	
+			
 			public Integer getCategory() {
 				return category;
 			}
