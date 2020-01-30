@@ -81,5 +81,20 @@ public class TestHelper {
 	    public static <T extends Annotation> T getClassAnnotation(Class<?> c, Class<T> annotation) {		
 		  return (T) c.getAnnotation(annotation);
 		}
+	    
+	    
+	     //Method to get field's annotation. 
+	     public static <T extends Annotation> T getFieldAnnotation(Class<?> c, String fieldName, Class<T> annotation) {		
+
+	        try {
+		   	  return (T) c.getDeclaredField(fieldName).getAnnotation(annotation);
+			} 
+	        catch (NoSuchFieldException e) {
+			  throw new AssertionError(e);
+			} 
+	        catch (SecurityException e) {
+			  throw new AssertionError(e);
+			}
+		 }
 }
 //------------------------------------------------------------------------------

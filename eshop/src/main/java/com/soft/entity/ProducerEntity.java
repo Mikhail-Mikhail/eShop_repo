@@ -34,7 +34,7 @@ public class ProducerEntity extends BaseEntity{
 
     @Column(name = "producer_category")
     private Integer producerCategory;
-    
+        
     @Column(name = "producer_name")
     private String producerName;
                   		

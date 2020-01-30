@@ -1,2 +1,5 @@
 /home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/test/java/com/soft/helper/TestHelper.java
+/home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/test/java/com/soft/entity/ProducerEntityTest.java
+/home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/test/java/com/soft/entity/ResistorEntityTest.java
+/home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/test/java/com/soft/entity/LocaleMessageEntityTest.java
 /home/mihail/programs/project_mvn/eShop/eShop_repo/eshop/src/test/java/com/soft/entity/CategoryEntityTest.java
