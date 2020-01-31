@@ -121,7 +121,7 @@ public class TransistorEntity extends BaseEntity{
 				this.description = description;
 			}
 	
-	
+			
 			public Integer getProducer() {
 				return producer;
 			}
@@ -161,7 +161,7 @@ public class TransistorEntity extends BaseEntity{
 				this.maxCurrent = maxCurrent;
 			}
 	
-	
+			
 			public Integer getMaxCurrentUnit() {
 				return maxCurrentUnit;
 			}
@@ -181,7 +181,7 @@ public class TransistorEntity extends BaseEntity{
 				this.tPackage = tPackage;
 			}
 	
-	
+			
 			public byte[] getPhoto() {
 				return photo;
 			}

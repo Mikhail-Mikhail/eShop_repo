@@ -81,10 +81,9 @@ public class ResistorEntity extends BaseEntity{
 	    private Double price;
 	    
 	    @Column(name = "quantity")
-	    private Integer quantity;
-			 	    
+	    private Integer quantity;			 	    
 			
-		     public Long getId() {
+		    public Long getId() {
 				return id;
 			}
 	
@@ -131,7 +130,7 @@ public class ResistorEntity extends BaseEntity{
 			public void setNominal(Double nominal) {
 				this.nominal = nominal;
 			}
-	
+		
 			public Integer getNominalUnit() {
 				return nominalUnit;
 			}
