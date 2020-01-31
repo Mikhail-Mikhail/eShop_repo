@@ -19,7 +19,16 @@ import org.junit.jupiter.api.BeforeAll;
 
 //JUnit5-tests for class "LocaleMessageEntity":
 
-public class LocaleMessageEntityTest {
+public class LocaleMessageEntityTest{
+	
+	//Class to test.
+	private Class cls = LocaleMessageEntity.class;
+	    
+	//Fields of testing class.
+	final private static String[] fields = new String[] {"id", "locale", "msgKey", "message"};
+		
+    //Getters of testing class.
+	final private static String[] getters = new String[] {"getId", "getLocale", "getMsgKey", "getMessage"};
 	   
     //Execute before all tests.
     @BeforeAll
@@ -30,26 +39,27 @@ public class LocaleMessageEntityTest {
     @AfterAll
     public static void tearDown() {  
     } 
+    
+    @Test
+    public void annotationsTest() {
+   	 	   
+      //Test for presence of class's annotations.	 
+      TestHelper.assertClassAnnotations(cls, Entity.class, Table.class, Cache.class);              
+      
+       //Tests for presence of field's annotations.                     
+       TestHelper.assertFieldAnnotations(cls, "id", Id.class, Column.class, GeneratedValue.class, GenericGenerator.class);
+               
+         //Tests for presence of field's annotation @Column.
+	      for(int i=1; i < fields.length; i++) {
+	    	TestHelper.assertFieldAnnotations(cls, fields[i], Column.class);	  
+	      }
 
-     @Test
-     public void annotationsTest() {
-    	 	   
-       //Test for presence of class's annotations.	 
-       TestHelper.assertClassAnnotations(LocaleMessageEntity.class, Entity.class, Table.class, Cache.class);              
-       
-        //Tests for presence of field's annotations.                     
-        TestHelper.assertFieldAnnotations(LocaleMessageEntity.class, "id", Id.class, Column.class, GeneratedValue.class, GenericGenerator.class);
-        TestHelper.assertFieldAnnotations(LocaleMessageEntity.class, "locale", Column.class);
-        TestHelper.assertFieldAnnotations(LocaleMessageEntity.class, "msgKey", Column.class);
-        TestHelper.assertFieldAnnotations(LocaleMessageEntity.class, "message", Column.class);      
-       
-         //Tests for presence of getter-method's annotations.                     
-         TestHelper.assertGetterAnnotations(LocaleMessageEntity.class, "getId");                
-         TestHelper.assertGetterAnnotations(LocaleMessageEntity.class, "getLocale");                 
-         TestHelper.assertGetterAnnotations(LocaleMessageEntity.class, "getMsgKey");                  
-         TestHelper.assertGetterAnnotations(LocaleMessageEntity.class, "getMessage");                  
-     }  
-     
+         //Tests for presence of getter-method's annotations.	      
+	      for(int i=0; i < getters.length; i++) {
+	       TestHelper.assertGetterAnnotations(cls, getters[i]);	  
+	      }	  
+    }  
+   
     
      @Test
      public void tableNameTest() {
@@ -57,7 +67,7 @@ public class LocaleMessageEntityTest {
        final String TABLE_NAME = "locale";
        
         //Get annotation "@Table" for class. 
-        Table t = TestHelper.getClassAnnotation(LocaleMessageEntity.class, Table.class);
+        Table t = TestHelper.getClassAnnotation(cls, Table.class);
     
          //Test table's name.
          Assertions.assertEquals(TABLE_NAME, t.name(), String.format("TEST FAILURE: Parameter \"name\" of annotation \"@table\" = "+"\""+t.name()+"\" instead of "+"\""+TABLE_NAME+"\""));              
@@ -72,43 +82,32 @@ public class LocaleMessageEntityTest {
       final String GENERIC_GENERATOR_STRATEGY = "increment";
        
        //Test for value of parameter "generator" of "@GeneratedValue" annotation.
-       GeneratedValue gv = TestHelper.getFieldAnnotation(LocaleMessageEntity.class, "id", GeneratedValue.class);
+       GeneratedValue gv = TestHelper.getFieldAnnotation(cls, "id", GeneratedValue.class);
        Assertions.assertEquals(GENERATOR_VAL, gv.generator(), String.format("TEST FAILURE: For field \"id\" parameter \"generator\" of annotation \"@GeneratedValue\" = "+"\""+gv.generator()+"\" instead of "+"\""+GENERATOR_VAL+"\""));
        
         //Test for value of parameter "name" of "@GenericGenerator" annotation.        
-        GenericGenerator gg = TestHelper.getFieldAnnotation(LocaleMessageEntity.class, "id", GenericGenerator.class);
+        GenericGenerator gg = TestHelper.getFieldAnnotation(cls, "id", GenericGenerator.class);
         Assertions.assertEquals(GENERIC_GENERATOR_NAME, gg.name(), String.format("TEST FAILURE: For field \"id\" parameter \"name\" of annotation \"@GenericGenerator\" = "+"\""+gg.name()+"\" instead of "+"\""+GENERIC_GENERATOR_NAME+"\""));            
         
          //Test for value of parameter "name" of "@GenericGenerator" annotation.                 
          Assertions.assertEquals(GENERIC_GENERATOR_STRATEGY, gg.strategy(), String.format("TEST FAILURE: For field \"id\" parameter \"strategy\" of annotation \"@GenericGenerator\" = "+"\""+gg.strategy()+"\" instead of "+"\""+GENERIC_GENERATOR_STRATEGY+"\""));
      }
-     
+
      
      @Test
-     public void columnNameTest() {
-    	 
-      final String COLUMN_ID = "ID";	 
-      final String COLUMN_LOCALE = "locale";
-      final String COLUMN_MSGKEY = "msgkey";
-      final String COLUMN_MESSAGE = "message";      
-      
-      Column column = null;
-
-       //Get annotation @Column for field "id".      
-       column = TestHelper.getFieldAnnotation(LocaleMessageEntity.class, "id", Column.class);      
-       Assertions.assertEquals(COLUMN_ID, column.name(), String.format("TEST FAILURE: For field \"id\" parameter \"name\" of annotation \"@Column\" = "+"\""+column.name()+"\" instead of "+"\""+COLUMN_ID+"\""));
-
-        //Get annotation @Column for field "locale".      
-        column = TestHelper.getFieldAnnotation(LocaleMessageEntity.class, "locale", Column.class);      
-        Assertions.assertEquals(COLUMN_LOCALE, column.name(), String.format("TEST FAILURE: For field \"locale\" parameter \"name\" of annotation \"@Column\" = "+"\""+column.name()+"\" instead of "+"\""+COLUMN_LOCALE+"\""));
-       
-         //Get annotation @Column for field "msgKey".      
-         column = TestHelper.getFieldAnnotation(LocaleMessageEntity.class, "msgKey", Column.class);      
-         Assertions.assertEquals(COLUMN_MSGKEY, column.name(), String.format("TEST FAILURE: For field \"msgKey\" parameter \"name\" of annotation \"@Column\" = "+"\""+column.name()+"\" instead of "+"\""+COLUMN_MSGKEY+"\""));
-       
-          //Get annotation @Column for field "message".      
-          column = TestHelper.getFieldAnnotation(LocaleMessageEntity.class, "message", Column.class);      
-          Assertions.assertEquals(COLUMN_MESSAGE, column.name(), String.format("TEST FAILURE: For field \"message\" parameter \"name\" of annotation \"@Column\" = "+"\""+column.name()+"\" instead of "+"\""+COLUMN_MESSAGE+"\""));
-     }                          
+     public void columnNameTest() {      	      	    
+	      
+	    //Values of parameter "name" of annotation @Column(name = "xxxxxx").
+	    String[] columnNames = new String[] {"ID", "locale", "msgkey", "message"};	      
+	       
+	     Column column = null;
+	     
+	      //Compare actual and expected values of parameter "name" of annotation @Column(name = "xxxxxx").
+	      for(int i=0; i<fields.length; i++) {
+	        //Get annotation @Column for field.       	        
+	        column = TestHelper.getFieldAnnotation(cls, fields[i], Column.class);      
+	        Assertions.assertEquals(columnNames[i], column.name(), String.format("TEST FAILURE: For field \""+fields[i]+"\" actual parameter \"name\" of annotation \"@Column\" is "+"\""+column.name()+"\" instead of expected "+"\""+columnNames[i]+"\""));
+	      } 	
+     }                      
 }
 

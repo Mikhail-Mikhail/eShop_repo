@@ -61,7 +61,7 @@ public class LocaleMessageEntity implements Serializable {
 		public void setId(Long id) {
 			this.id = id;
 		}
-	
+			
 		public String getLocale() {
 			return locale;
 		}
@@ -69,7 +69,7 @@ public class LocaleMessageEntity implements Serializable {
 		public void setLocale(String locale) {
 			this.locale = locale;
 		}
-			
+				
 		public String getMsgKey() {
 			return msgKey;
 		}
@@ -77,7 +77,7 @@ public class LocaleMessageEntity implements Serializable {
 		public void setMsgKey(String msgKey) {
 			this.msgKey = msgKey;
 		}
-
+		
 		public String getMessage() {
 			return message;
 		}

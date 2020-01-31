@@ -17,9 +17,19 @@ import org.junit.jupiter.api.BeforeAll;
 
 //------------------------------------------------------------------------------
 
-//JUnit5-tests for class "CategoryEntity":
+//JUnit5-tests for class "ProducerEntity":
 
 public class ProducerEntityTest {
+	
+   //Class to test.
+   private Class cls = ProducerEntity.class;
+	    
+   //Fields of testing class.
+   final private static String[] fields = new String[] {"id", "producerCategory", "producerName"};
+		
+   //Getters of testing class.
+   final private static String[] getters = new String[] {"getId", "getProducerCategory", "getProducerName"};	
+		
 	   
     //Execute before all tests.
     @BeforeAll
@@ -30,24 +40,28 @@ public class ProducerEntityTest {
     @AfterAll
     public static void tearDown() {  
     } 
+  
+
+    @Test
+    public void annotationsTest() {
+   	 	   
+      //Test for presence of class's annotations.	 
+      TestHelper.assertClassAnnotations(cls, Entity.class, Table.class, Cache.class);              
+      
+       //Tests for presence of field's annotations.                     
+       TestHelper.assertFieldAnnotations(cls, "id", Id.class, Column.class, GeneratedValue.class, GenericGenerator.class);
+               
+          //Tests for presence of field's annotation @Column.
+	      for(int i=1; i < fields.length; i++) {
+	    	TestHelper.assertFieldAnnotations(cls, fields[i], Column.class);	  
+	      }
+
+          //Tests for presence of getter-method's annotations.	      
+	      for(int i=0; i < getters.length; i++) {
+	       TestHelper.assertGetterAnnotations(cls, getters[i]);	  
+	      }	  
+    }      
    
-     @Test
-     public void annotationsTest() {
-    	 	   
-	       //Test for presence of class's annotations.	 
-	       TestHelper.assertClassAnnotations(ProducerEntity.class, Entity.class, Table.class, Cache.class);              
-	       
-	        //Tests for presence of field's annotations.                     
-	        TestHelper.assertFieldAnnotations(ProducerEntity.class, "id", Id.class, Column.class, GeneratedValue.class, GenericGenerator.class);
-	        TestHelper.assertFieldAnnotations(ProducerEntity.class, "producerCategory", Column.class);
-	        TestHelper.assertFieldAnnotations(ProducerEntity.class, "producerName", Column.class);            
-	       
-	         //Tests for presence of getter-method's annotations.                     
-	         TestHelper.assertGetterAnnotations(ProducerEntity.class, "getId");                
-	         TestHelper.assertGetterAnnotations(ProducerEntity.class, "getProducerCategory");                 
-	         TestHelper.assertGetterAnnotations(ProducerEntity.class, "getProducerName");                                            
-     }  
-     
    
      @Test
      public void tableNameTest() {
@@ -55,7 +69,7 @@ public class ProducerEntityTest {
        final String TABLE_NAME = "producer";
        
         //Get annotation "@Table" for class. 
-        Table t = TestHelper.getClassAnnotation(ProducerEntity.class, Table.class);
+        Table t = TestHelper.getClassAnnotation(cls, Table.class);
     
          //Test table's name.
          Assertions.assertEquals(TABLE_NAME, t.name(), String.format("TEST FAILURE: Parameter \"name\" of annotation \"@table\" = "+"\""+t.name()+"\" instead of "+"\""+TABLE_NAME+"\""));              
@@ -70,11 +84,11 @@ public class ProducerEntityTest {
 	      final String GENERIC_GENERATOR_STRATEGY = "increment";
 	       
 	       //Test for value of parameter "generator" of "@GeneratedValue" annotation.
-	       GeneratedValue gv = TestHelper.getFieldAnnotation(ProducerEntity.class, "id", GeneratedValue.class);
+	       GeneratedValue gv = TestHelper.getFieldAnnotation(cls, "id", GeneratedValue.class);
 	       Assertions.assertEquals(GENERATOR_VAL, gv.generator(), String.format("TEST FAILURE: For field \"id\" parameter \"generator\" of annotation \"@GeneratedValue\" = "+"\""+gv.generator()+"\" instead of "+"\""+GENERATOR_VAL+"\""));
 	       
 	        //Test for value of parameter "name" of "@GenericGenerator" annotation.        
-	        GenericGenerator gg = TestHelper.getFieldAnnotation(ProducerEntity.class, "id", GenericGenerator.class);
+	        GenericGenerator gg = TestHelper.getFieldAnnotation(cls, "id", GenericGenerator.class);
 	        Assertions.assertEquals(GENERIC_GENERATOR_NAME, gg.name(), String.format("TEST FAILURE: For field \"id\" parameter \"name\" of annotation \"@GenericGenerator\" = "+"\""+gg.name()+"\" instead of "+"\""+GENERIC_GENERATOR_NAME+"\""));            
 	        
 	         //Test for value of parameter "name" of "@GenericGenerator" annotation.                 
@@ -83,25 +97,19 @@ public class ProducerEntityTest {
      
      
      @Test
-     public void columnNameTest() {
-    	 
-	      final String COLUMN_ID = "producer_id";	 
-	      final String COLUMN_PRODUCER_CATEGORY = "producer_category";
-	      final String COLUMN_PRODUCER_NAME = "producer_name";            
+     public void columnNameTest() {      	      	    
 	      
-	      Column column = null;
-	
-	       //Get annotation @Column for field "producer_id".      
-	       column = TestHelper.getFieldAnnotation(ProducerEntity.class, "id", Column.class);      
-	       Assertions.assertEquals(COLUMN_ID, column.name(), String.format("TEST FAILURE: For field \"id\" parameter \"name\" of annotation \"@Column\" = "+"\""+column.name()+"\" instead of "+"\""+COLUMN_ID+"\""));
-	
-	        //Get annotation @Column for field "producer_category".      
-	        column = TestHelper.getFieldAnnotation(ProducerEntity.class, "producerCategory", Column.class);      
-	        Assertions.assertEquals(COLUMN_PRODUCER_CATEGORY, column.name(), String.format("TEST FAILURE: For field \"producerCategory\" parameter \"name\" of annotation \"@Column\" = "+"\""+column.name()+"\" instead of "+"\""+COLUMN_PRODUCER_CATEGORY+"\""));
+	    //Values of parameter "name" of annotation @Column(name = "xxxxxx").
+	    String[] columnNames = new String[] {"producer_id", "producer_category", "producer_name"};	      
 	       
-	         //Get annotation @Column for field "producer_name".      
-	         column = TestHelper.getFieldAnnotation(ProducerEntity.class, "producerName", Column.class);      
-	         Assertions.assertEquals(COLUMN_PRODUCER_NAME, column.name(), String.format("TEST FAILURE: For field \"producerName\" parameter \"name\" of annotation \"@Column\" = "+"\""+column.name()+"\" instead of "+"\""+COLUMN_PRODUCER_NAME+"\""));       
-     }               
-}
+	     Column column = null;
+	     
+	      //Compare actual and expected values of parameter "name" of annotation @Column(name = "xxxxxx").
+	      for(int i=0; i<fields.length; i++) {
+	        //Get annotation @Column for field.       	        
+	        column = TestHelper.getFieldAnnotation(cls, fields[i], Column.class);      
+	        Assertions.assertEquals(columnNames[i], column.name(), String.format("TEST FAILURE: For field \""+fields[i]+"\" actual parameter \"name\" of annotation \"@Column\" is "+"\""+column.name()+"\" instead of expected "+"\""+columnNames[i]+"\""));
+	      } 	
+     }      
+ }
 
