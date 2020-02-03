@@ -59,27 +59,8 @@ public class CategoryEntityTest {
 	       TestHelper.assertGetterAnnotations(cls, getters[i]);	  
 	      }	  
     }  
-/*    
-     @Test
-     public void annotationsTest() {
-    	 	   
-       //Test for presence of class's annotations.	 
-       TestHelper.assertClassAnnotations(CategoryEntity.class, Entity.class, Table.class, Cache.class);              
-       
-        //Tests for presence of field's annotations.                     
-        TestHelper.assertFieldAnnotations(CategoryEntity.class, "id", Id.class, Column.class, GeneratedValue.class, GenericGenerator.class);
-        TestHelper.assertFieldAnnotations(CategoryEntity.class, "name", Column.class);
-        TestHelper.assertFieldAnnotations(CategoryEntity.class, "entityName", Column.class);
-        TestHelper.assertFieldAnnotations(CategoryEntity.class, "photo", Column.class);      
-       
-         //Tests for presence of getter-method's annotations.                     
-         TestHelper.assertGetterAnnotations(CategoryEntity.class, "getId");                
-         TestHelper.assertGetterAnnotations(CategoryEntity.class, "getName");                 
-         TestHelper.assertGetterAnnotations(CategoryEntity.class, "getEntityName");                  
-         TestHelper.assertGetterAnnotations(CategoryEntity.class, "getPhoto");                  
-     }  
-*/     
-     
+
+    
      @Test
      public void tableNameTest() {
       
