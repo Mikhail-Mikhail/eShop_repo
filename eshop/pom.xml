@@ -19,11 +19,20 @@
        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>                
        <springframework.version>5.0.4.RELEASE</springframework.version>
        <junit.jupiter.version>5.6.0</junit.jupiter.version>
+       <hsqldb.version>2.5.0</hsqldb.version>
     </properties>
    
   
     <!-- Dependencies of the project. -->
-    <dependencies>    
+    <dependencies> 
+        
+		<!-- HyperSQL DB -->
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>${hsqldb.version}</version>
+			<scope>test</scope>
+		</dependency>   
                           
         <!-- Dependencies of "log4j" library: -->
          
