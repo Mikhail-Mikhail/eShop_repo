@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.soft.dao.EshopDAOImplTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.007 sec <<< FAILURE! - in com.soft.dao.EshopDAOImplTest
+daoTest  Time elapsed: 0.005 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.soft.dao.EshopDAOImplTest.daoTest(EshopDAOImplTest.java:35)
+

@@ -257,5 +257,46 @@ public class EshopDAOImpl implements EshopDAO{
 	return tableSize.intValue();   
    }
    
+   //_______________________________________________________________//
+   
+   
+//!!!DEBUG METHOD:     
+   
+   public boolean testHSQLDB() {
+	   
+	 boolean result = false;
+	 
+      //Session with database.
+      Session session; 
+      	      
+         try { 
+             //Open session to read from database.
+             session = sessionFactory.openSession();
+                //Begin transaction.
+                session.beginTransaction();                                        
+
+                  //Create query.
+                  session.createNativeQuery("CREATE DATABASE mDB");
+                  session.createNativeQuery("CREATE TABLE myTable(IDC CHAR)");
+                //  Query query= session.createQuery("select count(*) from "+ tableName);                   
+                                                                           
+                //Commit transaction.
+                session.getTransaction().commit();
+              //Close session with a database. 
+              session.close();
+          
+          result = true;   
+         } 
+         catch(Exception exc) {
+      	   EshopController.log.debug("[EshopDAOImpl. testHSQLDB()] --> EXCEPTION: "+exc.getMessage());
+      	   EshopController.log.debug("[EshopDAOImpl. testHSQLDB()] --> EXCEPTION TO STRING: "+exc.toString());
+      	   
+      	  result = false;
+         }     	         
+         finally {
+           return result;	 
+         }
+   }   
+   
 }
 //------------------------------------------------------------------------------ 
