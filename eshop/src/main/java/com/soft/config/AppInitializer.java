@@ -20,6 +20,11 @@ public class AppInitializer implements WebApplicationInitializer{
     public void onStartup(ServletContext sc) throws ServletException {
         
       AnnotationConfigWebApplicationContext context;  
+      
+//------------
+   sc.setInitParameter("spring.profiles.default", "production");   
+   sc.setInitParameter("spring.profiles.active", "production");                    
+//------------      
        
        // Create "ApplicationContext" instance(i.e. Spring container), based on 
        // the configuration class "AppConfig". 

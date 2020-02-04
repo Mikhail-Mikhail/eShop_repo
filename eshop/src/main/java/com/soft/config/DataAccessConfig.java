@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Properties;
 import javax.sql.DataSource;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.ehcache.jsr107.EhcacheCachingProvider;
 import org.hibernate.SessionFactory;
 import org.hibernate.cache.jcache.JCacheRegionFactory;
@@ -13,6 +14,7 @@ import org.hibernate.cfg.Environment;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.jndi.JndiObjectFactoryBean;
@@ -32,11 +34,77 @@ import com.soft.dao.EshopDAOImpl;
 public class DataAccessConfig {
     
 //======================== First way of configuration ==========================
-    
+
+
+//---------
+	
+/*
+   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+      <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+      <property name="url" value="jdbc:hsqldb:mem:."/>
+      <property name="username" value="sa"/>
+      <property name="password" value=""/>
+    </bean>	
+ */
+	@Profile("development")
+    @Bean(name="DataSourceBean") 
+    public DataSource getDevDataSource(){
+		
+		BasicDataSource dataSource = new BasicDataSource();
+		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
+		dataSource.setUrl("jdbc:hsqldb:mem:.");
+		dataSource.setUsername("admin");
+		dataSource.setPassword("");
+				
+//       final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
+//          dsLookup.setResourceRef(true);
+//          DataSource dataSource = dsLookup.getDataSource("jdbc/eshop_db2");               
+     return dataSource;
+    }	
+	
+	  @Profile("development")
+      @Bean(name="SessionFactory")       
+      @DependsOn("DataSourceBean") 
+      public SessionFactory getDevSessionFactory(DataSource dataSource) throws IOException {              
+          
+        LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
+        
+         //Reference to datasource.   
+         localSessionFactoryBean.setDataSource(dataSource);
+         
+          //Define list of "@Entity" annotated classes.
+//          localSessionFactoryBean.setAnnotatedClasses(com.soft.entity.LocaleMessageEntity.class, com.soft.entity.CategoryEntity.class, com.soft.entity.ResistorEntity.class);
+         //Set package to scan for entities.
+         localSessionFactoryBean.setPackagesToScan(new String[]{"com.soft.entity"});
+         
+           //Create Hibernate's properties.          
+           Properties prop = new Properties();
+           
+            //Set Hibernate's dialect.
+            prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+             //Enable second level cache(default value is true).
+             prop.setProperty(Environment.USE_SECOND_LEVEL_CACHE, Boolean.TRUE.toString());
+              //Enable "Query Cache" to cache query result.
+              prop.setProperty(Environment.USE_QUERY_CACHE, Boolean.TRUE.toString());
+               //Specify cache region factory class.
+               prop.setProperty(Environment.CACHE_REGION_FACTORY, "org.hibernate.cache.jcache.JCacheRegionFactory");
+                //Specify cache provider.
+                prop.setProperty("hibernate.javax.cache.provider", "org.ehcache.jsr107.EhcacheCachingProvider");
+       		              
+             //Set Hibernate's properties.                    
+             localSessionFactoryBean.setHibernateProperties(prop);  
+                                 
+             localSessionFactoryBean.afterPropertiesSet();
+     
+       return  localSessionFactoryBean.getObject();           
+      }  
+//---------	
+	
     // First way to create bean for connection with a database.
     // (This way of bean's creation is preferable instead of next below.)
     // It uses connection pool and datasource created manually on the server
     // to communicate with MySql database.
+	@Profile("production")
     @Bean(name="DataSourceBean") 
     public DataSource getDataSource(){
        final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
@@ -68,6 +136,7 @@ public class DataAccessConfig {
 //    }
         
       //Bean for Hibernate's initialization.
+	  @Profile("production")
       @Bean(name="SessionFactory")       
       @DependsOn("DataSourceBean") 
       public SessionFactory getSessionFactory(DataSource dataSource) throws IOException {              
