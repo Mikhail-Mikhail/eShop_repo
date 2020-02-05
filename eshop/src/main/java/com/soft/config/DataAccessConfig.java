@@ -47,13 +47,15 @@ public class DataAccessConfig {
     </bean>	
  */
 	@Profile("development")
-    @Bean(name="DataSourceBean") 
+    @Bean(name="DataSourceBean2") 
     public DataSource getDevDataSource(){
 		
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-		dataSource.setUrl("jdbc:hsqldb:mem:.");
-		dataSource.setUsername("admin");
+		//dataSource.setUrl("jdbc:hsqldb:mem:.");
+		//dataSource.setUrl("hsqldb://localhost/xdb");jdbc:hsqldb:hsqldb://localhost/xdb			
+		dataSource.setUrl("jdbc:hsqldb:hsqldb://localhost/xdb");
+		dataSource.setUsername("sa");
 		dataSource.setPassword("");
 				
 //       final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
@@ -63,8 +65,8 @@ public class DataAccessConfig {
     }	
 	
 	  @Profile("development")
-      @Bean(name="SessionFactory")       
-      @DependsOn("DataSourceBean") 
+      @Bean(name="SessionFactory2")       
+      @DependsOn("DataSourceBean2") 
       public SessionFactory getDevSessionFactory(DataSource dataSource) throws IOException {              
           
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
@@ -98,6 +100,21 @@ public class DataAccessConfig {
      
        return  localSessionFactoryBean.getObject();           
       }  
+	  
+      //Bean of database's methods.
+      @Profile("development")
+      @Bean
+      @DependsOn("SessionFactory2")          
+      public EshopDAOImpl getDevLocaleDAO(SessionFactory sessionFactory, DataSource dataSource) {                                    
+        
+         EshopDAOImpl instanceDAOImpl = new EshopDAOImpl();            
+         
+          //Initialize reference to a SessionFactoryBean for database's methods.              
+          instanceDAOImpl.setSessionFactory(sessionFactory);
+       
+       return instanceDAOImpl;  
+      }
+
 //---------	
 	
     // First way to create bean for connection with a database.
@@ -174,6 +191,7 @@ public class DataAccessConfig {
       }  
            
           //Bean of database's methods.
+	      @Profile("production")
           @Bean
           @DependsOn("SessionFactory")          
           public EshopDAOImpl getLocaleDAO(SessionFactory sessionFactory, DataSource dataSource) {                                    
