@@ -276,8 +276,10 @@ public class EshopDAOImpl implements EshopDAO{
                 session.beginTransaction();                                        
 
                   //Create query.
-                  session.createNativeQuery("CREATE DATABASE mDB");
-                  session.createNativeQuery("CREATE TABLE myTable(IDC CHAR)");
+              //    session.createNativeQuery("CREATE DATABASE mDB");
+//                  session.createNativeQuery("CREATE TABLE pers(id INTEGER, name CHAR)");
+                  session.createNativeQuery("SELECT * FROM INFORMATION_SCHEMA.TABLES;");
+                  
                 //  Query query= session.createQuery("select count(*) from "+ tableName);                   
                                                                            
                 //Commit transaction.

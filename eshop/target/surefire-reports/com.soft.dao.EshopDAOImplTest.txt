@@ -1,8 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: com.soft.dao.EshopDAOImplTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.007 sec <<< FAILURE! - in com.soft.dao.EshopDAOImplTest
-daoTest  Time elapsed: 0.005 sec  <<< ERROR!
-java.lang.NullPointerException
-	at com.soft.dao.EshopDAOImplTest.daoTest(EshopDAOImplTest.java:35)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.767 sec <<< FAILURE! - in com.soft.dao.EshopDAOImplTest
+daoTest  Time elapsed: 0 sec  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'resourceHandlerMapping' defined in org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerMapping]: Factory method 'resourceHandlerMapping' threw exception; nested exception is java.lang.IllegalStateException: No ServletContext set
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerMapping]: Factory method 'resourceHandlerMapping' threw exception; nested exception is java.lang.IllegalStateException: No ServletContext set
+Caused by: java.lang.IllegalStateException: No ServletContext set
 
