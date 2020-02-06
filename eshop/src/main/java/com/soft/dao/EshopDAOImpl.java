@@ -265,9 +265,10 @@ public class EshopDAOImpl implements EshopDAO{
    public boolean testHSQLDB() {
 	   
 	 boolean result = false;
+	 Long tableSize = null;
 	 
       //Session with database.
-      Session session; 
+      Session session;      
       	      
          try { 
              //Open session to read from database.
@@ -277,8 +278,14 @@ public class EshopDAOImpl implements EshopDAO{
 
                   //Create query.
               //    session.createNativeQuery("CREATE DATABASE mDB");
-//                  session.createNativeQuery("CREATE TABLE pers(id INTEGER, name CHAR)");
-                  session.createNativeQuery("SELECT * FROM INFORMATION_SCHEMA.TABLES;");
+//                 session.createNativeQuery("CREATE TABLE pers(id INTEGER, name CHAR)").getFirstResult();//.executeUpdate();
+//                 List res = session.createNativeQuery("SELECT * FROM person").getResultList();
+                Query query= session.createQuery("select count(*) from person");
+                
+                Object obj = query.getSingleResult();
+                
+//                tableSize = (Long) query.uniqueResult();
+//                  session.createNativeQuery("SELECT * FROM INFORMATION_SCHEMA.TABLES;");
                   
                 //  Query query= session.createQuery("select count(*) from "+ tableName);                   
                                                                            
@@ -296,7 +303,8 @@ public class EshopDAOImpl implements EshopDAO{
       	  result = false;
          }     	         
          finally {
-           return result;	 
+           return result;
+ //       	 return tableSize.intValue();        	 
          }
    }   
    
