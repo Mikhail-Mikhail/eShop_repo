@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.soft.config.AppConfig;
 import com.soft.config.DataAccessConfig;
@@ -19,6 +20,7 @@ import com.soft.config.DataAccessConfig;
 
 @ContextConfiguration(classes = {AppConfig.class, DataAccessConfig.class})
 @ExtendWith(SpringExtension.class)
+@WebAppConfiguration
 @ActiveProfiles("development")
 public class EshopDAOImplTest {
 	
@@ -38,9 +40,14 @@ public class EshopDAOImplTest {
      @Test 
      public void daoTest() { 
     	boolean result = false;
+    	Integer size = 0;
+    	
+//    	eshopDAOImpl = null;
     	 if(eshopDAOImpl!=null){
-    	  result =  eshopDAOImpl.testHSQLDB();
-    	  Assertions.assertEquals(result, true, String.format("TEST FAILURE: HSQLDB "));
+    	   result =  eshopDAOImpl.testHSQLDB();
+   // 	  size = eshopDAOImpl.testHSQLDB();
+    	//   Assertions.assertEquals(0, size, String.format("TEST FAILURE: Size = "+size.toString()));
+    	   Assertions.assertEquals(true, result, String.format("TEST FAILURE: HSQLDB"));
          }    	 
     	 else {
     	   Assertions.assertEquals(false, true, String.format("TEST FAILURE: eshopDAOImpl = NULL"));		 

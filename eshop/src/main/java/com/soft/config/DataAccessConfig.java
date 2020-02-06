@@ -47,14 +47,14 @@ public class DataAccessConfig {
     </bean>	
  */
 	@Profile("development")
-    @Bean(name="DataSourceBean2") 
+    @Bean(name="DataSourceBean") 
     public DataSource getDevDataSource(){
 		
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-		//dataSource.setUrl("jdbc:hsqldb:mem:.");
+ dataSource.setUrl("jdbc:hsqldb:mem:mynewdb");
 		//dataSource.setUrl("hsqldb://localhost/xdb");jdbc:hsqldb:hsqldb://localhost/xdb			
-		dataSource.setUrl("jdbc:hsqldb:hsqldb://localhost/xdb");
+//dataSource.setUrl("jdbc:hsqldb:hsqldb://localhost/xdb");		
 		dataSource.setUsername("sa");
 		dataSource.setPassword("");
 				
@@ -65,8 +65,8 @@ public class DataAccessConfig {
     }	
 	
 	  @Profile("development")
-      @Bean(name="SessionFactory2")       
-      @DependsOn("DataSourceBean2") 
+      @Bean(name="SessionFactory")       
+      @DependsOn("DataSourceBean") 
       public SessionFactory getDevSessionFactory(DataSource dataSource) throws IOException {              
           
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
@@ -104,7 +104,7 @@ public class DataAccessConfig {
       //Bean of database's methods.
       @Profile("development")
       @Bean
-      @DependsOn("SessionFactory2")          
+      @DependsOn("SessionFactory")          
       public EshopDAOImpl getDevLocaleDAO(SessionFactory sessionFactory, DataSource dataSource) {                                    
         
          EshopDAOImpl instanceDAOImpl = new EshopDAOImpl();            
