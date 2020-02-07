@@ -1,0 +1,4 @@
+drop table if exists person
+drop table if exists resistor
+create table person (id bigint not null, name char(1), primary key (id)) engine=MyISAM
+create table resistor (resistor_id bigint not null, category integer, description varchar(255), name varchar(255), nominal double precision, nominal_unit integer, photo tinyblob, power double precision, power_unit integer, price double precision, producer integer, quantity integer, package integer, r_precision double precision, primary key (resistor_id)) engine=MyISAM

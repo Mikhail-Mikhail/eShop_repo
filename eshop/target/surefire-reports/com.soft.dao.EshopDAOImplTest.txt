@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.soft.dao.EshopDAOImplTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 3.127 sec <<< FAILURE! - in com.soft.dao.EshopDAOImplTest
-daoTest  Time elapsed: 0.215 sec  <<< FAILURE!
-org.opentest4j.AssertionFailedError: TEST FAILURE: HSQLDB ==> expected: <true> but was: <false>
-	at com.soft.dao.EshopDAOImplTest.daoTest(EshopDAOImplTest.java:50)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.84 sec <<< FAILURE! - in com.soft.dao.EshopDAOImplTest
+daoTest  Time elapsed: 0.198 sec  <<< ERROR!
+java.lang.NullPointerException
+	at com.soft.dao.EshopDAOImplTest.daoTest(EshopDAOImplTest.java:48)
 
