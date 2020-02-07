@@ -18,6 +18,7 @@
  <!--      <project.build.sourceEncoding>windows-1251</project.build.sourceEncoding>  --> 
        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>                
        <springframework.version>5.0.4.RELEASE</springframework.version>
+       <hibernate.version>5.2.13.Final</hibernate.version>       
        <spring-test.version>5.2.3.RELEASE</spring-test.version>           
        <junit.jupiter.version>5.6.0</junit.jupiter.version>
        <hsqldb.version>2.5.0</hsqldb.version>
@@ -208,9 +209,17 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.2.13.Final</version>
+            <version>${hibernate.version}</version>
             <type>jar</type>
         </dependency> 
+<!--         
+         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-testing</artifactId>
+            <version>${hibernate.version}</version>
+            <scope>test</scope>
+         </dependency>
+ -->         
         
           <!-- Hibernate cache provider "Jcache". -->
           <dependency>

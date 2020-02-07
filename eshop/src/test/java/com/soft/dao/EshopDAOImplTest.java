@@ -44,10 +44,10 @@ public class EshopDAOImplTest {
     	
 //    	eshopDAOImpl = null;
     	 if(eshopDAOImpl!=null){
-    	   result =  eshopDAOImpl.testHSQLDB();
-   // 	  size = eshopDAOImpl.testHSQLDB();
-    	//   Assertions.assertEquals(0, size, String.format("TEST FAILURE: Size = "+size.toString()));
-    	   Assertions.assertEquals(true, result, String.format("TEST FAILURE: HSQLDB"));
+    //	   result =  eshopDAOImpl.testHSQLDB();
+    	  size = eshopDAOImpl.testHSQLDB();
+    	   Assertions.assertEquals(0, size, String.format("TEST FAILURE: Size = "+size.toString()));
+   // 	   Assertions.assertEquals(true, result, String.format("TEST FAILURE: HSQLDB"));
          }    	 
     	 else {
     	   Assertions.assertEquals(false, true, String.format("TEST FAILURE: eshopDAOImpl = NULL"));		 

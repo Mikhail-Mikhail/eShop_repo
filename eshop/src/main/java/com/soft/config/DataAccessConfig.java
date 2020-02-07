@@ -3,14 +3,23 @@ package com.soft.config;
 //------------------------------------------------------------------------------
 
 import java.io.IOException;
+import java.util.EnumSet;
 import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.ehcache.jsr107.EhcacheCachingProvider;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.boot.spi.MetadataImplementor;
 import org.hibernate.cache.jcache.JCacheRegionFactory;
 import org.hibernate.cfg.Environment;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.tool.hbm2ddl.SchemaExport;
+import org.hibernate.tool.schema.TargetType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
@@ -22,8 +31,11 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import com.soft.dao.EshopDAOImpl;
+import com.soft.entity.PersonEntity;
+import com.soft.entity.ResistorEntity;
 
 //------------------------------------------------------------------------------
 
@@ -50,17 +62,29 @@ public class DataAccessConfig {
     @Bean(name="DataSourceBean") 
     public DataSource getDevDataSource(){
 		
+//		BasicDataSource dataSource = new BasicDataSource();
+//		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
+// dataSource.setUrl("jdbc:hsqldb:mem:mynewdb");
+//		//dataSource.setUrl("hsqldb://localhost/xdb");jdbc:hsqldb:hsqldb://localhost/xdb			
+////dataSource.setUrl("jdbc:hsqldb:hsqldb://localhost/xdb");		
+//		dataSource.setUsername("sa");
+//		dataSource.setPassword("");
+				
+//       final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
+//          dsLookup.setResourceRef(true);
+//          DataSource dataSource = dsLookup.getDataSource("jdbc/eshop_db2");
+		
+//---------------
+		
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
- dataSource.setUrl("jdbc:hsqldb:mem:mynewdb");
+		dataSource.setDriverClassName("org.hsqldb.jdbc.JDBCDriver");
+ dataSource.setUrl("jdbc:hsqldb:mem:mymemdb;ifexists=false");
 		//dataSource.setUrl("hsqldb://localhost/xdb");jdbc:hsqldb:hsqldb://localhost/xdb			
 //dataSource.setUrl("jdbc:hsqldb:hsqldb://localhost/xdb");		
 		dataSource.setUsername("sa");
 		dataSource.setPassword("");
-				
-//       final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
-//          dsLookup.setResourceRef(true);
-//          DataSource dataSource = dsLookup.getDataSource("jdbc/eshop_db2");               
+		
+//---------------		
      return dataSource;
     }	
 	
@@ -78,7 +102,7 @@ public class DataAccessConfig {
 //          localSessionFactoryBean.setAnnotatedClasses(com.soft.entity.LocaleMessageEntity.class, com.soft.entity.CategoryEntity.class, com.soft.entity.ResistorEntity.class);
          //Set package to scan for entities.
          localSessionFactoryBean.setPackagesToScan(new String[]{"com.soft.entity"});
-         
+                  
            //Create Hibernate's properties.          
            Properties prop = new Properties();
            
@@ -92,6 +116,42 @@ public class DataAccessConfig {
                prop.setProperty(Environment.CACHE_REGION_FACTORY, "org.hibernate.cache.jcache.JCacheRegionFactory");
                 //Specify cache provider.
                 prop.setProperty("hibernate.javax.cache.provider", "org.ehcache.jsr107.EhcacheCachingProvider");
+                
+//---------------
+                prop.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+         //       prop.setProperty("hibernate.hbm2ddl.auto", "update");
+                prop.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create");
+//                <property name="hbm2ddl.auto" value="create-drop"/>                
+//                <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>  -->  
+                
+            ////EnumSet<TargetType> targetTypes;
+              //Metadata metadata;
+              //
+              //ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().build(); 
+              //metadata = (MetadataImplementor) new MetadataSources(serviceRegistry);
+              //
+              //new SchemaExport().create(EnumSet.of(TargetType.DATABASE), metadata); 
+                       
+                       StandardServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder()
+                               .applySettings(prop)
+                               .build();
+
+                       MetadataSources metadataSrc = new MetadataSources(standardServiceRegistry);
+                       metadataSrc.addAnnotatedClass(PersonEntity.class);
+                       metadataSrc.addAnnotatedClass(ResistorEntity.class);
+                       Metadata metadata = metadataSrc.getMetadataBuilder().build();
+                       
+//                       String pattern = getPattern(args);
+//                       List<Class<?>> classes = getClassesByAnnotation(Entity.class, pattern);
+//                       classes.forEach(metadata::addAnnotatedClass);
+//                       MetadataImplementor metadataImplementor = (MetadataImplementor) metadata.getMetadataBuilder().build();                       
+//                       SchemaExport schema = new SchemaExport(metadataImplementor);         
+
+                         new SchemaExport().setOutputFile("myscript.txt").create(EnumSet.of(TargetType.STDOUT, TargetType.SCRIPT), metadata);                
+                
+                
+                
+//---------------                
        		              
              //Set Hibernate's properties.                    
              localSessionFactoryBean.setHibernateProperties(prop);  

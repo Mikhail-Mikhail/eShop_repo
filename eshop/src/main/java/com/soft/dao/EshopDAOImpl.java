@@ -262,7 +262,7 @@ public class EshopDAOImpl implements EshopDAO{
    
 //!!!DEBUG METHOD:     
    
-   public boolean testHSQLDB() {
+   public Integer testHSQLDB() {
 	   
 	 boolean result = false;
 	 Long tableSize = null;
@@ -278,13 +278,18 @@ public class EshopDAOImpl implements EshopDAO{
 
                   //Create query.
               //    session.createNativeQuery("CREATE DATABASE mDB");
-//                 session.createNativeQuery("CREATE TABLE pers(id INTEGER, name CHAR)").getFirstResult();//.executeUpdate();
-//                 List res = session.createNativeQuery("SELECT * FROM person").getResultList();
-                Query query= session.createQuery("select count(*) from person");
+                 //session.createNativeQuery("CREATE TABLE PERSON(id INTEGER, name CHAR)").getFirstResult();//.executeUpdate();
+//                 List res = session.createNativeQuery("SELECT * FROM person").getResultList();                                              
+                
+  //              session.createQuery("CREATE TABLE PERSON(id INTEGER, name CHAR)").executeUpdate();
+                
+//                Query query= session.createQuery("SELECT COUNT(*) FROM PersonEntity");
+                Query query= session.createQuery("SELECT COUNT(*) FROM PersonEntity");
                 
                 Object obj = query.getSingleResult();
-                
-//                tableSize = (Long) query.uniqueResult();
+                tableSize = (Long) obj;
+               
+ //               tableSize = (Long) query.uniqueResult();
 //                  session.createNativeQuery("SELECT * FROM INFORMATION_SCHEMA.TABLES;");
                   
                 //  Query query= session.createQuery("select count(*) from "+ tableName);                   
@@ -303,8 +308,8 @@ public class EshopDAOImpl implements EshopDAO{
       	  result = false;
          }     	         
          finally {
-           return result;
- //       	 return tableSize.intValue();        	 
+ //          return result;
+        	 return tableSize.intValue();        	 
          }
    }   
    
