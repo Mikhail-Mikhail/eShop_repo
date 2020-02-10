@@ -11,7 +11,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "person") 
+@Table(name = "PERSON") 
 public class PersonEntity {
 
 	public PersonEntity(Long id, char name) {
@@ -21,12 +21,12 @@ public class PersonEntity {
 	}
 
 	@Id    
-    @Column(name = "id")    
+    @Column(name = "ID")    
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment") 
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "NAME")
     private char name;
 
 	public Long getId() {
