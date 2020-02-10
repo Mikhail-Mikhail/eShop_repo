@@ -284,10 +284,13 @@ public class EshopDAOImpl implements EshopDAO{
   //              session.createQuery("CREATE TABLE PERSON(id INTEGER, name CHAR)").executeUpdate();
                 
 //                Query query= session.createQuery("SELECT COUNT(*) FROM PersonEntity");
-                Query query= session.createQuery("SELECT COUNT(*) FROM PersonEntity");
+///                Query query= session.createQuery("SELECT COUNT(*) FROM PersonEntity");
+                Query query= session.createQuery("FROM PersonEntity");
+                query.list();
+                tableSize = 5L;
                 
-                Object obj = query.getSingleResult();
-                tableSize = (Long) obj;
+//                Object obj = query.getSingleResult();
+//                tableSize = (Long) obj;
                
  //               tableSize = (Long) query.uniqueResult();
 //                  session.createNativeQuery("SELECT * FROM INFORMATION_SCHEMA.TABLES;");

@@ -8,6 +8,8 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.ehcache.jsr107.EhcacheCachingProvider;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -19,6 +21,7 @@ import org.hibernate.cache.jcache.JCacheRegionFactory;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
+import org.hibernate.tool.hbm2ddl.SchemaExport.Action;
 import org.hibernate.tool.schema.TargetType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,6 +36,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import com.soft.controller.EshopController;
 import com.soft.dao.EshopDAOImpl;
 import com.soft.entity.PersonEntity;
 import com.soft.entity.ResistorEntity;
@@ -78,7 +82,7 @@ public class DataAccessConfig {
 		
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("org.hsqldb.jdbc.JDBCDriver");
- dataSource.setUrl("jdbc:hsqldb:mem:mymemdb;ifexists=false");
+ dataSource.setUrl("jdbc:hsqldb:file:mymemdb;ifexists=false;sql.syntax_mys=true");
 		//dataSource.setUrl("hsqldb://localhost/xdb");jdbc:hsqldb:hsqldb://localhost/xdb			
 //dataSource.setUrl("jdbc:hsqldb:hsqldb://localhost/xdb");		
 		dataSource.setUsername("sa");
@@ -121,6 +125,14 @@ public class DataAccessConfig {
                 prop.setProperty("hibernate.hbm2ddl.auto", "create-drop");
          //       prop.setProperty("hibernate.hbm2ddl.auto", "update");
                 prop.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create");
+                
+                prop.setProperty("hibernate.connection.url", "jdbc:hsqldb:file:mymemdb;ifexists=false;sql.syntax_mys=true");
+//                prop.setProperty("hibernate.connection.username", "sa");
+//                prop.setProperty("hibernate.connection.password", "");
+//                "hibernate.connection.driver_class" for JDBC driver class
+//                "hibernate.connection.url" for JDBC URL
+//                "hibernate.connection.username" for database user
+//                "hibernate.connection.password"
 //                <property name="hbm2ddl.auto" value="create-drop"/>                
 //                <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>  -->  
                 
@@ -138,7 +150,7 @@ public class DataAccessConfig {
 
                        MetadataSources metadataSrc = new MetadataSources(standardServiceRegistry);
                        metadataSrc.addAnnotatedClass(PersonEntity.class);
-                       metadataSrc.addAnnotatedClass(ResistorEntity.class);
+                       metadataSrc.addAnnotatedClass(ResistorEntity.class);                      
                        Metadata metadata = metadataSrc.getMetadataBuilder().build();
                        
 //                       String pattern = getPattern(args);
@@ -147,16 +159,46 @@ public class DataAccessConfig {
 //                       MetadataImplementor metadataImplementor = (MetadataImplementor) metadata.getMetadataBuilder().build();                       
 //                       SchemaExport schema = new SchemaExport(metadataImplementor);         
 
-                         new SchemaExport().setOutputFile("myscript.txt").create(EnumSet.of(TargetType.STDOUT, TargetType.SCRIPT), metadata);                
+//                         new SchemaExport().setOutputFile("myscript.txt").create(EnumSet.of(TargetType.STDOUT, TargetType.SCRIPT), metadata);
+                       Logger log = LogManager.getLogger(EshopController.class.getName());
+                       try {
+                    	   dataSource.getConnection();                         
+                       }
+                       catch(Exception exc) {                    	   
+                     	   log.debug("[DataAcessConfig.getDevSessionFactory()] --> Datasource EXCEPTION: "+exc.getMessage());
+                      	   log.debug("[DataAcessConfig.getDevSessionFactory()] --> Datasource  EXCEPTION TO STRING: "+exc.toString());
+                       }
+                       
+                       try {                    	
+                         //new SchemaExport().setOutputFile("myscript.txt") .create(EnumSet.of(TargetType.SCRIPT), metadata);
+             //           new SchemaExport().create(EnumSet.of(TargetType.DATABASE), metadata);
+                    	   
+//                         new SchemaExport().setOutputFile("myscript.txt").execute(EnumSet.of(TargetType.SCRIPT), Action.BOTH, metadata);
+                         new SchemaExport().execute(EnumSet.of(TargetType.DATABASE), Action.BOTH, metadata);
+                       }
+                       catch(Exception exc) {                    	   
+                     	   log.debug("[DataAcessConfig.getDevSessionFactory()] --> SchemaExport EXCEPTION: "+exc.getMessage());
+                      	   log.debug("[DataAcessConfig.getDevSessionFactory()] --> SchemaExport EXCEPTION TO STRING: "+exc.toString());
+                       }
                 
                 
                 
 //---------------                
-       		              
+       		     
+             try {                    	
+               //Set Hibernate's properties.                    
+               localSessionFactoryBean.setHibernateProperties(prop); 
+               
+               localSessionFactoryBean.afterPropertiesSet();
+             }
+             catch(Exception exc) {                    	   
+           	   log.debug("[DataAcessConfig.getDevSessionFactory()] --> SetHibernateProperties EXCEPTION: "+exc.getMessage());
+               log.debug("[DataAcessConfig.getDevSessionFactory()] --> SetHibernateProperties EXCEPTION TO STRING: "+exc.toString());
+             }          
              //Set Hibernate's properties.                    
-             localSessionFactoryBean.setHibernateProperties(prop);  
+//             localSessionFactoryBean.setHibernateProperties(prop);  
                                  
-             localSessionFactoryBean.afterPropertiesSet();
+//             localSessionFactoryBean.afterPropertiesSet();                          
      
        return  localSessionFactoryBean.getObject();           
       }  
