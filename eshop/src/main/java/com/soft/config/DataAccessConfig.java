@@ -34,7 +34,6 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import com.soft.controller.EshopController;
 import com.soft.dao.EshopDAOImpl;
@@ -66,11 +65,11 @@ public class DataAccessConfig {
     @Bean(name="DataSourceBean") 
     public DataSource getDevDataSource(){
 		
-//		BasicDataSource dataSource = new BasicDataSource();
+//        BasicDataSource dataSource = new BasicDataSource();
 //		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-// dataSource.setUrl("jdbc:hsqldb:mem:mynewdb");
+//        dataSource.setUrl("jdbc:hsqldb:mem:mynewdb");
 //		//dataSource.setUrl("hsqldb://localhost/xdb");jdbc:hsqldb:hsqldb://localhost/xdb			
-////dataSource.setUrl("jdbc:hsqldb:hsqldb://localhost/xdb");		
+//        //dataSource.setUrl("jdbc:hsqldb:hsqldb://localhost/xdb");		
 //		dataSource.setUsername("sa");
 //		dataSource.setPassword("");
 				
@@ -82,7 +81,7 @@ public class DataAccessConfig {
 		
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("org.hsqldb.jdbc.JDBCDriver");
- dataSource.setUrl("jdbc:hsqldb:file:mymemdb;ifexists=false;sql.syntax_mys=true");
+        dataSource.setUrl("jdbc:hsqldb:file:mymemdb;ifexists=false;sql.syntax_mys=true");
 		//dataSource.setUrl("hsqldb://localhost/xdb");jdbc:hsqldb:hsqldb://localhost/xdb			
 //dataSource.setUrl("jdbc:hsqldb:hsqldb://localhost/xdb");		
 		dataSource.setUsername("sa");
@@ -95,7 +94,42 @@ public class DataAccessConfig {
 	  @Profile("development")
       @Bean(name="SessionFactory")       
       @DependsOn("DataSourceBean") 
-      public SessionFactory getDevSessionFactory(DataSource dataSource) throws IOException {              
+      public SessionFactory getDevSessionFactory(DataSource dataSource) throws IOException {   
+
+//####################			  		  
+		  
+//          Configuration configuration = new Configuration();
+//
+//          // Hibernate settings equivalent to hibernate.cfg.xml's properties
+//
+//          Properties settings = new Properties();
+//
+//          settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
+//
+//          settings.put(Environment.URL, "jdbc:mysql://localhost:3306/hibernate_db?useSSL=false");
+//
+//          settings.put(Environment.USER, "root");
+//
+//          settings.put(Environment.PASS, "root");
+//
+//          settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
+//
+//          settings.put(Environment.SHOW_SQL, "true");
+//
+//          settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
+//
+//          settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+//
+//          configuration.setProperties(settings);
+//
+//          configuration.addAnnotatedClass(Student.class);
+//
+//          ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+//
+//              .applySettings(configuration.getProperties()).build();
+//
+//          sessionFactory = configuration.buildSessionFactory(serviceRegistry);		  
+//####################		  
           
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         
@@ -122,11 +156,19 @@ public class DataAccessConfig {
                 prop.setProperty("hibernate.javax.cache.provider", "org.ehcache.jsr107.EhcacheCachingProvider");
                 
 //---------------
-                prop.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+                prop.setProperty("hibernate.hbm2ddl.auto", "create");
+//                prop.setProperty("hibernate.hbm2ddl.auto", "create-drop");
          //       prop.setProperty("hibernate.hbm2ddl.auto", "update");
-                prop.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create");
+  //              prop.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create");
                 
-                prop.setProperty("hibernate.connection.url", "jdbc:hsqldb:file:mymemdb;ifexists=false;sql.syntax_mys=true");
+   //             prop.setProperty("hibernate.connection.driver_class", "org.hsqldb.jdbcDriver");
+//                prop.setProperty("hibernate.connection.url", "jdbc:hsqldb:file:mymemdb2;user=sa;password=;ifexists=false;sql.syntax_mys=true");
+                  prop.setProperty("hibernate.connection.url", "jdbc:hsqldb:file:mymemdb;user=sa;password=;ifexists=false;sql.syntax_mys=true");
+                  
+                
+//                prop.setProperty("hibernate.connection.url", "jdbc:hsqldb:file:mymemdb;user=sa;password=;ifexists=false;sql.syntax_mys=true");
+             //   prop.setProperty("hibernate.connection.url", "jdbc:hsqldb:file:mymemdb;ifexists=false;sql.syntax_mys=true");
+                
 //                prop.setProperty("hibernate.connection.username", "sa");
 //                prop.setProperty("hibernate.connection.password", "");
 //                "hibernate.connection.driver_class" for JDBC driver class
@@ -144,10 +186,8 @@ public class DataAccessConfig {
               //
               //new SchemaExport().create(EnumSet.of(TargetType.DATABASE), metadata); 
                        
-                       StandardServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder()
-                               .applySettings(prop)
-                               .build();
-
+                       ServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder().applySettings(prop).build();                       
+                       
                        MetadataSources metadataSrc = new MetadataSources(standardServiceRegistry);
                        metadataSrc.addAnnotatedClass(PersonEntity.class);
                        metadataSrc.addAnnotatedClass(ResistorEntity.class);                      
@@ -173,8 +213,8 @@ public class DataAccessConfig {
                          //new SchemaExport().setOutputFile("myscript.txt") .create(EnumSet.of(TargetType.SCRIPT), metadata);
              //           new SchemaExport().create(EnumSet.of(TargetType.DATABASE), metadata);
                     	   
-//                         new SchemaExport().setOutputFile("myscript.txt").execute(EnumSet.of(TargetType.SCRIPT), Action.BOTH, metadata);
-                         new SchemaExport().execute(EnumSet.of(TargetType.DATABASE), Action.BOTH, metadata);
+    //                     new SchemaExport().setOutputFile("myscript.txt").execute(EnumSet.of(TargetType.SCRIPT), Action.BOTH, metadata);
+       //                  new SchemaExport().execute(EnumSet.of(TargetType.DATABASE), Action.BOTH, metadata);
                        }
                        catch(Exception exc) {                    	   
                      	   log.debug("[DataAcessConfig.getDevSessionFactory()] --> SchemaExport EXCEPTION: "+exc.getMessage());
@@ -190,6 +230,18 @@ public class DataAccessConfig {
                localSessionFactoryBean.setHibernateProperties(prop); 
                
                localSessionFactoryBean.afterPropertiesSet();
+               
+               
+//------------------ 
+//               MetadataSources mdataSrc = localSessionFactoryBean.getMetadataSources();
+//               Metadata mdata = mdataSrc.getMetadataBuilder().build();
+//               new SchemaExport().setOutputFile("myscript1.txt").create(EnumSet.of(TargetType.SCRIPT), metadata);
+//               new SchemaExport().setOutputFile("myscript2.txt").create(EnumSet.of(TargetType.SCRIPT), mdata);
+           
+         //        new SchemaExport().execute(EnumSet.of(TargetType.DATABASE), Action.BOTH, metadata, standardServiceRegistry);
+               new SchemaExport().execute(EnumSet.of(TargetType.DATABASE), Action.BOTH, metadata);
+//-------------------               
+               
              }
              catch(Exception exc) {                    	   
            	   log.debug("[DataAcessConfig.getDevSessionFactory()] --> SetHibernateProperties EXCEPTION: "+exc.getMessage());
