@@ -11,23 +11,23 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "PERSON") 
+@Table(name = "person") 
 public class PersonEntity {
 
-	public PersonEntity(Long id, char name) {
+	public PersonEntity(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 
 	@Id    
-    @Column(name = "ID")    
+    @Column(name = "id")    
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment") 
     private Long id;
 
-    @Column(name = "NAME")
-    private char name;
+    @Column(name = "name")
+    private String name;
 
 	public Long getId() {
 		return id;
@@ -37,11 +37,11 @@ public class PersonEntity {
 		this.id = id;
 	}
 
-	public char getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(char name) {
+	public void setName(String name) {
 		this.name = name;
 	}        
 }
