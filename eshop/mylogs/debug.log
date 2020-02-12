@@ -1,2 +1,0 @@
-17:59:19.563 DEBUG com.soft.controller.EshopController - [EshopDAOImpl. testHSQLDB()] --> EXCEPTION: org.hibernate.exception.SQLGrammarException: could not prepare statement
-17:59:19.563 DEBUG com.soft.controller.EshopController - [EshopDAOImpl. testHSQLDB()] --> EXCEPTION TO STRING: javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not prepare statement

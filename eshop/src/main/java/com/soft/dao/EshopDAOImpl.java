@@ -14,6 +14,7 @@ import com.soft.controller.EshopController;
 import com.soft.entity.BaseEntity;
 import com.soft.entity.CategoryEntity;
 import com.soft.entity.LocaleMessageEntity;
+import com.soft.entity.PersonEntity;
 
 //------------------------------------------------------------------------------
 
@@ -276,26 +277,20 @@ public class EshopDAOImpl implements EshopDAO{
                 //Begin transaction.
                 session.beginTransaction();                                        
 
-                  //Create query.
-              //    session.createNativeQuery("CREATE DATABASE mDB");
-                 //session.createNativeQuery("CREATE TABLE PERSON(id INTEGER, name CHAR)").getFirstResult();//.executeUpdate();
-//                 List res = session.createNativeQuery("SELECT * FROM person").getResultList();                                              
+                 PersonEntity personEntity = new PersonEntity(1L, "Mike");
+                 session.save(personEntity);
+                 personEntity = new PersonEntity(2L, "Teddy");
+                 session.save(personEntity);
+                 
+                  //Create query.                
+                  Query query= session.createQuery("SELECT COUNT(*) FROM PersonEntity");
+
+//                Query query= session.createQuery("FROM PersonEntity");
+//                query.list();
+//                tableSize = 5L;
                 
-  //              session.createQuery("CREATE TABLE PERSON(id INTEGER, name CHAR)").executeUpdate();
-                
-//                Query query= session.createQuery("SELECT COUNT(*) FROM PersonEntity");
-///                Query query= session.createQuery("SELECT COUNT(*) FROM PersonEntity");
-                Query query= session.createQuery("FROM PersonEntity");
-                query.list();
-                tableSize = 5L;
-                
-//                Object obj = query.getSingleResult();
-//                tableSize = (Long) obj;
-               
- //               tableSize = (Long) query.uniqueResult();
-//                  session.createNativeQuery("SELECT * FROM INFORMATION_SCHEMA.TABLES;");
-                  
-                //  Query query= session.createQuery("select count(*) from "+ tableName);                   
+                  Object obj = query.getSingleResult();
+                  tableSize = (Long) obj;                                                   
                                                                            
                 //Commit transaction.
                 session.getTransaction().commit();

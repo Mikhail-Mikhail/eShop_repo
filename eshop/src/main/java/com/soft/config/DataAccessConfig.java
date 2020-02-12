@@ -5,8 +5,8 @@ package com.soft.config;
 import java.io.IOException;
 import java.util.EnumSet;
 import java.util.Properties;
+import java.util.Set;
 import javax.sql.DataSource;
-
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,10 +19,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.boot.spi.MetadataImplementor;
 import org.hibernate.cache.jcache.JCacheRegionFactory;
 import org.hibernate.cfg.Environment;
+import org.hibernate.engine.config.spi.ConfigurationService;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.hibernate.tool.hbm2ddl.SchemaExport.Action;
 import org.hibernate.tool.schema.TargetType;
+import org.hibernate.tool.schema.spi.SchemaManagementTool;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
@@ -34,11 +36,8 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import com.soft.controller.EshopController;
 import com.soft.dao.EshopDAOImpl;
-import com.soft.entity.PersonEntity;
-import com.soft.entity.ResistorEntity;
 
 //------------------------------------------------------------------------------
 
@@ -47,90 +46,41 @@ import com.soft.entity.ResistorEntity;
 @Configuration
 @EnableTransactionManagement
 public class DataAccessConfig {
+	
+  //Get logger.
+  Logger log = LogManager.getLogger(EshopController.class.getName());
     
 //======================== First way of configuration ==========================
 
-
-//---------
 	
-/*
-   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-      <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
-      <property name="url" value="jdbc:hsqldb:mem:."/>
-      <property name="username" value="sa"/>
-      <property name="password" value=""/>
-    </bean>	
- */
+	//====== Profile's "development" configuration. ======// 
+	//
+	//(This profile is used for tests only. Use in memory HSQLDB for tests instead of MySql for production profile. )     
+
 	@Profile("development")
     @Bean(name="DataSourceBean") 
     public DataSource getDevDataSource(){
 		
-//        BasicDataSource dataSource = new BasicDataSource();
-//		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-//        dataSource.setUrl("jdbc:hsqldb:mem:mynewdb");
-//		//dataSource.setUrl("hsqldb://localhost/xdb");jdbc:hsqldb:hsqldb://localhost/xdb			
-//        //dataSource.setUrl("jdbc:hsqldb:hsqldb://localhost/xdb");		
-//		dataSource.setUsername("sa");
-//		dataSource.setPassword("");
+       //Create dataSource for HSQLDB connection.
+		
+	   BasicDataSource dataSource = new BasicDataSource();
+	    dataSource.setDriverClassName("org.hsqldb.jdbc.JDBCDriver");
+	    //Create HSQLDB in memory. 
+	    dataSource.setUrl("jdbc:hsqldb:mem:mymemdb;ifexists=false;sql.syntax_mys=true");
+	    //Create HSQLDB in file located in the application folder.
+        //dataSource.setUrl("jdbc:hsqldb:file:mymemdb;ifexists=false;sql.syntax_mys=true");
+	    dataSource.setUsername("sa");
+	    dataSource.setPassword("");
 				
-//       final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
-//          dsLookup.setResourceRef(true);
-//          DataSource dataSource = dsLookup.getDataSource("jdbc/eshop_db2");
-		
-//---------------
-		
-		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName("org.hsqldb.jdbc.JDBCDriver");
-        dataSource.setUrl("jdbc:hsqldb:file:mymemdb;ifexists=false;sql.syntax_mys=true");
-		//dataSource.setUrl("hsqldb://localhost/xdb");jdbc:hsqldb:hsqldb://localhost/xdb			
-//dataSource.setUrl("jdbc:hsqldb:hsqldb://localhost/xdb");		
-		dataSource.setUsername("sa");
-		dataSource.setPassword("");
-		
-//---------------		
      return dataSource;
     }	
+	
 	
 	  @Profile("development")
       @Bean(name="SessionFactory")       
       @DependsOn("DataSourceBean") 
-      public SessionFactory getDevSessionFactory(DataSource dataSource) throws IOException {   
-
-//####################			  		  
-		  
-//          Configuration configuration = new Configuration();
-//
-//          // Hibernate settings equivalent to hibernate.cfg.xml's properties
-//
-//          Properties settings = new Properties();
-//
-//          settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-//
-//          settings.put(Environment.URL, "jdbc:mysql://localhost:3306/hibernate_db?useSSL=false");
-//
-//          settings.put(Environment.USER, "root");
-//
-//          settings.put(Environment.PASS, "root");
-//
-//          settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
-//
-//          settings.put(Environment.SHOW_SQL, "true");
-//
-//          settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-//
-//          settings.put(Environment.HBM2DDL_AUTO, "create-drop");
-//
-//          configuration.setProperties(settings);
-//
-//          configuration.addAnnotatedClass(Student.class);
-//
-//          ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-//
-//              .applySettings(configuration.getProperties()).build();
-//
-//          sessionFactory = configuration.buildSessionFactory(serviceRegistry);		  
-//####################		  
-          
+      public SessionFactory getDevSessionFactory(DataSource dataSource) throws IOException {  
+         
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         
          //Reference to datasource.   
@@ -144,8 +94,8 @@ public class DataAccessConfig {
            //Create Hibernate's properties.          
            Properties prop = new Properties();
            
-            //Set Hibernate's dialect.
-            prop.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+            //Set Hibernate's dialect for HSQLDB.
+            prop.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");        
              //Enable second level cache(default value is true).
              prop.setProperty(Environment.USE_SECOND_LEVEL_CACHE, Boolean.TRUE.toString());
               //Enable "Query Cache" to cache query result.
@@ -154,106 +104,51 @@ public class DataAccessConfig {
                prop.setProperty(Environment.CACHE_REGION_FACTORY, "org.hibernate.cache.jcache.JCacheRegionFactory");
                 //Specify cache provider.
                 prop.setProperty("hibernate.javax.cache.provider", "org.ehcache.jsr107.EhcacheCachingProvider");
-                
-//---------------
-                prop.setProperty("hibernate.hbm2ddl.auto", "create");
-//                prop.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-         //       prop.setProperty("hibernate.hbm2ddl.auto", "update");
-  //              prop.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create");
-                
-   //             prop.setProperty("hibernate.connection.driver_class", "org.hsqldb.jdbcDriver");
-//                prop.setProperty("hibernate.connection.url", "jdbc:hsqldb:file:mymemdb2;user=sa;password=;ifexists=false;sql.syntax_mys=true");
-                  prop.setProperty("hibernate.connection.url", "jdbc:hsqldb:file:mymemdb;user=sa;password=;ifexists=false;sql.syntax_mys=true");
-                  
-                
-//                prop.setProperty("hibernate.connection.url", "jdbc:hsqldb:file:mymemdb;user=sa;password=;ifexists=false;sql.syntax_mys=true");
-             //   prop.setProperty("hibernate.connection.url", "jdbc:hsqldb:file:mymemdb;ifexists=false;sql.syntax_mys=true");
-                
-//                prop.setProperty("hibernate.connection.username", "sa");
-//                prop.setProperty("hibernate.connection.password", "");
-//                "hibernate.connection.driver_class" for JDBC driver class
-//                "hibernate.connection.url" for JDBC URL
-//                "hibernate.connection.username" for database user
-//                "hibernate.connection.password"
-//                <property name="hbm2ddl.auto" value="create-drop"/>                
-//                <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>  -->  
-                
-            ////EnumSet<TargetType> targetTypes;
-              //Metadata metadata;
-              //
-              //ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().build(); 
-              //metadata = (MetadataImplementor) new MetadataSources(serviceRegistry);
-              //
-              //new SchemaExport().create(EnumSet.of(TargetType.DATABASE), metadata); 
-                       
-                       ServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder().applySettings(prop).build();                       
-                       
-                       MetadataSources metadataSrc = new MetadataSources(standardServiceRegistry);
-                       metadataSrc.addAnnotatedClass(PersonEntity.class);
-                       metadataSrc.addAnnotatedClass(ResistorEntity.class);                      
-                       Metadata metadata = metadataSrc.getMetadataBuilder().build();
-                       
-//                       String pattern = getPattern(args);
-//                       List<Class<?>> classes = getClassesByAnnotation(Entity.class, pattern);
-//                       classes.forEach(metadata::addAnnotatedClass);
-//                       MetadataImplementor metadataImplementor = (MetadataImplementor) metadata.getMetadataBuilder().build();                       
-//                       SchemaExport schema = new SchemaExport(metadataImplementor);         
-
-//                         new SchemaExport().setOutputFile("myscript.txt").create(EnumSet.of(TargetType.STDOUT, TargetType.SCRIPT), metadata);
-                       Logger log = LogManager.getLogger(EshopController.class.getName());
-                       try {
-                    	   dataSource.getConnection();                         
-                       }
-                       catch(Exception exc) {                    	   
-                     	   log.debug("[DataAcessConfig.getDevSessionFactory()] --> Datasource EXCEPTION: "+exc.getMessage());
-                      	   log.debug("[DataAcessConfig.getDevSessionFactory()] --> Datasource  EXCEPTION TO STRING: "+exc.toString());
-                       }
-                       
-                       try {                    	
-                         //new SchemaExport().setOutputFile("myscript.txt") .create(EnumSet.of(TargetType.SCRIPT), metadata);
-             //           new SchemaExport().create(EnumSet.of(TargetType.DATABASE), metadata);
-                    	   
-    //                     new SchemaExport().setOutputFile("myscript.txt").execute(EnumSet.of(TargetType.SCRIPT), Action.BOTH, metadata);
-       //                  new SchemaExport().execute(EnumSet.of(TargetType.DATABASE), Action.BOTH, metadata);
-                       }
-                       catch(Exception exc) {                    	   
-                     	   log.debug("[DataAcessConfig.getDevSessionFactory()] --> SchemaExport EXCEPTION: "+exc.getMessage());
-                      	   log.debug("[DataAcessConfig.getDevSessionFactory()] --> SchemaExport EXCEPTION TO STRING: "+exc.toString());
-                       }
-                
-                
-                
-//---------------                
-       		     
+                 //Force Hibernate to create tables in HSQLDB for all entity's classes automatically on startup.                
+                 prop.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+                 
+                 
+//!DO NOT REMOVE:
+//Configuration to force Hibernate to create tables for entity's classes:                  
+                 
+//                  prop.setProperty("hibernate.connection.url", "jdbc:hsqldb:file:mymemdb;ifexists=false;sql.syntax_mys=true");
+//                  prop.setProperty("hibernate.connection.url", "jdbc:hsqldb:file:mymemdb;user=sa;password=;ifexists=false;sql.syntax_mys=true");
+                                       
+//                    ServiceRegistry standardServiceRegistry = new StandardServiceRegistryBuilder().applySettings(prop).build();                       
+//                       
+//                       MetadataSources metadataSrc = new MetadataSources(standardServiceRegistry);
+//                       metadataSrc.addAnnotatedClass(PersonEntity.class);
+//                       metadataSrc.addAnnotatedClass(ResistorEntity.class);                      
+//                       Metadata metadata = metadataSrc.getMetadataBuilder().build();
+//                                                                                                                                                                          		     
              try {                    	
                //Set Hibernate's properties.                    
                localSessionFactoryBean.setHibernateProperties(prop); 
                
-               localSessionFactoryBean.afterPropertiesSet();
-               
-               
-//------------------ 
-//               MetadataSources mdataSrc = localSessionFactoryBean.getMetadataSources();
-//               Metadata mdata = mdataSrc.getMetadataBuilder().build();
-//               new SchemaExport().setOutputFile("myscript1.txt").create(EnumSet.of(TargetType.SCRIPT), metadata);
-//               new SchemaExport().setOutputFile("myscript2.txt").create(EnumSet.of(TargetType.SCRIPT), mdata);
-           
-         //        new SchemaExport().execute(EnumSet.of(TargetType.DATABASE), Action.BOTH, metadata, standardServiceRegistry);
-               new SchemaExport().execute(EnumSet.of(TargetType.DATABASE), Action.BOTH, metadata);
-//-------------------               
-               
+               localSessionFactoryBean.afterPropertiesSet();                                             
              }
              catch(Exception exc) {                    	   
            	   log.debug("[DataAcessConfig.getDevSessionFactory()] --> SetHibernateProperties EXCEPTION: "+exc.getMessage());
                log.debug("[DataAcessConfig.getDevSessionFactory()] --> SetHibernateProperties EXCEPTION TO STRING: "+exc.toString());
-             }          
-             //Set Hibernate's properties.                    
-//             localSessionFactoryBean.setHibernateProperties(prop);  
-                                 
-//             localSessionFactoryBean.afterPropertiesSet();                          
+             }         
+             
+
+//!DO NOT REMOVE:
+//Configuration to force Hibernate to create tables for entity's classes:  
+             try {
+               //Create tables in database for entity's classes.
+//             new SchemaExport().execute(EnumSet.of(TargetType.DATABASE), Action.BOTH, metadata, standardServiceRegistry);
+               //Create script file in application's folder.
+//             new SchemaExport().setOutputFile("myscript.txt").create(EnumSet.of(TargetType.STDOUT, TargetType.SCRIPT), metadata);
+             }
+             catch(Exception exc) {                    	   
+           	   log.debug("[DataAcessConfig.getDevSessionFactory()] --> SchemaExport EXCEPTION: "+exc.getMessage());
+               log.debug("[DataAcessConfig.getDevSessionFactory()] --> SchemaExport EXCEPTION TO STRING: "+exc.toString());
+             }
      
        return  localSessionFactoryBean.getObject();           
       }  
+	  
 	  
       //Bean of database's methods.
       @Profile("development")
@@ -269,7 +164,11 @@ public class DataAccessConfig {
        return instanceDAOImpl;  
       }
 
-//---------	
+
+    //====== Profile's "production" configuration. ======// 
+  	//
+  	//(This profile is used for production. Use MySql database for production instead of in memory HSQLDB for tests.)     
+	
 	
     // First way to create bean for connection with a database.
     // (This way of bean's creation is preferable instead of next below.)

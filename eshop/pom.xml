@@ -18,8 +18,9 @@
  <!--      <project.build.sourceEncoding>windows-1251</project.build.sourceEncoding>  --> 
        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>                
        <springframework.version>5.0.4.RELEASE</springframework.version>
-       <hibernate.version>5.2.13.Final</hibernate.version>       
-       <spring-test.version>5.2.3.RELEASE</spring-test.version>           
+       <spring-core.version>5.2.0.RELEASE</spring-core.version>
+       <spring-test.version>5.2.3.RELEASE</spring-test.version>
+       <hibernate.version>5.2.13.Final</hibernate.version>                                     
        <junit.jupiter.version>5.6.0</junit.jupiter.version>
        <hsqldb.version>2.5.0</hsqldb.version>
        <dbcp2.version>2.7.0</dbcp2.version>
@@ -89,43 +90,21 @@
 		   <scope>test</scope>
 		</dependency>
     
-        <!-- Dependencies of the Spring FrameWork. -->
-<!-- ////////////////// -->  
+        <!-- Dependencies of the Spring FrameWork. -->  
 
-<dependency>
-            <groupId>io.spring.platform</groupId>
-            <artifactId>platform-bom</artifactId>
-            <version>2.0.1.RELEASE</version>
-            <type>pom</type>
-            <scope>import</scope>
-  </dependency>
+        <dependency>
+           <groupId>io.spring.platform</groupId>
+           <artifactId>platform-bom</artifactId>
+           <version>2.0.1.RELEASE</version>
+           <type>pom</type>
+           <scope>import</scope>
+        </dependency>
   
-<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-core</artifactId>
-    <version>5.2.0.RELEASE</version>
-</dependency>
- 
-<!--     
-<dependency>
- <groupId>org.springframework</groupId>
- <artifactId>spring-core</artifactId>
- <version>5.2.0.RELEASE</version>
-</dependency>
- -->
-<!--
-<dependency> 
- <groupId>com.fasterxml.jackson.core</groupId>
- <artifactId>jackson-core</artifactId>
- <version>2.10.0</version>
-</dependency>
-<dependency>
- <groupId>com.fasterxml.jackson.core</groupId>
- <artifactId>jackson-databind</artifactId>
- <version>2.10.0</version>
-</dependency>
- -->
-<!-- ////////////////// -->
+        <dependency>
+           <groupId>org.springframework</groupId>
+           <artifactId>spring-core</artifactId>
+           <version>${spring-core.version}</version>
+        </dependency> 
         
         <dependency>
             <groupId>org.springframework</groupId>
@@ -212,14 +191,6 @@
             <version>${hibernate.version}</version>
             <type>jar</type>
         </dependency> 
-<!--         
-         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-testing</artifactId>
-            <version>${hibernate.version}</version>
-            <scope>test</scope>
-         </dependency>
- -->         
         
           <!-- Hibernate cache provider "Jcache". -->
           <dependency>

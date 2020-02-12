@@ -21,11 +21,11 @@ public class AppInitializer implements WebApplicationInitializer{
         
       AnnotationConfigWebApplicationContext context;  
       
-//------------
-   sc.setInitParameter("spring.profiles.default", "production");   
-   sc.setInitParameter("spring.profiles.active", "production");                    
-//------------      
-       
+      //Use profile "production" defined in file "DataAccessConfig.java". 
+      //It uses MySql database instead of HSQLDB for tests.
+      sc.setInitParameter("spring.profiles.default", "production");   
+      sc.setInitParameter("spring.profiles.active", "production");                    
+             
        // Create "ApplicationContext" instance(i.e. Spring container), based on 
        // the configuration class "AppConfig". 
        context = new AnnotationConfigWebApplicationContext();       
