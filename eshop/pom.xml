@@ -20,7 +20,8 @@
        <springframework.version>5.0.4.RELEASE</springframework.version>
        <spring-core.version>5.2.0.RELEASE</spring-core.version>
        <spring-test.version>5.2.3.RELEASE</spring-test.version>
-       <hibernate.version>5.2.13.Final</hibernate.version>                                     
+       <hibernate.version>5.2.13.Final</hibernate.version>
+       <reflections.version>0.9.12</reflections.version>                                     
        <junit.jupiter.version>5.6.0</junit.jupiter.version>
        <hsqldb.version>2.5.0</hsqldb.version>
        <dbcp2.version>2.7.0</dbcp2.version>
@@ -29,6 +30,13 @@
   
     <!-- Dependencies of the project. -->
     <dependencies> 
+    
+       <!-- Reflections library. -->
+       <dependency>
+          <groupId>org.reflections</groupId>
+          <artifactId>reflections</artifactId>
+          <version>${reflections.version}</version>
+       </dependency>
         
 		<!-- HyperSQL DB -->
 		<dependency>
@@ -82,7 +90,7 @@
             <scope>runtime</scope>
         </dependency>        
         
-        <!-- Dependency of the Unit-tests. -->        
+        <!-- Dependency of Unit-tests. -->        
         <dependency>
 		   <groupId>org.junit.jupiter</groupId>
 		   <artifactId>junit-jupiter</artifactId>
@@ -90,7 +98,7 @@
 		   <scope>test</scope>
 		</dependency>
     
-        <!-- Dependencies of the Spring FrameWork. -->  
+        <!-- Dependencies of Spring FrameWork. -->  
 
         <dependency>
            <groupId>io.spring.platform</groupId>
@@ -176,7 +184,7 @@
            <scope>test</scope>
         </dependency>                                   
                                       
-         <!-- Dependency of the Servlet API. -->
+         <!-- Dependency of Servlet API. -->
          <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -206,8 +214,8 @@
               <version>3.3.1</version>
            </dependency>
         
-        <!-- Dependency of the library Jackson2.
-              It is used to transform data to the formats JSON and XML. -->              
+        <!-- Dependency of library Jackson2.
+              It is used to transform data to JSON and XML formats. -->              
          <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -215,7 +223,7 @@
             <type>jar</type>
          </dependency>             
         
-           <!-- Dependency of the ThymeLeaf template engine. -->
+           <!-- Dependency of ThymeLeaf template engine. -->
          <dependency>
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf</artifactId>

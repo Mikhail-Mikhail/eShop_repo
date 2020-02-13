@@ -226,7 +226,7 @@ public class EshopDAOImpl implements EshopDAO{
       
    //Method to get total number of records in DB table.     
    
-   public Integer getTableSizeByTableName(String tableName) {
+   public Integer getTableSizeByTableName(String entityClassName) {
 	   
 	   Long tableSize = null;
 	  
@@ -241,7 +241,7 @@ public class EshopDAOImpl implements EshopDAO{
 	                session.beginTransaction();                                        
 
 	                  //Create query to retrieve data from database.
-	                  Query query= session.createQuery("select count(*) from "+ tableName);
+	                  Query query= session.createQuery("select count(*) from "+ entityClassName);
 	                   
 	                    tableSize = (Long) query.uniqueResult();                                  
 	                                                                           
@@ -257,6 +257,44 @@ public class EshopDAOImpl implements EshopDAO{
 	         
 	return tableSize.intValue();   
    }
+   
+   //_______________________________________________________________//
+   
+  
+   //Method to save entity in DB table.     
+   
+   public Boolean saveEntity(Object entity) {
+	   
+	   Boolean result = false;
+	  
+  	     //Session with database.
+	     Session session; 	      
+	      
+	         try { 
+	             //Open session to read from database.
+	             session = sessionFactory.openSession();
+	                //Begin transaction.
+	                session.beginTransaction();                                        
+
+	                 session.save(entity);             
+	                                                                           
+	                //Commit transaction.
+	                session.getTransaction().commit();
+	              //Close session with a database. 
+	              session.close();  
+	          
+	           result = true;   
+	         } 
+	         catch(Exception exc) {
+	      	   EshopController.log.debug("[EshopDAOImpl.saveEntity()] --> EXCEPTION: "+exc.getMessage());
+	      	   EshopController.log.debug("[EshopDAOImpl.saveEntity()] --> EXCEPTION TO STRING: "+exc.toString());
+	      	    result = false;
+	         }     
+	         finally {
+	           return result;	 
+	         }	  
+   }
+   
    
    //_______________________________________________________________//
    
@@ -278,9 +316,12 @@ public class EshopDAOImpl implements EshopDAO{
                 session.beginTransaction();                                        
 
                  PersonEntity personEntity = new PersonEntity(1L, "Mike");
-                 session.save(personEntity);
+                 saveEntity(personEntity);
+   //              session.save(personEntity);
                  personEntity = new PersonEntity(2L, "Teddy");
-                 session.save(personEntity);
+                 saveEntity(personEntity);
+//                 session.save(personEntity);
+
                  
                   //Create query.                
                   Query query= session.createQuery("SELECT COUNT(*) FROM PersonEntity");

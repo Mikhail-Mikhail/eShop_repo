@@ -1,0 +1,7 @@
+12:15:55.351 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entities: [com.soft.entity.ResistorEntity, com.soft.entity.ProducerEntity, com.soft.entity.TransistorEntity, com.soft.entity.PersonEntity, com.soft.entity.CategoryEntity, com.soft.entity.LocaleMessageEntity]
+12:15:55.498 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity com.soft.entity.ResistorEntity: tableSize = 0
+12:15:55.502 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity com.soft.entity.ProducerEntity: tableSize = 0
+12:15:55.506 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity com.soft.entity.TransistorEntity: tableSize = 0
+12:15:55.510 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity com.soft.entity.PersonEntity: tableSize = 0
+12:15:55.514 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity com.soft.entity.CategoryEntity: tableSize = 0
+12:15:55.518 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity com.soft.entity.LocaleMessageEntity: tableSize = 0
