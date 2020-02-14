@@ -2,6 +2,8 @@
 package com.soft.dao;
 //------------------------------------------------------------------------------
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -22,6 +24,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import com.soft.config.AppConfig;
 import com.soft.config.DataAccessConfig;
 import com.soft.controller.EshopController;
+import com.soft.entity.BaseEntity;
 import com.soft.entity.PersonEntity;
 
 import javassist.tools.reflect.Reflection;
@@ -53,39 +56,72 @@ public class EshopDAOImplTest {
     
       @Test 
       public void getTableSizeByTableNameTest() {
+    	  
+    	 Integer tableSize;
+   	     String entityClassName; 
     	 
-    	try {
-    	  //Get list of all entities in project.	
-    	  Reflections reflections = new Reflections("com.soft.entity");
-    	  Set<String> entitySet = reflections.getTypesAnnotatedWith(javax.persistence.Entity.class).stream().map(Class::getName).collect(Collectors.toSet());
-    	 
-    	  log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entities: "+entitySet.toString());
-    	      	  
-    	   Integer tableSize;
-    	   
-//	    	 PersonEntity personEntity = new PersonEntity(1L, "Mike");
-//	    	 eshopDAOImpl.saveEntity(personEntity);
-    	   
-    	    for(String entityClassName : entitySet) {
-    		   
-    		 tableSize = eshopDAOImpl.getTableSizeByTableName(entityClassName);	
-    		 log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity "+entityClassName+": tableSize = "+tableSize);
-   	    	  Assertions.assertEquals(0, tableSize, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"getTableSizeByTableName("+entityClassName+")\" returned \"size\" = "+tableSize.toString()));   
-    	    }
-    	 
-//    		String entityClassName = PersonEntity.class.getSimpleName(); 
-//	    	tableSize = eshopDAOImpl.getTableSizeByTableName(entityClassName);	
-//	    	Assertions.assertEquals(0, tableSize, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"getTableSizeByTableName("+entityClassName+")\" returned \"size\" = "+tableSize.toString()));
-//	    	
-//	    	 PersonEntity personEntity = new PersonEntity(1L, "Mike");
-//	    	 eshopDAOImpl.saveEntity(personEntity);
-//	    	  tableSize = eshopDAOImpl.getTableSizeByTableName(entityClassName);	
-//	     	  Assertions.assertEquals(1, tableSize, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"getTableSizeByTableName("+entityClassName+")\" returned \"size\" = "+tableSize.toString()));	     	  	     	  
-    	}
-    	catch(Exception exc) {                    	   
-        	log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> EXCEPTION: "+exc.getMessage());
-            log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> EXCEPTION TO STRING: "+exc.toString());
-    	}	     	  
+	    	try {
+	    	  log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> Test of method \"EshopDAOImpl.getTableSizeByTableNameTest()\" in progress...");	
+	    	  
+	    	   //Get list of all entity's classes in project.	
+	    	   Reflections reflections = new Reflections("com.soft.entity");	    	   	    	 	    	  	    	      	  	    	  	    	   
+	    	     Set<Class> entitiesClassSet = reflections.getTypesAnnotatedWith(javax.persistence.Entity.class).stream().collect(Collectors.toSet());
+	    	     log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity classes: "+entitiesClassSet.toString());    	         	         	  
+	    	          	     	    	     
+	    	    //Check sizes of all DB tables. Tables are empty and sizes must be equal 0.  
+	    	    for(Class entityClass : entitiesClassSet) {
+	    	    	
+	    	       //Get name of entity's class.	
+	    		   entityClassName = entityClass.getSimpleName();
+	    		    //Get table's size.
+	    		    tableSize = eshopDAOImpl.getTableSizeByTableName(entityClassName);	
+	    		     log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: "+entityClassName+": tableSize = "+tableSize);
+	    		 //Check if table's size is 0.
+	   	    	 Assertions.assertEquals(0, tableSize, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"getTableSizeByTableName("+entityClassName+")\" returned \"size\" = "+tableSize.toString()));   
+	    	    }
+	    	    
+	    	    //Populate DB's tables with data and check table's sizes again.
+	    	    for(Class entityClass : entitiesClassSet) {
+	    	    	
+	    	       //Get static method of entity's class.	
+	    	       Method createInstanceMethod = entityClass.getMethod("createInstance");
+	    	        //Create entity's instance.
+	       	        BaseEntity entity = (BaseEntity) createInstanceMethod.invoke(null);	
+	       	        log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: "+entity.toString());
+	       	       
+	       	         //Save entity to DB's table.  
+	       	         eshopDAOImpl.saveEntity(entity);  
+	     	     
+	      	          //Get name of entity's class.	
+	      		      entityClassName = entityClass.getSimpleName();
+	      		     
+	       	           //Get table's size.
+	     		       tableSize = eshopDAOImpl.getTableSizeByTableName(entityClassName);
+	     		       log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: "+entityClassName+": tableSize = "+tableSize);
+	     		   
+	       	     Assertions.assertEquals(1, tableSize, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"getTableSizeByTableName("+entityClassName+")\" returned \"size\" = "+tableSize.toString()));   
+	      	    }  	    	    	    	    
+	    	  
+	    	    //Clear all DB's tables and check table's sizes again.
+	    	    for(Class entityClass : entitiesClassSet) {
+	    	    		       	      	       	       	     	     
+	      	        //Get name of entity's class.	
+	      	        entityClassName = entityClass.getSimpleName();
+	      	         
+	      	         //Clear DB's table.  
+		       	     eshopDAOImpl.clearTable(entityClassName); 
+	      	 	     
+	       	           //Get table's size.
+	     		       tableSize = eshopDAOImpl.getTableSizeByTableName(entityClassName);
+	     		       log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: "+entityClassName+": tableSize = "+tableSize);
+	     		   
+	       	     Assertions.assertEquals(0, tableSize, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"getTableSizeByTableName("+entityClassName+")\" returned \"size\" = "+tableSize.toString()));   
+	      	    }    	    	      	    	    
+	    	}
+	    	catch(Exception exc) {                    	   
+	        	log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> EXCEPTION: "+exc.getMessage());
+	            log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> EXCEPTION TO STRING: "+exc.toString());
+	    	}	     	  
 	  }
     
 //     @Test 

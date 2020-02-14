@@ -18,7 +18,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "locale")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class LocaleMessageEntity implements Serializable {
+public class LocaleMessageEntity extends BaseEntity implements Serializable {
 
   private static final long serialVersionUID = 1L;
 	
@@ -53,6 +53,11 @@ public class LocaleMessageEntity implements Serializable {
 
     @Column(name = "message")
     private String message;
+    
+     //Static method to create instance. It is used for unit tests.
+     public static BaseEntity createInstance() {
+       return new LocaleMessageEntity(1L, "MyLocale", "MyKey", "MyMessage"); 
+     } 
 
 		public Long getId() {
 			return id;
@@ -106,9 +111,17 @@ public class LocaleMessageEntity implements Serializable {
             return true;
          }
 
-          @Override
-          public String toString() {
-            return "com.soft.entity.LocaleMessageEntity[ id=" + id + " ]";
-          }   
+	      @Override
+	      public String toString() {
+	     	return this.getClass().getCanonicalName()+" : [id=" + id +"  locale=" + locale + "]";
+	      }
+
+	      //Stub for abstract method of super class.
+		  @Override
+		  public byte[] getPhoto() {
+			// TODO Auto-generated method stub
+			return null;
+		  }
+		   
 }
 //-------------------------------------------------------------------------------

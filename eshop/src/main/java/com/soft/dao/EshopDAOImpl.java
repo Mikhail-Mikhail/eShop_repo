@@ -261,7 +261,7 @@ public class EshopDAOImpl implements EshopDAO{
    //_______________________________________________________________//
    
   
-   //Method to save entity in DB table.     
+   //Method to save entity to DB's table.     
    
    public Boolean saveEntity(Object entity) {
 	   
@@ -293,10 +293,45 @@ public class EshopDAOImpl implements EshopDAO{
 	         finally {
 	           return result;	 
 	         }	  
-   }
-   
-   
+   }     
    //_______________________________________________________________//
+   
+   
+   //Method to delete all data from DB's table.     
+   
+   public Boolean clearTable(String entityName) {
+	   
+	   Boolean result = false;
+	  
+  	     //Session with database.
+	     Session session; 	      
+	      
+	         try { 
+	             //Open session to read from database.
+	             session = sessionFactory.openSession();
+	                //Begin transaction.
+	                session.beginTransaction();                                        
+	                             
+	                 session.createQuery("DELETE FROM "+entityName).executeUpdate();		                 
+	                 
+	                //Commit transaction.
+	                session.getTransaction().commit();
+	              //Close session with a database. 
+	              session.close();  
+	          
+	           result = true;   
+	         } 
+	         catch(Exception exc) {
+	      	   EshopController.log.debug("[EshopDAOImpl.clearTable()] --> EXCEPTION: "+exc.getMessage());
+	      	   EshopController.log.debug("[EshopDAOImpl.clearTable()] --> EXCEPTION TO STRING: "+exc.toString());
+	      	    result = false;
+	         }     
+	         finally {
+	           return result;	 
+	         }	  
+   }      
+   //_______________________________________________________________//
+
    
    
 //!!!DEBUG METHOD:     

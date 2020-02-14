@@ -39,6 +39,9 @@ public interface EshopDAO {
           public Integer getTableSizeByTableName(String entityClassName);
           
       //Method to save entity in DB table.              
-      public Boolean saveEntity(Object entity);       	      
+      public Boolean saveEntity(Object entity);  
+      
+      //Method to delete all data from DB's table.           
+      public Boolean clearTable(String entityName);
 }         
 //------------------------------------------------------------------------------

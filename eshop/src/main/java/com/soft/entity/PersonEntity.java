@@ -12,7 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "person") 
-public class PersonEntity {
+public class PersonEntity extends BaseEntity {
 
 	public PersonEntity(Long id, String name) {
 		super();
@@ -28,6 +28,11 @@ public class PersonEntity {
 
     @Column(name = "name")
     private String name;
+    
+    //Static method to create instance. It is used for unit tests.
+    public static BaseEntity createInstance() {      
+      return new PersonEntity(1L, "IamPersonEntity"); 
+    }
 
 	public Long getId() {
 		return id;
@@ -43,5 +48,18 @@ public class PersonEntity {
 
 	public void setName(String name) {
 		this.name = name;
-	}        
+	}
+
+	//Stub method implementation to extend abstract "BaseEntity" class.
+	@Override
+	public byte[] getPhoto() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+		
+	 @Override
+     public String toString() {
+     	return this.getClass().getCanonicalName()+" : [id=" + id +"  name=" + name + "]";
+     }
+	
 }

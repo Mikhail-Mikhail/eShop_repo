@@ -80,7 +80,11 @@ public class TransistorEntity extends BaseEntity{
 	    
 	    @Column(name = "quantity")
 	    private Integer quantity;
-				   
+		
+	     //Static method to create instance. It is used for unit tests.
+	     public static BaseEntity createInstance() {
+	       return new TransistorEntity(1L, 1, "IamTransistorEntity", "TransistorDescription", 1, "n-p-n", 100.5, 1.5, 1, 1, new byte[2], 400.785, 120); 
+	     } 
 	
 		    public Long getId() {
 				return id;
@@ -227,7 +231,7 @@ public class TransistorEntity extends BaseEntity{
 	
 	          @Override
 	          public String toString() {
-	            return this.getClass().getCanonicalName()+" : [ id=" + id +"  name=" + name + "]";
-	          }   
+	            return this.getClass().getCanonicalName()+" : [id=" + id +"  name=" + name + "]";
+	          }	
 }
 //-------------------------------------------------------------------------------

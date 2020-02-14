@@ -41,6 +41,11 @@ public class CategoryEntity extends BaseEntity{
     
     @Column(name = "photo")
     private byte[] photo;
+    
+     //Static method to create instance. It is used for unit tests.
+     public static BaseEntity createInstance() {
+       return new CategoryEntity(1L, "IamCategoryEntity", "MyCategory",  new byte[2]); 
+     } 
 
 		public Long getId() {
 			return id;
@@ -88,9 +93,9 @@ public class CategoryEntity extends BaseEntity{
             return true;
          }
 
-          @Override
-          public String toString() {
-            return "com.soft.entity.CategoryEntity[ id=" + id +"  name=" + name + "]";
-          }   
+	      @Override
+	      public String toString() {
+	     	return this.getClass().getCanonicalName()+" : [id=" + id +"  name=" + name + "]";
+	      }		
 }
 //-------------------------------------------------------------------------------

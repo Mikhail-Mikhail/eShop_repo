@@ -37,6 +37,11 @@ public class ProducerEntity extends BaseEntity{
         
     @Column(name = "producer_name")
     private String producerName;
+    
+     //Static method to create instance. It is used for unit tests.
+     public static BaseEntity createInstance() {
+       return new ProducerEntity(1L, 1, "IamProducerEntity"); 
+     } 
                   		
 		public Long getId() {
 			return id;
@@ -82,9 +87,9 @@ public class ProducerEntity extends BaseEntity{
             return true;
          }
 
-          @Override
-          public String toString() {
-            return "com.soft.entity.ProducerEntity[ id=" + id +"  name=" + producerName + "]";
-          }		
-}
+		@Override
+	     public String toString() {
+	     	return this.getClass().getCanonicalName()+" : [id=" + id +"  producerName=" + producerName + "]";
+	     }
+		}
 //-------------------------------------------------------------------------------

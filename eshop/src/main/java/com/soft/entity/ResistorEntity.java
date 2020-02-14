@@ -81,7 +81,12 @@ public class ResistorEntity extends BaseEntity{
 	    private Double price;
 	    
 	    @Column(name = "quantity")
-	    private Integer quantity;			 	    
+	    private Integer quantity;	
+	    
+	    //Static method to create instance. It is used for unit tests.
+	     public static BaseEntity createInstance() {
+	       return new ResistorEntity(1L, 1, "IamResistorEntity", "ResistorDescription", 1, 2.2, 1, 1.5, 0.125, 1, 1, new byte[2], 100.25, 200); 
+	     } 
 			
 		    public Long getId() {
 				return id;
@@ -210,7 +215,7 @@ public class ResistorEntity extends BaseEntity{
 	
 	          @Override
 	          public String toString() {
-	        	 return this.getClass().getCanonicalName()+" : [ id=" + id +"  name=" + name + "]";
-	          }   
+	        	 return this.getClass().getCanonicalName()+" : [id=" + id +"  name=" + name + "]";
+	          }
 }
 //-------------------------------------------------------------------------------

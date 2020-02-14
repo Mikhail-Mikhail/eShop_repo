@@ -6,6 +6,6 @@ package com.soft.entity;
 
 public abstract class BaseEntity {
 	 
-  public abstract byte[] getPhoto();	
+  public abstract byte[] getPhoto();   
 }
 //-------------------------------------------------------------------------------
