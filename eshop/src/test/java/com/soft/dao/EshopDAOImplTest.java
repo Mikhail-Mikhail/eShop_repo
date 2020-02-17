@@ -2,6 +2,7 @@
 package com.soft.dao;
 //------------------------------------------------------------------------------
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Set;
@@ -38,8 +39,14 @@ import javassist.tools.reflect.Reflection;
 @ActiveProfiles("development")
 public class EshopDAOImplTest {
 	
+	
+    // Create logger which will log messages to server's log and files. 	
+    // Logger's configuration is set in file "log4j2.xml". 
+	// For Linux folder "mylogs" is located at /home/mihail/mylogs
+	// For unit tests case folder "mylogs" is located in current directory of project.
+//	public static final Logger log = LogManager.getLogger(EshopDAOImplTest.class.getName());
 	//Get logger.
-	Logger log = LogManager.getLogger(EshopController.class.getName());
+	Logger log = LogManager.getLogger(EshopController.class.getName());	
 	
 	@Autowired
 	EshopDAOImpl eshopDAOImpl;
@@ -61,25 +68,30 @@ public class EshopDAOImplTest {
 	     try {
 		  	  log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method \"EshopDAOImpl.readLocaleMessageByKey()\" in progress...");	
 		    	  
-		  	   LocaleMessageEntity lmeExpected = new LocaleMessageEntity(1L, "en", "testKey", "testMessage");
+		  	  // LocaleMessageEntity lmeExpected = new LocaleMessageEntity(3L, "en", "testKey2", "testMessage");
+		  	   LocaleMessageEntity lmeExpected = (LocaleMessageEntity) LocaleMessageEntity.createInstance();
 		  	    eshopDAOImpl.saveEntity(lmeExpected);  
 		  	   LocaleMessageEntity lmeActual  = eshopDAOImpl.readLocaleMessageByKey(lmeExpected.getMsgKey(), lmeExpected.getLocale());
 		  	   
-		  	   boolean checkResult = lmeExpected.equals(lmeActual);
-		  	    Assertions.assertEquals(checkResult, true, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"readLocaleMessageByKey()\" fails."));
+		  	 log.debug("Expected object = " + lmeExpected.toString());
+  		  	 log.debug("Actual object = " + lmeActual.toString());
+		  	 
+		  	 lmeActual.setId(2L);
+		  	lmeActual.setMessage("DifferentMessage");
 		  	   
+		  	   boolean checkResult = lmeExpected.equals(lmeActual);
+		  	    Assertions.assertEquals(checkResult, true, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"readLocaleMessageByKey()\" fails."));		  	   
 		    	     
 //		    	         //Clear DB's table.  
 //			       	     eshopDAOImpl.clearTable(entityClassName); 
 //		      	 	     
 //		       	 	   
 //		       	      Assertions.assertEquals(0, tableSize, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"getTableSizeByTableName("+entityClassName+")\" returned \"size\" = "+tableSize.toString()));
-		       	     log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method \"EshopDAOImpl.readLocaleMessageByKey()\" successfully completed");		       	      
-		      	        	    	      	    	    
+		       	     log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method \"EshopDAOImpl.readLocaleMessageByKey()\" successfully completed");		       	        	        	    	      	    	    
 		 }
 		 catch(Exception exc) {                    	   
-      	log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> EXCEPTION: "+exc.getMessage());
-         log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> EXCEPTION TO STRING: "+exc.toString());
+      	  log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> EXCEPTION: "+exc.getMessage());
+          log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> EXCEPTION TO STRING: "+exc.toString());
       }	     	   
    }     
      
