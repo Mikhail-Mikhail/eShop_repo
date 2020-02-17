@@ -108,6 +108,42 @@ public class LocaleMessageEntity extends BaseEntity implements Serializable {
             if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
                 return false;
             }
+            
+          //------------------
+//            //Get fields of objects.
+//            Field[] fieldsThis = this.getClass().getFields();
+//            Field[] fieldsOther = object.getClass().getFields();
+//            
+//             //If objects have different numbers of fields.
+//             if(fieldsThis.length!=fieldsOther.length) return false;
+//             
+//              //Check if names of all fields are equal. 
+//              for (int i = 0; i < fieldsThis.length; i++) {
+//                try {                	
+//                  if(!(fieldsThis[i].getName().equals(fieldsOther[i].getName()))) {
+//                   return false;	 
+//                  }	                   
+//                } 
+//                catch(Exception exc) {
+//                  log.debug("[LocaleMessageEntity().equals()] --> EXCEPTION: "+exc.getMessage());
+//                  log.debug("[LocaleMessageEntity().equals()] --> EXCEPTION TO STRING: "+exc.toString());      
+//                }             
+//              }
+//             
+//              //Check if values of all fields are equal.
+//              for (int i = 0; i < fieldsThis.length; i++) {
+//                 try {                  	
+//                    if(!(fieldsThis[i].get(this).equals(fieldsOther[i].get(object)))) {
+//                     return false;	 
+//                    }
+//                 } 
+//                 catch(Exception exc) {
+//                   log.debug("[LocaleMessageEntity().equals()] --> EXCEPTION: "+exc.getMessage());
+//                   log.debug("[LocaleMessageEntity().equals()] --> EXCEPTION TO STRING: "+exc.toString());      
+//                 }             
+//               }
+//------------------          
+            
             return true;
          }
 
