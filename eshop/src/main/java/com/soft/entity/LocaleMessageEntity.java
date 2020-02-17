@@ -2,6 +2,7 @@
 package com.soft.entity;
 //-------------------------------------------------------------------------------
 import java.io.Serializable;
+import java.lang.reflect.Field;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
@@ -10,10 +11,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
 //-------------------------------------------------------------------------------
+
+import com.soft.controller.EshopController;
 
 @Entity
 @Table(name = "locale")
@@ -21,6 +26,9 @@ import org.hibernate.annotations.GenericGenerator;
 public class LocaleMessageEntity extends BaseEntity implements Serializable {
 
   private static final long serialVersionUID = 1L;
+  
+  //Get logger.
+  Logger log = LogManager.getLogger(EshopController.class.getName());
 	
    //Empty constructor, it's used by Hibernate.	   
    public LocaleMessageEntity() { 
@@ -100,15 +108,52 @@ public class LocaleMessageEntity extends BaseEntity implements Serializable {
 		 
 	     @Override
          public boolean equals(Object object) {
-            // TODO: Warning - this method won't work in the case the id fields are not set.
+	    	 
             if (!(object instanceof LocaleMessageEntity)) {
                 return false;
             }
-            LocaleMessageEntity other = (LocaleMessageEntity) object;
-            if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            
+             LocaleMessageEntity other = (LocaleMessageEntity) object;
+             
+              if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
                 return false;
-            }
-            return true;
+              }
+//------------------
+//	            //Get fields of objects.
+//	            Field[] fieldsThis = this.getClass().getFields();
+//	            Field[] fieldsOther = object.getClass().getFields();
+//	            
+//	             //If objects have different numbers of fields.
+//	             if(fieldsThis.length!=fieldsOther.length) return false;
+//	             
+//	              //Check if names of all fields are equal. 
+//	              for (int i = 0; i < fieldsThis.length; i++) {
+//	                try {                	
+//	                  if(!(fieldsThis[i].getName().equals(fieldsOther[i].getName()))) {
+//	                   return false;	 
+//	                  }	                   
+//	                } 
+//	                catch(Exception exc) {
+//	                  log.debug("[LocaleMessageEntity().equals()] --> EXCEPTION: "+exc.getMessage());
+//	                  log.debug("[LocaleMessageEntity().equals()] --> EXCEPTION TO STRING: "+exc.toString());      
+//	                }             
+//	              }
+//	             
+//	              //Check if values of all fields are equal.
+//	              for (int i = 0; i < fieldsThis.length; i++) {
+//	                 try {                  	
+//	                    if(!(fieldsThis[i].get(this).equals(fieldsOther[i].get(object)))) {
+//	                     return false;	 
+//	                    }
+//	                 } 
+//	                 catch(Exception exc) {
+//	                   log.debug("[LocaleMessageEntity().equals()] --> EXCEPTION: "+exc.getMessage());
+//	                   log.debug("[LocaleMessageEntity().equals()] --> EXCEPTION TO STRING: "+exc.toString());      
+//	                 }             
+//	               }
+//------------------                        
+            
+          return true;
          }
 
 	      @Override

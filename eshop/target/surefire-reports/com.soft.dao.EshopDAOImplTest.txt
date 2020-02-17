@@ -1,8 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: com.soft.dao.EshopDAOImplTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 3.461 sec <<< FAILURE! - in com.soft.dao.EshopDAOImplTest
-getTableSizeByTableNameTest  Time elapsed: 0.486 sec  <<< FAILURE!
-org.opentest4j.AssertionFailedError: TEST FAILURE FOR CLASS "EshopDAOImpl": Method "getTableSizeByTableName(LocaleMessageEntity)" returned "size" = 0 ==> expected: <2> but was: <0>
-	at com.soft.dao.EshopDAOImplTest.getTableSizeByTableNameTest(EshopDAOImplTest.java:120)
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.264 sec <<< FAILURE! - in com.soft.dao.EshopDAOImplTest
+getTableSizeByTableNameTest  Time elapsed: 0.001 sec  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'transactionManager' defined in com.soft.config.DataAccessConfig: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property 'sessionFactory' is required
+Caused by: java.lang.IllegalArgumentException: Property 'sessionFactory' is required
 
