@@ -25,6 +25,7 @@ import com.soft.config.AppConfig;
 import com.soft.config.DataAccessConfig;
 import com.soft.controller.EshopController;
 import com.soft.entity.BaseEntity;
+import com.soft.entity.LocaleMessageEntity;
 import com.soft.entity.PersonEntity;
 
 import javassist.tools.reflect.Reflection;
@@ -54,33 +55,33 @@ public class EshopDAOImplTest {
      } 
     
      
-//   //Test of method "readLocaleMessageByKey()".
-//   @Test 
-//   public void readLocaleMessageByKeyTest(){
-//	     try {
-//		  	  log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method \"EshopDAOImpl.readLocaleMessageByKey()\" in progress...");	
-//		    	  
-////		  	   LocaleMessageEntity lmeExpected = new LocaleMessageEntity(1L, "en", "testKey", "testMessage");
-////		  	    eshopDAOImpl.saveEntity(lmeExpected);  
-////		  	   LocaleMessageEntity lmeActual  = eshopDAOImpl.readLocaleMessageByKey(lmeExpected.getMsgKey(), lmeExpected.getLocale());
-////		  	   
-////		  	   boolean checkResult = lmeExpected.equals(lmeActual);
-////		  	    Assertions.assertEquals(checkResult, true, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"readLocaleMessageByKey()\" fails."));
-//		  	   
-//		    	     
-////		    	         //Clear DB's table.  
-////			       	     eshopDAOImpl.clearTable(entityClassName); 
-////		      	 	     
-////		       	 	   
-////		       	      Assertions.assertEquals(0, tableSize, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"getTableSizeByTableName("+entityClassName+")\" returned \"size\" = "+tableSize.toString()));
-//		       	     log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method \"EshopDAOImpl.readLocaleMessageByKey()\" successfully completed");		       	      
-//		      	        	    	      	    	    
-//		 }
-//		 catch(Exception exc) {                    	   
-//      	log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> EXCEPTION: "+exc.getMessage());
-//         log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> EXCEPTION TO STRING: "+exc.toString());
-//      }	     	   
-//   }     
+   //Test of method "readLocaleMessageByKey()".
+   @Test 
+   public void readLocaleMessageByKeyTest(){
+	     try {
+		  	  log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method \"EshopDAOImpl.readLocaleMessageByKey()\" in progress...");	
+		    	  
+		  	   LocaleMessageEntity lmeExpected = new LocaleMessageEntity(1L, "en", "testKey", "testMessage");
+		  	    eshopDAOImpl.saveEntity(lmeExpected);  
+		  	   LocaleMessageEntity lmeActual  = eshopDAOImpl.readLocaleMessageByKey(lmeExpected.getMsgKey(), lmeExpected.getLocale());
+		  	   
+		  	   boolean checkResult = lmeExpected.equals(lmeActual);
+		  	    Assertions.assertEquals(checkResult, true, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"readLocaleMessageByKey()\" fails."));
+		  	   
+		    	     
+//		    	         //Clear DB's table.  
+//			       	     eshopDAOImpl.clearTable(entityClassName); 
+//		      	 	     
+//		       	 	   
+//		       	      Assertions.assertEquals(0, tableSize, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"getTableSizeByTableName("+entityClassName+")\" returned \"size\" = "+tableSize.toString()));
+		       	     log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method \"EshopDAOImpl.readLocaleMessageByKey()\" successfully completed");		       	      
+		      	        	    	      	    	    
+		 }
+		 catch(Exception exc) {                    	   
+      	log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> EXCEPTION: "+exc.getMessage());
+         log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> EXCEPTION TO STRING: "+exc.toString());
+      }	     	   
+   }     
      
     
       @Test 
