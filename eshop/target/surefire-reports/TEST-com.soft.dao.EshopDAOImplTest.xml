@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.soft.dao.EshopDAOImplTest" time="3.56" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.soft.dao.EshopDAOImplTest" time="3.519" tests="2" errors="0" skipped="0" failures="1">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk-8u211-linux-x64/jdk1.8.0_211/jre/lib/amd64"/>
@@ -24,7 +24,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="os.name" value="Linux"/>
-    <property name="classworlds.conf" value="/home/mihail/eclipse-workspace/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf4198402661835793484.tmp"/>
+    <property name="classworlds.conf" value="/home/mihail/eclipse-workspace/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf2254421074200550737.tmp"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -59,6 +59,249 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="getTableSizeByTableNameTest" classname="com.soft.dao.EshopDAOImplTest" time="0.603"/>
-  <testcase name="readLocaleMessageByKeyTest" classname="com.soft.dao.EshopDAOImplTest" time="0.043"/>
+  <testcase name="getTableSizeByTableNameTest" classname="com.soft.dao.EshopDAOImplTest" time="0.612"/>
+  <testcase name="readLocaleMessageByKeyTest" classname="com.soft.dao.EshopDAOImplTest" time="0.042">
+    <failure message="TEST FAILURE FOR CLASS &quot;EshopDAOImpl&quot;: Method &quot;readLocaleMessageByKey()&quot; fails. ==&gt; expected: &lt;false&gt; but was: &lt;true&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: TEST FAILURE FOR CLASS "EshopDAOImpl": Method "readLocaleMessageByKey()" fails. ==> expected: <false> but was: <true>
+	at com.soft.dao.EshopDAOImplTest.readLocaleMessageByKeyTest(EshopDAOImplTest.java:95)
+]]></failure>
+    <system-out><![CDATA[12:18:40.478 [main] TRACE org.springframework.test.context.TestContextManager - prepareTestInstance(): instance [com.soft.dao.EshopDAOImplTest@3af2f846]
+12:18:40.479 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [616674002] from cache with key [[WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]]
+12:18:40.479 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@7e64c1a9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 7, missCount = 1]
+12:18:40.479 [main] DEBUG org.springframework.test.context.web.ServletTestExecutionListener - Setting up MockHttpServletRequest, MockHttpServletResponse, ServletWebRequest, and RequestContextHolder for test context [DefaultTestContext@4d14b6c2 testClass = EshopDAOImplTest, testInstance = com.soft.dao.EshopDAOImplTest@3af2f846, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.support.DependencyInjectionTestExecutionListener.reinjectDependencies' -> true]].
+12:18:40.479 [main] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@4d14b6c2 testClass = EshopDAOImplTest, testInstance = com.soft.dao.EshopDAOImplTest@3af2f846, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true, 'org.springframework.test.context.support.DependencyInjectionTestExecutionListener.reinjectDependencies' -> true]]].
+12:18:40.479 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [616674002] from cache with key [[WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]]
+12:18:40.479 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@7e64c1a9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 8, missCount = 1]
+12:18:40.479 [main] DEBUG org.springframework.beans.factory.annotation.InjectionMetadata - Processing injected element of bean 'com.soft.dao.EshopDAOImplTest': AutowiredFieldElement for com.soft.dao.EshopDAOImpl com.soft.dao.EshopDAOImplTest.eshopDAOImpl
+12:18:40.479 [main] DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory - Returning cached instance of singleton bean 'getDevLocaleDAO'
+12:18:40.479 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [616674002] from cache with key [[WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]]
+12:18:40.479 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@7e64c1a9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 9, missCount = 1]
+12:18:40.479 [main] TRACE org.springframework.web.context.support.GenericWebApplicationContext - Publishing event in org.springframework.web.context.support.GenericWebApplicationContext@24c1b2d2: org.springframework.test.context.event.PrepareTestInstanceEvent[source=[DefaultTestContext@4d14b6c2 testClass = EshopDAOImplTest, testInstance = com.soft.dao.EshopDAOImplTest@3af2f846, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true]]]
+12:18:40.480 [main] TRACE org.springframework.test.context.TestContextManager - beforeTestMethod(): instance [com.soft.dao.EshopDAOImplTest@3af2f846], method [public void com.soft.dao.EshopDAOImplTest.readLocaleMessageByKeyTest()]
+12:18:40.480 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test method: context [DefaultTestContext@4d14b6c2 testClass = EshopDAOImplTest, testInstance = com.soft.dao.EshopDAOImplTest@3af2f846, testMethod = readLocaleMessageByKeyTest@EshopDAOImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+12:18:40.480 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [616674002] from cache with key [[WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]]
+12:18:40.480 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@7e64c1a9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 10, missCount = 1]
+12:18:40.480 [main] TRACE org.springframework.web.context.support.GenericWebApplicationContext - Publishing event in org.springframework.web.context.support.GenericWebApplicationContext@24c1b2d2: org.springframework.test.context.event.BeforeTestMethodEvent[source=[DefaultTestContext@4d14b6c2 testClass = EshopDAOImplTest, testInstance = com.soft.dao.EshopDAOImplTest@3af2f846, testMethod = readLocaleMessageByKeyTest@EshopDAOImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true]]]
+12:18:40.481 [main] TRACE org.springframework.test.context.TestContextManager - beforeTestExecution(): instance [com.soft.dao.EshopDAOImplTest@3af2f846], method [public void com.soft.dao.EshopDAOImplTest.readLocaleMessageByKeyTest()]
+12:18:40.481 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [616674002] from cache with key [[WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]]
+12:18:40.481 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@7e64c1a9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 11, missCount = 1]
+12:18:40.481 [main] TRACE org.springframework.web.context.support.GenericWebApplicationContext - Publishing event in org.springframework.web.context.support.GenericWebApplicationContext@24c1b2d2: org.springframework.test.context.event.BeforeTestExecutionEvent[source=[DefaultTestContext@4d14b6c2 testClass = EshopDAOImplTest, testInstance = com.soft.dao.EshopDAOImplTest@3af2f846, testMethod = readLocaleMessageByKeyTest@EshopDAOImplTest, testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true]]]
+12:18:40.481 [main] DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method "EshopDAOImpl.readLocaleMessageByKey()" in progress...
+12:18:40.481 [main] DEBUG com.soft.controller.EshopController - Expected object = com.soft.entity.LocaleMessageEntity : [id = null  locale = en  msgKey = testKey5  message = testMessage]
+12:18:40.481 [main] TRACE org.hibernate.internal.SessionFactoryImpl$SessionBuilderImpl - Opening Hibernate Session.  tenant=null, owner=null
+12:18:40.481 [main] TRACE org.hibernate.internal.SessionImpl - Opened Session [4551e220-bac1-461b-996c-c5f5c8c33246] at timestamp: 6479943763890176
+12:18:40.481 [main] DEBUG org.hibernate.engine.transaction.internal.TransactionImpl - begin
+12:18:40.481 [main] TRACE org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor - Preparing to begin transaction via JDBC Connection.setAutoCommit(false)
+12:18:40.481 [main] TRACE org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor - Transaction begun via JDBC Connection.setAutoCommit(false)
+12:18:40.481 [main] TRACE org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl - ResourceLocalTransactionCoordinatorImpl#afterBeginCallback
+12:18:40.481 [main] TRACE org.hibernate.event.internal.DefaultSaveOrUpdateEventListener - Saving transient instance
+12:18:40.482 [main] DEBUG org.hibernate.event.internal.AbstractSaveEventListener - Generated identifier: 2, using strategy: org.hibernate.id.IncrementGenerator
+12:18:40.482 [main] TRACE org.hibernate.event.internal.AbstractSaveEventListener - Saving [com.soft.entity.LocaleMessageEntity#2]
+12:18:40.482 [main] TRACE org.hibernate.engine.spi.ActionQueue - Adding an EntityInsertAction for [com.soft.entity.LocaleMessageEntity] object
+12:18:40.482 [main] TRACE org.hibernate.engine.spi.ActionQueue - Adding insert with no non-nullable, transient entities: [EntityInsertAction[com.soft.entity.LocaleMessageEntity#2]]
+12:18:40.482 [main] TRACE org.hibernate.engine.spi.ActionQueue - Adding resolved non-early insert action.
+12:18:40.482 [main] DEBUG org.hibernate.engine.transaction.internal.TransactionImpl - committing
+12:18:40.482 [main] TRACE org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl - ResourceLocalTransactionCoordinatorImpl#beforeCompletionCallback
+12:18:40.482 [main] TRACE org.hibernate.internal.SessionImpl - SessionImpl#beforeTransactionCompletion()
+12:18:40.482 [main] TRACE org.hibernate.internal.SessionImpl - Automatically flushing session
+12:18:40.482 [main] TRACE org.hibernate.event.internal.AbstractFlushingEventListener - Flushing session
+12:18:40.482 [main] DEBUG org.hibernate.event.internal.AbstractFlushingEventListener - Processing flush-time cascades
+12:18:40.482 [main] DEBUG org.hibernate.event.internal.AbstractFlushingEventListener - Dirty checking collections
+12:18:40.482 [main] TRACE org.hibernate.event.internal.AbstractFlushingEventListener - Flushing entities and processing referenced collections
+12:18:40.482 [main] TRACE org.hibernate.event.internal.AbstractFlushingEventListener - Processing unreferenced collections
+12:18:40.482 [main] TRACE org.hibernate.event.internal.AbstractFlushingEventListener - Scheduling collection removes/(re)creates/updates
+12:18:40.482 [main] DEBUG org.hibernate.event.internal.AbstractFlushingEventListener - Flushed: 1 insertions, 0 updates, 0 deletions to 1 objects
+12:18:40.482 [main] DEBUG org.hibernate.event.internal.AbstractFlushingEventListener - Flushed: 0 (re)creations, 0 updates, 0 removals to 0 collections
+12:18:40.482 [main] DEBUG org.hibernate.internal.util.EntityPrinter - Listing entities:
+12:18:40.482 [main] DEBUG org.hibernate.internal.util.EntityPrinter - com.soft.entity.LocaleMessageEntity{msgKey=testKey5, id=2, locale=en, message=testMessage}
+12:18:40.482 [main] TRACE org.hibernate.event.internal.AbstractFlushingEventListener - Executing flush
+12:18:40.482 [main] TRACE org.hibernate.persister.entity.AbstractEntityPersister - Inserting entity: [com.soft.entity.LocaleMessageEntity#2]
+12:18:40.482 [main] DEBUG org.hibernate.SQL - insert into locale (locale, message, msgkey, ID) values (?, ?, ?, ?)
+12:18:40.483 [main] TRACE org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl - Registering statement [org.hsqldb.jdbc.JDBCPreparedStatement@370c9018[sql=[insert into locale (locale, message, msgkey, ID) values (?, ?, ?, ?)], parameters=[[null], [null], [null], [null]]]]
+12:18:40.483 [main] TRACE org.hibernate.persister.entity.AbstractEntityPersister - Dehydrating entity: [com.soft.entity.LocaleMessageEntity#2]
+12:18:40.483 [main] TRACE org.hibernate.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [en]
+12:18:40.483 [main] TRACE org.hibernate.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [testMessage]
+12:18:40.483 [main] TRACE org.hibernate.type.descriptor.sql.BasicBinder - binding parameter [3] as [VARCHAR] - [testKey5]
+12:18:40.483 [main] TRACE org.hibernate.type.descriptor.sql.BasicBinder - binding parameter [4] as [BIGINT] - [2]
+12:18:40.483 [main] TRACE org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl - Releasing statement [org.hsqldb.jdbc.JDBCPreparedStatement@370c9018[sql=[insert into locale (locale, message, msgkey, ID) values (?, ?, ?, ?)], parameters=[[en], [testMessage], [testKey5], [2]]]]
+12:18:40.483 [main] TRACE org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl - Closing prepared statement [org.hsqldb.jdbc.JDBCPreparedStatement@370c9018[sql=[insert into locale (locale, message, msgkey, ID) values (?, ?, ?, ?)], parameters=[[en], [testMessage], [testKey5], [2]]]]
+12:18:40.483 [main] TRACE org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl - Starting after statement execution processing [ON_CLOSE]
+12:18:40.483 [main] DEBUG org.hibernate.cache.spi.UpdateTimestampsCache - Pre-invalidating space [locale], timestamp: 6479944009658368
+12:18:40.483 [main] TRACE org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl - Starting after statement execution processing [ON_CLOSE]
+12:18:40.484 [main] TRACE org.hibernate.event.internal.AbstractFlushingEventListener - Post flush
+12:18:40.484 [main] TRACE org.hibernate.resource.transaction.internal.SynchronizationRegistryStandardImpl - SynchronizationRegistryStandardImpl.notifySynchronizationsBeforeTransactionCompletion
+12:18:40.484 [main] TRACE org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor - Preparing to commit transaction via JDBC Connection.commit()
+12:18:40.484 [main] TRACE org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor - Transaction committed via JDBC Connection.commit()
+12:18:40.484 [main] TRACE org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor - LogicalConnection#afterTransaction
+12:18:40.484 [main] TRACE org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl - Releasing JDBC resources
+12:18:40.484 [main] TRACE org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor - re-enabling auto-commit on JDBC Connection after completion of JDBC-based transaction
+12:18:40.484 [main] TRACE org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl - ResourceLocalTransactionCoordinatorImpl#afterCompletionCallback(true)
+12:18:40.484 [main] TRACE org.hibernate.resource.transaction.internal.SynchronizationRegistryStandardImpl - SynchronizationRegistryStandardImpl.notifySynchronizationsAfterTransactionCompletion(3)
+12:18:40.484 [main] TRACE org.hibernate.internal.SessionImpl - SessionImpl#afterTransactionCompletion(successful=true, delayed=false)
+12:18:40.485 [main] DEBUG org.hibernate.cache.spi.UpdateTimestampsCache - Invalidating space [locale], timestamp: 6479943763906560
+12:18:40.485 [main] TRACE org.hibernate.internal.SessionImpl - Closing session [4551e220-bac1-461b-996c-c5f5c8c33246]
+12:18:40.485 [main] TRACE org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl - Closing JDBC container [org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl@4b9c411]
+12:18:40.485 [main] DEBUG org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl - HHH000420: Closing un-released batch
+12:18:40.485 [main] TRACE org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl - Releasing JDBC resources
+12:18:40.485 [main] TRACE org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl - Closing logical connection
+12:18:40.485 [main] TRACE org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl - Releasing JDBC resources
+12:18:40.485 [main] TRACE org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl - Logical connection closed
+12:18:40.486 [main] TRACE org.hibernate.internal.SessionFactoryImpl$SessionBuilderImpl - Opening Hibernate Session.  tenant=null, owner=null
+12:18:40.486 [main] TRACE org.hibernate.internal.SessionImpl - Opened Session [c6cd774a-fb00-4a67-b3e2-45ba686fe79c] at timestamp: 6479943763910656
+12:18:40.486 [main] DEBUG org.hibernate.engine.transaction.internal.TransactionImpl - begin
+12:18:40.486 [main] TRACE org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor - Preparing to begin transaction via JDBC Connection.setAutoCommit(false)
+12:18:40.486 [main] TRACE org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor - Transaction begun via JDBC Connection.setAutoCommit(false)
+12:18:40.486 [main] TRACE org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl - ResourceLocalTransactionCoordinatorImpl#afterBeginCallback
+12:18:40.486 [main] TRACE org.hibernate.engine.query.spi.QueryPlanCache - Unable to locate HQL query plan in cache; generating (SELECT DISTINCT msg FROM LocaleMessageEntity msg WHERE msgkey='testKey5' AND locale='en')
+12:18:40.486 [main] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - parse() - HQL: SELECT DISTINCT msg FROM com.soft.entity.LocaleMessageEntity msg WHERE msgkey='testKey5' AND locale='en'
+12:18:40.486 [main] DEBUG org.hibernate.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
+12:18:40.487 [main] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - --- HQL AST ---
+ \-[QUERY] Node: 'query'
+    +-[SELECT_FROM] Node: 'SELECT_FROM'
+    |  +-[FROM] Node: 'FROM'
+    |  |  \-[RANGE] Node: 'RANGE'
+    |  |     +-[DOT] Node: '.'
+    |  |     |  +-[DOT] Node: '.'
+    |  |     |  |  +-[DOT] Node: '.'
+    |  |     |  |  |  +-[IDENT] Node: 'com'
+    |  |     |  |  |  \-[IDENT] Node: 'soft'
+    |  |     |  |  \-[IDENT] Node: 'entity'
+    |  |     |  \-[IDENT] Node: 'LocaleMessageEntity'
+    |  |     \-[ALIAS] Node: 'msg'
+    |  \-[SELECT] Node: 'SELECT'
+    |     +-[DISTINCT] Node: 'DISTINCT'
+    |     \-[IDENT] Node: 'msg'
+    \-[WHERE] Node: 'WHERE'
+       \-[AND] Node: 'AND'
+          +-[EQ] Node: '='
+          |  +-[IDENT] Node: 'msgkey'
+          |  \-[QUOTED_STRING] Node: ''testKey5''
+          \-[EQ] Node: '='
+             +-[IDENT] Node: 'locale'
+             \-[QUOTED_STRING] Node: ''en''
+
+12:18:40.487 [main] DEBUG org.hibernate.hql.internal.antlr.HqlSqlBaseWalker - select << begin [level=1, statement=select]
+12:18:40.487 [main] DEBUG org.hibernate.hql.internal.ast.tree.FromElement - FromClause{level=1} : com.soft.entity.LocaleMessageEntity (msg) -> localemess0_
+12:18:40.487 [main] DEBUG org.hibernate.hql.internal.ast.tree.FromReferenceNode - Resolved : msg -> localemess0_.ID
+12:18:40.488 [main] TRACE org.hibernate.hql.internal.ast.HqlSqlWalker - Attempting to resolve property [msgkey] as a non-qualified ref
+12:18:40.490 [main] TRACE org.hibernate.hql.internal.ast.HqlSqlWalker - Attempting to resolve property [locale] as a non-qualified ref
+12:18:40.490 [main] DEBUG org.hibernate.hql.internal.ast.tree.FromReferenceNode - Resolved : {synthetic-alias} -> {synthetic-alias}
+12:18:40.491 [main] TRACE org.hibernate.hql.internal.ast.tree.FromElement - Handling property dereference [com.soft.entity.LocaleMessageEntity (msg) -> locale (class)]
+12:18:40.491 [main] DEBUG org.hibernate.hql.internal.ast.tree.DotNode - getDataType() : locale -> org.hibernate.type.StringType@3aacf32a
+12:18:40.492 [main] DEBUG org.hibernate.hql.internal.ast.tree.FromReferenceNode - Resolved : {synthetic-alias}.locale -> localemess0_.locale
+12:18:40.492 [main] DEBUG org.hibernate.hql.internal.antlr.HqlSqlBaseWalker - select : finishing up [level=1, statement=select]
+12:18:40.492 [main] DEBUG org.hibernate.hql.internal.ast.HqlSqlWalker - processQuery() :  ( SELECT ( {select clause} DISTINCT localemess0_.ID ) ( FromClause{level=1} locale localemess0_ ) ( WHERE ( AND ( = msgkey 'testKey5' ) ( = ( localemess0_.locale {synthetic-alias} locale ) 'en' ) ) ) )
+12:18:40.494 [main] DEBUG org.hibernate.hql.internal.ast.util.JoinProcessor - Using FROM fragment [locale localemess0_]
+12:18:40.494 [main] DEBUG org.hibernate.hql.internal.antlr.HqlSqlBaseWalker - select >> end [level=1, statement=select]
+12:18:40.494 [main] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - --- SQL AST ---
+ \-[SELECT] QueryNode: 'SELECT'  querySpaces (locale)
+    +-[SELECT_CLAUSE] SelectClause: '{select clause}'
+    |  +-[DISTINCT] SqlNode: 'DISTINCT'
+    |  +-[ALIAS_REF] IdentNode: 'localemess0_.ID as ID1_1_' {alias=msg, className=com.soft.entity.LocaleMessageEntity, tableAlias=localemess0_}
+    |  \-[SQL_TOKEN] SqlFragment: 'localemess0_.locale as locale2_1_, localemess0_.message as message3_1_, localemess0_.msgkey as msgkey4_1_'
+    +-[FROM] FromClause: 'FROM' FromClause{level=1, fromElementCounter=1, fromElements=1, fromElementByClassAlias=[msg], fromElementByTableAlias=[localemess0_], fromElementsByPath=[], collectionJoinFromElementsByPath=[], impliedElements=[]}
+    |  \-[FROM_FRAGMENT] FromElement: 'locale localemess0_' FromElement{explicit,not a collection join,not a fetch join,fetch non-lazy properties,classAlias=msg,role=null,tableName=locale,tableAlias=localemess0_,origin=null,columns={,className=com.soft.entity.LocaleMessageEntity}}
+    \-[WHERE] SqlNode: 'WHERE'
+       \-[AND] SqlNode: 'AND'
+          +-[EQ] BinaryLogicOperatorNode: '='
+          |  +-[IDENT] IdentNode: 'msgkey' {originalText=msgkey}
+          |  \-[QUOTED_STRING] LiteralNode: ''testKey5''
+          \-[EQ] BinaryLogicOperatorNode: '='
+             +-[DOT] DotNode: 'localemess0_.locale' {propertyName=locale,dereferenceType=PRIMITIVE,getPropertyPath=locale,path={synthetic-alias}.locale,tableAlias=localemess0_,className=com.soft.entity.LocaleMessageEntity,classAlias=msg}
+             |  +-[IDENT] IdentNode: '{synthetic-alias}' {originalText={synthetic-alias}}
+             |  \-[IDENT] IdentNode: 'locale' {originalText=locale}
+             \-[QUOTED_STRING] LiteralNode: ''en''
+
+12:18:40.494 [main] DEBUG org.hibernate.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
+12:18:40.494 [main] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - HQL: SELECT DISTINCT msg FROM com.soft.entity.LocaleMessageEntity msg WHERE msgkey='testKey5' AND locale='en'
+12:18:40.494 [main] DEBUG org.hibernate.hql.internal.ast.QueryTranslatorImpl - SQL: select distinct localemess0_.ID as ID1_1_, localemess0_.locale as locale2_1_, localemess0_.message as message3_1_, localemess0_.msgkey as msgkey4_1_ from locale localemess0_ where msgkey='testKey5' and localemess0_.locale='en'
+12:18:40.494 [main] DEBUG org.hibernate.hql.internal.ast.ErrorCounter - throwQueryException() : no errors
+12:18:40.494 [main] TRACE org.hibernate.engine.query.spi.HQLQueryPlan - HQL param location recognition took 14 661 nanoseconds (SELECT DISTINCT msg FROM LocaleMessageEntity msg WHERE msgkey='testKey5' AND locale='en')
+12:18:40.495 [main] TRACE org.hibernate.engine.query.spi.QueryPlanCache - Located HQL query plan in cache (SELECT DISTINCT msg FROM LocaleMessageEntity msg WHERE msgkey='testKey5' AND locale='en')
+12:18:40.495 [main] TRACE org.hibernate.engine.query.spi.HQLQueryPlan - Find: SELECT DISTINCT msg FROM LocaleMessageEntity msg WHERE msgkey='testKey5' AND locale='en'
+12:18:40.495 [main] TRACE org.hibernate.engine.spi.QueryParameters - Named parameters: {}
+12:18:40.495 [main] DEBUG org.ehcache.jsr107.ConfigurationMerger - Using default Copier for JSR-107 store-by-value cache MY_CACHE
+12:18:40.495 [main] DEBUG org.ehcache.core.EhcacheManager - Creating Cache 'MY_CACHE' in Eh107InternalCacheManager.
+12:18:40.495 [main] DEBUG org.ehcache.impl.internal.spi.serialization.DefaultSerializationProvider - Serializer for <java.lang.Object> : org.ehcache.impl.serialization.PlainJavaSerializer@4d354a3e
+12:18:40.495 [main] DEBUG org.ehcache.impl.internal.spi.serialization.DefaultSerializationProvider - Serializer for <java.lang.Object> : org.ehcache.impl.serialization.PlainJavaSerializer@24a0c58b
+12:18:40.495 [main] DEBUG org.ehcache.impl.internal.spi.copy.DefaultCopyProvider - Copier for <java.lang.Object> : org.ehcache.impl.copy.SerializingCopier@604d28c6
+12:18:40.495 [main] DEBUG org.ehcache.impl.internal.spi.copy.DefaultCopyProvider - Copier for <java.lang.Object> : org.ehcache.impl.copy.SerializingCopier@7f3c0399
+12:18:40.497 [main] TRACE class org.ehcache.core.Ehcache-MY_CACHE - Initializing
+12:18:40.498 [main] DEBUG class org.ehcache.core.Ehcache-MY_CACHE - Initialize successful.
+12:18:40.498 [main] DEBUG org.ehcache.impl.internal.statistics.DefaultStatisticsService - Cache added MY_CACHE
+12:18:40.499 [main] INFO  org.ehcache.core.EhcacheManager - Cache 'MY_CACHE' created in Eh107InternalCacheManager.
+12:18:40.499 [main] INFO  org.hibernate.cache.internal.StandardQueryCache - HHH000248: Starting query cache at region: MY_CACHE
+12:18:40.501 [main] TRACE org.hibernate.loader.Loader - querySpaces is [locale]
+12:18:40.501 [main] DEBUG org.hibernate.cache.internal.StandardQueryCache - Checking cached query results in region: MY_CACHE
+12:18:40.501 [main] DEBUG org.hibernate.cache.internal.StandardQueryCache - Query results were not found in cache
+12:18:40.501 [main] DEBUG org.hibernate.SQL - select distinct localemess0_.ID as ID1_1_, localemess0_.locale as locale2_1_, localemess0_.message as message3_1_, localemess0_.msgkey as msgkey4_1_ from locale localemess0_ where msgkey='testKey5' and localemess0_.locale='en'
+12:18:40.502 [main] TRACE org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl - Registering statement [org.hsqldb.jdbc.JDBCPreparedStatement@615efd1c[sql=[select distinct localemess0_.ID as ID1_1_, localemess0_.locale as locale2_1_, localemess0_.message as message3_1_, localemess0_.msgkey as msgkey4_1_ from locale localemess0_ where msgkey='testKey5' and localemess0_.locale='en']]]
+12:18:40.502 [main] TRACE org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl - Registering last query statement [org.hsqldb.jdbc.JDBCPreparedStatement@615efd1c[sql=[select distinct localemess0_.ID as ID1_1_, localemess0_.locale as locale2_1_, localemess0_.message as message3_1_, localemess0_.msgkey as msgkey4_1_ from locale localemess0_ where msgkey='testKey5' and localemess0_.locale='en']]]
+12:18:40.502 [main] TRACE org.hibernate.loader.Loader - Bound [1] parameters total
+12:18:40.502 [main] TRACE org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl - Registering result set [org.apache.commons.dbcp2.DelegatingResultSet@35025a0a[resultSet=org.apache.commons.dbcp2.DelegatingResultSet@38732364[resultSet=org.hsqldb.jdbc.JDBCResultSet@7c70aae1, statement=org.hsqldb.jdbc.JDBCPreparedStatement@615efd1c[sql=[select distinct localemess0_.ID as ID1_1_, localemess0_.locale as locale2_1_, localemess0_.message as message3_1_, localemess0_.msgkey as msgkey4_1_ from locale localemess0_ where msgkey='testKey5' and localemess0_.locale='en']], connection=null], statement=org.hsqldb.jdbc.JDBCPreparedStatement@615efd1c[sql=[select distinct localemess0_.ID as ID1_1_, localemess0_.locale as locale2_1_, localemess0_.message as message3_1_, localemess0_.msgkey as msgkey4_1_ from locale localemess0_ where msgkey='testKey5' and localemess0_.locale='en']], connection=null]]
+12:18:40.503 [main] TRACE org.hibernate.loader.Loader - Processing result set
+12:18:40.503 [main] DEBUG org.hibernate.loader.Loader - Result set row: 0
+12:18:40.503 [main] TRACE org.hibernate.type.descriptor.sql.BasicExtractor - extracted value ([ID1_1_] : [BIGINT]) - [2]
+12:18:40.503 [main] DEBUG org.hibernate.loader.Loader - Result row: EntityKey[com.soft.entity.LocaleMessageEntity#2]
+12:18:40.503 [main] TRACE org.hibernate.loader.Loader - Initializing object from ResultSet: [com.soft.entity.LocaleMessageEntity#2]
+12:18:40.504 [main] TRACE org.hibernate.persister.entity.AbstractEntityPersister - Hydrating entity: [com.soft.entity.LocaleMessageEntity#2]
+12:18:40.504 [main] TRACE org.hibernate.type.descriptor.sql.BasicExtractor - extracted value ([locale2_1_] : [VARCHAR]) - [en]
+12:18:40.504 [main] TRACE org.hibernate.type.descriptor.sql.BasicExtractor - extracted value ([message3_1_] : [VARCHAR]) - [testMessage]
+12:18:40.504 [main] TRACE org.hibernate.type.descriptor.sql.BasicExtractor - extracted value ([msgkey4_1_] : [VARCHAR]) - [testKey5]
+12:18:40.505 [main] TRACE org.hibernate.loader.Loader - Done processing result set (1 rows)
+12:18:40.505 [main] TRACE org.hibernate.loader.Loader - Total objects hydrated: 1
+12:18:40.505 [main] DEBUG org.hibernate.engine.internal.TwoPhaseLoad - Resolving associations for [com.soft.entity.LocaleMessageEntity#2]
+12:18:40.505 [main] DEBUG org.hibernate.engine.internal.TwoPhaseLoad - Adding entity to second-level cache: [com.soft.entity.LocaleMessageEntity#2]
+12:18:40.505 [main] DEBUG org.hibernate.engine.internal.TwoPhaseLoad - Done materializing entity [com.soft.entity.LocaleMessageEntity#2]
+12:18:40.506 [main] TRACE org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl - Releasing statement [org.hsqldb.jdbc.JDBCPreparedStatement@615efd1c[sql=[select distinct localemess0_.ID as ID1_1_, localemess0_.locale as locale2_1_, localemess0_.message as message3_1_, localemess0_.msgkey as msgkey4_1_ from locale localemess0_ where msgkey='testKey5' and localemess0_.locale='en']]]
+12:18:40.506 [main] TRACE org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl - Closing result set [org.apache.commons.dbcp2.DelegatingResultSet@35025a0a[resultSet=org.apache.commons.dbcp2.DelegatingResultSet@38732364[resultSet=org.hsqldb.jdbc.JDBCResultSet@7c70aae1, statement=org.hsqldb.jdbc.JDBCPreparedStatement@615efd1c[sql=[select distinct localemess0_.ID as ID1_1_, localemess0_.locale as locale2_1_, localemess0_.message as message3_1_, localemess0_.msgkey as msgkey4_1_ from locale localemess0_ where msgkey='testKey5' and localemess0_.locale='en']], connection=null], statement=org.hsqldb.jdbc.JDBCPreparedStatement@615efd1c[sql=[select distinct localemess0_.ID as ID1_1_, localemess0_.locale as locale2_1_, localemess0_.message as message3_1_, localemess0_.msgkey as msgkey4_1_ from locale localemess0_ where msgkey='testKey5' and localemess0_.locale='en']], connection=null]]
+12:18:40.506 [main] TRACE org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl - Closing prepared statement [org.hsqldb.jdbc.JDBCPreparedStatement@615efd1c[sql=[select distinct localemess0_.ID as ID1_1_, localemess0_.locale as locale2_1_, localemess0_.message as message3_1_, localemess0_.msgkey as msgkey4_1_ from locale localemess0_ where msgkey='testKey5' and localemess0_.locale='en']]]
+12:18:40.506 [main] TRACE org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl - Starting after statement execution processing [ON_CLOSE]
+12:18:40.506 [main] TRACE org.hibernate.engine.internal.StatefulPersistenceContext - Initializing non-lazy collections
+12:18:40.506 [main] DEBUG org.hibernate.cache.internal.StandardQueryCache - Caching query results in region: MY_CACHE; timestamp=6479943763910657
+12:18:40.510 [main] DEBUG org.hibernate.engine.transaction.internal.TransactionImpl - committing
+12:18:40.510 [main] TRACE org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl - ResourceLocalTransactionCoordinatorImpl#beforeCompletionCallback
+12:18:40.510 [main] TRACE org.hibernate.internal.SessionImpl - SessionImpl#beforeTransactionCompletion()
+12:18:40.510 [main] TRACE org.hibernate.internal.SessionImpl - Automatically flushing session
+12:18:40.510 [main] TRACE org.hibernate.event.internal.AbstractFlushingEventListener - Flushing session
+12:18:40.510 [main] DEBUG org.hibernate.event.internal.AbstractFlushingEventListener - Processing flush-time cascades
+12:18:40.510 [main] DEBUG org.hibernate.event.internal.AbstractFlushingEventListener - Dirty checking collections
+12:18:40.510 [main] TRACE org.hibernate.event.internal.AbstractFlushingEventListener - Flushing entities and processing referenced collections
+12:18:40.510 [main] TRACE org.hibernate.event.internal.AbstractFlushingEventListener - Processing unreferenced collections
+12:18:40.510 [main] TRACE org.hibernate.event.internal.AbstractFlushingEventListener - Scheduling collection removes/(re)creates/updates
+12:18:40.510 [main] DEBUG org.hibernate.event.internal.AbstractFlushingEventListener - Flushed: 0 insertions, 0 updates, 0 deletions to 1 objects
+12:18:40.510 [main] DEBUG org.hibernate.event.internal.AbstractFlushingEventListener - Flushed: 0 (re)creations, 0 updates, 0 removals to 0 collections
+12:18:40.510 [main] DEBUG org.hibernate.internal.util.EntityPrinter - Listing entities:
+12:18:40.510 [main] DEBUG org.hibernate.internal.util.EntityPrinter - com.soft.entity.LocaleMessageEntity{msgKey=testKey5, id=2, locale=en, message=testMessage}
+12:18:40.510 [main] TRACE org.hibernate.event.internal.AbstractFlushingEventListener - Executing flush
+12:18:40.510 [main] TRACE org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl - Starting after statement execution processing [ON_CLOSE]
+12:18:40.510 [main] TRACE org.hibernate.event.internal.AbstractFlushingEventListener - Post flush
+12:18:40.510 [main] TRACE org.hibernate.resource.transaction.internal.SynchronizationRegistryStandardImpl - SynchronizationRegistryStandardImpl.notifySynchronizationsBeforeTransactionCompletion
+12:18:40.510 [main] TRACE org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor - Preparing to commit transaction via JDBC Connection.commit()
+12:18:40.510 [main] TRACE org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor - Transaction committed via JDBC Connection.commit()
+12:18:40.510 [main] TRACE org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor - LogicalConnection#afterTransaction
+12:18:40.510 [main] TRACE org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl - Releasing JDBC resources
+12:18:40.510 [main] TRACE org.hibernate.resource.jdbc.internal.AbstractLogicalConnectionImplementor - re-enabling auto-commit on JDBC Connection after completion of JDBC-based transaction
+12:18:40.511 [main] TRACE org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl - ResourceLocalTransactionCoordinatorImpl#afterCompletionCallback(true)
+12:18:40.511 [main] TRACE org.hibernate.resource.transaction.internal.SynchronizationRegistryStandardImpl - SynchronizationRegistryStandardImpl.notifySynchronizationsAfterTransactionCompletion(3)
+12:18:40.511 [main] TRACE org.hibernate.internal.SessionImpl - SessionImpl#afterTransactionCompletion(successful=true, delayed=false)
+12:18:40.511 [main] TRACE org.hibernate.internal.SessionImpl - Closing session [c6cd774a-fb00-4a67-b3e2-45ba686fe79c]
+12:18:40.511 [main] TRACE org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl - Closing JDBC container [org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl@62cbc478]
+12:18:40.511 [main] TRACE org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl - Releasing JDBC resources
+12:18:40.511 [main] TRACE org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl - Closing logical connection
+12:18:40.511 [main] TRACE org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl - Releasing JDBC resources
+12:18:40.511 [main] TRACE org.hibernate.resource.jdbc.internal.LogicalConnectionManagedImpl - Logical connection closed
+12:18:40.511 [main] DEBUG com.soft.controller.EshopController - Expected object modified by Hibernate = com.soft.entity.LocaleMessageEntity : [id = 2  locale = en  msgKey = testKey5  message = testMessage]
+12:18:40.511 [main] DEBUG com.soft.controller.EshopController - Actual object = com.soft.entity.LocaleMessageEntity : [id = 2  locale = en  msgKey = testKey5  message = DifferentMessage]
+12:18:40.513 [main] TRACE org.springframework.test.context.TestContextManager - afterTestExecution(): instance [com.soft.dao.EshopDAOImplTest@3af2f846], method [public void com.soft.dao.EshopDAOImplTest.readLocaleMessageByKeyTest()], exception [org.opentest4j.AssertionFailedError: TEST FAILURE FOR CLASS "EshopDAOImpl": Method "readLocaleMessageByKey()" fails. ==> expected: <false> but was: <true>]
+12:18:40.513 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [616674002] from cache with key [[WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]]
+12:18:40.513 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@7e64c1a9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 12, missCount = 1]
+12:18:40.513 [main] TRACE org.springframework.web.context.support.GenericWebApplicationContext - Publishing event in org.springframework.web.context.support.GenericWebApplicationContext@24c1b2d2: org.springframework.test.context.event.AfterTestExecutionEvent[source=[DefaultTestContext@4d14b6c2 testClass = EshopDAOImplTest, testInstance = com.soft.dao.EshopDAOImplTest@3af2f846, testMethod = readLocaleMessageByKeyTest@EshopDAOImplTest, testException = org.opentest4j.AssertionFailedError: TEST FAILURE FOR CLASS "EshopDAOImpl": Method "readLocaleMessageByKey()" fails. ==> expected: <false> but was: <true>, mergedContextConfiguration = [WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true]]]
+12:18:40.514 [main] TRACE org.springframework.test.context.TestContextManager - afterTestMethod(): instance [com.soft.dao.EshopDAOImplTest@3af2f846], method [public void com.soft.dao.EshopDAOImplTest.readLocaleMessageByKeyTest()], exception [org.opentest4j.AssertionFailedError: TEST FAILURE FOR CLASS "EshopDAOImpl": Method "readLocaleMessageByKey()" fails. ==> expected: <false> but was: <true>]
+12:18:40.514 [main] DEBUG org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext [616674002] from cache with key [[WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]]
+12:18:40.514 [main] DEBUG org.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [DefaultContextCache@7e64c1a9 size = 1, maxSize = 32, parentContextCount = 0, hitCount = 13, missCount = 1]
+12:18:40.514 [main] TRACE org.springframework.web.context.support.GenericWebApplicationContext - Publishing event in org.springframework.web.context.support.GenericWebApplicationContext@24c1b2d2: org.springframework.test.context.event.AfterTestMethodEvent[source=[DefaultTestContext@4d14b6c2 testClass = EshopDAOImplTest, testInstance = com.soft.dao.EshopDAOImplTest@3af2f846, testMethod = readLocaleMessageByKeyTest@EshopDAOImplTest, testException = org.opentest4j.AssertionFailedError: TEST FAILURE FOR CLASS "EshopDAOImpl": Method "readLocaleMessageByKey()" fails. ==> expected: <false> but was: <true>, mergedContextConfiguration = [WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true]]]
+12:18:40.514 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - After test method: context [DefaultTestContext@4d14b6c2 testClass = EshopDAOImplTest, testInstance = com.soft.dao.EshopDAOImplTest@3af2f846, testMethod = readLocaleMessageByKeyTest@EshopDAOImplTest, testException = org.opentest4j.AssertionFailedError: TEST FAILURE FOR CLASS "EshopDAOImpl": Method "readLocaleMessageByKey()" fails. ==> expected: <false> but was: <true>, mergedContextConfiguration = [WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true]], class annotated with @DirtiesContext [false] with mode [null], method annotated with @DirtiesContext [false] with mode [null].
+12:18:40.514 [main] DEBUG org.springframework.test.context.web.ServletTestExecutionListener - Resetting RequestContextHolder for test context [DefaultTestContext@4d14b6c2 testClass = EshopDAOImplTest, testInstance = com.soft.dao.EshopDAOImplTest@3af2f846, testMethod = readLocaleMessageByKeyTest@EshopDAOImplTest, testException = org.opentest4j.AssertionFailedError: TEST FAILURE FOR CLASS "EshopDAOImpl": Method "readLocaleMessageByKey()" fails. ==> expected: <false> but was: <true>, mergedContextConfiguration = [WebMergedContextConfiguration@7e990ed7 testClass = EshopDAOImplTest, locations = '{}', classes = '{class com.soft.config.AppConfig, class com.soft.config.DataAccessConfig}', contextInitializerClasses = '[]', activeProfiles = '{development}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextCustomizers = set[[empty]], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.populatedRequestContextHolder' -> true, 'org.springframework.test.context.web.ServletTestExecutionListener.resetRequestContextHolder' -> true]].
+]]></system-out>
+  </testcase>
 </testsuite>
