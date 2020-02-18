@@ -5,6 +5,8 @@ package com.soft.dao;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -26,6 +28,7 @@ import com.soft.config.AppConfig;
 import com.soft.config.DataAccessConfig;
 import com.soft.controller.EshopController;
 import com.soft.entity.BaseEntity;
+import com.soft.entity.CategoryEntity;
 import com.soft.entity.LocaleMessageEntity;
 import com.soft.entity.PersonEntity;
 
@@ -61,6 +64,7 @@ public class EshopDAOImplTest {
    public void readLocaleMessageByKeyTest(){
 	   
 	   try {
+		    log.debug("");
 			log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method \"EshopDAOImpl.readLocaleMessageByKey()\" in progress...");	
 		    	  		  	  
 			  //Create instance of "LocaleMessageEntity".
@@ -90,7 +94,76 @@ public class EshopDAOImplTest {
            log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> EXCEPTION TO STRING: "+exc.toString());
       }	     	   
    }     
-     
+  
+   
+   
+    //Test of method "readCategoryList()".
+    @Test 
+    public void readCategoryListTest(){
+    	
+    	boolean checkResult = false;
+    	
+    	 try {
+    		  log.debug(""); 
+ 			  log.debug("[EshopDAOImplTest.readCategoryListTest()] --> Test of method \"EshopDAOImpl.readCategoryList()\" in progress...");	
+ 		    	  		  	  
+ 			   List<CategoryEntity> expectedList = new ArrayList();
+ 			   
+ 			    //Create instance of "CategoryEntity".
+ 		        CategoryEntity ce = (CategoryEntity) CategoryEntity.createInstance(); 		         		         
+ 		        
+ 		          //Add entity to list.
+ 		          expectedList.add(ce);
+ 			
+ 		           ce = new CategoryEntity(2L, "IamCategoryEntity2", "MyCategory2",  new byte[4]);   			  		  	  
+  		           //Add entity to list.
+  		           expectedList.add(ce);
+  		           
+  		            //Save all entities to HSQLDB.
+  		            for(CategoryEntity categoryEntity : expectedList) {
+  		              log.debug("Entity to write to DB = " + categoryEntity.toString());	
+   		 		  	   //Save entity to HSQLDB.
+  		 		  	   eshopDAOImpl.saveEntity(categoryEntity);
+  		            }
+  		         
+  		          log.debug("Expected list = " + expectedList.toString());
+ 		  	   
+                    //Read list of "CategoryEntity" from HSQLDB. 
+ 		  	        List<CategoryEntity> actualList = eshopDAOImpl.readCategoryList(); 
+
+ 		  	         log.debug("Expected list = " + expectedList.toString());
+ 		  	      
+   		  	          //Check if sizes of expected list and actual list are equal.
+ 		  	          if(expectedList.size()!=actualList.size()) checkResult = false;
+ 		  	           else {
+ 		  	        	  Iterator<CategoryEntity> expectedIterator = expectedList.iterator();
+ 		  	        	  Iterator<CategoryEntity> actualIterator = actualList.iterator();
+ 		  	        	   //Check if all entities in expected and actual lists are equal.  
+ 		  	        	   while(expectedIterator.hasNext() && actualIterator.hasNext()) {
+ 		  	        		  if(!(expectedIterator.next().equals(actualIterator.next()))) {
+ 		  	        			//Lists are not equal.  
+ 		  	        		    checkResult = false;
+ 		  	        		    break;	 
+ 		  	        		  }
+ 	 		  	        	//Lists are equal. 
+ 	 		  	        	checkResult = true; 
+ 	   		               }  
+ 		  	           }
+   		              
+
+		  	    Assertions.assertEquals(checkResult, true, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"readCategoryList()\" fails."));		  	   
+ 		    	     
+ 		     //Clear DB's table.  
+ 			 eshopDAOImpl.clearTable(ce.getClass().getName()); 
+ 		      	 	     		       	 	   
+ 		  log.debug("[EshopDAOImplTest.readCategoryListTest()] --> Test of method \"EshopDAOImpl.readCategoryList()\" successfully completed.");		       	        	        	    	      	    	    
+ 		 }
+ 		 catch(Exception exc) {                    	   
+       	   log.debug("[EshopDAOImplTest.readCategoryListTest()] --> EXCEPTION: "+exc.getMessage());
+            log.debug("[EshopDAOImplTest.readCategoryListTest()] --> EXCEPTION TO STRING: "+exc.toString());
+       } 	
+    }
+    
     
       @Test 
       public void getTableSizeByTableNameTest() {
@@ -99,6 +172,7 @@ public class EshopDAOImplTest {
    	     String entityClassName; 
     	 
 	    	try {
+	    	  log.debug("");	
 	    	  log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> Test of method \"EshopDAOImpl.getTableSizeByTableNameTest()\" in progress...");	
 	    	  
 	    	   //Get list of all entity's classes in project.	

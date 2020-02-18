@@ -95,7 +95,7 @@ public class CategoryEntity extends BaseEntity{
 
 	      @Override
 	      public String toString() {
-	     	return this.getClass().getCanonicalName()+" : [id=" + id +"  name=" + name + "]";
+	     	return this.getClass().getCanonicalName()+" : [id= " + id + "  name = " + name + "  entityName = "+ entityName + "  photo = "+ photo.toString() +"]";
 	      }		
 }
 //-------------------------------------------------------------------------------
