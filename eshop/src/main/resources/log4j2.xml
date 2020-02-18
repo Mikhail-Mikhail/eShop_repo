@@ -79,8 +79,7 @@
      
 	 <Logger name="com.soft.controller.EshopController" level="DEBUG">
 	    <AppenderRef ref="DebugLogFile" />
-	 </Logger>
-	 
+	 </Logger>	 	 
 	 
 	 <Logger name="MyHeadersLogger" level="WARN">
 	    <AppenderRef ref="DebugLogFile" /> 

@@ -65,33 +65,43 @@ public class EshopDAOImplTest {
    //Test of method "readLocaleMessageByKey()".
    @Test 
    public void readLocaleMessageByKeyTest(){
-	     try {
-		  	  log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method \"EshopDAOImpl.readLocaleMessageByKey()\" in progress...");	
+	   
+	   try {
+			log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method \"EshopDAOImpl.readLocaleMessageByKey()\" in progress...");	
 		    	  
-		  	  // LocaleMessageEntity lmeExpected = new LocaleMessageEntity(3L, "en", "testKey2", "testMessage");
-		  	   LocaleMessageEntity lmeExpected = (LocaleMessageEntity) LocaleMessageEntity.createInstance();
-		  	    eshopDAOImpl.saveEntity(lmeExpected);  
-		  	   LocaleMessageEntity lmeActual  = eshopDAOImpl.readLocaleMessageByKey(lmeExpected.getMsgKey(), lmeExpected.getLocale());
+		      //Create instance of "LocaleMessageEntity".
+		  	  //Field "id" must be left empty. Hibernate will set it.
+		      LocaleMessageEntity lmeExpected = new LocaleMessageEntity("en", "testKey5", "testMessage");
+		  	    log.debug("Expected object = " + lmeExpected.toString());
+ 		  	 //LocaleMessageEntity lmeExpected = (LocaleMessageEntity) LocaleMessageEntity.createInstance();
 		  	   
-		  	 log.debug("Expected object = " + lmeExpected.toString());
-  		  	 log.debug("Actual object = " + lmeActual.toString());
+		  	    //Save entity to HSQLDB.
+		  	    eshopDAOImpl.saveEntity(lmeExpected);
+		  	   
+		  	     //Read entity from HSQLDB.
+		  	     LocaleMessageEntity lmeActual  = eshopDAOImpl.readLocaleMessageByKey(lmeExpected.getMsgKey(), lmeExpected.getLocale());
 		  	 
-		  	 lmeActual.setId(2L);
-		  	lmeActual.setMessage("DifferentMessage");
+//			  	 lmeActual.setId(3L);
+//			  	lmeActual.setLocale("ru");
+//		  	     lmeActual.setMsgKey("NewKey"); 
+//				  	lmeActual.setMessage("DifferentMessage");
+
 		  	   
-		  	   boolean checkResult = lmeExpected.equals(lmeActual);
-		  	    Assertions.assertEquals(checkResult, true, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"readLocaleMessageByKey()\" fails."));		  	   
+		  	       log.debug("Expected object modified by Hibernate = " + lmeExpected.toString());
+  		  	       log.debug("Actual object = " + lmeActual.toString());
+		  	 		
+  		  	        ///Check if expected and actual entities are equal.
+		  	        boolean checkResult = lmeExpected.equals(lmeActual);
+		  	        Assertions.assertEquals(checkResult, true, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"readLocaleMessageByKey()\" fails."));		  	   
 		    	     
-//		    	         //Clear DB's table.  
-//			       	     eshopDAOImpl.clearTable(entityClassName); 
-//		      	 	     
-//		       	 	   
-//		       	      Assertions.assertEquals(0, tableSize, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"getTableSizeByTableName("+entityClassName+")\" returned \"size\" = "+tableSize.toString()));
+		    	      //Clear DB's table.  
+			          eshopDAOImpl.clearTable(lmeExpected.getClass().getName()); 
+		      	 	     		       	 	   
 		       	     log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method \"EshopDAOImpl.readLocaleMessageByKey()\" successfully completed");		       	        	        	    	      	    	    
 		 }
 		 catch(Exception exc) {                    	   
-      	  log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> EXCEPTION: "+exc.getMessage());
-          log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> EXCEPTION TO STRING: "+exc.toString());
+      	   log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> EXCEPTION: "+exc.getMessage());
+           log.debug("[EshopDAOImplTest.readLocaleMessageByKeyTest()] --> EXCEPTION TO STRING: "+exc.toString());
       }	     	   
    }     
      
