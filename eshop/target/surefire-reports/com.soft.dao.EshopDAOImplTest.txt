@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.soft.dao.EshopDAOImplTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.801 sec - in com.soft.dao.EshopDAOImplTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.699 sec - in com.soft.dao.EshopDAOImplTest

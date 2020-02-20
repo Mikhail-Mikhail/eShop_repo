@@ -10,6 +10,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
 //-------------------------------------------------------------------------------
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "category")
@@ -39,12 +40,15 @@ public class CategoryEntity extends BaseEntity{
     @Column(name = "entity_name")
     private String entityName;
     
-    @Column(name = "photo")
+    @Column(name = "photo")        
     private byte[] photo;
-    
+        
      //Static method to create instance. It is used for unit tests.
      public static BaseEntity createInstance() {
-       return new CategoryEntity(1L, "IamCategoryEntity", "MyCategory",  new byte[2]); 
+       //Test's data.
+       byte[] photo  = new byte[] {5, 7, 18};
+    	            
+      return new CategoryEntity(1L, "IamCategoryEntity", "MyCategory",  photo); 
      } 
 
 		public Long getId() {
@@ -79,18 +83,43 @@ public class CategoryEntity extends BaseEntity{
 			this.photo = photo;
 		} 
 		
-		
+		 //Check if two instances are equal.
 	     @Override
          public boolean equals(Object object) {
-            // TODO: Warning - this method won't work in the case the id fields are not set.
-            if (!(object instanceof CategoryEntity)) {
+
+            if(!(object instanceof CategoryEntity)) {
                 return false;
             }
+            
             CategoryEntity other = (CategoryEntity) object;
-            if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            
+             //Check equality of all fields:
+             if((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
                 return false;
-            }
-            return true;
+             }
+             
+              if((this.name == null && other.name != null) || (this.name != null && !this.name.equals(other.name))) {
+                 return false;
+              }
+              
+               if((this.entityName == null && other.entityName != null) || (this.entityName != null && !this.entityName.equals(other.entityName))) {
+                  return false;
+               }
+               
+                //Check equality of fields "photo"(byte arrays). 
+                if((this.photo == null && other.photo != null) || (this.photo != null && other.photo == null)) return false;
+               
+                if((this.photo != null && other.photo != null)) {
+                  //Check array's length. 
+                  if((this.photo.length != other.photo.length)) return false; 	
+                    //Check equality of each array's element.
+                    for(int i = 0; i < this.photo.length; i++){
+                	  if(this.photo[i] != other.photo[i]) return false;	
+                    }                 
+                }
+               
+          //If all fields are equal.    
+          return true;
          }
 
 	      @Override

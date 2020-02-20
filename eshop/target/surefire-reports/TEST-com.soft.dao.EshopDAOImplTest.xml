@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.soft.dao.EshopDAOImplTest" time="3.801" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.soft.dao.EshopDAOImplTest" time="3.699" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk-8u211-linux-x64/jdk1.8.0_211/jre/lib/amd64"/>
@@ -24,7 +24,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="os.name" value="Linux"/>
-    <property name="classworlds.conf" value="/home/mihail/eclipse-workspace/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf6475505392583057720.tmp"/>
+    <property name="classworlds.conf" value="/home/mihail/eclipse-workspace/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf5871457774229906192.tmp"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -59,7 +59,7 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="getTableSizeByTableNameTest" classname="com.soft.dao.EshopDAOImplTest" time="0.599"/>
+  <testcase name="getTableSizeByTableNameTest" classname="com.soft.dao.EshopDAOImplTest" time="0.755"/>
   <testcase name="readCategoryListTest" classname="com.soft.dao.EshopDAOImplTest" time="0.055"/>
-  <testcase name="readLocaleMessageByKeyTest" classname="com.soft.dao.EshopDAOImplTest" time="0.049"/>
+  <testcase name="readLocaleMessageByKeyTest" classname="com.soft.dao.EshopDAOImplTest" time="0.047"/>
 </testsuite>

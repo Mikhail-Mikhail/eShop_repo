@@ -1,40 +1,40 @@
-17:56:34.090 DEBUG com.soft.controller.EshopController - 
-17:56:34.090 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Test of method "EshopDAOImpl.getTableSizeByTableNameTest()" in progress...
-17:56:34.127 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity classes: [class com.soft.entity.CategoryEntity, class com.soft.entity.TransistorEntity, class com.soft.entity.PersonEntity, class com.soft.entity.LocaleMessageEntity, class com.soft.entity.ProducerEntity, class com.soft.entity.ResistorEntity]
-17:56:34.289 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: CategoryEntity: tableSize = 0
-17:56:34.295 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: TransistorEntity: tableSize = 0
-17:56:34.301 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: PersonEntity: tableSize = 0
-17:56:34.305 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: LocaleMessageEntity: tableSize = 0
-17:56:34.308 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: ProducerEntity: tableSize = 0
-17:56:34.313 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: ResistorEntity: tableSize = 0
-17:56:34.313 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: com.soft.entity.CategoryEntity : [id= 1  name = IamCategoryEntity  entityName = MyCategory  photo = [B@7a65a360]
-17:56:34.397 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: CategoryEntity: tableSize = 1
-17:56:34.397 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: com.soft.entity.TransistorEntity : [id=1  name=IamTransistorEntity]
-17:56:34.403 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: TransistorEntity: tableSize = 1
-17:56:34.404 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: com.soft.entity.PersonEntity : [id=1  name=IamPersonEntity]
-17:56:34.409 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: PersonEntity: tableSize = 1
-17:56:34.409 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: com.soft.entity.LocaleMessageEntity : [id = 1  locale = MyLocale  msgKey = MyKey  message = MyMessage]
-17:56:34.416 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: LocaleMessageEntity: tableSize = 1
-17:56:34.416 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: com.soft.entity.ProducerEntity : [id=1  producerName=IamProducerEntity]
-17:56:34.424 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: ProducerEntity: tableSize = 1
-17:56:34.424 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: com.soft.entity.ResistorEntity : [id=1  name=IamResistorEntity]
-17:56:34.433 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: ResistorEntity: tableSize = 1
-17:56:34.447 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: CategoryEntity: tableSize = 0
-17:56:34.453 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: TransistorEntity: tableSize = 0
-17:56:34.461 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: PersonEntity: tableSize = 0
-17:56:34.484 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: LocaleMessageEntity: tableSize = 0
-17:56:34.492 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: ProducerEntity: tableSize = 0
-17:56:34.498 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: ResistorEntity: tableSize = 0
-17:56:34.503 DEBUG com.soft.controller.EshopController - 
-17:56:34.503 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.readCategoryListTest()] --> Test of method "EshopDAOImpl.readCategoryList()" in progress...
-17:56:34.504 DEBUG com.soft.controller.EshopController - Entity to write to DB = com.soft.entity.CategoryEntity : [id= 1  name = IamCategoryEntity  entityName = MyCategory  photo = [B@49cb3881]
-17:56:34.508 DEBUG com.soft.controller.EshopController - Entity to write to DB = com.soft.entity.CategoryEntity : [id= 2  name = IamCategoryEntity2  entityName = MyCategory2  photo = [B@69ec93c2]
-17:56:34.512 DEBUG com.soft.controller.EshopController - Expected list = [com.soft.entity.CategoryEntity : [id= 2  name = IamCategoryEntity  entityName = MyCategory  photo = [B@49cb3881], com.soft.entity.CategoryEntity : [id= 3  name = IamCategoryEntity2  entityName = MyCategory2  photo = [B@69ec93c2]]
-17:56:34.532 DEBUG com.soft.controller.EshopController - Expected list = [com.soft.entity.CategoryEntity : [id= 2  name = IamCategoryEntity  entityName = MyCategory  photo = [B@49cb3881], com.soft.entity.CategoryEntity : [id= 3  name = IamCategoryEntity2  entityName = MyCategory2  photo = [B@69ec93c2]]
-17:56:34.538 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.readCategoryListTest()] --> Test of method "EshopDAOImpl.readCategoryList()" successfully completed.
-17:56:34.542 DEBUG com.soft.controller.EshopController - 
-17:56:34.542 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method "EshopDAOImpl.readLocaleMessageByKey()" in progress...
-17:56:34.542 DEBUG com.soft.controller.EshopController - Expected object = com.soft.entity.LocaleMessageEntity : [id = 1  locale = MyLocale  msgKey = MyKey  message = MyMessage]
-17:56:34.612 DEBUG com.soft.controller.EshopController - Expected object modified by Hibernate = com.soft.entity.LocaleMessageEntity : [id = 2  locale = MyLocale  msgKey = MyKey  message = MyMessage]
-17:56:34.615 DEBUG com.soft.controller.EshopController - Actual object = com.soft.entity.LocaleMessageEntity : [id = 2  locale = MyLocale  msgKey = MyKey  message = MyMessage]
-17:56:34.623 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method "EshopDAOImpl.readLocaleMessageByKey()" successfully completed.
+15:19:05.434 DEBUG com.soft.controller.EshopController - 
+15:19:05.435 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Test of method "EshopDAOImpl.getTableSizeByTableNameTest()" in progress...
+15:19:05.466 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity classes: [class com.soft.entity.ResistorEntity, class com.soft.entity.CategoryEntity, class com.soft.entity.ProducerEntity, class com.soft.entity.LocaleMessageEntity, class com.soft.entity.TransistorEntity, class com.soft.entity.PersonEntity]
+15:19:05.642 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: ResistorEntity: tableSize = 0
+15:19:05.647 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: CategoryEntity: tableSize = 0
+15:19:05.653 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: ProducerEntity: tableSize = 0
+15:19:05.661 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: LocaleMessageEntity: tableSize = 0
+15:19:05.666 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: TransistorEntity: tableSize = 0
+15:19:05.673 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: PersonEntity: tableSize = 0
+15:19:05.673 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: com.soft.entity.ResistorEntity : [id=1  name=IamResistorEntity]
+15:19:05.721 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: ResistorEntity: tableSize = 1
+15:19:05.721 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: com.soft.entity.CategoryEntity : [id= 1  name = IamCategoryEntity  entityName = MyCategory  photo = [B@62d40e31]
+15:19:05.748 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: CategoryEntity: tableSize = 1
+15:19:05.749 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: com.soft.entity.ProducerEntity : [id=1  producerName=IamProducerEntity]
+15:19:05.761 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: ProducerEntity: tableSize = 1
+15:19:05.761 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: com.soft.entity.LocaleMessageEntity : [id = 1  locale = MyLocale  msgKey = MyKey  message = MyMessage]
+15:19:05.777 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: LocaleMessageEntity: tableSize = 1
+15:19:05.777 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: com.soft.entity.TransistorEntity : [id=1  name=IamTransistorEntity]
+15:19:05.788 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: TransistorEntity: tableSize = 1
+15:19:05.788 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: com.soft.entity.PersonEntity : [id=1  name=IamPersonEntity]
+15:19:05.796 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: PersonEntity: tableSize = 1
+15:19:05.809 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: ResistorEntity: tableSize = 0
+15:19:05.839 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: CategoryEntity: tableSize = 0
+15:19:05.851 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: ProducerEntity: tableSize = 0
+15:19:05.861 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: LocaleMessageEntity: tableSize = 0
+15:19:05.882 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: TransistorEntity: tableSize = 0
+15:19:05.894 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: PersonEntity: tableSize = 0
+15:19:05.913 DEBUG com.soft.controller.EshopController - 
+15:19:05.913 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.readCategoryListTest()] --> Test of method "EshopDAOImpl.readCategoryList()" in progress...
+15:19:05.913 DEBUG com.soft.controller.EshopController - Entity to write to DB = com.soft.entity.CategoryEntity : [id= 1  name = IamCategoryEntity  entityName = MyCategory  photo = [B@706f6d26]
+15:19:05.918 DEBUG com.soft.controller.EshopController - Entity to write to DB = com.soft.entity.CategoryEntity : [id= 2  name = IamCategoryEntity2  entityName = MyCategory2  photo = [B@1e3f86d5]
+15:19:05.926 DEBUG com.soft.controller.EshopController - Expected list = [com.soft.entity.CategoryEntity : [id= 2  name = IamCategoryEntity  entityName = MyCategory  photo = [B@706f6d26], com.soft.entity.CategoryEntity : [id= 3  name = IamCategoryEntity2  entityName = MyCategory2  photo = [B@1e3f86d5]]
+15:19:05.947 DEBUG com.soft.controller.EshopController - Actual list = [com.soft.entity.CategoryEntity : [id= 2  name = IamCategoryEntity  entityName = MyCategory  photo = [B@1eca3ea7], com.soft.entity.CategoryEntity : [id= 3  name = IamCategoryEntity2  entityName = MyCategory2  photo = [B@24fba488]]
+15:19:05.963 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.readCategoryListTest()] --> Test of method "EshopDAOImpl.readCategoryList()" successfully completed.
+15:19:05.970 DEBUG com.soft.controller.EshopController - 
+15:19:05.970 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method "EshopDAOImpl.readLocaleMessageByKey()" in progress...
+15:19:05.970 DEBUG com.soft.controller.EshopController - Expected object = com.soft.entity.LocaleMessageEntity : [id = 1  locale = MyLocale  msgKey = MyKey  message = MyMessage]
+15:19:06.054 DEBUG com.soft.controller.EshopController - Expected object modified by Hibernate = com.soft.entity.LocaleMessageEntity : [id = 2  locale = MyLocale  msgKey = MyKey  message = MyMessage]
+15:19:06.054 DEBUG com.soft.controller.EshopController - Actual object = com.soft.entity.LocaleMessageEntity : [id = 2  locale = MyLocale  msgKey = MyKey  message = MyMessage]
+15:19:06.064 DEBUG com.soft.controller.EshopController - [EshopDAOImplTest.readLocaleMessageByKeyTest()] --> Test of method "EshopDAOImpl.readLocaleMessageByKey()" successfully completed.

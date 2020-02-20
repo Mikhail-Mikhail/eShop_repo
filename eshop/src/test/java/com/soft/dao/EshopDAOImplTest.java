@@ -114,35 +114,51 @@ public class EshopDAOImplTest {
  		        
  		          //Add entity to list.
  		          expectedList.add(ce);
- 			
- 		           ce = new CategoryEntity(2L, "IamCategoryEntity2", "MyCategory2",  new byte[4]);   			  		  	  
-  		           //Add entity to list.
-  		           expectedList.add(ce);
+                     
+ 		           //Test's data.
+ 		           byte[] photo  = new byte[] {22, 1, 40, 88};
+
+ 		            //Create instance of "CategoryEntity".
+                    ce = new CategoryEntity(2L, "IamCategoryEntity2", "MyCategory2", photo);   			  		  	  
+  		             
+                     //Add entity to list.
+  		             expectedList.add(ce);
   		           
-  		            //Save all entities to HSQLDB.
-  		            for(CategoryEntity categoryEntity : expectedList) {
-  		              log.debug("Entity to write to DB = " + categoryEntity.toString());	
-   		 		  	   //Save entity to HSQLDB.
-  		 		  	   eshopDAOImpl.saveEntity(categoryEntity);
-  		            }
+  		              //Save all entities to HSQLDB.
+  		              for(CategoryEntity categoryEntity : expectedList) {
+  		                log.debug("Entity to write to DB = " + categoryEntity.toString());	
+   		 		  	     //Save entity to HSQLDB.
+  		 		  	     eshopDAOImpl.saveEntity(categoryEntity);
+  		              }
   		         
-  		          log.debug("Expected list = " + expectedList.toString());
+  		              log.debug("Expected list = " + expectedList.toString());  		          
  		  	   
+  		              
                     //Read list of "CategoryEntity" from HSQLDB. 
  		  	        List<CategoryEntity> actualList = eshopDAOImpl.readCategoryList(); 
 
- 		  	         log.debug("Expected list = " + expectedList.toString());
- 		  	      
+ 		  	         log.debug("Actual list = " + actualList.toString());
+ 		  	         
+
    		  	          //Check if sizes of expected list and actual list are equal.
  		  	          if(expectedList.size()!=actualList.size()) checkResult = false;
  		  	           else {
+ 		  	        	
  		  	        	  Iterator<CategoryEntity> expectedIterator = expectedList.iterator();
  		  	        	  Iterator<CategoryEntity> actualIterator = actualList.iterator();
+ 		  	        	  
+ 		  	            	CategoryEntity ExpectedCategoryEntity = null;
+		  	        		CategoryEntity ActualCategoryEntity = null;
+		  	        				
  		  	        	   //Check if all entities in expected and actual lists are equal.  
  		  	        	   while(expectedIterator.hasNext() && actualIterator.hasNext()) {
- 		  	        		  if(!(expectedIterator.next().equals(actualIterator.next()))) {
+ 		  	        		   
+ 		  	        		 ExpectedCategoryEntity = expectedIterator.next();
+ 		  	        		 ActualCategoryEntity = actualIterator.next();
+ 		  	        		   
+ 		  	        		  if(!(ExpectedCategoryEntity.equals(ActualCategoryEntity))) {
  		  	        			//Lists are not equal.  
- 		  	        		    checkResult = false;
+ 		  	        		    checkResult = false; 		  	        		    
  		  	        		    break;	 
  		  	        		  }
  	 		  	        	//Lists are equal. 
@@ -150,7 +166,6 @@ public class EshopDAOImplTest {
  	   		               }  
  		  	           }
    		              
-
 		  	    Assertions.assertEquals(checkResult, true, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"readCategoryList()\" fails."));		  	   
  		    	     
  		     //Clear DB's table.  
@@ -161,7 +176,7 @@ public class EshopDAOImplTest {
  		 catch(Exception exc) {                    	   
        	   log.debug("[EshopDAOImplTest.readCategoryListTest()] --> EXCEPTION: "+exc.getMessage());
             log.debug("[EshopDAOImplTest.readCategoryListTest()] --> EXCEPTION TO STRING: "+exc.toString());
-       } 	
+         } 	
     }
     
     
