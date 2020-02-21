@@ -198,8 +198,8 @@ public class EshopDAOImplTest {
 	    	    //Save entity to HSQLDB.
 		  	    eshopDAOImpl.saveEntity(resistorEntityExpected);
 		  	    
-		  	    log.debug("ResistorEntity expected = " + resistorEntityExpected.toString());
-		  	     
+		  	    log.debug("ResistorEntity expected = " + resistorEntityExpected.toString());		  	     		  	    
+		  	    
 		  	     //Read entity from HSQLDB.
 		  	     ResistorEntity resistorEntityActual = (ResistorEntity) eshopDAOImpl.readEntityByNameAndId(ResistorEntity.class.getSimpleName(), 2L);
 		  	     
@@ -216,12 +216,12 @@ public class EshopDAOImplTest {
 		  	    //Create other entity instance. 
 		        TransistorEntity transistorEntityExpected = (TransistorEntity) TransistorEntity.createInstance();
 		    	log.debug("TransistorEntity to write to DB = " + transistorEntityExpected.toString());
-		    	 
+
 		    	  //Save entity to HSQLDB.
 			  	  eshopDAOImpl.saveEntity(transistorEntityExpected);
 			  	    
 			  	   log.debug("TransistorEntity expected = " + transistorEntityExpected.toString());
-			  	    
+			  	   			  	    
 			  	    //Read entity from HSQLDB.
 			  	    TransistorEntity transistorEntityActual = (TransistorEntity) eshopDAOImpl.readEntityByNameAndId(TransistorEntity.class.getSimpleName(), 2L);
 			  	     

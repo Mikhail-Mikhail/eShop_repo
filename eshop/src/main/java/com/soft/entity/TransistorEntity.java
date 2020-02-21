@@ -215,18 +215,87 @@ public class TransistorEntity extends BaseEntity{
 				this.quantity = quantity;
 			}
 
-
+			
+			//Check if two instances are equal.
 			@Override
 	         public boolean equals(Object object) {
-	            // TODO: Warning - this method won't work in the case the id fields are not set.
+	            
 	            if (!(object instanceof TransistorEntity)) {
 	                return false;
 	            }
-	            TransistorEntity other = (TransistorEntity) object;
-	            if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-	                return false;
-	            }
-	            return true;
+	            
+	             TransistorEntity other = (TransistorEntity) object;
+	            
+		            //Check equality of all fields:
+		            if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+		                return false;
+		            }
+		            
+		            if((this.category == null && other.category != null) || (this.category != null && !this.category.equals(other.category))) {
+		                return false;
+		             }
+		            
+		            
+		             if((this.name == null && other.name != null) || (this.name != null && !this.name.equals(other.name))) {
+		                return false;
+		             }
+		            
+		            
+		             if((this.description == null && other.description != null) || (this.description != null && !this.description.equals(other.description))) {
+		                return false;
+		             }
+		            
+		            
+		             if((this.producer == null && other.producer != null) || (this.producer != null && !this.producer.equals(other.producer))) {
+		                return false;
+		             }
+		            
+		            
+		             if((this.conductanceType == null && other.conductanceType != null) || (this.conductanceType != null && !this.conductanceType.equals(other.conductanceType))) {
+		                return false;
+		             }
+		            
+		            
+		             if((this.gain == null && other.gain != null) || (this.gain != null && !this.gain.equals(other.gain))) {
+		                return false;
+		             }
+		            
+		            
+		             if((this.maxCurrent == null && other.maxCurrent != null) || (this.maxCurrent != null && !this.maxCurrent.equals(other.maxCurrent))) {
+		                return false;
+		             }
+		            
+		            
+		             if((this.maxCurrentUnit == null && other.maxCurrentUnit != null) || (this.maxCurrentUnit != null && !this.maxCurrentUnit.equals(other.maxCurrentUnit))) {
+		                return false;
+		             }
+	
+		            
+		             if((this.tPackage == null && other.tPackage != null) || (this.tPackage != null && !this.tPackage.equals(other.tPackage))) {
+		                return false;
+		             }	            	            
+		            
+		              //Check equality of fields "photo"(byte arrays). 
+	                  if((this.photo == null && other.photo != null) || (this.photo != null && other.photo == null)) return false;
+	               
+	                  if((this.photo != null && other.photo != null)) {
+	                   //Check array's length. 
+	                   if((this.photo.length != other.photo.length)) return false; 	
+	                    //Check equality of each array's element.
+	                    for(int i = 0; i < this.photo.length; i++){
+	                	  if(this.photo[i] != other.photo[i]) return false;	
+	                    }                 
+	                  }
+	                
+		              if((this.price == null && other.price != null) || (this.price != null && !this.price.equals(other.price))) {
+		                return false;
+		              }
+		            
+		              if((this.quantity == null && other.quantity != null) || (this.quantity != null && !this.quantity.equals(other.quantity))) {
+		                return false;
+		              }	            
+	            
+	          return true;
 	         }
 	
 	          @Override
