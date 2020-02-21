@@ -31,6 +31,8 @@ import com.soft.entity.BaseEntity;
 import com.soft.entity.CategoryEntity;
 import com.soft.entity.LocaleMessageEntity;
 import com.soft.entity.PersonEntity;
+import com.soft.entity.ResistorEntity;
+import com.soft.entity.TransistorEntity;
 
 import javassist.tools.reflect.Reflection;
 
@@ -180,6 +182,72 @@ public class EshopDAOImplTest {
     }
     
     
+     @Test
+     public void readEntityByNameAndIdTest(){
+    	 
+       boolean testResult = false; 
+
+	    try {
+	         log.debug("");	
+	    	 log.debug("[EshopDAOImplTest.readEntityByNameAndIdTest()] --> Test of method \"EshopDAOImpl.readEntityByNameAndIdTest()\" in progress...");
+	    	 	  
+	    	   //Create entity instance. 
+	    	   ResistorEntity resistorEntityExpected = (ResistorEntity) ResistorEntity.createInstance();
+	    	   log.debug("ResistorEntity to write to DB = " + resistorEntityExpected.toString());
+	    	 
+	    	    //Save entity to HSQLDB.
+		  	    eshopDAOImpl.saveEntity(resistorEntityExpected);
+		  	    
+		  	    log.debug("ResistorEntity expected = " + resistorEntityExpected.toString());
+		  	     
+		  	     //Read entity from HSQLDB.
+		  	     ResistorEntity resistorEntityActual = (ResistorEntity) eshopDAOImpl.readEntityByNameAndId(ResistorEntity.class.getSimpleName(), 2L);
+		  	     
+		  	     log.debug("ResistorEntity actual = " + resistorEntityActual.toString());
+		  	     
+		  	      //Compare actual and expected entities.
+		  	      if(resistorEntityExpected.equals(resistorEntityActual)) testResult = true;
+		  	       else testResult = false;
+		  	      
+		  	       //Test.
+		  	       Assertions.assertEquals(testResult, true, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"readEntityByNameAndIdTest()\" fails."));
+		  	    
+                    
+		  	    //Create other entity instance. 
+		        TransistorEntity transistorEntityExpected = (TransistorEntity) TransistorEntity.createInstance();
+		    	log.debug("TransistorEntity to write to DB = " + transistorEntityExpected.toString());
+		    	 
+		    	  //Save entity to HSQLDB.
+			  	  eshopDAOImpl.saveEntity(transistorEntityExpected);
+			  	    
+			  	   log.debug("TransistorEntity expected = " + transistorEntityExpected.toString());
+			  	    
+			  	    //Read entity from HSQLDB.
+			  	    TransistorEntity transistorEntityActual = (TransistorEntity) eshopDAOImpl.readEntityByNameAndId(TransistorEntity.class.getSimpleName(), 2L);
+			  	     
+			  	     log.debug("TransistorEntity actual = " + transistorEntityActual.toString());
+			  	     
+			  	      //Compare actual and expected entities.
+			  	      if(transistorEntityExpected.equals(transistorEntityActual)) testResult = true;
+			  	       else testResult = false;
+			  	      
+			  	       //Test.
+			  	       Assertions.assertEquals(testResult, true, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"readEntityByNameAndIdTest()\" fails."));
+			  	 		  	       		 
+		  	//Clear DB's tables.  
+	 	    eshopDAOImpl.clearTable(resistorEntityExpected.getClass().getName());
+	 	    eshopDAOImpl.clearTable(transistorEntityExpected.getClass().getName());
+	 		      	 	     		       	 	   
+	     log.debug("[EshopDAOImplTest.readEntityByNameAndIdTest()] --> Test of method \"EshopDAOImpl.readEntityByNameAndIdTest()\" successfully completed."); 	     
+	    }
+	    catch(Exception exc) {                    	   
+        	log.debug("[EshopDAOImplTest.readEntityByNameAndIdTest()] --> EXCEPTION: "+exc.getMessage());
+            log.debug("[EshopDAOImplTest.readEntityByNameAndIdTest()] --> EXCEPTION TO STRING: "+exc.toString());
+    	}	 
+    	
+     }
+    
+     
       @Test 
       public void getTableSizeByTableNameTest() {
     	  

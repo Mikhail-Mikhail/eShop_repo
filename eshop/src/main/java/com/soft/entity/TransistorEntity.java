@@ -230,8 +230,12 @@ public class TransistorEntity extends BaseEntity{
 	         }
 	
 	          @Override
-	          public String toString() {
-	            return this.getClass().getCanonicalName()+" : [id=" + id +"  name=" + name + "]";
+	          public String toString() {	        	  	        	 	  
+	        	  
+	        	  return this.getClass().getCanonicalName()+" : [id = " + id +"  category = " + category + "  name = " + name + 
+		        			 "  description = " + description + "  producer = " + producer + "  conductanceType = " + conductanceType + "  gain = " + gain +
+		        			 "  maxCurrent = " + maxCurrent + "  maxCurrentUnit = " + maxCurrentUnit + "  tPackage = " + tPackage + "  photo = " + photo +
+		        			 "  price = " + price + "  quantity = " + quantity + "]";
 	          }	
 }
 //-------------------------------------------------------------------------------
