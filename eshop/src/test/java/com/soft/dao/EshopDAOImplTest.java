@@ -293,7 +293,7 @@ public class EshopDAOImplTest {
 	  	        	 testResult = compareLists(expectedList, actualList);  
 	  	           }
 		              
-	  	     Assertions.assertEquals(testResult, true, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"readEntityListByName(ResistorEntity, null, null)\" fails."));
+	  	     Assertions.assertEquals(testResult, true, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\" : Method \"readEntityListByName(ResistorEntity, null, null)\" fails."));
 	  	     
 	  	     
 	         //Read half part of entity's list from  HSQLDB.      
