@@ -189,7 +189,7 @@ public class EshopDAOImplTest {
 
 	    try {
 	         log.debug("");	
-	    	 log.debug("[EshopDAOImplTest.readEntityByNameAndIdTest()] --> Test of method \"EshopDAOImpl.readEntityByNameAndIdTest()\" in progress...");
+	    	 log.debug("[EshopDAOImplTest.readEntityByNameAndIdTest()] --> Test of method \"EshopDAOImpl.readEntityByNameAndId()\" in progress...");
 	    	 	  
 	    	   //Create entity instance. 
 	    	   ResistorEntity resistorEntityExpected = (ResistorEntity) ResistorEntity.createInstance();
@@ -238,13 +238,84 @@ public class EshopDAOImplTest {
 	 	    eshopDAOImpl.clearTable(resistorEntityExpected.getClass().getName());
 	 	    eshopDAOImpl.clearTable(transistorEntityExpected.getClass().getName());
 	 		      	 	     		       	 	   
-	     log.debug("[EshopDAOImplTest.readEntityByNameAndIdTest()] --> Test of method \"EshopDAOImpl.readEntityByNameAndIdTest()\" successfully completed."); 	     
+	     log.debug("[EshopDAOImplTest.readEntityByNameAndIdTest()] --> Test of method \"EshopDAOImpl.readEntityByNameAndId()\" successfully completed."); 	     
 	    }
 	    catch(Exception exc) {                    	   
         	log.debug("[EshopDAOImplTest.readEntityByNameAndIdTest()] --> EXCEPTION: "+exc.getMessage());
             log.debug("[EshopDAOImplTest.readEntityByNameAndIdTest()] --> EXCEPTION TO STRING: "+exc.toString());
     	}	 
     	
+     }
+     
+     
+     @Test      
+     public void readEntityListByNameTest(){
+    	 
+    	 boolean testResult = false; 
+
+	      try {
+	          log.debug("");	
+	    	  log.debug("[EshopDAOImplTest.readEntityListByNameTest()] --> Test of method \"EshopDAOImpl.readEntityListByName()\" in progress...");
+	    	  	    	  
+	    	   List<BaseEntity> expectedList = new ArrayList();
+			   
+
+
+			     //Create instances of "ResistorEntity" and add them to expected list.
+	    	     for(int i = 0; i < 10; i++)
+	    	     {
+	 	    	   //Test's photo data.
+	 	           byte[] photo  = new byte[] {(byte) (12+i), (byte) (1+i), (byte) (41+i), (byte) (67+i)};	 
+	    	      
+	 	            expectedList.add(new ResistorEntity((Long) Long.valueOf(i)+1L, 1, "IamResistorEntity "+(i+1), "ResistorDescription "+(i+1), 1, 2.2+i, 1, 1.5, 0.125, 1, 1, photo, 100.25+i, 200+i));	    	       	    	        
+	    	     }
+	    	     
+	    	      log.debug("Expected list before saving = " + expectedList.toString());
+	    	    		         		         		         		                           		           		           
+		              //Save all entities to HSQLDB.
+		              for(BaseEntity resistorEntity : expectedList) {
+ 		 		  	     //Save entity to HSQLDB.
+		 		  	     eshopDAOImpl.saveEntity(resistorEntity);
+		              }
+		         
+		              log.debug("Expected list after saving = " + expectedList.toString());  		          
+		  	   
+		         //Read full entity's list from  HSQLDB.      
+		         List<BaseEntity> actualList = eshopDAOImpl.readEntityListByName(ResistorEntity.class.getSimpleName(), null, null);
+		         
+		         log.debug("Actual list size = " + actualList.size());
+		         log.debug("Actual list = " + actualList.toString());
+		         
+		          //Check if sizes of expected list and actual list are equal.
+	  	          if(expectedList.size()!=actualList.size()) testResult = false;
+	  	           else {
+	  	        	 //Compare expected and actual lists.
+	  	        	 testResult = compareLists(expectedList, actualList);  
+	  	           }
+		              
+	  	     Assertions.assertEquals(testResult, true, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"readEntityListByName(ResistorEntity, null, null)\" fails."));
+	  	     
+	  	     
+	         //Read half part of entity's list from  HSQLDB.      
+	         actualList = eshopDAOImpl.readEntityListByName(ResistorEntity.class.getSimpleName(), 0, actualList.size()/2);
+	         
+	         log.debug("Half of actual list size = " + actualList.size());
+	         log.debug("Half of actual list = " + actualList.toString());
+	         
+  	           //Compare expected and actual lists.
+  	           testResult = compareLists(expectedList, actualList);  
+	             
+  	         Assertions.assertEquals(testResult, true, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"readEntityListByName(ResistorEntity, 0, halfSize)\" fails."));
+		         
+		    //Clear DB's tables.  
+	   	    eshopDAOImpl.clearTable(ResistorEntity.class.getName());					         
+	    	  
+	      log.debug("[EshopDAOImplTest.readEntityListByNameTest()] --> Test of method \"EshopDAOImpl.readEntityListByName()\" successfully completed.");	  
+	      }
+	      catch(Exception exc) {                    	   
+	       	log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> EXCEPTION: "+exc.getMessage());
+	        log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> EXCEPTION TO STRING: "+exc.toString());
+	      }	     	  	  
      }
     
      
@@ -256,7 +327,7 @@ public class EshopDAOImplTest {
     	 
 	    	try {
 	    	  log.debug("");	
-	    	  log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> Test of method \"EshopDAOImpl.getTableSizeByTableNameTest()\" in progress...");	
+	    	  log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> Test of method \"EshopDAOImpl.getTableSizeByTableName()\" in progress...");	
 	    	  
 	    	   //Get list of all entity's classes in project.	
 	    	   Reflections reflections = new Reflections("com.soft.entity");	    	   	    	 	    	  	    	      	  	    	  	    	   
@@ -311,13 +382,47 @@ public class EshopDAOImplTest {
 	     		       log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> Entity: "+entityClassName+": tableSize = "+tableSize);
 	     		   
 	       	     Assertions.assertEquals(0, tableSize, String.format("TEST FAILURE FOR CLASS \"EshopDAOImpl\": Method \"getTableSizeByTableName("+entityClassName+")\" returned \"size\" = "+tableSize.toString()));   
-	      	    }    	    	      	    	    
+	      	    }
+	    	  
+	    	 log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> Test of method \"EshopDAOImpl.getTableSizeByTableName()\" successfully completed.");	     
 	    	}
 	    	catch(Exception exc) {                    	   
 	        	log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> EXCEPTION: "+exc.getMessage());
 	            log.debug("[EshopDAOImplTest.getTableSizeByTableNameTest()] --> EXCEPTION TO STRING: "+exc.toString());
 	    	}	     	  
 	  }
+      
+      
+
+      //Method to compare two entity's lists.
+      
+      boolean compareLists(List<BaseEntity> expectedList, List<BaseEntity> actualList) {
+  	  
+    	 boolean testResult = false;
+    	 
+    	  Iterator<BaseEntity> expectedIterator = expectedList.iterator();
+  	      Iterator<BaseEntity> actualIterator = actualList.iterator();
+  	   
+  	       BaseEntity ExpectedEntity = null;
+  	       BaseEntity ActualEntity = null;
+  				
+	  	    //Check if all entities in expected and actual lists are equal.  
+	  	    while(expectedIterator.hasNext() && actualIterator.hasNext()) {
+	  		   
+	  		  ExpectedEntity = expectedIterator.next();
+	  		  ActualEntity = actualIterator.next();
+	  		   
+	  		    if(!(ExpectedEntity.equals(ActualEntity))) {
+	  		  	  //Lists are not equal.  
+	  		      testResult = false; 		  	        		    
+	  		       break;	 
+	  		    }
+	       	  //Lists are equal. 
+	       	  testResult = true; 
+	          }	  	    
+	   return testResult;	    
+      }
+
     
 //     @Test 
 //     public void daoTest() { 
