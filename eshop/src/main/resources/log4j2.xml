@@ -53,8 +53,8 @@
       <PatternLayout>
         <Pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</Pattern>
       </PatternLayout>      
-    </File>   
-                
+    </File>       
+                     
  </Appenders>
 
   <!-- LOGGERS CONFIGURATION: -->
@@ -79,7 +79,7 @@
      
 	 <Logger name="com.soft.controller.EshopController" level="DEBUG">
 	    <AppenderRef ref="DebugLogFile" />
-	 </Logger>
+	 </Logger>	 	 
 	 
 	 <Logger name="MyHeadersLogger" level="WARN">
 	    <AppenderRef ref="DebugLogFile" /> 

@@ -200,22 +200,102 @@ public class ResistorEntity extends BaseEntity{
 				this.quantity = quantity;
 			}
 	
-			@Override
+			
+			 //Check if two instances are equal.
+			 @Override
 	         public boolean equals(Object object) {
-	            // TODO: Warning - this method won't work in the case the id fields are not set.
+
 	            if (!(object instanceof ResistorEntity)) {
 	                return false;
 	            }
+	            	            
 	            ResistorEntity other = (ResistorEntity) object;
-	            if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+	            
+	             //Check equality of all fields:
+	             if((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
 	                return false;
-	            }
-	            return true;
+	             }
+	            
+	             if((this.category == null && other.category != null) || (this.category != null && !this.category.equals(other.category))) {
+	                return false;
+	             }
+	            
+	            
+	             if((this.name == null && other.name != null) || (this.name != null && !this.name.equals(other.name))) {
+	                return false;
+	             }
+	            
+	            
+	             if((this.description == null && other.description != null) || (this.description != null && !this.description.equals(other.description))) {
+	                return false;
+	             }
+	            
+	            
+	             if((this.producer == null && other.producer != null) || (this.producer != null && !this.producer.equals(other.producer))) {
+	                return false;
+	             }
+	            
+	            
+	             if((this.nominal == null && other.nominal != null) || (this.nominal != null && !this.nominal.equals(other.nominal))) {
+	                return false;
+	             }
+	            
+	            
+	             if((this.nominalUnit == null && other.nominalUnit != null) || (this.nominalUnit != null && !this.nominalUnit.equals(other.nominalUnit))) {
+	                return false;
+	             }
+	            
+	            
+	             if((this.rPrecision == null && other.rPrecision != null) || (this.rPrecision != null && !this.rPrecision.equals(other.rPrecision))) {
+	                return false;
+	             }
+	            
+	            
+	             if((this.power == null && other.power != null) || (this.power != null && !this.power.equals(other.power))) {
+	                return false;
+	             }
+
+	            
+	             if((this.powerUnit == null && other.powerUnit != null) || (this.powerUnit != null && !this.powerUnit.equals(other.powerUnit))) {
+	                return false;
+	             }
+	            
+	            
+	             if((this.rPackage == null && other.rPackage != null) || (this.rPackage != null && !this.rPackage.equals(other.rPackage))) {
+	                return false;
+	             }	            
+	            
+	              //Check equality of fields "photo"(byte arrays). 
+                  if((this.photo == null && other.photo != null) || (this.photo != null && other.photo == null)) return false;
+               
+                  if((this.photo != null && other.photo != null)) {
+                   //Check array's length. 
+                   if((this.photo.length != other.photo.length)) return false; 	
+                    //Check equality of each array's element.
+                    for(int i = 0; i < this.photo.length; i++){
+                	  if(this.photo[i] != other.photo[i]) return false;	
+                    }                 
+                  }
+                
+	              if((this.price == null && other.price != null) || (this.price != null && !this.price.equals(other.price))) {
+	                return false;
+	              }
+	            
+	              if((this.quantity == null && other.quantity != null) || (this.quantity != null && !this.quantity.equals(other.quantity))) {
+	                return false;
+	              }
+	            
+              return true;  
 	         }
 	
+			
 	          @Override
 	          public String toString() {
-	        	 return this.getClass().getCanonicalName()+" : [id=" + id +"  name=" + name + "]";
+	        	  
+	        	 return this.getClass().getCanonicalName()+" : [id = " + id +"  category = " + category + "  name = " + name + 
+	        			 "  description = " + description + "  producer = " + producer + "  nominal = " + nominal + "  nominalUnit = " + nominalUnit +
+	        			 "  rPrecision = " + rPrecision + "  power = " + power + "  powerUnit = " + powerUnit + "  rPackage = " + rPackage + "  photo = " + photo +
+	        			 "  price = " + price + "  quantity = " + quantity + "]";
 	          }
 }
 //-------------------------------------------------------------------------------

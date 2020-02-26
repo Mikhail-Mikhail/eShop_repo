@@ -235,7 +235,7 @@ public class EshopDAOImpl implements EshopDAO{
 	     Session session; 
 	      
 	      
-	         try { 
+	         try { 	        	
 	             //Open session to read from database.
 	             session = sessionFactory.openSession();
 	                //Begin transaction.
@@ -269,29 +269,29 @@ public class EshopDAOImpl implements EshopDAO{
 	   Boolean result = false;
 	  
   	     //Session with database.
-	     Session session; 	      
+	     Session session;	     
 	      
-	         try { 
+	         try { 	        	 
 	             //Open session to read from database.
 	             session = sessionFactory.openSession();
 	                //Begin transaction.
 	                session.beginTransaction();                                        
-
-	                 session.save(entity);             
+	                
+	                 session.save(entity);             	        	                 
 	                                                                           
 	                //Commit transaction.
 	                session.getTransaction().commit();
 	              //Close session with a database. 
 	              session.close();  
 	          
-	           result = true;   
+	           result = true;   	           
 	         } 
 	         catch(Exception exc) {
 	      	   EshopController.log.debug("[EshopDAOImpl.saveEntity()] --> EXCEPTION: "+exc.getMessage());
 	      	   EshopController.log.debug("[EshopDAOImpl.saveEntity()] --> EXCEPTION TO STRING: "+exc.toString());
 	      	    result = false;
 	         }     
-	         finally {
+	         finally {	        	
 	           return result;	 
 	         }	  
    }     

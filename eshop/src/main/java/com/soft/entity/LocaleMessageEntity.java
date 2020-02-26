@@ -13,6 +13,10 @@ import javax.persistence.Table;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+<<<<<<< HEAD
+=======
+
+>>>>>>> temp
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
@@ -20,27 +24,38 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.soft.controller.EshopController;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> temp
 @Entity
 @Table(name = "locale")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class LocaleMessageEntity extends BaseEntity implements Serializable {
 
   private static final long serialVersionUID = 1L;
+<<<<<<< HEAD
   
   //Get logger.
   Logger log = LogManager.getLogger(EshopController.class.getName());
 	
+=======
+  	
+>>>>>>> temp
    //Empty constructor, it's used by Hibernate.	   
-   public LocaleMessageEntity() { 
+   public LocaleMessageEntity() {
+	 super();
    }
    
-   public LocaleMessageEntity(String locale, String msgKey, String message) {			
+   public LocaleMessageEntity(String locale, String msgKey, String message) {
+	      super();
 		  this.locale = locale;
 		  this.msgKey = msgKey;
 		  this.message = message;
    }
    
     public LocaleMessageEntity(Long id, String locale, String msgKey, String message) {	
+    	  super();
 		  this.id = id;
 		  this.locale = locale;
 		  this.msgKey = msgKey;
@@ -106,13 +121,16 @@ public class LocaleMessageEntity extends BaseEntity implements Serializable {
             return hash;
          }
 		 
+		 
+		 //Check if two instances are equal.
 	     @Override
          public boolean equals(Object object) {
 	    	 
             if (!(object instanceof LocaleMessageEntity)) {
-                return false;
+               return false;
             }
             
+<<<<<<< HEAD
              LocaleMessageEntity other = (LocaleMessageEntity) object;
              
               if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
@@ -153,20 +171,41 @@ public class LocaleMessageEntity extends BaseEntity implements Serializable {
 //	               }
 //------------------                        
             
+=======
+            LocaleMessageEntity other = (LocaleMessageEntity) object;
+             
+             //Check equality of all fields:
+             if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+                return false;
+             }                        
+              if ((this.locale == null && other.locale != null) || (this.locale != null && !this.locale.equals(other.locale))) {
+                 return false;
+              }
+              
+               if ((this.msgKey == null && other.msgKey != null) || (this.msgKey != null && !this.msgKey.equals(other.msgKey))) {
+                  return false;
+               }
+               
+                if ((this.message == null && other.message != null) || (this.message != null && !this.message.equals(other.message))) {
+                   return false;
+                }     
+          //If all fields are equal.     
+>>>>>>> temp
           return true;
          }
+	     
 
 	      @Override
 	      public String toString() {
-	     	return this.getClass().getCanonicalName()+" : [id=" + id +"  locale=" + locale + "]";
+	     	return this.getClass().getCanonicalName()+" : [id = " + id +"  locale = " + locale + "  msgKey = " + msgKey + "  message = " + message + "]";
 	      }
-
+	     
+	      
 	      //Stub for abstract method of super class.
 		  @Override
 		  public byte[] getPhoto() {
 			// TODO Auto-generated method stub
 			return null;
-		  }
-		   
+		  }		  		  		  		   
 }
 //-------------------------------------------------------------------------------

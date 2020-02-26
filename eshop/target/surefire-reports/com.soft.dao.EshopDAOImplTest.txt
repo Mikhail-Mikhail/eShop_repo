@@ -1,9 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.soft.dao.EshopDAOImplTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.264 sec <<< FAILURE! - in com.soft.dao.EshopDAOImplTest
-getTableSizeByTableNameTest  Time elapsed: 0.001 sec  <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'transactionManager' defined in com.soft.config.DataAccessConfig: Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Property 'sessionFactory' is required
-Caused by: java.lang.IllegalArgumentException: Property 'sessionFactory' is required
-
