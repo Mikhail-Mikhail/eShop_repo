@@ -1,0 +1,234 @@
+/* --------------------------------------------------------------------*/
+ 
+/* Styles for all pages:                                               */
+
+/* --------------------------------------------------------------------*/  
+
+/* !!!DEBUG BOX to DISPLAY INFO: 
+   DELETE IT IN RELEASE VERSION! */
+
+ .debug-box{
+   color: blue;
+   margin-left: 30px;
+ }    
+/* --------------------------------------------------------------------*/
+
+    body{
+      background-color: hsla(0, 0%, 78%, 0.5);
+      width: 60%;     
+      margin-left: auto;
+      margin-right: auto;
+    }
+/* --------------------------------------------------------------------*/
+     
+    /* Styles of header: */  
+      
+   .header-line{  
+       height: 35px;
+       width: 100%; 
+       min-width: 1450px; /* Fix width of header if width of browser's window became narrow. */      
+       top: 0;
+       left: 0;        
+       border-top: 1px solid #b2b2b2;
+       border-bottom: 1px solid #b2b2b2;
+       float: left;
+       clear: left; 
+       position: fixed;
+       z-index: 9999;
+       
+       background-color: white; /* For DEBUG to see size of this block. */
+    }
+                
+    .header{  
+       height: 135px;
+       width: 100%;   
+       min-width: 1150px; /* Fix width of header if width of browser's window became narrow. */ 
+       margin-top: 30px;      
+       margin-bottom: 1px;       
+       border: 1px solid #b2b2b2; 
+       border-radius: 5px;             
+       float: left;
+       clear: left; 
+       
+       z-index: 0;
+       background-color: #d0d0d0;; /* For DEBUG to see size of this block. */
+    }  
+        
+     /* Styles of logo: */
+         
+     .div-logo{
+        width: 100px;
+        height: 115px;
+        margin-left: 20px;
+        margin-top: 10px;
+        float: left;
+     }
+    
+      /* Logo image: */
+     .div-logo img{
+       height: 85%;
+       width: 100%;        
+      }
+    
+      /* Logo name: */
+      .div-logo h2{
+       margin-left: 0px;
+       margin-top: -13px;
+       color: #bb770c;    
+      }
+      
+/* --------------------------------------------------------------------*/
+
+    /* Styles for "search"-field: */
+    
+    .div-search-field{
+    
+      width: 80%; 
+      min-width: 800px; /* Fix width of search field if width of browser's window became narrow. */
+      min-height: 42px;    
+      border: 1px solid #9e9c9c;       
+      border-radius: 5px;       
+      margin-top: 50px;
+      margin-left: 20px; 
+      float: left;       
+    }    
+  
+    .search-input  {
+      float: left;
+      width: 80%; 
+      height: 42px;
+      border: none; /* Disable border. */
+      outline: none; /* Убираем свечение в Chrome и Safari. */
+      -webkit-appearance: none; /* Убираем рамку в Chrome и Safari. */      
+      background: #EEEEEC;
+      border-radius: 5px;
+      vertical-align: middle;      
+      padding-left: 10px;  
+      font-size: 20px;                        
+    }
+    
+    .search-button {
+        float: left;
+		height: 42px;
+        width: 20%;
+	    cursor: pointer;	     
+        font-size: 120%;
+        border: 1px solid #bdbdbd;
+        border-radius: 5px;
+        padding: 5px 10px 5px 10px;
+        background-repeat: no-repeat;
+        background-position: 8px 9px;                
+        color: #444444;
+        text-shadow: 0px 1px 1px #ffffff;
+        border-bottom: 2px solid #b2b2b2;
+        background-color: #b9e4e3;                                       	    	      
+    }
+    
+     .search-button:hover {
+       color: #333333;
+       border: 1px solid #a4a4a4;
+       border-top: 2px solid #b2b2b2;
+       background-color: #a0dbc4;
+     }	                       
+    
+/* --------------------------------------------------------------------*/                    
+
+    /* Styles of elements nested in top header line: Shopping Cart, Login, Register. */           
+    
+    .header-line-element{
+      height: 100%; 
+      margin-top: 3px;
+      line-height: 30px;            
+      text-align: center; 
+      letter-spacing: 2px;
+	  color: blue;
+      font-size: 16px; 
+      font-family: sans-serif;
+      text-decoration: underline;
+      float: left; 
+    }
+    
+    .header-line-element:hover{
+      cursor: pointer;
+      color: red;            
+    }
+          
+    .element-icon{
+      width: 25px;
+      height: 25px;
+      margin-right: 5px;
+      float: left;
+    }
+    
+    .div-language{
+      margin-left: 20%;      
+    }
+    
+    .div-shopping-cart{
+      margin-left: 24%;      
+    }
+    
+    .shopping-cart-status{
+      height: 100%; 
+      margin-top: 3px;
+      margin-left: 7px;
+      line-height: 30px;            
+      text-align: center; 
+      letter-spacing: 2px;
+	  color: black;
+      font-size: 16px; 
+      font-family: sans-serif;      
+      float: left; 
+    }
+     
+    .div-login{
+      margin-left: 13%;      
+    }
+    
+    .div-register{
+      margin-left: 1%;      
+    }    
+/* --------------------------------------------------------------------*/   
+
+
+    /* Styles of content: */   
+
+    .content-container{       
+       width: 100%;
+       height: auto;
+       min-width: 1150px; /* Fix width of content if width of browser's window became narrow. */   
+       min-height: 100%; 
+       border: 1px solid #b2b2b2; 
+       border-radius: 5px;   
+       margin-bottom: 1px;
+       padding-bottom: 20px;   
+       float: left;  
+       clear: left; 
+       
+       background-color: #d0d0d0; /* For DEBUG to see size of this block. */              
+    }        
+
+/* --------------------------------------------------------------------*/   
+
+    /* Styles of footer: */   
+    
+    .footer {
+        height: auto;
+        width: 100%; 
+        min-width: 1140px; /* Fix width of footer if width of browser's window became narrow. */             
+        margin-left: 10px;                           
+        background-color: #d0d0d0;
+        border: 1px solid #b2b2b2; 
+        border-radius: 5px;             
+        margin:auto;
+        padding-left: 10px;
+	    clear:both;                       
+    }    
+/* --------------------------------------------------------------------*/    
+    
+    /* Styles for common use: */   
+    
+     .left-float{
+        float: left;  
+     }
+/* --------------------------------------------------------------------*/               

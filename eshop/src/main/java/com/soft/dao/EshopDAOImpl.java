@@ -79,9 +79,8 @@ public class EshopDAOImpl implements EshopDAO{
         	 EshopController.log.debug("[EshopDAOImpl.readLocaleMessageByKey()] --> EXCEPTION: "+exc.getMessage());
         	 EshopController.log.debug("[EshopDAOImpl.readLocaleMessageByKey()] --> EXCEPTION TO STRING: "+exc.toString());           
            }           
-//           finally {
-             return localeMessage;
-//           }  
+
+      return localeMessage;     
     }                                
 
   //_______________________________________________________________//

@@ -13,10 +13,7 @@ import javax.persistence.Table;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-<<<<<<< HEAD
-=======
 
->>>>>>> temp
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.GenericGenerator;
@@ -24,24 +21,14 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.soft.controller.EshopController;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> temp
 @Entity
 @Table(name = "locale")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class LocaleMessageEntity extends BaseEntity implements Serializable {
 
   private static final long serialVersionUID = 1L;
-<<<<<<< HEAD
-  
-  //Get logger.
-  Logger log = LogManager.getLogger(EshopController.class.getName());
-	
-=======
   	
->>>>>>> temp
    //Empty constructor, it's used by Hibernate.	   
    public LocaleMessageEntity() {
 	 super();
@@ -130,48 +117,6 @@ public class LocaleMessageEntity extends BaseEntity implements Serializable {
                return false;
             }
             
-<<<<<<< HEAD
-             LocaleMessageEntity other = (LocaleMessageEntity) object;
-             
-              if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-                return false;
-              }
-//------------------
-//	            //Get fields of objects.
-//	            Field[] fieldsThis = this.getClass().getFields();
-//	            Field[] fieldsOther = object.getClass().getFields();
-//	            
-//	             //If objects have different numbers of fields.
-//	             if(fieldsThis.length!=fieldsOther.length) return false;
-//	             
-//	              //Check if names of all fields are equal. 
-//	              for (int i = 0; i < fieldsThis.length; i++) {
-//	                try {                	
-//	                  if(!(fieldsThis[i].getName().equals(fieldsOther[i].getName()))) {
-//	                   return false;	 
-//	                  }	                   
-//	                } 
-//	                catch(Exception exc) {
-//	                  log.debug("[LocaleMessageEntity().equals()] --> EXCEPTION: "+exc.getMessage());
-//	                  log.debug("[LocaleMessageEntity().equals()] --> EXCEPTION TO STRING: "+exc.toString());      
-//	                }             
-//	              }
-//	             
-//	              //Check if values of all fields are equal.
-//	              for (int i = 0; i < fieldsThis.length; i++) {
-//	                 try {                  	
-//	                    if(!(fieldsThis[i].get(this).equals(fieldsOther[i].get(object)))) {
-//	                     return false;	 
-//	                    }
-//	                 } 
-//	                 catch(Exception exc) {
-//	                   log.debug("[LocaleMessageEntity().equals()] --> EXCEPTION: "+exc.getMessage());
-//	                   log.debug("[LocaleMessageEntity().equals()] --> EXCEPTION TO STRING: "+exc.toString());      
-//	                 }             
-//	               }
-//------------------                        
-            
-=======
             LocaleMessageEntity other = (LocaleMessageEntity) object;
              
              //Check equality of all fields:
@@ -190,7 +135,6 @@ public class LocaleMessageEntity extends BaseEntity implements Serializable {
                    return false;
                 }     
           //If all fields are equal.     
->>>>>>> temp
           return true;
          }
 	     

@@ -1,0 +1,8 @@
+com/soft/config/DataAccessConfig.class
+com/soft/config/AppConfig$DBMessageSource.class
+com/soft/config/AppConfig.class
+com/soft/controller/EshopController.class
+com/soft/config/AppInitializer.class
+com/soft/entity/LocaleMessageEntity.class
+com/soft/dao/EshopDAO.class
+com/soft/dao/EshopDAOImpl.class

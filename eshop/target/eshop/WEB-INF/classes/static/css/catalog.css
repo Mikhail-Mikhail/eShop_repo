@@ -1,0 +1,91 @@
+/* --------------------------------------------------------------------*/
+   
+/* Styles for "catalog.html". */
+        
+/* --------------------------------------------------------------------*/
+      
+        /* Styles for navigation box: */
+      
+       .div-navigation {
+          height: auto;          
+          width: 94%;
+		  min-width: 450px; /* Fix width of block if width of browser's window became narrow. */
+		  padding: 3px 3px;		  
+		  font-family: 'Roboto', sans-serif;
+		  font-size: 15px;		  		   
+          margin-top: 20px;
+          margin-left: 30px;           
+          float: left;       
+		}   
+		
+		.home-href{
+		  color: blue;
+		}
+		
+		.home-href:hover{
+          cursor: pointer;
+          color: red;            
+        } 
+/* --------------------------------------------------------------------*/     
+    
+      /* Styles for filter's box: */
+      
+       .div-filters {          
+          height: auto; 
+		  width: 20%;
+		  min-width: 200px; /* Fix width of block if width of browser's window became narrow. */
+		  padding: 20px 30px;
+		  background: white;
+		  font-family: 'Roboto', sans-serif;		  
+		  border-radius: 5px;		  
+          border: solid 1px #bdbdbd; 
+          margin-top: 20px;
+          margin-left: 30px;           
+          float: left;       
+		}				
+/* --------------------------------------------------------------------*/
+     
+      /* Styles for item's box: */
+                
+      .div-items{
+        height: auto;        
+        width: 67%;
+		min-width: 700px; /* Fix width of catalog if width of browser's window became narrow. */
+		border-radius: 5px;		  
+        border: solid 1px #bdbdbd; 
+        margin-top: 20px;
+        margin-left: 25px;               
+        background: white;  
+        float: left;      
+      }   
+            
+      .table-of-items{
+        height: auto;
+        width: 100%;                
+      }
+      
+      .div-items-list{
+        height: auto;
+        width: 98.5%;
+        padding: 5px;
+        border-radius: 5px;
+        border: solid 1px #bdbdbd;                      
+      }       
+      
+      .item-small-image{
+        height: 30px;
+        width: 30px;  
+      } 
+      
+      .item-name{
+        color: blue;
+        text-decoration: underline;
+      }   
+      
+      .item-name:hover{
+        cursor: pointer;
+        color: red;            
+      }     
+/* --------------------------------------------------------------------*/
+  
+  

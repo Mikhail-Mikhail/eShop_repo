@@ -1,0 +1,105 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-3.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    
+  <head th:fragment="head(title, myScript)">
+    <title>eShop - <th:block th:include="${title}"></th:block></title>
+    
+     <meta charset="utf-8">
+         
+     <!-- Links to stylesheets. -->
+     <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css" type="text/css"  />
+     <link rel="stylesheet" th:href="@{/css/home.css}" href="../static/css/home.css" type="text/css"  />    
+     <link rel="stylesheet" th:href="@{/css/list.css}" href="../static/css/list.css" type="text/css"  />              
+     
+       <!-- JS-scripts. -->
+       <script type="text/javascript" th:src="${myScript}" src = "../static/js/stub.js">            
+       </script>
+      
+        <!-- Include "JQuery" library. -->
+        <script src="/eshop/js/jquery-3.2.1.js"> 
+        </script>           
+   
+  </head>
+
+  <body th:fragment="body()">     
+      
+    <div class="header-line">
+    
+      <!-- Language selector: --> 
+      <div id="langChange" class="header-line-element  div-language"  th:value="#{locale.langValue}">       
+        <img  class="element-icon" th:src="#{locale.langIcon}" alt="Language" title="Switch language"/>            
+          <span th:text="#{locale.langName}"></span>                      
+      </div>  
+       
+      
+      <!-- Shopping cart: --> 
+      <div class="header-line-element  div-shopping-cart">       
+        <img  class="element-icon" src="/eshop/img/icons/cart_icon.png" alt="Cart" title="Cart"/>
+          <span th:text="#{locale.cartName}"></span>           
+      </div>  
+      
+      <div class="shopping-cart-status">
+        <span th:text="#{locale.emptyCartName}"></span>
+      </div>  
+      
+       <!-- Login reference: --> 
+       <div class="header-line-element  div-login">       
+         <img  class="element-icon" src="/eshop/img/icons/login_icon.svg" alt="Login" title="Login"/>
+           <span th:text="#{locale.loginName}"></span>
+       </div>   
+       
+       <!-- Registration reference: --> 
+       <div class="header-line-element  div-register">       
+         <img  class="element-icon" src="/eshop/img/icons/register_icon.png" alt="Registration" title="Registration"/>
+           <span th:text="#{locale.registerName}"></span>
+       </div>    
+    </div>     
+      
+      
+     <!-- Header: --> 
+     <div class="header">                
+        
+          <!-- Display logo. -->
+          <div class="div-logo">
+            <a href="http://localhost:8080/eshop/home.html/">
+              <img src="/eshop/img/icons/logo.png" alt="Dog" title="Home page"/>              
+            </a>            
+             <h2>PsinShop</h2>
+          </div> 
+          
+          <!-- Search field: -->
+          <div class="div-search-field">
+             <!-- Search input. --> 
+             <input type="search" class="search-input" name="q">  
+               <!-- Search button. -->              
+               <input type="submit" class="search-button" th:value="#{locale.searchButtonName}">   
+          </div>          
+                                                                   
+     </div>         
+
+       <!-- Block for content: -->
+       <div th:replace="${content}">
+          Fake content
+       </div>  
+       
+         <!-- Footer: -->       
+         <div class="footer">
+            &copy 2001-2019, <span th:text="#{locale.copyright}"> </span> 
+            
+<!-- DEBUG BOX to DISPLAY INFO: -->
+<!-- DELETE IT IN RELEASE! -->
+ 
+ <span class="debug-box">
+  DEBUG INFO:
+   <span id="debugBox">   
+     <span th:fragment="StatusFragment" th:text="${Status}"> </span>     
+   </span>
+ </span>          
+ 
+<!-- ////////////////// -->     
+            
+         </div>   
+                    
+  </body>
+</html>
