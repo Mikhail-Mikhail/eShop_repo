@@ -36,6 +36,7 @@ import com.soft.entity.LocaleMessageEntity;
 
 //------------------------------------------------------------------------------
 
+
 //Configuration class for application.
 
 
