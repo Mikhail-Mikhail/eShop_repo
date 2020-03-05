@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.support.AbstractMessageSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.LocaleResolver;
@@ -112,8 +113,8 @@ public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationCon
              
         
          
-         //Message source bean for i18n.
-         @Component("messageSource")         
+         //Message source bean for i18n.         
+         @Component("messageSource")        
          public class DBMessageSource extends AbstractMessageSource {
 
             @Autowired
