@@ -17,7 +17,7 @@
  <!--      <project.build.sourceEncoding>windows-1251</project.build.sourceEncoding>  --> 
        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>                
        <springframework.version>5.0.4.RELEASE</springframework.version>
-       <spring-core.version>5.2.0.RELEASE</spring-core.version>
+       <spring-core.version>5.3.19</spring-core.version>
        <spring-test.version>5.2.3.RELEASE</spring-test.version>       
        <hibernate.version>5.2.13.Final</hibernate.version>
        <reflections.version>0.9.12</reflections.version>                                     
